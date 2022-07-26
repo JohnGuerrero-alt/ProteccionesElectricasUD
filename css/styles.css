@@ -110,7 +110,7 @@ html {
 
 .selectSwal option {
     font-size: 12px;
-} 
+}
 
 .contenidoPanelBus {
     display: grid;
@@ -120,6 +120,25 @@ html {
 
     min-height: calc(100vh - 100px);
     max-height: calc(100vh - 100px);
+}
+
+@media screen and (max-width:700px) {
+    .mainPage {
+        max-width: 100vw;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 30px;
+    }
+
+    .contenidoPanelBus {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        width: 100%;
+
+
+    }
 }
 
 .panelIzquierdoPanelBus {
@@ -264,13 +283,13 @@ tr {
 
 .botonAjustarEjemplos {
     background-color: #7ba9ee;
-    color:#dadaf0;
+    color: #dadaf0;
     border-radius: 10px;
     border-color: #7ba9ee;
     text-shadow: none;
     text-align: center;
     padding: 2px;
-    
+
 }
 
 .botonCalcular {
@@ -286,7 +305,7 @@ tr {
     background-color: #5599ff !important;
     text-align: center !important;
     color: #c2dcf7 !important;
-    padding: 10px !important;  
+    padding: 10px !important;
     border-radius: 7px !important;
 }
 
@@ -311,7 +330,7 @@ tr {
     min-width: 100%;
     min-height: 100%;
     max-height: 100%;
-   
+
 }
 
 
@@ -346,7 +365,7 @@ tr {
     /* padding: 5px; */
 }
 
-canvas{
+canvas {
     max-height: 250px;
 }
 
