@@ -641,4 +641,9 @@ canvas {
         min-height: 90vh;
         
     }
+
+    .creditos {
+        display: none;
+    }
+
 }
