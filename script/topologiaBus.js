@@ -146,7 +146,7 @@ var Ic_c_con_margen;
 
 var alpha = 0.02;
 var beta = 0.14;
-var landa;
+var lambda = 0;
 
 
 
@@ -398,11 +398,11 @@ function calcularPasoaPaso() {
         Ic_c_con_margen = Ic_ReleC + (Ic_ReleC) * (Margen_Ic_C / 100)
 
         //DIAL en el relé C
-        TMS_calculado_C = ((tiempo_C / 1000) * (((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1) / (parametrosCurva[familiaCurva_C].beta))).toFixed(4);
+        TMS_calculado_C = ((tiempo_C / 1000) * (((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1) / (parametrosCurva[familiaCurva_C].beta)) - parametrosCurva[familiaCurva_C].lambda).toFixed(4);
         document.getElementById("Dial_calculado_2").innerText = TMS_calculado_C;
 
         //Hallar tiempo Local en C
-        tiempo_local_C = (TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1))).toFixed(4);
+        tiempo_local_C = (TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1)) + parametrosCurva[familiaCurva_C].lambda).toFixed(4);
         console.log("tiempo local C: ", tiempo_local_C)
         document.getElementById("Tiempo_local_2").innerHTML = tiempo_local_C;
 
@@ -418,16 +418,16 @@ function calcularPasoaPaso() {
         Ic_b_con_margen = Ic_ReleB + (Ic_ReleB) * (Margen_Ic_B / 100)
 
         //DIAL en el relé B
-        TMS_calculado_B = ((tiempo_B / 1000) * (((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1) / (parametrosCurva[familiaCurva_B].beta))).toFixed(4);
+        TMS_calculado_B = ((tiempo_B / 1000) * (((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1) / (parametrosCurva[familiaCurva_B].beta)) -  parametrosCurva[familiaCurva_B].lambda).toFixed(4);
         document.getElementById("Dial_calculado_1").innerText = TMS_calculado_B;
 
         //Hallar tiempo local en B
-        tiempo_local_B = (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1))).toFixed(4);
+        tiempo_local_B = (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)) +  parametrosCurva[familiaCurva_B].lambda).toFixed(4);
         document.getElementById("Tiempo_local_1").innerHTML = tiempo_local_B;
 
 
         //Hallar tiempo remoto en B
-        tiempo_remoto_B = (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1))).toFixed(4);
+        tiempo_remoto_B = (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)) +  parametrosCurva[familiaCurva_B].lambda).toFixed(4);
         document.getElementById("Tiempo_remoto_1").innerHTML = tiempo_remoto_B;
 
     } catch (error) {
@@ -439,16 +439,16 @@ function calcularPasoaPaso() {
         //DIAL en el relé A
         Ic_a_con_margen = Ic_ReleA + (Ic_ReleA) * (Margen_Ic_A / 100)
 
-        TMS_calculado_A = ((tiempo_A / 1000) * (((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta))).toFixed(4);
+        TMS_calculado_A = ((tiempo_A / 1000) * (((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta)) - parametrosCurva[familiaCurva_A].lambda).toFixed(4);
         document.getElementById("Dial_calculado_0").innerText = TMS_calculado_A;
 
         //Hallar tiempo local en A
-        tiempo_local_A = (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1))).toFixed(4);
+        tiempo_local_A = (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) + parametrosCurva[familiaCurva_A].lambda).toFixed(4);
         document.getElementById("Tiempo_local_0").innerHTML = tiempo_local_A;
 
 
         //Hallar tiempo remoto en A
-        tiempo_remoto_A = (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1))).toFixed(4);
+        tiempo_remoto_A = (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) + parametrosCurva[familiaCurva_A].lambda).toFixed(4);
         document.getElementById("Tiempo_remoto_0").innerHTML = tiempo_remoto_A;
 
 
@@ -584,7 +584,7 @@ function graficarCurvaTopologiaBus() {
                     console.log("valor compl: ", (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1))))
 
 
-                    return  (((TMS_A) * ((parametrosCurva[familiaCurva_A].beta)) )/ ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1))
+                    return  (((TMS_A) * ((parametrosCurva[familiaCurva_A].beta)) )/ ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) + parametrosCurva[familiaCurva_A].lambda
                 },
                 color: 'rgba(255, 179, 128, 1)',
                 
@@ -605,7 +605,7 @@ function graficarCurvaTopologiaBus() {
                     
 
 
-                    return  (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(x / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)))
+                    return  (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(x / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1))) + parametrosCurva[familiaCurva_B].lambda
                 },
                 color: 'rgba(85, 153, 255, 1)',
                 
@@ -626,7 +626,7 @@ function graficarCurvaTopologiaBus() {
                     
 
 
-                    return  (TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(x / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1)))
+                    return  (TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(x / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1))) +  parametrosCurva[familiaCurva_C].lambda
                 },
                 color: 'rgba(113, 200, 55, 1)',
                 
@@ -634,7 +634,8 @@ function graficarCurvaTopologiaBus() {
             {
                 points: [
                     [Isc_ReleA, 0.001],
-                    [Isc_ReleA, 10000000]
+                    [Isc_ReleA, 10000000],
+                    [Isc_ReleA, tiempo_instantaneo_A/1000]
                     
                   ],
                   fnType: 'points',
@@ -645,7 +646,8 @@ function graficarCurvaTopologiaBus() {
             {
                 points: [
                     [Isc_ReleB, 0.001],
-                    [Isc_ReleB, 10000000]
+                    [Isc_ReleB, 10000000],
+                    [Isc_ReleB, tiempo_instantaneo_B/1000]
                     
                   ],
                   fnType: 'points',
@@ -656,7 +658,8 @@ function graficarCurvaTopologiaBus() {
             {
                 points: [
                     [Isc_ReleC, 0.001],
-                    [Isc_ReleC, 10000000]
+                    [Isc_ReleC, 10000000],
+                    [Isc_ReleC, tiempo_instantaneo_C/1000]
                     
                   ],
                   fnType: 'points',
@@ -664,21 +667,6 @@ function graficarCurvaTopologiaBus() {
                   graphType: 'polyline',
                   updateOnMouseMove: true
             }
-
-            // {
-            //     fn: "x^2", color: 'rgba(85, 153, 255, 1)',
-            //     derivative: {
-            //         fn: "2 * x",
-            //         updateOnMouseMove: true
-            //     }
-            // },
-            // {
-            //     fn: "x^2", color: 'rgba(113, 200, 55, 1)',
-            //     derivative: {
-            //         fn: "2 * x",
-            //         updateOnMouseMove: true
-            //     }
-            // }
         ],
     });
 }

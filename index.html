@@ -187,7 +187,7 @@
                                     aria-labelledby="pills-metodologia1-tab">
                                     
                                     <h3>Pasos</h3>
-                                    <p style="text-align: justify;">1. Para comenzar la coordinación de los Relés, se comienza desde el relé C hasta el A. Es importante ingresar las variables Isc, Ic, Margen Ic, Familia de curvas y tiempo.</p>
+                                    <p style="text-align: justify;">1. Para comenzar la coordinación de los Relés, se comienza desde el relé C hasta el A. Es importante ingresar las variables Isc, Ic, Margen Ic, Familia de curvas y tiempo. Para modificar los valores de cada relé, presione la imagen del relé que quiere configurar.</p>
                                     <p style="text-align: justify;">2. Presione el botón "Calcular".  En la pestaña "Resultados/Cálculos" está visualizado el valor del DIAL calculado para el relé C con los datos ingresados. </p>
                                     <p style="text-align: justify;">3. Seleccione el DIAL más aproximado con respecto al valor calculado y guardelo. Después, vuelve a presionar el botón "Calcular". </p>                                
                                     <p style="text-align: justify;">4. Repita el proceso para los otros relés, hasta completar la tabla. </p>
@@ -274,114 +274,140 @@
                     tabindex="0">
 
                     <!-- Contenido de la pestaña "Topología en Anillo" -->
-                    ...
-                    <div class="panelIzquierdoPanelAnillo">
-                        <!-- Instancia de la función de Topologia de Anillo-->
-                        <!-- <script src="script/topologiaAnillo.js"></script> -->
-                        <div class="circuitoDiagramaAnillo">
-                            <!-- Diagrama del circuito en topología de anillo -->
-                            <!-- Se definen clases con los prefijo "fta" haciendo alusión (topología en anillo) -->
-                            <div class="fila1ta">
-                                <div id="1_1" class="fblanco celda"></div>
-                                <div id="1_2" class="fblanco celda"></div>
-                                <div id="1_3" class="fta1_3 celda"></div>
-                                <div id="1_4" class="fblanco celda"></div>
-                                <div id="1_5" class="fblanco celda"></div>
-                            </div>
-                            <div class="fila2ta">
-                                <div id="2_1" class="fta2_1 celda">
-                                    <div class="fta2_1_1">
-                                        <div class="fta2_1_1_1 fblanco"></div>
-                                        <div class="fta2_1_1_2 fblanco"></div>
+
+                    <div class="contenidoPanelAnillo">
+                        <div class="panelIzquierdoPanelAnillo">
+                            <!-- Instancia de la función de Topologia de Anillo-->
+                            <!-- <script src="script/topologiaAnillo.js"></script> -->
+                            <div class="circuitoDiagramaAnillo">
+                                <!-- Diagrama del circuito en topología de anillo -->
+                                <!-- Se definen clases con los prefijo "fta" haciendo alusión (topología en anillo) -->
+                                <div class="fila1ta">
+                                    <div id="1_1" class="fblanco celda"></div>
+                                    <div id="1_2" class="fblanco celda"></div>
+                                    <div id="1_3" class="fta1_3 celda"></div>
+                                    <div id="1_4" class="fblanco celda"></div>
+                                    <div id="1_5" class="fblanco celda"></div>
+                                </div>
+                                <div class="fila2ta">
+                                    <div id="2_1" class="fta2_1 celda">
+                                        <div class="fta2_1_1">
+                                            <div class="fta2_1_1_1 fblanco"></div>
+                                            <div class="fta2_1_1_2 fblanco"></div>
+                                        </div>
+                                        <div class="fta2_1_2">
+                                            <div class="fta2_1_2_1 fblanco"></div>
+                                            <div class="fta2_1_2_2"></div>
+                                        </div>
                                     </div>
-                                    <div class="fta2_1_2">
-                                        <div class="fta2_1_2_1 fblanco"></div>
-                                        <div class="fta2_1_2_2"></div>
+                                    <div id="2_2" class="fta2_2 celda">
+                                        <div class="fta2_2_1"></div>
+                                        <div class="fta2_2_2"></div>
                                     </div>
-                                </div>
-                                <div id="2_2" class="fta2_2 celda">
-                                    <div class="fta2_2_1"></div>
-                                    <div class="fta2_2_2"></div>
-                                </div>
-                                <div id="2_3" class="fta2_3 celda">
-                                    <div class="fta2_3_1"></div>
-                                    <div class="fta2_3_2 fblanco"></div>
-                                </div>
-                                <div id="2_4" class="fta2_4 celda">
-                                    <div class="fta2_4_1"></div>
-                                    <div class="fta2_4_2"></div>
-                                </div>
-                                <div id="2_5" class="fta2_5 celda">
-                                    <div class="fta2_5_1">
-                                        <div class="fta2_5_1_1 fblanco"></div>
-                                        <div class="fta2_5_1_2 fblanco"></div>
+                                    <div id="2_3" class="fta2_3 celda">
+                                        <div class="fta2_3_1"></div>
+                                        <div class="fta2_3_2 fblanco"></div>
                                     </div>
-                                    <div class="fta2_5_2">
-                                        <div class="fta2_5_2_1"></div>
-                                        <div class="fta2_5_2_2 fblanco"></div>
+                                    <div id="2_4" class="fta2_4 celda">
+                                        <div class="fta2_4_1"></div>
+                                        <div class="fta2_4_2"></div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="fila3ta">
-                                <div id="3_1" class="fta3_1 celda">
-                                    <div class="fta3_1_1_1"></div>
-                                    <div class="fta3_1_1_2"></div>
-                                </div>
-                                <div id="3_2" class="fta3_2 fblanco celda"></div>
-                                <div id="3_3" class="fta3_3 fblanco celda"></div>
-                                <div id="3_4" class="fta3_4 fblanco celda"></div>
-                                <div id="3_5" class="fta3_5 celda">
-                                    <div class="fta3_5_1_1"></div>
-                                    <div class="fta3_5_1_2"></div>
-                                </div>
-                            </div>
-                            <div class="fila4ta">
-                                <div class="fta4_1 celda">
-                                    <div class="fta4_1_1">
-                                        <div class="fta4_1_1_1"></div>
-                                        <div class="fta4_1_1_2"></div>
-                                    </div>
-                                    <div class="fta4_1_2">
-                                        <div class="fta4_1_2_1"></div>
-                                        <div class="fta4_1_2_2"></div>
+                                    <div id="2_5" class="fta2_5 celda">
+                                        <div class="fta2_5_1">
+                                            <div class="fta2_5_1_1 fblanco"></div>
+                                            <div class="fta2_5_1_2 fblanco"></div>
+                                        </div>
+                                        <div class="fta2_5_2">
+                                            <div class="fta2_5_2_1"></div>
+                                            <div class="fta2_5_2_2 fblanco"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="fta4_2 celda">
-                                    <div class="fta4_2_1"></div>
-                                    <div class="fta4_2_2"></div>
-                                </div>
-                                <div class="fta4_3 celda">
-                                    <div class="fta4_3_1"></div>
-                                    <div class="fta4_3_2"></div>
-                                </div>
-                                <div class="fta4_4 celda">
-                                    <div class="fta4_4_1"></div>
-                                    <div class="fta4_4_2"></div>
-                                </div>
-                                <div class="fta4_5 celda">
-                                    <div class="fta4_5_1">
-                                        <div class="fta4_5_1_1 "></div>
-                                        <div class="fta4_5_1_2 "></div>
+                                <div class="fila3ta">
+                                    <div id="3_1" class="fta3_1 celda">
+                                        <div class="fta3_1_1_1"></div>
+                                        <div class="fta3_1_1_2"></div>
                                     </div>
-                                    <div class="fta4_5_2">
-                                        <div class="fta4_5_2_1 "></div>
-                                        <div class="fta4_5_2_2 "></div>
+                                    <div id="3_2" class="fta3_2 fblanco celda"></div>
+                                    <div id="3_3" class="fta3_3 fblanco celda"></div>
+                                    <div id="3_4" class="fta3_4 fblanco celda"></div>
+                                    <div id="3_5" class="fta3_5 celda">
+                                        <div class="fta3_5_1_1"></div>
+                                        <div class="fta3_5_1_2"></div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="fila5ta">
-                                <div class="fta5_1 celda"></div>
-                                <div class="fta5_2 celda"></div>
-                                <div class="fta5_3 celda"></div>
-                                <div class="fta5_4 celda"></div>
-                                <div class="fta5_5 celda"></div>
+                                <div class="fila4ta">
+                                    <div class="fta4_1 celda">
+                                        <div class="fta4_1_1">
+                                            <div class="fta4_1_1_1"></div>
+                                            <div class="fta4_1_1_2"></div>
+                                        </div>
+                                        <div class="fta4_1_2">
+                                            <div class="fta4_1_2_1"></div>
+                                            <div class="fta4_1_2_2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="fta4_2 celda">
+                                        <div class="fta4_2_1"></div>
+                                        <div class="fta4_2_2"></div>
+                                    </div>
+                                    <div class="fta4_3 celda">
+                                        <div class="fta4_3_1"></div>
+                                        <div class="fta4_3_2"></div>
+                                    </div>
+                                    <div class="fta4_4 celda">
+                                        <div class="fta4_4_1"></div>
+                                        <div class="fta4_4_2"></div>
+                                    </div>
+                                    <div class="fta4_5 celda">
+                                        <div class="fta4_5_1">
+                                            <div class="fta4_5_1_1 "></div>
+                                            <div class="fta4_5_1_2 "></div>
+                                        </div>
+                                        <div class="fta4_5_2">
+                                            <div class="fta4_5_2_1 "></div>
+                                            <div class="fta4_5_2_2 "></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fila5ta">
+                                    <div class="fta5_1 celda"></div>
+                                    <div class="fta5_2 celda"></div>
+                                    <div class="fta5_3 celda"></div>
+                                    <div class="fta5_4 celda"></div>
+                                    <div class="fta5_5 celda"></div>
+                                </div>
                             </div>
                         </div>
+    
+                        <div class="panelDerechoPanelAnillo">
+    
+                            <!-- Cuadrar las pestallas de los valores y resultados para la topología del Anillo -->
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="pills-metodologia-2-tab" data-bs-toggle="pill" data-bs-target="#pills-metodologia-2" type="button" role="tab" aria-controls="pills-metodologia-2-tab" aria-selected="true">Metodología</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="pills-resultadosCalculos-2-tab" data-bs-toggle="pill" data-bs-target="#pills-resultadosCalculos-2" type="button" role="tab" aria-controls="pills-resultadosCalculos-2" aria-selected="false">Resultados/Cálculos</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="pills-resultadosGrafica-2-tab" data-bs-toggle="pill" data-bs-target="#pills-resultadosGrafica-2" type="button" role="tab" aria-controls="pills-resultadosGrafica-2" aria-selected="false">Resultados/Gráfica</button>
+                                </li>
+                              </ul>
+                              <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-metodologia-2" role="tabpanel" aria-labelledby="pills-metodologia-2-tab" tabindex="0">Metodología</div>
+                                <div class="tab-pane fade" id="pills-resultadosCalculos-2" role="tabpanel" aria-labelledby="pills-resultadosCalculos-2-tab" tabindex="0">Resultados/Cálculos</div>
+                                <div class="tab-pane fade" id="pills-resultadosGrafica-2" role="tabpanel" aria-labelledby="pills-resultadosGrafica-2-tab" tabindex="0">Resultados/Gráfica</div>
+                                
+                              </div>
+    
+                        </div>
+
+                        
                     </div>
 
-                    <div class="panelDerechoPanelAnillo">
 
-                    </div>
+                    
 
 
 
@@ -391,17 +417,7 @@
                     <!-- Contenido de la pestaña "" -->
                     ...
                 </div>
-                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
-                    tabindex="0">
-
-                    <!-- Contenido de la pestaña "" -->
-                    ...
-                </div>
-                <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab"
-                    tabindex="0">
-
-
-                </div>
+                
             </div>
 
         </div>
