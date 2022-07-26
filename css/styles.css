@@ -1,0 +1,601 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-Medium.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+    cursor: url('../assets/images/cursor.svg'), auto;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+
+@media screen {
+
+    .body,
+    html {
+        min-width: 700px !important;
+    }
+}
+
+.body,
+html {
+    min-width: 700px !important;
+    overflow: hidden;
+}
+
+.mainPage {
+    max-width: 100vw;
+    min-height: calc(100vh - 10px);
+    max-height: calc(100vh - 10px);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 30px;
+
+}
+
+.software {
+    margin: 10px 0px;
+    border-bottom: 1px solid #e9ecef;
+    width: 100%;
+    max-height: 100%;
+}
+
+.tab-pane {
+    margin: 0px 10px;
+    min-height: calc(100vh - 100px);
+    max-height: calc(100vh - 100px);
+
+}
+
+.tab-content {
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    max-height: calc(100vh - 100px);
+}
+
+.creditos {
+    width: 100px;
+    margin: auto;
+    background-color: #c2dcf7;
+    border-radius: 7px;
+    text-align: center;
+    padding: 2px;
+}
+
+/*  */
+
+.colorReleC {
+    color: #71c837;
+}
+
+.colorReleB {
+    color: #5599ff;
+}
+
+.colorReleA {
+    color: #ffb380;
+}
+
+.colored-toast.swal2-icon-success {
+    background-color: #a5dc86 !important;
+}
+
+.tamañoLetraAspectosRele,
+.tamañoLetraAspectosRele tbody tr td,
+.tamañoLetraAspectosRele tbody tr th {
+    font-size: 12px;
+    margin: 0 !important;
+    padding: 3px 0px !important;
+}
+
+.delimitadorVariblesCalculables {
+    border-top: 4px solid #5599ff;
+}
+
+.swal2-input {
+    height: 25px;
+    width: 80px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.selectSwal option {
+    font-size: 12px;
+} 
+
+.contenidoPanelBus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+
+    min-height: calc(100vh - 100px);
+    max-height: calc(100vh - 100px);
+}
+
+.panelIzquierdoPanelBus {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.7fr 0.3fr;
+    width: 100%;
+    min-height: 100%;
+}
+
+.panelDerechoPanelBus {
+    width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+}
+
+/* <-------------------------------- Inicializar la figura en topología bus */
+.circuitoDiagramaBus {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.3fr 0.7fr;
+    max-width: 98%;
+    min-width: 500px;
+    padding: 10px 0 10px 0;
+}
+
+/* Configuración grid(esquema) para las filas */
+.fila1tb {
+    display: grid;
+    grid-template-columns: 1fr 10px 1fr 1fr 10px 1fr 1fr 10px 1fr 1fr;
+    grid-template-rows: 1fr;
+    max-width: 790px;
+    max-height: 100px;
+}
+
+.fila2tb {
+
+    max-width: 790px;
+    max-height: 100px;
+}
+
+/* Configuración del tamaño para cada celda en la topología bus */
+.celdatb {
+    height: 100px;
+}
+
+.ftb1_3::before {
+    content: "  Relé A";
+    vertical-align: -360%;
+    font-size: 12px;
+}
+
+.ftb1_6::before {
+    content: "  Relé B";
+    vertical-align: -360%;
+    font-size: 12px;
+}
+
+.ftb1_9::before {
+    content: "  Relé C";
+    vertical-align: -360%;
+    font-size: 12px;
+}
+
+
+/* Configuración para la fila 1 */
+.ftb1_1 {
+    background-image: url("../assets/images/Topologia_bus/fuente.svg");
+    background-size: 100%;
+    background-position: center;
+}
+
+.ftb1_2,
+.ftb1_5,
+.ftb1_8 {
+    background-image: url("../assets/images/Topologia_bus/barra.svg");
+    background-size: 10px 60%;
+    background-position: center;
+}
+
+.ftb1_3 {
+    background-image: url("../assets/images/Topologia_bus/releA.svg");
+    background-size: 100%;
+    background-position: center;
+}
+
+.ftb1_4,
+.ftb1_7 {
+    background-image: url("../assets/images/Topologia_bus/rail.svg");
+    background-size: 100%;
+    background-position: center;
+}
+
+.ftb1_6 {
+    background-image: url("../assets/images/Topologia_bus/releB.svg");
+    background-size: 100%;
+    background-position: center;
+}
+
+.ftb1_9 {
+    background-image: url("../assets/images/Topologia_bus/releC.svg");
+    background-size: 100%;
+    background-position: center;
+}
+
+.ftb1_10 {
+    background-image: url("../assets/images/Topologia_bus/load.svg");
+    background-size: 100%;
+    background-position: center;
+}
+
+/* Configuración hover para los elementos principales */
+.ftb1_3:hover,
+.ftb1_6:hover,
+.ftb1_9:hover {
+    cursor: url(' ../assets/images/pointer.svg'), auto;
+    border-radius: 3px;
+    background-color: #7ba9ee;
+}
+
+
+/* Fin de la inicialización de la figura en topología bus -------------------------------------------> */
+
+/*  */
+.tableValores {
+    margin: 0 5px;
+}
+
+tr {
+    text-align: center;
+}
+
+/*  */
+.botones {
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.botonAjustarEjemplos {
+    background-color: #7ba9ee;
+    color:#dadaf0;
+    border-radius: 10px;
+    border-color: #7ba9ee;
+    text-shadow: none;
+    text-align: center;
+    padding: 2px;
+    
+}
+
+.botonCalcular {
+    background-color: #a5dc86;
+    border-radius: 10px;
+    color: #575757;
+    border-color: #a5dc86;
+    padding: 2px;
+    text-align: center;
+}
+
+.botonGuardar {
+    background-color: #5599ff !important;
+    text-align: center !important;
+    color: #c2dcf7 !important;
+    padding: 10px !important;  
+    border-radius: 7px !important;
+}
+
+.hoverButton:hover {
+    cursor: pointer !important;
+    background-color: #8eecf5 !important;
+    color: black !important;
+    outline: 2px solid black !important;
+}
+
+.hoverButton:active {
+    background-color: #1cbfce;
+    color: #575757;
+}
+
+/*   */
+.resultadosDiagramaBus {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+   
+}
+
+
+
+/*  */
+.resultados {
+    padding: 0 20px;
+    font-size: 12px;
+}
+
+.textoResultados {
+    text-align: center;
+    font-weight: bold;
+    outline: 1px solid #eaebec;
+    padding: 3px 0px;
+    background-color: #787c81;
+    color: #c5c7ca;
+    min-width: 500px;
+    max-width: 100%;
+}
+
+.tablaResultadosDiagramaBus {
+    display: grid;
+    grid-template-columns: 1fr;
+    /*0.2fr 1fr 2fr   */
+    grid-template-rows: 0.2fr 2fr;
+    min-width: 500px;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    border: 1px solid #c5c7ca;
+    /* padding: 5px; */
+}
+
+canvas{
+    max-height: 250px;
+}
+
+
+/* <-------------------------------- Inicializar la figura en anillo */
+
+.circuitoDiagramaAnillo {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    max-width: 500px;
+    min-width: 100px;
+}
+
+
+.fblanco {
+    background-image: url("../assets/images/Anillo/blank.svg");
+}
+
+/* Configurar grid (esquema) para las filas */
+.fila1ta,
+.fila2ta,
+.fila3ta,
+.fila4ta,
+.fila5ta {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+/* Configuración para la fila1 */
+.fta1_3 {
+    background-image: url("../assets/images/Anillo/3_1.svg");
+}
+
+/* Configuración para la fila2 */
+.fta2_1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 0.9fr;
+}
+
+.fta2_1_1,
+.fta2_1_2 {
+    display: grid;
+    grid-template-columns: 0.9fr 0.1fr;
+    grid-template-rows: 1fr;
+}
+
+.fta2_1_2_2 {
+    background-image: url("../assets/images/Anillo/line_middle_bottom.svg");
+    background-position: bottom;
+    background-size: 100%;
+}
+
+.fta2_2,
+.fta2_3,
+.fta2_4 {
+    display: grid;
+    grid-template-rows: 0.1fr 0.9fr;
+    grid-template-columns: 1fr;
+}
+
+.fta2_2_1 {
+    background-image: url("../assets/images/Anillo/line_right_middle.svg");
+    background-size: 100%;
+}
+
+.fta2_2_2 {
+    background-image: url("../assets/images/Anillo/2_2.svg");
+    background-size: 100% 100%;
+}
+
+.fta2_3_1 {
+    background-image: url("../assets/images/Anillo/line_complete_horizontal.svg");
+    background-size: 100%;
+}
+
+.fta2_4_1 {
+    background-image: url("../assets/images/Anillo/line_left_middle.svg");
+    background-size: 100%;
+}
+
+.fta2_4_2 {
+    background-image: url("../assets/images/Anillo/2_4.svg");
+    background-size: 100% 100%;
+}
+
+.fta2_5 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 0.9fr;
+}
+
+.fta2_5_1,
+.fta2_5_2 {
+    display: grid;
+    grid-template-columns: 0.1fr 0.9fr;
+    grid-template-rows: 1fr;
+}
+
+.fta2_5_2_1 {
+    background-image: url("../assets/images/Anillo/line_middle_bottom.svg");
+    background-position: bottom;
+    background-size: 100%;
+}
+
+/* Configuración para la fila3 */
+.fta3_1 {
+    display: grid;
+    grid-template-columns: 0.9fr 0.1fr;
+    grid-template-rows: 1fr;
+}
+
+.fta3_1_1_1 {
+    background-image: url("../assets/images/Anillo/load_left.svg");
+    background-size: 100% 100%;
+}
+
+.fta3_1_1_2 {
+    background-image: url("../assets/images/Anillo/line_complete_vertical.svg");
+}
+
+.fta3_5 {
+    display: grid;
+    grid-template-columns: 0.1fr 0.9fr;
+    grid-template-rows: 1fr;
+}
+
+.fta3_5_1_1 {
+    background-image: url("../assets/images/Anillo/line_complete_vertical.svg");
+}
+
+.fta3_5_1_2 {
+    background-image: url("../assets/images/Anillo/load_right.svg");
+    background-size: 100% 100%;
+}
+
+/* Configuración para la fila4 */
+.fta4_1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.9fr 0.1fr;
+}
+
+.fta4_1_1,
+.fta4_1_2 {
+    display: grid;
+    grid-template-columns: 0.9fr 0.1fr;
+    grid-template-rows: 1fr;
+}
+
+.fta4_1_1_2 {
+    background-image: url("../assets/images/Anillo/line_middle_top.svg");
+    background-position: top;
+    background-size: 100%;
+}
+
+.fta4_2,
+.fta4_3,
+.fta4_4 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.9fr 0.1fr;
+}
+
+.fta4_2_1 {
+    background-image: url("../assets/images/Anillo/4_2.svg");
+    background-size: 100% 100%;
+}
+
+.fta4_2_2 {
+    background-image: url("../assets/images/Anillo/line_right_middle.svg");
+    background-position: right;
+    background-size: 100%;
+}
+
+.fta4_3_2 {
+    background-image: url("../assets/images/Anillo/line_complete_horizontal.svg");
+    background-size: 100%;
+}
+
+.fta4_4_1 {
+    background-image: url("../assets/images/Anillo/4_4.svg");
+    background-size: 100% 100%;
+}
+
+.fta4_4_2 {
+    background-image: url("../assets/images/Anillo/line_left_middle.svg");
+    background-size: 100%;
+    background-position: left;
+}
+
+.fta4_5 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.9fr 0.1fr;
+}
+
+.fta4_5_1,
+.fta4_5_2 {
+    display: grid;
+    grid-template-columns: 0.1fr 0.9fr;
+    grid-template-rows: 1fr;
+}
+
+.fta4_5_1_1 {
+    background-image: url("../assets/images/Anillo/line_middle_top.svg");
+    background-position: top;
+    background-size: 100%;
+}
+
+/* Configuración para la fila5  */
+.fta5_3 {
+    background-image: url("../assets/images/Anillo/load_bottom.svg");
+}
+
+/* Configuración hover para los elementos principales */
+.fta1_3:hover,
+.fta2_1_2_2:hover,
+.fta3_1_1_1:hover,
+.fta3_5_1_2:hover,
+.fta5_3:hover,
+.fta2_2_2:hover,
+.fta2_4_2:hover,
+.fta4_2_1:hover,
+.fta4_4_1:hover {
+    cursor: url(' ../assets/images/pointer.svg'), auto;
+    border-radius: 3px;
+    background-color: #8eecf5;
+}
+
+/* Configuración hover para las barras */
+
+
+
+/* Configur */
+
+
+
+
+
+
+.celda {
+    height: 70px;
+    width: 70px;
+    background-size: 100% 100%;
+}
+
+/*  Fin de la inicialización de la figura del anillo -----------------------------------------------> */

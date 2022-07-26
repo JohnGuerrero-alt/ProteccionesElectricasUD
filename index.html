@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="stylesheet" href="css/normalize.css">
+    <title>Protecciones Eléctricas</title>
+    <script type="text/javascript" src="script/library/eel.js"></script>
+    <script type="text/javascript" src="script/library/sweetalert2.min.js"></script>
+    <script src="script/library/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="script/library/chart.min.js"></script>
+    <script src="script/function-plot.js"></script>
+    
+    <script type="text/javascript" src="script/main.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Contenido visual de la pantaña -->
+
+    <div class="mainPage">
+
+        <div class="software">
+
+            <!-- Contenedor de las tabs-->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="bus-tab" data-bs-toggle="tab" data-bs-target="#bus-tab-pane"
+                        type="button" role="tab" aria-controls="bus-tab-pane" aria-selected="true">Topología en
+                        Bus</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="anillo-tab" data-bs-toggle="tab" data-bs-target="#anillo-tab-pane"
+                        type="button" role="tab" aria-controls="anillo-tab-pane" aria-selected="false">Topología en
+                        Anillo</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
+                        type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false"></button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane"
+                        type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false"
+                        disabled></button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="bus-tab-pane" role="tabpanel" aria-labelledby="bus-tab"
+                    tabindex="0">
+
+
+
+                    <!-- Contenido de la pestaña "Topología en Bus" -->
+
+                    <div class="contenidoPanelBus">
+                        <div class="panelIzquierdoPanelBus">
+                            <!--  -->
+                            <!-- Instancia de la función de Bus -->
+                            <!--  -->
+                            <div class="circuitoDiagramaBus">
+                                <!-- Diagrama del circuito en topología en bus -->
+                                <!-- Se definen clases con los prefijo "ftb" haciendo alusión (topología en bus) -->
+                                <div class="fila1tb">
+                                    <div class="ftb1_1 celdatb"></div>
+                                    <div class="ftb1_2 celdatb"></div>
+                                    <div class="ftb1_3 celdatb" onclick="valoresRele('0')"></div>
+                                    <div class="ftb1_4 celdatb"></div>
+                                    <div class="ftb1_5 celdatb"></div>
+                                    <div class="ftb1_6 celdatb" onclick="valoresRele('1')"></div>
+                                    <div class="ftb1_7 celdatb"></div>
+                                    <div class="ftb1_8 celdatb"></div>
+                                    <div class="ftb1_9 celdatb" onclick="valoresRele('2')"></div>
+                                    <div class="ftb1_10 celdatb"></div>
+                                </div>
+                                <div class="fila2tb tableValores">
+
+                                    <table class="table align-middle tamañoLetraAspectosRele ">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col" class="colorReleA">Relé A</th>
+                                                <th scope="col" class="colorReleB">Relé B</th>
+                                                <th scope="col" class="colorReleC">Relé C</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>Isc</th>
+                                                <td id="Isc_0">-</td>
+                                                <td id="Isc_1">-</td>
+                                                <td id="Isc_2">-</td>
+                                                <td>[A]</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Ic</th>
+                                                <td id="Ic_0">-</td>
+                                                <td id="Ic_1">-</td>
+                                                <td id="Ic_2">-</td>
+                                                <td>[A]</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Margen Ic</th>
+                                                <td id="Margen_Ic_0">-</td>
+                                                <td id="Margen_Ic_1">-</td>
+                                                <td id="Margen_Ic_2">-</td>
+                                                <td>%</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Familia de <br> curvas</th>
+                                                <td id="FamiliaC_0">-</td>
+                                                <td id="FamiliaC_1">-</td>
+                                                <td id="FamiliaC_2">-</td>
+                                                <td>IEC</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tiempo</th>
+                                                <td id="Tiempo_0">-</td>
+                                                <td id="Tiempo_1">-</td>
+                                                <td id="Tiempo_2">-</td>
+                                                <td>[ms]</td>
+                                            </tr>
+                                            <tr class="delimitadorVariblesCalculables">
+                                                <th>TMS(Dial)</th>
+                                                <td id="TMS_0">-</td>
+                                                <td id="TMS_1">-</td>
+                                                <td id="TMS_2">-</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tiempo <br> Instántaneo</th>
+                                                <td id="Tiempo_instantaneo_0">-</td>
+                                                <td id="Tiempo_instantaneo_1">-</td>
+                                                <td id="Tiempo_instantaneo_2">-</td>
+                                                <td>[ms]</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+
+
+                                </div>
+                            </div>
+
+                            <div class="botones">
+                                <div onclick="ejemplo1()" class="botonAjustarEjemplos hoverButton">Cargar valores
+                                    ejemplo 1</div>
+                                <div class="botonCalcular hoverButton tt" data-bs-placement="top"
+                                    title="Es necesario tener almacenado: ''Isc, Ic, Margen Ic, Familia Curva y el Tiempo'' "
+                                    onclick="calcularPasoaPaso()">Calcular</div>
+                                <div class="botonCalcular hoverButton" onclick="graficarCurvaTopologiaBus()">Calcular/Graficar</div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="panelDerechoPanelBus">
+
+                            <!-- Tabs para el instructivo y los resultados -->
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="pills-metodologia1-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-metodologia1" type="button" role="tab"
+                                        aria-controls="pills-metodologia1" aria-selected="true">Metodología</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-resultados-calculos-1-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-resultados-calculos-1" type="button" role="tab"
+                                        aria-controls="pills-resultados-calculos-1" aria-selected="false">Resultados/Cálculos</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-resultados-grafica-1-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-resultados-grafica-1" type="button" role="tab"
+                                        aria-controls="pills-resultados-grafica-1" aria-selected="false">Resultados/Gráfica</button>
+                                </li>
+                                
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-metodologia1" role="tabpanel"
+                                    aria-labelledby="pills-metodologia1-tab">
+                                    
+                                    <h3>Pasos</h3>
+                                    <p style="text-align: justify;">1. Para comenzar la coordinación de los Relés, se comienza desde el relé C hasta el A. Es importante ingresar las variables Isc, Ic, Margen Ic, Familia de curvas y tiempo.</p>
+                                    <p style="text-align: justify;">2. Presione el botón "Calcular".  En la pestaña "Resultados/Cálculos" está visualizado el valor del DIAL calculado para el relé C con los datos ingresados. </p>
+                                    <p style="text-align: justify;">3. Seleccione el DIAL más aproximado con respecto al valor calculado y guardelo. Después, vuelve a presionar el botón "Calcular". </p>                                
+                                    <p style="text-align: justify;">4. Repita el proceso para los otros relés, hasta completar la tabla. </p>
+                                    <p style="text-align: justify;">5. Por último, presione el botón "Calcular/Graficar" y en la pestaña "Resultados/Gráfica" se visualizará la curva de tiempo inverso según los datos suministrados. </p>
+                                
+                                </div>
+                                <div class="tab-pane fade" id="pills-resultados-calculos-1" role="tabpanel"
+                                    aria-labelledby="pills-resultados-calculos-1-tab">
+
+                                    <div class="resultadosDiagramaBus">
+
+                                        <div class="tablaResultadosDiagramaBus">
+                                            <div class="textoResultados ">Resultados</div>
+                                            <div class="resultados table-responsive ">
+                                                <table class="table align-middle">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col"># Relé</th>
+                                                            <th scope="col">Dial (Calculado)</th>
+                                                            <th scope="col">Dial (Escogido)</th>
+                                                            <th scope="col">Tiempo local (seg)</th>
+                                                            <th scope="col">Tiempo Remoto (seg)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="table-group-divider">
+                                                        <tr>
+                                                            <th scope="row" class="colorReleC">C</th>
+                                                            <td id="Dial_calculado_2"></td>
+                                                            <td id="Dial_escogido_2"></td>
+                                                            <td id="Tiempo_local_2"></td>
+                                                            <td id="Tiempo_remoto_2">-</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row" class="colorReleB">B</th>
+                                                            <td id="Dial_calculado_1"></td>
+                                                            <td id="Dial_escogido_1"></td>
+                                                            <td id="Tiempo_local_1"></td>
+                                                            <td id="Tiempo_remoto_1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row" class="colorReleA">A</th>
+                                                            <td id="Dial_calculado_0"></td>
+                                                            <td id="Dial_escogido_0"></td>
+                                                            <td id="Tiempo_local_0"></td>
+                                                            <td id="Tiempo_remoto_0"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane fade show active" id="pills-metodologia-grafica-1" role="tabpanel"
+                                    aria-labelledby="pills-metodologia-grafica-1-tab">
+                                    <div id="myChart" class="Chart">
+                                        <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
+                                        
+                                            
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                </div>
+                <div class="tab-pane fade" id="anillo-tab-pane" role="tabpanel" aria-labelledby="anillo-tab"
+                    tabindex="0">
+
+                    <!-- Contenido de la pestaña "Topología en Anillo" -->
+                    ...
+                    <div class="panelIzquierdoPanelAnillo">
+                        <!-- Instancia de la función de Topologia de Anillo-->
+                        <!-- <script src="script/topologiaAnillo.js"></script> -->
+                        <div class="circuitoDiagramaAnillo">
+                            <!-- Diagrama del circuito en topología de anillo -->
+                            <!-- Se definen clases con los prefijo "fta" haciendo alusión (topología en anillo) -->
+                            <div class="fila1ta">
+                                <div id="1_1" class="fblanco celda"></div>
+                                <div id="1_2" class="fblanco celda"></div>
+                                <div id="1_3" class="fta1_3 celda"></div>
+                                <div id="1_4" class="fblanco celda"></div>
+                                <div id="1_5" class="fblanco celda"></div>
+                            </div>
+                            <div class="fila2ta">
+                                <div id="2_1" class="fta2_1 celda">
+                                    <div class="fta2_1_1">
+                                        <div class="fta2_1_1_1 fblanco"></div>
+                                        <div class="fta2_1_1_2 fblanco"></div>
+                                    </div>
+                                    <div class="fta2_1_2">
+                                        <div class="fta2_1_2_1 fblanco"></div>
+                                        <div class="fta2_1_2_2"></div>
+                                    </div>
+                                </div>
+                                <div id="2_2" class="fta2_2 celda">
+                                    <div class="fta2_2_1"></div>
+                                    <div class="fta2_2_2"></div>
+                                </div>
+                                <div id="2_3" class="fta2_3 celda">
+                                    <div class="fta2_3_1"></div>
+                                    <div class="fta2_3_2 fblanco"></div>
+                                </div>
+                                <div id="2_4" class="fta2_4 celda">
+                                    <div class="fta2_4_1"></div>
+                                    <div class="fta2_4_2"></div>
+                                </div>
+                                <div id="2_5" class="fta2_5 celda">
+                                    <div class="fta2_5_1">
+                                        <div class="fta2_5_1_1 fblanco"></div>
+                                        <div class="fta2_5_1_2 fblanco"></div>
+                                    </div>
+                                    <div class="fta2_5_2">
+                                        <div class="fta2_5_2_1"></div>
+                                        <div class="fta2_5_2_2 fblanco"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fila3ta">
+                                <div id="3_1" class="fta3_1 celda">
+                                    <div class="fta3_1_1_1"></div>
+                                    <div class="fta3_1_1_2"></div>
+                                </div>
+                                <div id="3_2" class="fta3_2 fblanco celda"></div>
+                                <div id="3_3" class="fta3_3 fblanco celda"></div>
+                                <div id="3_4" class="fta3_4 fblanco celda"></div>
+                                <div id="3_5" class="fta3_5 celda">
+                                    <div class="fta3_5_1_1"></div>
+                                    <div class="fta3_5_1_2"></div>
+                                </div>
+                            </div>
+                            <div class="fila4ta">
+                                <div class="fta4_1 celda">
+                                    <div class="fta4_1_1">
+                                        <div class="fta4_1_1_1"></div>
+                                        <div class="fta4_1_1_2"></div>
+                                    </div>
+                                    <div class="fta4_1_2">
+                                        <div class="fta4_1_2_1"></div>
+                                        <div class="fta4_1_2_2"></div>
+                                    </div>
+                                </div>
+                                <div class="fta4_2 celda">
+                                    <div class="fta4_2_1"></div>
+                                    <div class="fta4_2_2"></div>
+                                </div>
+                                <div class="fta4_3 celda">
+                                    <div class="fta4_3_1"></div>
+                                    <div class="fta4_3_2"></div>
+                                </div>
+                                <div class="fta4_4 celda">
+                                    <div class="fta4_4_1"></div>
+                                    <div class="fta4_4_2"></div>
+                                </div>
+                                <div class="fta4_5 celda">
+                                    <div class="fta4_5_1">
+                                        <div class="fta4_5_1_1 "></div>
+                                        <div class="fta4_5_1_2 "></div>
+                                    </div>
+                                    <div class="fta4_5_2">
+                                        <div class="fta4_5_2_1 "></div>
+                                        <div class="fta4_5_2_2 "></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fila5ta">
+                                <div class="fta5_1 celda"></div>
+                                <div class="fta5_2 celda"></div>
+                                <div class="fta5_3 celda"></div>
+                                <div class="fta5_4 celda"></div>
+                                <div class="fta5_5 celda"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panelDerechoPanelAnillo">
+
+                    </div>
+
+
+
+
+
+
+                    <!-- Contenido de la pestaña "" -->
+                    ...
+                </div>
+                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                    tabindex="0">
+
+                    <!-- Contenido de la pestaña "" -->
+                    ...
+                </div>
+                <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab"
+                    tabindex="0">
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Botón créditos -->
+        <div class="creditos hoverButton" onclick="mostrarCreditos()">Créditos</div>
+        <script src="script/topologiaBus.js"></script>
+        
+    </div>
+</body>
+
+</html>

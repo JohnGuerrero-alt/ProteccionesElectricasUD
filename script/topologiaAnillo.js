@@ -1,0 +1,1 @@
+// Declaramos las variables globales
