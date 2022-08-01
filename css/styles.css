@@ -21,13 +21,13 @@ div {
 
     .body,
     html {
-        min-width: 700px !important;
+        min-width: 1300px !important;
     }
 }
 
 .body,
 html {
-    min-width: 700px !important;
+    min-width: 1300px !important;
     overflow: hidden;
 }
 
@@ -582,7 +582,6 @@ canvas {
 
 /* Configuración hover para los elementos principales */
 .fta1_3:hover,
-.fta2_1_2_2:hover,
 .fta3_1_1_1:hover,
 .fta3_5_1_2:hover,
 .fta5_3:hover,
