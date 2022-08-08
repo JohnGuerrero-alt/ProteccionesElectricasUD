@@ -3,43 +3,59 @@ const modeloAnillo = {
     0: {
         nombre: "Generador",
         urlImagen: "./assets/images/Anillo/3_1.svg",
+        etiqueta1 : "Voltaje",
+        etiqueta2 : "[kV]",
         voltaje: "",
         potencia: ""
     },
     1: {
         nombre: "Barra 1-2",
         urlImagen: "./assets/images/Anillo/2_2.svg",
-        impedancia: ""
+        impedancia: "",
+        etiqueta1 : "Z",
+        etiqueta2 : "[Ohmios]",
     },
     2: {
         nombre: "Barra 4-1",
         urlImagen: "./assets/images/Anillo/2_4.svg",
-        impedancia: ""
+        impedancia: "",
+        etiqueta1 : "Z",
+        etiqueta2 : "[Ohmios]",
     },
     3: {
         nombre: "Carga",
         urlImagen: "./assets/images/Anillo/load_left.svg",
-        potencia: ""
+        potencia: "",
+        etiqueta1 : "S",
+        etiqueta2 : "[MVA]",
     },
     4: {
         nombre: "Carga",
         urlImagen: "./assets/images/Anillo/load_right.svg",
-        potencia: ""
+        potencia: "",
+        etiqueta1 : "S",
+        etiqueta2 : "[MVA]",
     },
     5: {
         nombre: "Barra 2-3",
         urlImagen: "./assets/images/Anillo/4_2.svg",
-        impedancia: ""
+        impedancia: "",
+        etiqueta1 : "Z",
+        etiqueta2 : "[Ohmios]",
     },
     6: {
         nombre: "Barra 3-4",
         urlImagen: "./assets/images/Anillo/4_4.svg",
-        impedancia: ""
+        impedancia: "",
+        etiqueta1 : "Z",
+        etiqueta2 : "[Ohmios]",
     },
     7: {
         nombre: "Carga",
         urlImagen: "./assets/images/Anillo/load_bottom.svg",
-        potencia: ""
+        potencia: "",
+        etiqueta1 : "S",
+        etiqueta2 : "[MVA]",
     }
 
 }
@@ -58,7 +74,7 @@ async function establecerValoresAnillo(valores) {
         imageWidth: 100,
         imageHeight: 100,
         width: 700,
-        // html: ` <div class="table-responsive">
+        //html: ` <div class="table-responsive">
         // <table class="table align-middle" style="font-size:13px">               
         // <tr>
         // <th scope="row">Isc</th>
@@ -111,6 +127,14 @@ async function establecerValoresAnillo(valores) {
         
 
         // `,
+         html: `<div class="table-responsive">
+          <table class="table align-middle" style="font-size:13px"> 
+          <tr>
+          <th scope="row">${modeloAnillo[valores].etiqueta1}</th>
+          <td><input type="number" id="swal-Isc" value="" class="swal2-input" min="0"></td> 
+          <td>${modeloAnillo[valores].etiqueta2}</td>   
+        ` ,
+
         showConfirmButton: true,
         confirmButtonText: "Guardar",
         showCloseButton: true,
@@ -120,13 +144,13 @@ async function establecerValoresAnillo(valores) {
         },
         preConfirm: () => {
             return [
-                document.getElementById('swal-Isc').value,
-                document.getElementById('swal-Ic').value,
-                document.getElementById('swal-margenIc').value,
-                document.getElementById('swal-tiempo').value,
-                document.getElementById('swal-curva').value,
-                document.getElementById('swal-TMS').value,
-                document.getElementById('swal-tInstantaneo').value
+                // document.getElementById('swal-Isc').value,
+                // document.getElementById('swal-Ic').value,
+                // document.getElementById('swal-margenIc').value,
+                // document.getElementById('swal-tiempo').value,
+                // document.getElementById('swal-curva').value,
+                // document.getElementById('swal-TMS').value,
+                // document.getElementById('swal-tInstantaneo').value
             ]
         },
         // footer: '<div style="display:grid; grid-template-columns: 1fr; grid-template-row:1fr;"><p style="color: #fe6d73">*Nota para colocar decimales utilizar coma.</p></div>',

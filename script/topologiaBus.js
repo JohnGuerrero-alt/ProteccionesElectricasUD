@@ -556,13 +556,17 @@ function calcularPasoaPaso() {
 
         //Hallar tiempo local en B
         tiempo_local_B = ( tLocalparteIEC_B + tLocalparteANSI_B ).toFixed(4);
-
         if ( isNaN(tiempo_local_B)  ) { tiempo_local_B = "__" }
         document.getElementById("Tiempo_local_1").innerHTML = tiempo_local_B;
 
 
         //Hallar tiempo remoto en B
-        tiempo_remoto_B = (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1))).toFixed(4);
+        tRemotoparteIEC_B = (parametrosCurva[familiaCurva_B].IEC*TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)));
+
+        tRemotoparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI* TMS_B* ( (parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B/((Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D/(Math.pow(  (Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) ,2))) + (parametrosCurva[familiaCurva_B].E/(Math.pow(  (Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) , 3))) )) );
+
+
+        tiempo_remoto_B = ( tRemotoparteIEC_B + tRemotoparteANSI_B ).toFixed(4);
         if ( isNaN(tiempo_remoto_B)  ) { tiempo_remoto_B = "__" }
         document.getElementById("Tiempo_remoto_1").innerHTML = tiempo_remoto_B;
 
@@ -597,7 +601,11 @@ function calcularPasoaPaso() {
 
 
         //Hallar tiempo remoto en A
-        tiempo_remoto_A = (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) + parametrosCurva[familiaCurva_A].lambda).toFixed(4);
+        tRemotoparteIEC_A = (parametrosCurva[familiaCurva_A].IEC*TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)));
+
+        tRemotoparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI* TMS_A* ( (parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B/((Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D/(Math.pow(  (Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) ,2))) + (parametrosCurva[familiaCurva_A].E/(Math.pow(  (Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) , 3))) )) );
+
+        tiempo_remoto_A = ( tRemotoparteIEC_A+ tRemotoparteANSI_A ).toFixed(4);
 
         if ( isNaN(tiempo_remoto_A)  ) { tiempo_remoto_A = "__" }
         document.getElementById("Tiempo_remoto_0").innerHTML = tiempo_remoto_A;
@@ -735,7 +743,7 @@ function graficarCurvaTopologiaBus() {
                     console.log("valor compl: ", (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1))))
 
 
-                    return (((TMS_A) * ((parametrosCurva[familiaCurva_A].beta))) / ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) + parametrosCurva[familiaCurva_A].lambda
+                    return (  (parametrosCurva[familiaCurva_A].IEC  *TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) )  +      (parametrosCurva[familiaCurva_A].ANSI* TMS_A* ( (parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B/((x / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D/(Math.pow(  (x / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) ,2))) + (parametrosCurva[familiaCurva_A].E/(Math.pow(  (x / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) , 3))) )) )   ) 
                 },
                 color: 'rgba(255, 179, 128, 1)',
 
@@ -756,7 +764,7 @@ function graficarCurvaTopologiaBus() {
 
 
 
-                    return (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(x / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1))) + parametrosCurva[familiaCurva_B].lambda
+                    return (   (parametrosCurva[familiaCurva_B].IEC*TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(x / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)))  +    (parametrosCurva[familiaCurva_B].ANSI* TMS_B* ( (parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B/((x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D/(Math.pow(  (x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) ,2))) + (parametrosCurva[familiaCurva_B].E/(Math.pow(  (x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) , 3))) )) ) )
                 },
                 color: 'rgba(85, 153, 255, 1)',
 
@@ -777,7 +785,7 @@ function graficarCurvaTopologiaBus() {
 
 
 
-                    return (TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(x / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1))) + parametrosCurva[familiaCurva_C].lambda
+                    return (  (parametrosCurva[familiaCurva_C].IEC*TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(x / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1)))  +  (parametrosCurva[familiaCurva_C].ANSI* TMS_C* ( (parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B/((x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D/(Math.pow(  (x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C) ,2))) + (parametrosCurva[familiaCurva_C].E/(Math.pow(  (x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C) , 3))) )) ) )
                 },
                 color: 'rgba(113, 200, 55, 1)',
 
