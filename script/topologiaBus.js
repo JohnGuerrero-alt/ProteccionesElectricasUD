@@ -31,7 +31,8 @@ var tabla_DialCalculado_C = document.getElementById("Dial_calculado_2");
 
 //Declarar variable para graficar la curva
 //var ctx = document.getElementById('myChart').getContext('2d');
-
+var TMSparteIEC_C, TMSparteANSI_C, TMSparteIEC_B, TMSparteANSI_B, TMSparteIEC_A, TMSparteANSI_A;
+var  tLocalparteIEC_C, tLocalparteANSI_C, tLocalparteANSI_B, tLocalparteIEC_B, tRemotoparteIEC_B, tRemotoparteANSI_B, tLocalparteANSI_A, tLocalparteIEC_A, tRemotoparteANSI_A, tRemotoparteIEC_A;
 
 
 
@@ -84,20 +85,79 @@ modeloRele[2].familiaCurva = "-";
 modeloRele[2].TMS = "-";
 
 const parametrosCurva = {
-    "Normal Inversa": {
+    "Normal Inversa - IEC": {
         alfa: 0.02,
         beta: 0.14,
-        lambda: 0
+        lambda: 0,
+        B: 1,
+        D: 1,
+        E: 1,
+        A: 1,
+        C: 1,
+        IEC: 1,
+        ANSI: 0
+
     },
-    "Muy Inversa": {
+    "Muy Inversa - IEC": {
         alfa: 1,
         beta: 13.5,
-        lambda: 0
+        lambda: 0,
+        B: 1,
+        D: 1,
+        E: 1,
+        A: 1,
+        C: 1,
+        IEC: 1,
+        ANSI: 0
     },
-    "Extremadamente Inversa": {
+    "Extremadamente Inversa - IEC": {
         alfa: 2.1,
         beta: 80,
-        lambda: 0
+        lambda: 0,
+        B: 1,
+        D: 1,
+        E: 1,
+        A: 1,
+        C: 1,
+        IEC: 1,
+        ANSI: 0
+    },
+    "Normal Inversa - ANSI": {
+        alfa: 1,
+        beta: 1,
+        lambda: 0,
+        B: 2.2614,
+        D: -4.1899,
+        E: 9.1272,
+        A: 0.0274,
+        C: 0.30,
+        IEC: 0,
+        ANSI: 1
+
+    },
+    "Muy Inversa - ANSI": {
+        alfa: 1,
+        beta: 1,
+        lambda: 0,
+        B: 0.7989,
+        D: -0.2840,
+        E: 4.0505,
+        A: 0.0615,
+        C: 0.34,
+        ANSI: 1,
+        IEC: 0
+    },
+    "Extremadamente Inversa - ANSI": {
+        alfa: 1,
+        beta: 1,
+        lambda: 0,
+        B: 0.2294,
+        D: 3.0094,
+        E: 0.7222,
+        A: 0.0399,
+        C: 0.50,
+        IEC: 0,
+        ANSI: 1
     }
 }
 
@@ -148,9 +208,43 @@ var alpha = 0.02;
 var beta = 0.14;
 var lambda = 0;
 
+var tmsOpcion1;
+var tmsOpcion2;
+var swal_tms;
+var guardarOpcionTMS1 = "display:none";
+var guardarOpcionTMS2 = "display:none";
+
+function habilitarTMS() {
+
+    try {
+        var selectBox = document.getElementById("swal-curva");
+        var swalTMS1 = document.getElementById("swal-TMS1");
+        var swalTMS2 = document.getElementById("swal-TMS2");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        console.log("selectValue: ", selectedValue)
+        if (selectedValue == "Normal Inversa - IEC" || selectedValue == "Muy Inversa - IEC" || selectedValue == "Extremadamente Inversa - IEC") {
+            console.log("cumple");
+            swalTMS1.style.display = "block";
+            guardarOpcionTMS1 = "display:block";
+            guardarOpcionTMS2 = "display:none";
+            swalTMS2.style.display = "none";
+            swal_tms = "swal-TMS1";
+        }
+        if (selectedValue == "Normal Inversa - ANSI" || selectedValue == "Muy Inversa - ANSI" || selectedValue == "Extremadamente Inversa - ANSI") {
+            console.log("cumple 0");
+            swalTMS1.style.display = "none";
+            guardarOpcionTMS1 = "display:none";
+            guardarOpcionTMS2 = "display:block";
+            swalTMS2.style.display = "block";
+            swal_tms = "swal-TMS2";
+        }
+
+    } catch (error) {
+
+    }
 
 
-
+}
 
 console.log(modeloRele[0].Isc);
 
@@ -158,7 +252,7 @@ console.log(modeloRele[0].Isc);
 async function valoresRele(nombreRele) {
 
 
-
+    habilitarTMS()
 
     const { value: formValues } = await Swal.fire({
         allowOutsideClick: false,
@@ -167,7 +261,7 @@ async function valoresRele(nombreRele) {
         imageWidth: 100,
         imageHeight: 100,
         width: 700,
-        html: ` <div class="table-responsive">
+        html: ` <div class="table-responsive" >
         <table class="table align-middle" style="font-size:13px">               
         <tr>
         <th scope="row">Isc</th>
@@ -178,8 +272,8 @@ async function valoresRele(nombreRele) {
         <td>[A]</td>
         </tr>
         <tr>
-        <th scope="row">Margen Ic</th><td><input type="number" class="swal2-input" value="${modeloRele[nombreRele].margenIc}" min="0" id="swal-margenIc"></td><td>%</td><th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-tiempo" value="${modeloRele[nombreRele].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-curva">  <option selected hidden>${modeloRele[nombreRele].familiaCurva}</option> <option>Normal Inversa</option><option>Muy Inversa</option><option>Extremadamente Inversa</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>             <tr><th scope="row">TMS(Dial)</th><td>
-        <select class="form-select selectSwal"  id="swal-TMS" >
+        <th scope="row">Margen Ic</th><td><input type="number" class="swal2-input" value="${modeloRele[nombreRele].margenIc}" min="0" id="swal-margenIc"></td><td>%</td><th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-tiempo" value="${modeloRele[nombreRele].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-curva" onchange="habilitarTMS()">  <option selected hidden>${modeloRele[nombreRele].familiaCurva}</option> <option>Normal Inversa - IEC</option><option >Muy Inversa - IEC</option><option >Extremadamente Inversa - IEC</option><option>Normal Inversa - ANSI</option><option >Muy Inversa - ANSI</option><option >Extremadamente Inversa - ANSI</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>             <tr><th scope="row">TMS(Dial)</th><td>
+        <select class="form-select selectSwal"  id="swal-TMS1" style="${guardarOpcionTMS1}">
         <option selected id="option-seleccionada" hidden>${modeloRele[nombreRele].TMS}</option>
         <option value="0.05">0.05</option><option value="0.06">0.06</option><option value="0.07">0.07</option>
         <option value="0.08">0.08</option><option value="0.09">0.09</option><option value="0.10">0.10</option>
@@ -215,6 +309,19 @@ async function valoresRele(nombreRele) {
         <option value="1">1</option>
         </select>
 
+        <select class="form-select selectSwal"  id="swal-TMS2" style="${guardarOpcionTMS2}">
+        <option selected id="option-seleccionada" hidden>${modeloRele[nombreRele].TMS}</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
         
         </td> <th scope="row">Tiempo(instantaneo)</th><td><input  id="swal-tInstantaneo" type="number" value="${modeloRele[nombreRele].tiempoInstantaneo}" class="swal2-input" min="0"></td><td>[ms]</td></tr>   </table></div>
         
@@ -234,7 +341,7 @@ async function valoresRele(nombreRele) {
                 document.getElementById('swal-margenIc').value,
                 document.getElementById('swal-tiempo').value,
                 document.getElementById('swal-curva').value,
-                document.getElementById('swal-TMS').value,
+                document.getElementById(swal_tms).value,
                 document.getElementById('swal-tInstantaneo').value
             ]
         },
@@ -267,6 +374,8 @@ function guardarInformacion(Rele, datos) {
     document.getElementById("FamiliaC_" + Rele).innerText = datos[4];
     document.getElementById("TMS_" + Rele).innerText = datos[5];
     document.getElementById("Tiempo_instantaneo_" + Rele).innerText = datos[6];
+
+    if(isNaN(datos[5])) { datos[5] = "__"}
 
     document.getElementById("Dial_escogido_" + Rele).innerText = datos[5];
 
@@ -331,9 +440,6 @@ function ejemplo1() {
     tabla_Margen_Ic_A.innerText = 20;
     tabla_Margen_Ic_B.innerText = 20;
     tabla_Margen_Ic_C.innerText = 20;
-    tabla_familiaCurva_A.innerText = "Normal Inversa";
-    tabla_familiaCurva_B.innerText = "Normal Inversa";
-    tabla_familiaCurva_C.innerText = "Normal Inversa";
     tabla_TMS_A.innerText = "-";
     tabla_TMS_B.innerText = "-";
     tabla_TMS_C.innerText = "-";
@@ -357,9 +463,6 @@ function ejemplo1() {
     modeloRele[0].tiempo = 200;
     modeloRele[1].tiempo = 200;
     modeloRele[2].tiempo = 200;
-    modeloRele[0].familiaCurva = "Normal Inversa";
-    modeloRele[1].familiaCurva = "Normal Inversa";
-    modeloRele[2].familiaCurva = "Normal Inversa";
     modeloRele[0].TMS = "";
     modeloRele[1].TMS = "";
     modeloRele[2].TMS = "";
@@ -372,6 +475,7 @@ function ejemplo1() {
 //Calcular el DIAL
 function calcularPasoaPaso() {
     //Para mejor comprensión en el diseño del código se inicializa valores con nombres más reconocidos
+
     Isc_ReleA = modeloRele[0].Isc;
     Isc_ReleB = modeloRele[1].Isc;
     Isc_ReleC = modeloRele[2].Isc;
@@ -398,12 +502,30 @@ function calcularPasoaPaso() {
         Ic_c_con_margen = Ic_ReleC + (Ic_ReleC) * (Margen_Ic_C / 100)
 
         //DIAL en el relé C
-        TMS_calculado_C = ((tiempo_C / 1000) * (((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1) / (parametrosCurva[familiaCurva_C].beta)) - parametrosCurva[familiaCurva_C].lambda).toFixed(4);
+        TMSparteIEC_C = parametrosCurva[familiaCurva_C].IEC * ((tiempo_C / 1000) * (((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1) / (parametrosCurva[familiaCurva_C].beta)));
+
+        TMSparteANSI_C = parametrosCurva[familiaCurva_C].ANSI * ((tiempo_C / 1000) * 1 / ((parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B / ((Isc_ReleC / Ic_c_con_margen) - parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D / (Math.pow((Isc_ReleC / Ic_c_con_margen) - parametrosCurva[familiaCurva_C].C, 2))) + (parametrosCurva[familiaCurva_C].E / (Math.pow((Isc_ReleC / Ic_c_con_margen) - parametrosCurva[familiaCurva_C].C, 3)))));
+
+        console.log("parteIEC C: ", TMSparteIEC_C);
+        console.log("parteANSI C: ", TMSparteANSI_C)
+
+
+        TMS_calculado_C = (TMSparteIEC_C + TMSparteANSI_C).toFixed(4);
+
+        if ( isNaN(TMS_calculado_C)  ) { TMS_calculado_C = "-" }
         document.getElementById("Dial_calculado_2").innerText = TMS_calculado_C;
 
+        tLocalparteIEC_C =  (parametrosCurva[familiaCurva_C].IEC*TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1)));
+        
+        tLocalparteANSI_C = (parametrosCurva[familiaCurva_C].ANSI* TMS_C* ( (parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B/((Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D/(Math.pow(  (Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C) ,2))) + (parametrosCurva[familiaCurva_C].E/(Math.pow(  (Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C) , 3))) )) );
+
+        
+
         //Hallar tiempo Local en C
-        tiempo_local_C = (TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1)) + parametrosCurva[familiaCurva_C].lambda).toFixed(4);
+        tiempo_local_C = (  tLocalparteIEC_C +   tLocalparteANSI_C ).toFixed(4);
         console.log("tiempo local C: ", tiempo_local_C)
+
+        if ( isNaN(tiempo_local_C)  ) { tiempo_local_C = "__" }
         document.getElementById("Tiempo_local_2").innerHTML = tiempo_local_C;
 
 
@@ -418,16 +540,30 @@ function calcularPasoaPaso() {
         Ic_b_con_margen = Ic_ReleB + (Ic_ReleB) * (Margen_Ic_B / 100)
 
         //DIAL en el relé B
-        TMS_calculado_B = ((tiempo_B / 1000) * (((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1) / (parametrosCurva[familiaCurva_B].beta)) -  parametrosCurva[familiaCurva_B].lambda).toFixed(4);
+        TMSparteIEC_B = parametrosCurva[familiaCurva_B].IEC * ((tiempo_B / 1000) * (((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1) / (parametrosCurva[familiaCurva_B].beta)));
+
+        TMSparteANSI_B = parametrosCurva[familiaCurva_B].ANSI * ((tiempo_B / 1000) * 1 / ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C, 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C, 3)))));
+
+
+        TMS_calculado_B = ( TMSparteIEC_B + TMSparteANSI_B ).toFixed(4);
+        if ( isNaN(TMS_calculado_B)  ) { TMS_calculado_B = "-" }
         document.getElementById("Dial_calculado_1").innerText = TMS_calculado_B;
 
+        tLocalparteIEC_B =  (parametrosCurva[familiaCurva_B].IEC*TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)));
+
+        tLocalparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI* TMS_B* ( (parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B/((Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D/(Math.pow(  (Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) ,2))) + (parametrosCurva[familiaCurva_B].E/(Math.pow(  (Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) , 3))) )) );
+
+
         //Hallar tiempo local en B
-        tiempo_local_B = (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)) +  parametrosCurva[familiaCurva_B].lambda).toFixed(4);
+        tiempo_local_B = ( tLocalparteIEC_B + tLocalparteANSI_B ).toFixed(4);
+
+        if ( isNaN(tiempo_local_B)  ) { tiempo_local_B = "__" }
         document.getElementById("Tiempo_local_1").innerHTML = tiempo_local_B;
 
 
         //Hallar tiempo remoto en B
-        tiempo_remoto_B = (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)) +  parametrosCurva[familiaCurva_B].lambda).toFixed(4);
+        tiempo_remoto_B = (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1))).toFixed(4);
+        if ( isNaN(tiempo_remoto_B)  ) { tiempo_remoto_B = "__" }
         document.getElementById("Tiempo_remoto_1").innerHTML = tiempo_remoto_B;
 
     } catch (error) {
@@ -439,16 +575,31 @@ function calcularPasoaPaso() {
         //DIAL en el relé A
         Ic_a_con_margen = Ic_ReleA + (Ic_ReleA) * (Margen_Ic_A / 100)
 
-        TMS_calculado_A = ((tiempo_A / 1000) * (((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta)) - parametrosCurva[familiaCurva_A].lambda).toFixed(4);
+        TMSparteIEC_A = parametrosCurva[familiaCurva_A].IEC * ((tiempo_A / 1000) * (((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta)));
+
+        TMSparteANSI_A = parametrosCurva[familiaCurva_A].ANSI * ((tiempo_A / 1000) * 1 / ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C, 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C, 3)))));
+
+
+        TMS_calculado_A = ( TMSparteANSI_A + TMSparteIEC_A ).toFixed(4);
+        if ( isNaN(TMS_calculado_A)  ) { TMS_calculado_A = "-" }
         document.getElementById("Dial_calculado_0").innerText = TMS_calculado_A;
 
         //Hallar tiempo local en A
-        tiempo_local_A = (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) + parametrosCurva[familiaCurva_A].lambda).toFixed(4);
+        tLocalparteIEC_A = (parametrosCurva[familiaCurva_A].IEC  *TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) );
+
+
+        tLocalparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI* TMS_A* ( (parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B/((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D/(Math.pow(  (Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) ,2))) + (parametrosCurva[familiaCurva_A].E/(Math.pow(  (Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) , 3))) )) );
+
+        tiempo_local_A = ( tLocalparteANSI_A + tLocalparteIEC_A).toFixed(4);
+
+        if ( isNaN(tiempo_local_A)  ) { tiempo_local_A = "__" }
         document.getElementById("Tiempo_local_0").innerHTML = tiempo_local_A;
 
 
         //Hallar tiempo remoto en A
         tiempo_remoto_A = (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) + parametrosCurva[familiaCurva_A].lambda).toFixed(4);
+
+        if ( isNaN(tiempo_remoto_A)  ) { tiempo_remoto_A = "__" }
         document.getElementById("Tiempo_remoto_0").innerHTML = tiempo_remoto_A;
 
 
@@ -561,111 +712,111 @@ function graficarCurvaTopologiaBus() {
         width: 500,
         height: 500,
         // disableZoom: true,
-        xAxis: { type: 'log', domain: [10, 100000], label: 'Corriente [A] '},
-        yAxis: { type: 'log', domain: [0.01, 10], label: 'Tiempo [Segundos]'},
+        xAxis: { type: 'log', domain: [10, 100000], label: 'Corriente [A] ' },
+        yAxis: { type: 'log', domain: [0.01, 10], label: 'Tiempo [Segundos]' },
         grid: true,
         data: [
             {
-                range: [10, Isc_ReleA],
+                range: [10, 100000],
                 graphType: 'polyline',
 
                 fn: function (scope) {
                     // scope.x = {lo: Number, hi: number}
                     // simulate a line e.g. y = x
                     var x = scope.x
-                    
+
                     // return  (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x, parametrosCurva[familiaCurva_A].alfa)) - 1))
 
                     console.log('(TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x, parametrosCurva[familiaCurva_A].alfa)) - 1))) ', (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1))))
 
                     console.log("x: ", x)
                     console.log("x / Ic_a_con_margen: ", x / Ic_a_con_margen)
-                    console.log("Ic con margen a: ", Ic_a_con_margen )
+                    console.log("Ic con margen a: ", Ic_a_con_margen)
                     console.log("valor compl: ", (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1))))
 
 
-                    return  (((TMS_A) * ((parametrosCurva[familiaCurva_A].beta)) )/ ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) + parametrosCurva[familiaCurva_A].lambda
+                    return (((TMS_A) * ((parametrosCurva[familiaCurva_A].beta))) / ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) + parametrosCurva[familiaCurva_A].lambda
                 },
                 color: 'rgba(255, 179, 128, 1)',
-                
+
             },
             {
-                
+
                 graphType: 'polyline',
-                range: [10, Isc_ReleB],
+                range: [10, 100000],
                 fn: function (scope) {
                     // scope.x = {lo: Number, hi: number}
                     // simulate a line e.g. y = x
                     var x = scope.x
-                    
+
                     // return  (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x, parametrosCurva[familiaCurva_A].alfa)) - 1))
 
-                    
+
                     console.log("x: ", x)
-                    
 
 
-                    return  (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(x / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1))) + parametrosCurva[familiaCurva_B].lambda
+
+                    return (TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(x / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1))) + parametrosCurva[familiaCurva_B].lambda
                 },
                 color: 'rgba(85, 153, 255, 1)',
-                
+
             },
             {
-                
+
                 graphType: 'polyline',
-                range: [10, Isc_ReleC],
+                range: [10, 100000],
                 fn: function (scope) {
                     // scope.x = {lo: Number, hi: number}
                     // simulate a line e.g. y = x
                     var x = scope.x
-                    
+
                     // return  (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x, parametrosCurva[familiaCurva_A].alfa)) - 1))
 
                     // console.log("x: ",   (TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(x / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1))).toFixed(4) )
 
-                    
 
 
-                    return  (TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(x / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1))) +  parametrosCurva[familiaCurva_C].lambda
+
+                    return (TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(x / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1))) + parametrosCurva[familiaCurva_C].lambda
                 },
                 color: 'rgba(113, 200, 55, 1)',
-                
+
             },
             {
                 points: [
                     [Isc_ReleA, 0.001],
                     [Isc_ReleA, 10000000],
-                    [Isc_ReleA, tiempo_instantaneo_A/1000]
-                    
-                  ],
-                  fnType: 'points',
-                  color: 'rgba(255, 179, 128, 1)',
-                  graphType: 'polyline',
-                  updateOnMouseMove: true
+                    [Isc_ReleA, tiempo_instantaneo_A / 1000]
+
+                ],
+                fnType: 'points',
+                color: 'rgba(255, 179, 128, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
             },
             {
                 points: [
                     [Isc_ReleB, 0.001],
                     [Isc_ReleB, 10000000],
-                    [Isc_ReleB, tiempo_instantaneo_B/1000]
-                    
-                  ],
-                  fnType: 'points',
-                  color: 'rgba(85, 153, 255, 1)',
-                  graphType: 'polyline',
-                  updateOnMouseMove: true
+                    [Isc_ReleB, tiempo_instantaneo_B / 1000]
+
+                ],
+                fnType: 'points',
+                color: 'rgba(85, 153, 255, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
             },
             {
                 points: [
                     [Isc_ReleC, 0.001],
                     [Isc_ReleC, 10000000],
-                    [Isc_ReleC, tiempo_instantaneo_C/1000]
-                    
-                  ],
-                  fnType: 'points',
-                  color: 'rgba(113, 200, 55, 1)',
-                  graphType: 'polyline',
-                  updateOnMouseMove: true
+                    [Isc_ReleC, tiempo_instantaneo_C / 1000]
+
+                ],
+                fnType: 'points',
+                color: 'rgba(113, 200, 55, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
             }
         ],
     });
