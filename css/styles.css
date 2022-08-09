@@ -611,6 +611,10 @@ canvas {
     background-size: 100% 100%;
 }
 
+.seleccionReleAnillo:hover {
+    cursor: pointer;
+}
+
 /*  Fin de la inicialización de la figura del anillo -----------------------------------------------> */
 
 
