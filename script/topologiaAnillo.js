@@ -89,8 +89,8 @@ const modeloReleAnillo = {
         Isc: tabla_Isc_Rele1,
         Ic: "",
         margenIc: tabla_Margen_Ic_1,
-        familiaCurva: tabla_familiaCurva_A,
-        TMS: tabla_TMS_A,
+        familiaCurva: tabla_familiaCurva_1,
+        TMS: tabla_TMS_1,
         tiempo: tabla_Tiempo_A,
         tiempoInstantaneo: tabla_TiempoInstantaneo_A,
     },
@@ -99,8 +99,8 @@ const modeloReleAnillo = {
         Isc: tabla_Isc_Rele2,
         Ic: "",
         margenIc: tabla_Margen_Ic_2,
-        familiaCurva: tabla_familiaCurva_A,
-        TMS: tabla_TMS_A,
+        familiaCurva: tabla_familiaCurva_2,
+        TMS: tabla_TMS_2,
         tiempo: tabla_Tiempo_A,
         tiempoInstantaneo: tabla_TiempoInstantaneo_A,
     },
@@ -109,8 +109,8 @@ const modeloReleAnillo = {
         Isc: tabla_Isc_Rele3,
         Ic: "",
         margenIc: tabla_Margen_Ic_3,
-        familiaCurva: tabla_familiaCurva_A,
-        TMS: tabla_TMS_A,
+        familiaCurva: tabla_familiaCurva_3,
+        TMS: tabla_TMS_3,
         tiempo: tabla_Tiempo_A,
         tiempoInstantaneo: tabla_TiempoInstantaneo_A,
     },
@@ -119,8 +119,8 @@ const modeloReleAnillo = {
         Isc: tabla_Isc_Rele4,
         Ic: "",
         margenIc: tabla_Margen_Ic_4,
-        familiaCurva: tabla_familiaCurva_A,
-        TMS: tabla_TMS_A,
+        familiaCurva: tabla_familiaCurva_4,
+        TMS: tabla_TMS_4,
         tiempo: tabla_Tiempo_A,
         tiempoInstantaneo: tabla_TiempoInstantaneo_A,
     },
@@ -129,8 +129,8 @@ const modeloReleAnillo = {
         Isc: tabla_Isc_Rele5,
         Ic: "",
         margenIc: tabla_Margen_Ic_5,
-        familiaCurva: tabla_familiaCurva_A,
-        TMS: tabla_TMS_A,
+        familiaCurva: tabla_familiaCurva_5,
+        TMS: tabla_TMS_5,
         tiempo: tabla_Tiempo_A,
         tiempoInstantaneo: tabla_TiempoInstantaneo_A,
     },
@@ -139,8 +139,8 @@ const modeloReleAnillo = {
         Isc: tabla_Isc_Rele6,
         Ic: "",
         margenIc: tabla_Margen_Ic_6,
-        familiaCurva: tabla_familiaCurva_A,
-        TMS: tabla_TMS_A,
+        familiaCurva: tabla_familiaCurva_6,
+        TMS: tabla_TMS_6,
         tiempo: tabla_Tiempo_A,
         tiempoInstantaneo: tabla_TiempoInstantaneo_A,
     },
@@ -149,8 +149,8 @@ const modeloReleAnillo = {
         Isc: tabla_Isc_Rele7,
         Ic: "",
         margenIc: tabla_Margen_Ic_7,
-        familiaCurva: tabla_familiaCurva_A,
-        TMS: tabla_TMS_A,
+        familiaCurva: tabla_familiaCurva_7,
+        TMS: tabla_TMS_7,
         tiempo: tabla_Tiempo_A,
         tiempoInstantaneo: tabla_TiempoInstantaneo_A,
     },
@@ -159,13 +159,14 @@ const modeloReleAnillo = {
         Isc: tabla_Isc_Rele8,
         Ic: "",
         margenIc: tabla_Margen_Ic_8,
-        familiaCurva: tabla_familiaCurva_A,
-        TMS: tabla_TMS_A,
+        familiaCurva: tabla_familiaCurva_8,
+        TMS: tabla_TMS_8,
         tiempo: tabla_Tiempo_A,
         tiempoInstantaneo: tabla_TiempoInstantaneo_A,
     }
 }
 
+//Inicializa las variables y agregando campos vacios por defecto
 
 var S1 = "", S2 = "", S3 = "", S4 = "", Z1 = "", Z2 = "", Z3 = "", Z4 = "", VAnillo = "";
 var Isc_Rele1, Isc_Rele2, Isc_Rele3, Isc_Rele4, Isc_Rele5, Isc_Rele6, Isc_Rele7, Isc_Rele8;
@@ -197,6 +198,18 @@ var Isc_2I, Isc_2D, Isc_2A, Isc_2B;
 var Isc_3I, Isc_3D, Isc_3A, Isc_3B;
 var Isc_4I, Isc_4D, Isc_4A, Isc_4B;
 var Isc_1, Isc_2, Isc_3, Isc_4;
+
+var swalAnilloTMS1, swalAnilloTMS2;
+
+modeloReleAnillo[0].familiaCurva = "-";
+modeloReleAnillo[1].familiaCurva = "-";
+modeloReleAnillo[2].familiaCurva = "-";
+modeloReleAnillo[3].familiaCurva = "-";
+modeloReleAnillo[4].familiaCurva = "-";
+modeloReleAnillo[5].familiaCurva = "-";
+modeloReleAnillo[6].familiaCurva = "-";
+modeloReleAnillo[7].familiaCurva = "-";
+modeloReleAnillo[8].familiaCurva = "-";
 
 
 
@@ -638,7 +651,35 @@ function calcularValoresRelesAnillo() {
 
 }
 
+function habilitarTMSanillo() {
+    try {
+        var selectBox = document.getElementById("swal-Anillo-curva");
+        var swalTMS1 = document.getElementById("swal-Anillo-TMS1");
+        var swalTMS2 = document.getElementById("swal-Anillo-TMS2");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        console.log("selectValue: ", selectedValue)
+        if (selectedValue == "Normal Inversa - IEC" || selectedValue == "Muy Inversa - IEC" || selectedValue == "Extremadamente Inversa - IEC") {
+            console.log("cumple");
+            swalAnilloTMS1.style.display = "block";
+            guardarOpcionTMS1 = "display:block";
+            guardarOpcionTMS2 = "display:none";
+            swalAnilloTMS2.style.display = "none";
+            swal_tms = "swal-TMS1";
+        }
+        if (selectedValue == "Normal Inversa - ANSI" || selectedValue == "Muy Inversa - ANSI" || selectedValue == "Extremadamente Inversa - ANSI") {
+            console.log("cumple 0");
+            swalTMS1.style.display = "none";
+            guardarOpcionTMS1 = "display:none";
+            guardarOpcionTMS2 = "display:block";
+            swalTMS2.style.display = "block";
+            swal_tms = "swal-TMS2";
+        }
 
+    } catch (error) {
+
+    }
+
+}
 
 
 async function guardarValoresReles(valores) {
@@ -662,7 +703,7 @@ async function guardarValoresReles(valores) {
          <tr>
             <th scope="row">Margen Ic</th><td><input type="number" class="swal2-input" value="${modeloReleAnillo[valores].margenIc}" min="0" id="swal-Anillo-margenIc"></td><td>%</td>
 
-            <th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-Anillo-tiempo" value="${modeloReleAnillo[valores].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-curva">  <option selected hidden>${modeloReleAnillo[valores].familiaCurva}</option> <option>Normal Inversa</option><option>Muy Inversa</option><option>Extremadamente Inversa</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>
+            <th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-Anillo-tiempo" value="${modeloReleAnillo[valores].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-Anillo-curva">  <option selected hidden>${modeloReleAnillo[valores].familiaCurva}</option> <option>Normal Inversa - IEC</option><option >Muy Inversa - IEC</option><option >Extremadamente Inversa - IEC</option><option>Normal Inversa - ANSI</option><option >Muy Inversa - ANSI</option><option >Extremadamente Inversa - ANSI</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>
 
         
          </table>
@@ -672,7 +713,7 @@ async function guardarValoresReles(valores) {
 
 
         //  <tr>
-        //  <th scope="row">Margen Ic</th><td><input type="number" class="swal2-input" value="${modeloRele[nombreRele].margenIc}" min="0" id="swal-margenIc"></td><td>%</td>
+        
 
         //  <th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-tiempo" value="$modeloAnillo[valores].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-curva">  <option selected hidden>${modeloAnillo[valores]familiaCurva}</option> <option>Normal Inversa</option><option>Muy Inversa</option><option>Extremadamente Inversa</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>             <tr><th scope="row">TMS(Dial)</th><td>
         // <select class="form-select selectSwal"  id="swal-TMS" >
@@ -727,7 +768,9 @@ async function guardarValoresReles(valores) {
                 document.getElementById('swal-Anillo-Isc').value,
                 document.getElementById('swal-Anillo-Ic').value,
                 document.getElementById('swal-Anillo-margenIc').value,
-                document.getElementById('swal-Anillo-tiempo').value
+                document.getElementById('swal-Anillo-tiempo').value,
+                document.getElementById('swal-Anillo-curva').value
+                //document.getElementById(swal_Anillo_tms)
 
                 //document.getElementById('swal-Anillo-impedancia').value,
 
@@ -747,35 +790,39 @@ async function guardarValoresReles(valores) {
     function guardarAnilloReleGeneral(valores, datos) {
 
 
+        console.log("valores :", valores);
 
 
 
         modeloReleAnillo[valores].Isc = parseFloat(datos[0]);
         modeloReleAnillo[valores].Ic = parseFloat(datos[1]);
         modeloReleAnillo[valores].margenIc = parseFloat(datos[2]);
-        //modeloReleAnillo[valores].tiempo = parseFloat(datos[3]);
+        modeloReleAnillo[valores].tiempo = parseFloat(datos[3]);
+        modeloReleAnillo[valores].familiaCurva = datos[4];
 
-        // document.getElementById("tabla_Isc_Rele" + valores).innerText =parseFloat(datos[0]);
-        // document.getElementById("tabla_Ic_Rele" + valores).innerText = parseFloat(datos[1]);
-        // document.getElementById("tabla_Margen_Ic_" + valores).innerText = parseFloat(datos[2]);
+        document.getElementById("Isc_r" + valores).innerText = datos[0];
+        document.getElementById("Ic_r" + valores).innerText = datos[1];
+        document.getElementById("Margen_Ic_r" + valores).innerText = datos[2];
+        document.getElementById("Tiempo_r"+ valores).innerText = datos[3];
+        document.getElementById("FamiliaC_r" + valores).innerText = datos[4];
 
-        tabla_Isc_Rele1.innerText = modeloReleAnillo[1].Isc;
-        tabla_Isc_Rele2.innerText = modeloReleAnillo[2].Isc;
-        tabla_Isc_Rele3.innerText = modeloReleAnillo[3].Isc;
-        tabla_Isc_Rele4.innerText = modeloReleAnillo[4].Isc;
-        tabla_Isc_Rele5.innerText = modeloReleAnillo[5].Isc;
-        tabla_Isc_Rele6.innerText = modeloReleAnillo[6].Isc;
-        tabla_Isc_Rele7.innerText = modeloReleAnillo[7].Isc;
-        tabla_Isc_Rele8.innerText = modeloReleAnillo[8].Isc;
+        // tabla_Isc_Rele1.innerText = modeloReleAnillo[1].Isc;
+        // tabla_Isc_Rele2.innerText = modeloReleAnillo[2].Isc;
+        // tabla_Isc_Rele3.innerText = modeloReleAnillo[3].Isc;
+        // tabla_Isc_Rele4.innerText = modeloReleAnillo[4].Isc;
+        // tabla_Isc_Rele5.innerText = modeloReleAnillo[5].Isc;
+        // tabla_Isc_Rele6.innerText = modeloReleAnillo[6].Isc;
+        // tabla_Isc_Rele7.innerText = modeloReleAnillo[7].Isc;
+        // tabla_Isc_Rele8.innerText = modeloReleAnillo[8].Isc;
 
-        tabla_Ic_Rele1.innerText = modeloReleAnillo[1].Ic;
-        tabla_Ic_Rele2.innerText = modeloReleAnillo[2].Ic;
-        tabla_Ic_Rele3.innerText = modeloReleAnillo[3].Ic;
-        tabla_Ic_Rele4.innerText = modeloReleAnillo[4].Ic;
-        tabla_Ic_Rele5.innerText = modeloReleAnillo[5].Ic;
-        tabla_Ic_Rele6.innerText = modeloReleAnillo[6].Ic;
-        tabla_Ic_Rele7.innerText = modeloReleAnillo[7].Ic;
-        tabla_Ic_Rele8.innerText = modeloReleAnillo[8].Ic;
+        // tabla_Ic_Rele1.innerText = modeloReleAnillo[1].Ic;
+        // tabla_Ic_Rele2.innerText = modeloReleAnillo[2].Ic;
+        // tabla_Ic_Rele3.innerText = modeloReleAnillo[3].Ic;
+        // tabla_Ic_Rele4.innerText = modeloReleAnillo[4].Ic;
+        // tabla_Ic_Rele5.innerText = modeloReleAnillo[5].Ic;
+        // tabla_Ic_Rele6.innerText = modeloReleAnillo[6].Ic;
+        // tabla_Ic_Rele7.innerText = modeloReleAnillo[7].Ic;
+        // tabla_Ic_Rele8.innerText = modeloReleAnillo[8].Ic;
 
         // tabla_Margen_Ic_1.innerText = modeloReleAnillo[1].margen_Ic_r1;
         // tabla_Margen_Ic_2.innerText = modeloReleAnillo[2].margen_Ic_r2;

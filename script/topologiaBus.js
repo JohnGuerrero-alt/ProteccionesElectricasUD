@@ -32,7 +32,7 @@ var tabla_DialCalculado_C = document.getElementById("Dial_calculado_2");
 //Declarar variable para graficar la curva
 //var ctx = document.getElementById('myChart').getContext('2d');
 var TMSparteIEC_C, TMSparteANSI_C, TMSparteIEC_B, TMSparteANSI_B, TMSparteIEC_A, TMSparteANSI_A;
-var  tLocalparteIEC_C, tLocalparteANSI_C, tLocalparteANSI_B, tLocalparteIEC_B, tRemotoparteIEC_B, tRemotoparteANSI_B, tLocalparteANSI_A, tLocalparteIEC_A, tRemotoparteANSI_A, tRemotoparteIEC_A;
+var tLocalparteIEC_C, tLocalparteANSI_C, tLocalparteANSI_B, tLocalparteIEC_B, tRemotoparteIEC_B, tRemotoparteANSI_B, tLocalparteANSI_A, tLocalparteIEC_A, tRemotoparteANSI_A, tRemotoparteIEC_A;
 
 
 
@@ -210,7 +210,7 @@ var lambda = 0;
 
 var tmsOpcion1;
 var tmsOpcion2;
-var swal_tms;
+var swal_tms = "swal-TMS0";
 var guardarOpcionTMS1 = "display:none";
 var guardarOpcionTMS2 = "display:none";
 
@@ -262,71 +262,72 @@ async function valoresRele(nombreRele) {
         imageHeight: 100,
         width: 700,
         html: ` <div class="table-responsive" >
-        <table class="table align-middle" style="font-size:13px">               
-        <tr>
-        <th scope="row">Isc</th>
-        <td><input type="number" id="swal-Isc" value="${modeloRele[nombreRele].Isc}" class="swal2-input" min="0"></td> 
-        <td>[A]</td> 
-        <th scope="row" colspan="1">Ic</th>
-        <td><input type="number" class="swal2-input" id="swal-Ic" value="${modeloRele[nombreRele].Ic}" min="0"></td>
-        <td>[A]</td>
-        </tr>
-        <tr>
-        <th scope="row">Margen Ic</th><td><input type="number" class="swal2-input" value="${modeloRele[nombreRele].margenIc}" min="0" id="swal-margenIc"></td><td>%</td><th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-tiempo" value="${modeloRele[nombreRele].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-curva" onchange="habilitarTMS()">  <option selected hidden>${modeloRele[nombreRele].familiaCurva}</option> <option>Normal Inversa - IEC</option><option >Muy Inversa - IEC</option><option >Extremadamente Inversa - IEC</option><option>Normal Inversa - ANSI</option><option >Muy Inversa - ANSI</option><option >Extremadamente Inversa - ANSI</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>             <tr><th scope="row">TMS(Dial)</th><td>
-        <select class="form-select selectSwal"  id="swal-TMS1" style="${guardarOpcionTMS1}">
-        <option selected id="option-seleccionada" hidden>${modeloRele[nombreRele].TMS}</option>
-        <option value="0.05">0.05</option><option value="0.06">0.06</option><option value="0.07">0.07</option>
-        <option value="0.08">0.08</option><option value="0.09">0.09</option><option value="0.10">0.10</option>
-        <option value="0.11">0.11</option><option value="0.12">0.12</option><option value="0.13">0.13</option>
-        <option value="0.14">0.14</option><option value="0.15">0.15</option><option value="0.16">0.16</option>
-        <option value="0.17">0.17</option><option value="0.18">0.18</option><option value="0.19">0.19</option>
-        <option value="0.20">0.20</option><option value="0.21">0.21</option><option value="0.22">0.22</option>
-        <option value="0.23">0.23</option><option value="0.24">0.24</option><option value="0.25">0.25</option>
-        <option value="0.26">0.26</option><option value="0.27">0.27</option><option value="0.28">0.28</option>
-        <option value="0.29">0.29</option><option value="0.30">0.30</option><option value="0.31">0.31</option>
-        <option value="0.32">0.32</option><option value="0.33">0.33</option><option value="0.34">0.34</option>
-        <option value="0.35">0.35</option><option value="0.36">0.36</option><option value="0.37">0.37</option>
-        <option value="0.38">0.38</option><option value="0.39">0.39</option><option value="0.40">0.40</option>
-        <option value="0.41">0.41</option><option value="0.42">0.42</option><option value="0.43">0.43</option>
-        <option value="0.44">0.44</option><option value="0.45">0.45</option><option value="0.46">0.46</option>
-        <option value="0.47">0.47</option><option value="0.48">0.48</option><option value="0.49">0.49</option>
-        <option value="0.50">0.50</option><option value="0.51">0.51</option><option value="0.52">0.52</option>
-        <option value="0.53">0.53</option><option value="0.54">0.54</option><option value="0.55">0.55</option>
-        <option value="0.56">0.56</option><option value="0.57">0.57</option><option value="0.58">0.58</option>
-        <option value="0.59">0.59</option><option value="0.60">0.60</option><option value="0.61">0.61</option>
-        <option value="0.62">0.62</option><option value="0.63">0.63</option><option value="0.64">0.64</option>
-        <option value="0.65">0.65</option><option value="0.66">0.66</option><option value="0.67">0.67</option>
-        <option value="0.68">0.68</option><option value="0.69">0.69</option><option value="0.70">0.70</option>
-        <option value="0.71">0.71</option><option value="0.72">0.72</option><option value="0.73">0.73</option>
-        <option value="0.74">0.74</option><option value="0.75">0.75</option><option value="0.76">0.76</option>
-        <option value="0.77">0.77</option><option value="0.78">0.78</option><option value="0.79">0.79</option>
-        <option value="0.80">0.80</option><option value="0.81">0.81</option><option value="0.82">0.82</option>
-        <option value="0.83">0.83</option><option value="0.84">0.84</option><option value="0.85">0.85</option>
-        <option value="0.86">0.86</option><option value="0.87">0.87</option><option value="0.88">0.88</option>
-        <option value="0.89">0.89</option><option value="0.90">0.90</option><option value="0.91">0.91</option>
-        <option value="0.92">0.92</option><option value="0.93">0.93</option><option value="0.94">0.94</option>
-        <option value="0.95">0.95</option><option value="0.96">0.96</option><option value="0.99">0.99</option>
-        <option value="1">1</option>
-        </select>
-
-        <select class="form-select selectSwal"  id="swal-TMS2" style="${guardarOpcionTMS2}">
-        <option selected id="option-seleccionada" hidden>${modeloRele[nombreRele].TMS}</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        </select>
-        
-        </td> <th scope="row">Tiempo(instantaneo)</th><td><input  id="swal-tInstantaneo" type="number" value="${modeloRele[nombreRele].tiempoInstantaneo}" class="swal2-input" min="0"></td><td>[ms]</td></tr>   </table></div>
-        
-
-        `,
+            <table class="table align-middle" style="font-size:13px">               
+            <tr>
+            <th scope="row">Isc</th>
+            <td><input type="number" id="swal-Isc" value="${modeloRele[nombreRele].Isc}" class="swal2-input" min="0"></td> 
+            <td>[A]</td> 
+            <th scope="row" colspan="1">Ic</th>
+            <td><input type="number" class="swal2-input" id="swal-Ic" value="${modeloRele[nombreRele].Ic}" min="0"></td>
+            <td>[A]</td>
+            </tr>
+            <tr>
+            <th scope="row">Margen Ic</th><td><input type="number" class="swal2-input" value="${modeloRele[nombreRele].margenIc}" min="0" id="swal-margenIc"></td><td>%</td><th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-tiempo" value="${modeloRele[nombreRele].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-curva" onchange="habilitarTMS()">  <option selected hidden>${modeloRele[nombreRele].familiaCurva}</option> <option>Normal Inversa - IEC</option><option >Muy Inversa - IEC</option><option >Extremadamente Inversa - IEC</option><option>Normal Inversa - ANSI</option><option >Muy Inversa - ANSI</option><option >Extremadamente Inversa - ANSI</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>             <tr><th scope="row">TMS(Dial)</th><td>
+            <select class="form-select selectSwal"  id="swal-TMS0" style="display:none"></select>
+            <select class="form-select selectSwal"  id="swal-TMS1" style="${guardarOpcionTMS1}">
+            <option selected id="option-seleccionada" hidden>${modeloRele[nombreRele].TMS}</option>
+            <option value="0.05">0.05</option><option value="0.06">0.06</option><option value="0.07">0.07</option>
+            <option value="0.08">0.08</option><option value="0.09">0.09</option><option value="0.10">0.10</option>
+            <option value="0.11">0.11</option><option value="0.12">0.12</option><option value="0.13">0.13</option>
+            <option value="0.14">0.14</option><option value="0.15">0.15</option><option value="0.16">0.16</option>
+            <option value="0.17">0.17</option><option value="0.18">0.18</option><option value="0.19">0.19</option>
+            <option value="0.20">0.20</option><option value="0.21">0.21</option><option value="0.22">0.22</option>
+            <option value="0.23">0.23</option><option value="0.24">0.24</option><option value="0.25">0.25</option>
+            <option value="0.26">0.26</option><option value="0.27">0.27</option><option value="0.28">0.28</option>
+            <option value="0.29">0.29</option><option value="0.30">0.30</option><option value="0.31">0.31</option>
+            <option value="0.32">0.32</option><option value="0.33">0.33</option><option value="0.34">0.34</option>
+            <option value="0.35">0.35</option><option value="0.36">0.36</option><option value="0.37">0.37</option>
+            <option value="0.38">0.38</option><option value="0.39">0.39</option><option value="0.40">0.40</option>
+            <option value="0.41">0.41</option><option value="0.42">0.42</option><option value="0.43">0.43</option>
+            <option value="0.44">0.44</option><option value="0.45">0.45</option><option value="0.46">0.46</option>
+            <option value="0.47">0.47</option><option value="0.48">0.48</option><option value="0.49">0.49</option>
+            <option value="0.50">0.50</option><option value="0.51">0.51</option><option value="0.52">0.52</option>
+            <option value="0.53">0.53</option><option value="0.54">0.54</option><option value="0.55">0.55</option>
+            <option value="0.56">0.56</option><option value="0.57">0.57</option><option value="0.58">0.58</option>
+            <option value="0.59">0.59</option><option value="0.60">0.60</option><option value="0.61">0.61</option>
+            <option value="0.62">0.62</option><option value="0.63">0.63</option><option value="0.64">0.64</option>
+            <option value="0.65">0.65</option><option value="0.66">0.66</option><option value="0.67">0.67</option>
+            <option value="0.68">0.68</option><option value="0.69">0.69</option><option value="0.70">0.70</option>
+            <option value="0.71">0.71</option><option value="0.72">0.72</option><option value="0.73">0.73</option>
+            <option value="0.74">0.74</option><option value="0.75">0.75</option><option value="0.76">0.76</option>
+            <option value="0.77">0.77</option><option value="0.78">0.78</option><option value="0.79">0.79</option>
+            <option value="0.80">0.80</option><option value="0.81">0.81</option><option value="0.82">0.82</option>
+            <option value="0.83">0.83</option><option value="0.84">0.84</option><option value="0.85">0.85</option>
+            <option value="0.86">0.86</option><option value="0.87">0.87</option><option value="0.88">0.88</option>
+            <option value="0.89">0.89</option><option value="0.90">0.90</option><option value="0.91">0.91</option>
+            <option value="0.92">0.92</option><option value="0.93">0.93</option><option value="0.94">0.94</option>
+            <option value="0.95">0.95</option><option value="0.96">0.96</option><option value="0.99">0.99</option>
+            <option value="1">1</option>
+            </select>
+    
+            <select class="form-select selectSwal"  id="swal-TMS2" style="${guardarOpcionTMS2}">
+            <option selected id="option-seleccionada" hidden>${modeloRele[nombreRele].TMS}</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            </select>
+            
+            </td> <th scope="row">Tiempo(instantaneo)</th><td><input  id="swal-tInstantaneo" type="number" value="${modeloRele[nombreRele].tiempoInstantaneo}" class="swal2-input" min="0"></td><td>[ms]</td></tr>   </table></div>
+            
+    
+            `,
         showConfirmButton: true,
         confirmButtonText: "Guardar",
         showCloseButton: true,
@@ -350,14 +351,10 @@ async function valoresRele(nombreRele) {
 
     })
 
-
     if (formValues) {
         //Swal.fire(JSON.stringify(formValues))
         guardarInformacion(nombreRele, formValues)
     }
-
-
-
 
 }
 
@@ -375,7 +372,7 @@ function guardarInformacion(Rele, datos) {
     document.getElementById("TMS_" + Rele).innerText = datos[5];
     document.getElementById("Tiempo_instantaneo_" + Rele).innerText = datos[6];
 
-    if(isNaN(datos[5])) { datos[5] = "__"}
+    if (isNaN(datos[5])) { datos[5] = "__" }
 
     document.getElementById("Dial_escogido_" + Rele).innerText = datos[5];
 
@@ -512,20 +509,20 @@ function calcularPasoaPaso() {
 
         TMS_calculado_C = (TMSparteIEC_C + TMSparteANSI_C).toFixed(4);
 
-        if ( isNaN(TMS_calculado_C)  ) { TMS_calculado_C = "-" }
+        if (isNaN(TMS_calculado_C)) { TMS_calculado_C = "-" }
         document.getElementById("Dial_calculado_2").innerText = TMS_calculado_C;
 
-        tLocalparteIEC_C =  (parametrosCurva[familiaCurva_C].IEC*TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1)));
-        
-        tLocalparteANSI_C = (parametrosCurva[familiaCurva_C].ANSI* TMS_C* ( (parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B/((Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D/(Math.pow(  (Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C) ,2))) + (parametrosCurva[familiaCurva_C].E/(Math.pow(  (Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C) , 3))) )) );
+        tLocalparteIEC_C = (parametrosCurva[familiaCurva_C].IEC * TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1)));
 
-        
+        tLocalparteANSI_C = (parametrosCurva[familiaCurva_C].ANSI * TMS_C * ((parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B / ((Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D / (Math.pow((Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C), 2))) + (parametrosCurva[familiaCurva_C].E / (Math.pow((Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C), 3))))));
+
+
 
         //Hallar tiempo Local en C
-        tiempo_local_C = (  tLocalparteIEC_C +   tLocalparteANSI_C ).toFixed(4);
+        tiempo_local_C = (tLocalparteIEC_C + tLocalparteANSI_C).toFixed(4);
         console.log("tiempo local C: ", tiempo_local_C)
 
-        if ( isNaN(tiempo_local_C)  ) { tiempo_local_C = "__" }
+        if (isNaN(tiempo_local_C)) { tiempo_local_C = "__" }
         document.getElementById("Tiempo_local_2").innerHTML = tiempo_local_C;
 
 
@@ -545,29 +542,29 @@ function calcularPasoaPaso() {
         TMSparteANSI_B = parametrosCurva[familiaCurva_B].ANSI * ((tiempo_B / 1000) * 1 / ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C, 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C, 3)))));
 
 
-        TMS_calculado_B = ( TMSparteIEC_B + TMSparteANSI_B ).toFixed(4);
-        if ( isNaN(TMS_calculado_B)  ) { TMS_calculado_B = "-" }
+        TMS_calculado_B = (TMSparteIEC_B + TMSparteANSI_B).toFixed(4);
+        if (isNaN(TMS_calculado_B)) { TMS_calculado_B = "-" }
         document.getElementById("Dial_calculado_1").innerText = TMS_calculado_B;
 
-        tLocalparteIEC_B =  (parametrosCurva[familiaCurva_B].IEC*TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)));
+        tLocalparteIEC_B = (parametrosCurva[familiaCurva_B].IEC * TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)));
 
-        tLocalparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI* TMS_B* ( (parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B/((Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D/(Math.pow(  (Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) ,2))) + (parametrosCurva[familiaCurva_B].E/(Math.pow(  (Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) , 3))) )) );
+        tLocalparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI * TMS_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 3))))));
 
 
         //Hallar tiempo local en B
-        tiempo_local_B = ( tLocalparteIEC_B + tLocalparteANSI_B ).toFixed(4);
-        if ( isNaN(tiempo_local_B)  ) { tiempo_local_B = "__" }
+        tiempo_local_B = (tLocalparteIEC_B + tLocalparteANSI_B).toFixed(4);
+        if (isNaN(tiempo_local_B)) { tiempo_local_B = "__" }
         document.getElementById("Tiempo_local_1").innerHTML = tiempo_local_B;
 
 
         //Hallar tiempo remoto en B
-        tRemotoparteIEC_B = (parametrosCurva[familiaCurva_B].IEC*TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)));
+        tRemotoparteIEC_B = (parametrosCurva[familiaCurva_B].IEC * TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)));
 
-        tRemotoparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI* TMS_B* ( (parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B/((Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D/(Math.pow(  (Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) ,2))) + (parametrosCurva[familiaCurva_B].E/(Math.pow(  (Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) , 3))) )) );
+        tRemotoparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI * TMS_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 3))))));
 
 
-        tiempo_remoto_B = ( tRemotoparteIEC_B + tRemotoparteANSI_B ).toFixed(4);
-        if ( isNaN(tiempo_remoto_B)  ) { tiempo_remoto_B = "__" }
+        tiempo_remoto_B = (tRemotoparteIEC_B + tRemotoparteANSI_B).toFixed(4);
+        if (isNaN(tiempo_remoto_B)) { tiempo_remoto_B = "__" }
         document.getElementById("Tiempo_remoto_1").innerHTML = tiempo_remoto_B;
 
     } catch (error) {
@@ -584,30 +581,30 @@ function calcularPasoaPaso() {
         TMSparteANSI_A = parametrosCurva[familiaCurva_A].ANSI * ((tiempo_A / 1000) * 1 / ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C, 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C, 3)))));
 
 
-        TMS_calculado_A = ( TMSparteANSI_A + TMSparteIEC_A ).toFixed(4);
-        if ( isNaN(TMS_calculado_A)  ) { TMS_calculado_A = "-" }
+        TMS_calculado_A = (TMSparteANSI_A + TMSparteIEC_A).toFixed(4);
+        if (isNaN(TMS_calculado_A)) { TMS_calculado_A = "-" }
         document.getElementById("Dial_calculado_0").innerText = TMS_calculado_A;
 
         //Hallar tiempo local en A
-        tLocalparteIEC_A = (parametrosCurva[familiaCurva_A].IEC  *TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) );
+        tLocalparteIEC_A = (parametrosCurva[familiaCurva_A].IEC * TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)));
 
 
-        tLocalparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI* TMS_A* ( (parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B/((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D/(Math.pow(  (Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) ,2))) + (parametrosCurva[familiaCurva_A].E/(Math.pow(  (Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) , 3))) )) );
+        tLocalparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI * TMS_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 3))))));
 
-        tiempo_local_A = ( tLocalparteANSI_A + tLocalparteIEC_A).toFixed(4);
+        tiempo_local_A = (tLocalparteANSI_A + tLocalparteIEC_A).toFixed(4);
 
-        if ( isNaN(tiempo_local_A)  ) { tiempo_local_A = "__" }
+        if (isNaN(tiempo_local_A)) { tiempo_local_A = "__" }
         document.getElementById("Tiempo_local_0").innerHTML = tiempo_local_A;
 
 
         //Hallar tiempo remoto en A
-        tRemotoparteIEC_A = (parametrosCurva[familiaCurva_A].IEC*TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)));
+        tRemotoparteIEC_A = (parametrosCurva[familiaCurva_A].IEC * TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)));
 
-        tRemotoparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI* TMS_A* ( (parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B/((Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D/(Math.pow(  (Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) ,2))) + (parametrosCurva[familiaCurva_A].E/(Math.pow(  (Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) , 3))) )) );
+        tRemotoparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI * TMS_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 3))))));
 
-        tiempo_remoto_A = ( tRemotoparteIEC_A+ tRemotoparteANSI_A ).toFixed(4);
+        tiempo_remoto_A = (tRemotoparteIEC_A + tRemotoparteANSI_A).toFixed(4);
 
-        if ( isNaN(tiempo_remoto_A)  ) { tiempo_remoto_A = "__" }
+        if (isNaN(tiempo_remoto_A)) { tiempo_remoto_A = "__" }
         document.getElementById("Tiempo_remoto_0").innerHTML = tiempo_remoto_A;
 
 
@@ -743,7 +740,7 @@ function graficarCurvaTopologiaBus() {
                     console.log("valor compl: ", (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1))))
 
 
-                    return (  (parametrosCurva[familiaCurva_A].IEC  *TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)) )  +      (parametrosCurva[familiaCurva_A].ANSI* TMS_A* ( (parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B/((x / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D/(Math.pow(  (x / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) ,2))) + (parametrosCurva[familiaCurva_A].E/(Math.pow(  (x / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C) , 3))) )) )   ) 
+                    return ((parametrosCurva[familiaCurva_A].IEC * TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1))) + (parametrosCurva[familiaCurva_A].ANSI * TMS_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((x / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((x / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((x / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 3)))))))
                 },
                 color: 'rgba(255, 179, 128, 1)',
 
@@ -764,7 +761,7 @@ function graficarCurvaTopologiaBus() {
 
 
 
-                    return (   (parametrosCurva[familiaCurva_B].IEC*TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(x / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)))  +    (parametrosCurva[familiaCurva_B].ANSI* TMS_B* ( (parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B/((x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D/(Math.pow(  (x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) ,2))) + (parametrosCurva[familiaCurva_B].E/(Math.pow(  (x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C) , 3))) )) ) )
+                    return ((parametrosCurva[familiaCurva_B].IEC * TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(x / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1))) + (parametrosCurva[familiaCurva_B].ANSI * TMS_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 3)))))))
                 },
                 color: 'rgba(85, 153, 255, 1)',
 
@@ -785,7 +782,7 @@ function graficarCurvaTopologiaBus() {
 
 
 
-                    return (  (parametrosCurva[familiaCurva_C].IEC*TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(x / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1)))  +  (parametrosCurva[familiaCurva_C].ANSI* TMS_C* ( (parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B/((x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D/(Math.pow(  (x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C) ,2))) + (parametrosCurva[familiaCurva_C].E/(Math.pow(  (x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C) , 3))) )) ) )
+                    return ((parametrosCurva[familiaCurva_C].IEC * TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(x / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1))) + (parametrosCurva[familiaCurva_C].ANSI * TMS_C * ((parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B / ((x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D / (Math.pow((x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C), 2))) + (parametrosCurva[familiaCurva_C].E / (Math.pow((x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C), 3)))))))
                 },
                 color: 'rgba(113, 200, 55, 1)',
 
