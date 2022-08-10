@@ -108,6 +108,7 @@ html {
     text-align: center;
 }
 
+
 .selectSwal option {
     font-size: 12px;
 }
@@ -370,8 +371,10 @@ canvas {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    max-width: 500px;
+    max-width: 80%;
     min-width: 100px;
+    padding: 10px 0;
+    margin: auto;
 }
 
 
@@ -449,6 +452,9 @@ canvas {
 .fta2_4_2 {
     background-image: url("../assets/images/Anillo/2_4.svg");
     background-size: 100% 100%;
+    text-align: right;
+    justify-content: center;
+    
 }
 
 .fta2_5 {
@@ -480,6 +486,8 @@ canvas {
 .fta3_1_1_1 {
     background-image: url("../assets/images/Anillo/load_left.svg");
     background-size: 100% 100%;
+    text-align: start;
+    font-size: 12px;
 }
 
 .fta3_1_1_2 {
@@ -499,6 +507,8 @@ canvas {
 .fta3_5_1_2 {
     background-image: url("../assets/images/Anillo/load_right.svg");
     background-size: 100% 100%;
+    text-align: right;
+    font-size: 12px;
 }
 
 /* Configuración para la fila4 */
@@ -532,6 +542,8 @@ canvas {
 .fta4_2_1 {
     background-image: url("../assets/images/Anillo/4_2.svg");
     background-size: 100% 100%;
+    
+    /* font-size: 12px; */
 }
 
 .fta4_2_2 {
@@ -548,6 +560,7 @@ canvas {
 .fta4_4_1 {
     background-image: url("../assets/images/Anillo/4_4.svg");
     background-size: 100% 100%;
+    text-align: right;
 }
 
 .fta4_4_2 {
@@ -578,6 +591,10 @@ canvas {
 /* Configuración para la fila5  */
 .fta5_3 {
     background-image: url("../assets/images/Anillo/load_bottom.svg");
+}
+
+.fta5_4 {
+    font-size: 12px;
 }
 
 /* Configuración hover para los elementos principales */
@@ -614,6 +631,16 @@ canvas {
 .seleccionReleAnillo:hover {
     cursor: pointer;
 }
+
+.botonCalcularAnillo {
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
 
 /*  Fin de la inicialización de la figura del anillo -----------------------------------------------> */
 

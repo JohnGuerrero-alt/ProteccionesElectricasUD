@@ -285,8 +285,8 @@
                                 <div class="fila1ta">
                                     <div id="1_1" class="fblanco celda"></div>
                                     <div id="1_2" class="fblanco celda"></div>
-                                    <div id="1_3" class="fta1_3 celda" onclick="establecerValoresAnillo('0')"></div>
-                                    <div id="1_4" class="fblanco celda"></div>
+                                    <div id="1_3" class="fta1_3 celda" onclick="establecerValoresAnillo('0', 'Generador')"></div>
+                                    <div id="1_4" class="fblanco celda">kV <br> MVA </div>
                                     <div id="1_5" class="fblanco celda"></div>
                                 </div>
                                 <div class="fila2ta">
@@ -302,7 +302,7 @@
                                     </div>
                                     <div id="2_2" class="fta2_2 celda">
                                         <div class="fta2_2_1"></div>
-                                        <div class="fta2_2_2" onclick="establecerValoresAnillo('1')"></div>
+                                        <div id="Barra1_2" class="fta2_2_2" onclick="establecerValoresAnillo('1', 'Barra')">Ω</div>
                                     </div>
                                     <div id="2_3" class="fta2_3 celda">
                                         <div class="fta2_3_1"></div>
@@ -310,7 +310,7 @@
                                     </div>
                                     <div id="2_4" class="fta2_4 celda">
                                         <div class="fta2_4_1"></div>
-                                        <div class="fta2_4_2" onclick="establecerValoresAnillo('2')"></div>
+                                        <div id="Barra4_1" class="fta2_4_2" onclick="establecerValoresAnillo('2', 'Barra')">Ω</div>
                                     </div>
                                     <div id="2_5" class="fta2_5 celda">
                                         <div class="fta2_5_1">
@@ -325,7 +325,7 @@
                                 </div>
                                 <div class="fila3ta">
                                     <div id="3_1" class="fta3_1 celda">
-                                        <div class="fta3_1_1_1" onclick="establecerValoresAnillo('3')"></div>
+                                        <div id="cargaIzquierda" class="fta3_1_1_1" onclick="establecerValoresAnillo('3', 'Carga')">MVA</div>
                                         <div class="fta3_1_1_2"></div>
                                     </div>
                                     <div id="3_2" class="fta3_2 fblanco celda"></div>
@@ -333,7 +333,7 @@
                                     <div id="3_4" class="fta3_4 fblanco celda"></div>
                                     <div id="3_5" class="fta3_5 celda">
                                         <div class="fta3_5_1_1"></div>
-                                        <div class="fta3_5_1_2" onclick="establecerValoresAnillo('4')"></div>
+                                        <div id="cargaDerecha" class="fta3_5_1_2" onclick="establecerValoresAnillo('4', 'Carga')">MVA</div>
                                     </div>
                                 </div>
                                 <div class="fila4ta">
@@ -348,7 +348,7 @@
                                         </div>
                                     </div>
                                     <div class="fta4_2 celda">
-                                        <div class="fta4_2_1" onclick="establecerValoresAnillo('5')"></div>
+                                        <div id="Barra2_3" class="fta4_2_1" onclick="establecerValoresAnillo('5', 'Barra')"><br> Ω</div>
                                         <div class="fta4_2_2"></div>
                                     </div>
                                     <div class="fta4_3 celda">
@@ -356,7 +356,7 @@
                                         <div class="fta4_3_2"></div>
                                     </div>
                                     <div class="fta4_4 celda">
-                                        <div class="fta4_4_1" onclick="establecerValoresAnillo('6')"></div>
+                                        <div id="Barra3_4" class="fta4_4_1" onclick="establecerValoresAnillo('6', 'Barra')"> <br> Ω</div>
                                         <div class="fta4_4_2"></div>
                                     </div>
                                     <div class="fta4_5 celda">
@@ -373,11 +373,16 @@
                                 <div class="fila5ta">
                                     <div class="fta5_1 celda"></div>
                                     <div class="fta5_2 celda"></div>
-                                    <div class="fta5_3 celda" onclick="establecerValoresAnillo('7')"></div>
-                                    <div class="fta5_4 celda"></div>
+                                    <div  class="fta5_3 celda" onclick="establecerValoresAnillo('7', 'Carga')"> </div>
+                                    <div  id="cargaAbajo" class="fta5_4 celda"> <br> MVA</div>
                                     <div class="fta5_5 celda"></div>
                                 </div>
                             </div>
+
+                            <div class="botonesAnillo">
+                                <div class="botonCalcular  hoverButton">Calcular</div>
+                            </div>
+
                         </div>
     
                         <div class="panelDerechoPanelAnillo">
@@ -409,7 +414,7 @@
                                     <table class="table align-middle tamañoLetraAspectosRele ">
                                         <thead>
                                             <tr>
-                                                <th scope="col"></th>
+                                                <th scope="col">Relé</th>
                                                 <th scope="col" class="colorReleA">1</th>
                                                 <th scope="col" class="colorReleB">2</th>
                                                 <th scope="col" class="colorReleC">3</th>
@@ -423,80 +428,80 @@
                                         <tbody>
                                             <tr>
                                                 <th>Isc</th>
-                                                <td id="Isc_0">-</td>
-                                                <td id="Isc_1">-</td>
-                                                <td id="Isc_2">-</td>
-                                                <td id="Isc_2">-</td>
-                                                <td id="Isc_2">-</td>
-                                                <td id="Isc_2">-</td>
-                                                <td id="Isc_2">-</td>
-                                                <td id="Isc_2">-</td>
+                                                <td id="Isc_r1">-</td>
+                                                <td id="Isc_r2">-</td>
+                                                <td id="Isc_r3">-</td>
+                                                <td id="Isc_r4">-</td>
+                                                <td id="Isc_r5">-</td>
+                                                <td id="Isc_r6">-</td>
+                                                <td id="Isc_r7">-</td>
+                                                <td id="Isc_r8">-</td>
                                             </tr>
                                             <tr>
                                                 <th>Ic</th>
-                                                <td id="Ic_0">-</td>
-                                                <td id="Ic_1">-</td>
-                                                <td id="Ic_2">-</td>
-                                                <td id="Ic_2">-</td>
-                                                <td id="Ic_2">-</td>
-                                                <td id="Ic_2">-</td>
-                                                <td id="Ic_2">-</td>
-                                                <td id="Ic_2">-</td>
+                                                <td id="Ic_r1">-</td>
+                                                <td id="Ic_r2">-</td>
+                                                <td id="Ic_r3">-</td>
+                                                <td id="Ic_r4">-</td>
+                                                <td id="Ic_r5">-</td>
+                                                <td id="Ic_r6">-</td>
+                                                <td id="Ic_r7">-</td>
+                                                <td id="Ic_r8">-</td>
                                             </tr>
                                             <tr>
                                                 <th>Margen Ic</th>
-                                                <td id="Margen_Ic_0">-</td>
-                                                <td id="Margen_Ic_1">-</td>
-                                                <td id="Margen_Ic_2">-</td>
-                                                <td id="Margen_Ic_2">-</td>
-                                                <td id="Margen_Ic_2">-</td>
-                                                <td id="Margen_Ic_2">-</td>
-                                                <td id="Margen_Ic_2">-</td>
-                                                <td id="Margen_Ic_2">-</td>
+                                                <td id="Margen_Ic_r1">-</td>
+                                                <td id="Margen_Ic_r2">-</td>
+                                                <td id="Margen_Ic_r3">-</td>
+                                                <td id="Margen_Ic_r4">-</td>
+                                                <td id="Margen_Ic_r5">-</td>
+                                                <td id="Margen_Ic_r6">-</td>
+                                                <td id="Margen_Ic_r7">-</td>
+                                                <td id="Margen_Ic_r8">-</td>
                                             </tr>
                                             <tr>
                                                 <th>Familia de <br> curvas</th>
-                                                <td id="FamiliaC_0">-</td>
-                                                <td id="FamiliaC_1">-</td>
-                                                <td id="FamiliaC_2">-</td>
-                                                <td id="FamiliaC_2">-</td>
-                                                <td id="FamiliaC_2">-</td>
-                                                <td id="FamiliaC_2">-</td>
-                                                <td id="FamiliaC_2">-</td>
-                                                <td id="FamiliaC_2">-</td>
+                                                <td id="FamiliaC_r1">-</td>
+                                                <td id="FamiliaC_r2">-</td>
+                                                <td id="FamiliaC_r3">-</td>
+                                                <td id="FamiliaC_r4">-</td>
+                                                <td id="FamiliaC_r5">-</td>
+                                                <td id="FamiliaC_r6">-</td>
+                                                <td id="FamiliaC_r7">-</td>
+                                                <td id="FamiliaC_r8">-</td>
                                             </tr>
                                             <tr>
                                                 <th>Tiempo</th>
-                                                <td id="Tiempo_0">-</td>
-                                                <td id="Tiempo_1">-</td>
-                                                <td id="Tiempo_2">-</td>
-                                                <td id="Tiempo_2">-</td>
-                                                <td id="Tiempo_2">-</td>
-                                                <td id="Tiempo_2">-</td>
-                                                <td id="Tiempo_2">-</td>
-                                                <td id="Tiempo_2">-</td>
+                                                <td id="Tiempo_r1">-</td>
+                                                <td id="Tiempo_r2">-</td>
+                                                <td id="Tiempo_r3">-</td>
+                                                <td id="Tiempo_r4">-</td>
+                                                <td id="Tiempo_r5">-</td>
+                                                <td id="Tiempo_r6">-</td>
+                                                <td id="Tiempo_r7">-</td>
+                                                <td id="Tiempo_r8">-</td>
                                             </tr>
                                             <tr class="delimitadorVariblesCalculables">
                                                 <th>TMS(Dial)</th>
-                                                <td id="TMS_0">-</td>
-                                                <td id="TMS_1">-</td>
-                                                <td id="TMS_2">-</td>
-                                                <td id="TMS_2">-</td>
-                                                <td id="TMS_2">-</td>
-                                                <td id="TMS_2">-</td>
-                                                <td id="TMS_2">-</td>
-                                                <td id="TMS_2">-</td>
+                                                <td id="TMS_r1">-</td>
+                                                <td id="TMS_r2">-</td>
+                                                <td id="TMS_r3">-</td>
+                                                <td id="TMS_r4">-</td>
+                                                <td id="TMS_r5">-</td>
+                                                <td id="TMS_r6">-</td>
+                                                <td id="TMS_r7">-</td>
+                                                <td id="TMS_r8">-</td>
                                             </tr>
                                             <tr>
                                                 <th>Tiempo <br> Instántaneo</th>
-                                                <td id="Tiempo_instantaneo_0">-</td>
-                                                <td id="Tiempo_instantaneo_1">-</td>
-                                                <td id="Tiempo_instantaneo_2">-</td>
-                                                <td id="Tiempo_instantaneo_2">-</td>
-                                                <td id="Tiempo_instantaneo_2">-</td>
-                                                <td id="Tiempo_instantaneo_2">-</td>
-                                                <td id="Tiempo_instantaneo_2">-</td>
-                                                <td id="Tiempo_instantaneo_2">-</td>
+                                                <td id="Tiempo_instantaneo_r1">-</td>
+                                                <td id="Tiempo_instantaneo_r2">-</td>
+                                                <td id="Tiempo_instantaneo_r3">-</td>
+                                                <td id="Tiempo_instantaneo_r4">-</td>
+                                                <td id="Tiempo_instantaneo_r5">-</td>
+                                                <td id="Tiempo_instantaneo_r6">-</td>
+                                                <td id="Tiempo_instantaneo_r7">-</td>
+                                                <td id="Tiempo_instantaneo_r8">-</td>
                                             </tr>
                                             <tr>
                                                 <th></th>
