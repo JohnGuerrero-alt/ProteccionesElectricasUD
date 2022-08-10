@@ -155,6 +155,7 @@
                                 <div class="botonCalcular hoverButton tt" data-bs-placement="top"
                                     title="Es necesario tener almacenado: ''Isc, Ic, Margen Ic, Familia Curva y el Tiempo'' "
                                     onclick="calcularPasoaPaso()">Calcular</div>
+                                    
                                 <div class="botonCalcular hoverButton" onclick="graficarCurvaTopologiaBus()">Calcular/Graficar</div>
                             </div>
 
@@ -306,10 +307,10 @@
                                     </div>
                                     <div id="2_3" class="fta2_3 celda">
                                         <div class="fta2_3_1"></div>
-                                        <div class="fta2_3_2 fblanco"></div>
+                                        <div class="fta2_3_2 fblanco">Barra I</div>
                                     </div>
                                     <div id="2_4" class="fta2_4 celda">
-                                        <div class="fta2_4_1"></div>
+                                        <div class="fta2_4_1" > </div>
                                         <div id="Barra4_1" class="fta2_4_2" onclick="establecerValoresAnillo('2', 'Barra')">Ω</div>
                                     </div>
                                     <div id="2_5" class="fta2_5 celda">
@@ -328,9 +329,9 @@
                                         <div id="cargaIzquierda" class="fta3_1_1_1" onclick="establecerValoresAnillo('3', 'Carga')">MVA</div>
                                         <div class="fta3_1_1_2"></div>
                                     </div>
-                                    <div id="3_2" class="fta3_2 fblanco celda"></div>
+                                    <div id="3_2" class="fta3_2 fblanco celda">Barra II</div>
                                     <div id="3_3" class="fta3_3 fblanco celda"></div>
-                                    <div id="3_4" class="fta3_4 fblanco celda"></div>
+                                    <div id="3_4" class="fta3_4 fblanco celda">Barra IV</div>
                                     <div id="3_5" class="fta3_5 celda">
                                         <div class="fta3_5_1_1"></div>
                                         <div id="cargaDerecha" class="fta3_5_1_2" onclick="establecerValoresAnillo('4', 'Carga')">MVA</div>
@@ -352,7 +353,7 @@
                                         <div class="fta4_2_2"></div>
                                     </div>
                                     <div class="fta4_3 celda">
-                                        <div class="fta4_3_1"></div>
+                                        <div class="fta4_3_1"><br> Barra III</div>
                                         <div class="fta4_3_2"></div>
                                     </div>
                                     <div class="fta4_4 celda">
@@ -380,7 +381,9 @@
                             </div>
 
                             <div class="botonesAnillo">
-                                <div class="botonCalcular  hoverButton">Calcular</div>
+                                <div class="botonCalcular  hoverButton" onclick="ejemploAnillo()">Cargar valores</div>
+                                <br>
+                                <div class="botonCalcular  hoverButton" onclick="calcularValoresRelesAnillo()">Calcular</div>
                             </div>
 
                         </div>

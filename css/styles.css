@@ -444,6 +444,12 @@ canvas {
     background-size: 100%;
 }
 
+.fta2_3_2 {
+    text-align: center;
+    color: #94b9c5;
+    font-size: 13px;
+}
+
 .fta2_4_1 {
     background-image: url("../assets/images/Anillo/line_left_middle.svg");
     background-size: 100%;
@@ -492,6 +498,21 @@ canvas {
 
 .fta3_1_1_2 {
     background-image: url("../assets/images/Anillo/line_complete_vertical.svg");
+}
+.fta3_2 {
+    display: flex;
+    color: #94b9c5;
+    font-size: 13px;
+    align-items: center;
+    justify-content: start;
+} 
+
+.fta3_4 {
+    display: flex;
+    color: #94b9c5;
+    font-size: 13px;
+    align-items: center;
+    justify-content: end;
 }
 
 .fta3_5 {
@@ -550,6 +571,15 @@ canvas {
     background-image: url("../assets/images/Anillo/line_right_middle.svg");
     background-position: right;
     background-size: 100%;
+}
+
+.fta4_3_1 {
+    display: flex;
+    color: #94b9c5;
+    font-size: 13px;
+    align-items: flex-end;
+    justify-content: center;
+
 }
 
 .fta4_3_2 {

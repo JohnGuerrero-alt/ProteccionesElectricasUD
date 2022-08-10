@@ -74,11 +74,21 @@ const modeloAnillo = {
 }
 
 const modeloReleAnillo = {
-    1: {
-        nombre: "Rele 1",
+    0: {
+        nombre: "-",
         Isc: "",
         Ic: "",
-        margenIc: tabla_Margen_Ic_A,
+        margenIc: "",
+        familiaCurva: "",
+        TMS: "",
+        tiempo: "",
+        tiempoInstantaneo: "",
+    },
+    1: {
+        nombre: "Rele 1",
+        Isc: tabla_Isc_Rele1,
+        Ic: "",
+        margenIc: tabla_Margen_Ic_1,
         familiaCurva: tabla_familiaCurva_A,
         TMS: tabla_TMS_A,
         tiempo: tabla_Tiempo_A,
@@ -86,9 +96,9 @@ const modeloReleAnillo = {
     },
     2: {
         nombre: "Rele 2",
-        Isc: "",
+        Isc: tabla_Isc_Rele2,
         Ic: "",
-        margenIc: tabla_Margen_Ic_A,
+        margenIc: tabla_Margen_Ic_2,
         familiaCurva: tabla_familiaCurva_A,
         TMS: tabla_TMS_A,
         tiempo: tabla_Tiempo_A,
@@ -96,9 +106,9 @@ const modeloReleAnillo = {
     },
     3: {
         nombre: "Rele 3",
-        Isc: "",
+        Isc: tabla_Isc_Rele3,
         Ic: "",
-        margenIc: tabla_Margen_Ic_A,
+        margenIc: tabla_Margen_Ic_3,
         familiaCurva: tabla_familiaCurva_A,
         TMS: tabla_TMS_A,
         tiempo: tabla_Tiempo_A,
@@ -106,9 +116,9 @@ const modeloReleAnillo = {
     },
     4: {
         nombre: "Rele 4",
-        Isc: "",
+        Isc: tabla_Isc_Rele4,
         Ic: "",
-        margenIc: tabla_Margen_Ic_A,
+        margenIc: tabla_Margen_Ic_4,
         familiaCurva: tabla_familiaCurva_A,
         TMS: tabla_TMS_A,
         tiempo: tabla_Tiempo_A,
@@ -116,9 +126,9 @@ const modeloReleAnillo = {
     },
     5: {
         nombre: "Rele 5",
-        Isc: "",
+        Isc: tabla_Isc_Rele5,
         Ic: "",
-        margenIc: tabla_Margen_Ic_A,
+        margenIc: tabla_Margen_Ic_5,
         familiaCurva: tabla_familiaCurva_A,
         TMS: tabla_TMS_A,
         tiempo: tabla_Tiempo_A,
@@ -126,9 +136,9 @@ const modeloReleAnillo = {
     },
     6: {
         nombre: "Rele 6",
-        Isc: "",
+        Isc: tabla_Isc_Rele6,
         Ic: "",
-        margenIc: tabla_Margen_Ic_A,
+        margenIc: tabla_Margen_Ic_6,
         familiaCurva: tabla_familiaCurva_A,
         TMS: tabla_TMS_A,
         tiempo: tabla_Tiempo_A,
@@ -136,9 +146,9 @@ const modeloReleAnillo = {
     },
     7: {
         nombre: "Rele 7",
-        Isc: "",
+        Isc: tabla_Isc_Rele7,
         Ic: "",
-        margenIc: tabla_Margen_Ic_A,
+        margenIc: tabla_Margen_Ic_7,
         familiaCurva: tabla_familiaCurva_A,
         TMS: tabla_TMS_A,
         tiempo: tabla_Tiempo_A,
@@ -146,9 +156,9 @@ const modeloReleAnillo = {
     },
     8: {
         nombre: "Rele 8",
-        Isc: "",
+        Isc: tabla_Isc_Rele8,
         Ic: "",
-        margenIc: tabla_Margen_Ic_A,
+        margenIc: tabla_Margen_Ic_8,
         familiaCurva: tabla_familiaCurva_A,
         TMS: tabla_TMS_A,
         tiempo: tabla_Tiempo_A,
@@ -157,7 +167,7 @@ const modeloReleAnillo = {
 }
 
 
-var S1 ="", S2 ="", S3 ="", S4 = "", Z1 ="", Z2 ="", Z3 ="", Z4 = "", VAnillo ="";
+var S1 = "", S2 = "", S3 = "", S4 = "", Z1 = "", Z2 = "", Z3 = "", Z4 = "", VAnillo = "";
 var Isc_Rele1, Isc_Rele2, Isc_Rele3, Isc_Rele4, Isc_Rele5, Isc_Rele6, Isc_Rele7, Isc_Rele8;
 var Ic_Rele1, Ic_Rele2, Ic_Rele3, Ic_Rele4, Ic_Rele5, Ic_Rele6, Ic_Rele7, Ic_Rele8;
 var margen_Ic_r1, margen_Ic_r2, margen_Ic_r3, margen_Ic_r4, margen_Ic_r5, margen_Ic_r6, margen_Ic_r7, margen_Ic_r8;
@@ -175,7 +185,18 @@ var TMSparteANSI_1, TMSparteANSI_2, TMSparteANSI_3, TMSparteANSI_4, TMSparteANSI
 
 var displayVoltaje = "display:none";
 var displayImpedancia = "display:none";
-var displayPotencia = "display:none"; 
+var displayPotencia = "display:none";
+
+tabla_Margen_Ic_1 = ""; tabla_Margen_Ic_2 = ""; tabla_Margen_Ic_3 = ""; tabla_Margen_Ic_4 = ""; tabla_Margen_Ic_5 = ""; tabla_Margen_Ic_6 = ""; tabla_Margen_Ic_7 = ""; tabla_Margen_Ic_8 = "";
+
+var Ic_A, Ic_B, Ic_43, Ic_32, Ic_2;
+var Ic_23, Ic_34, Ic_4;
+var Ic_78, Ic_56, Ic_34, Ic_12;
+var Zfalla;
+var Isc_2I, Isc_2D, Isc_2A, Isc_2B;
+var Isc_3I, Isc_3D, Isc_3A, Isc_3B;
+var Isc_4I, Isc_4D, Isc_4A, Isc_4B;
+var Isc_1, Isc_2, Isc_3, Isc_4;
 
 
 
@@ -343,27 +364,27 @@ function escogerSegunTipo(tipo) {
     console.log("tipo nodo: ", tipo)
 
     try {
-        if(tipo == "Generador"){
+        if (tipo == "Generador") {
             displayVoltaje = "display: grid; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr 1fr; ";
             displayPotencia = "display: grid; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr 1fr; ";
             displayImpedancia = "display:none";
         }
-        if(tipo == "Barra"){
+        if (tipo == "Barra") {
             displayVoltaje = "display:none";
             displayPotencia = "display:none";
             displayImpedancia = "display: grid; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr 1fr; ";
         }
-        if(tipo == "Carga" ){
+        if (tipo == "Carga") {
             displayVoltaje = "display:none";
             displayPotencia = "display: grid; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr 1fr; ";
             displayImpedancia = "display:none";
         }
 
-    } catch(error) {
+    } catch (error) {
 
     }
 
-    
+
 }
 
 async function establecerValoresAnillo(valores, tipo) {
@@ -419,7 +440,7 @@ async function establecerValoresAnillo(valores, tipo) {
                 document.getElementById('swal-Anillo-Voltaje').value,
                 document.getElementById('swal-Anillo-potencia').value,
                 document.getElementById('swal-Anillo-impedancia').value,
-                
+
             ]
         },
 
@@ -437,35 +458,186 @@ async function establecerValoresAnillo(valores, tipo) {
 }
 
 
-function guardarAnilloGeneral(elemento, datos){
+function guardarAnilloGeneral(elemento, datos) {
     console.log("datos pasados: ", datos);
     console.log("modeloAnillo[1].impedancia: ", modeloAnillo[1].impedancia)
     modeloAnillo[elemento].voltaje = parseFloat(datos[0]);
     modeloAnillo[elemento].potencia = parseFloat(datos[1]);
     modeloAnillo[elemento].impedancia = parseFloat(datos[2]);
 
-    if( !isNaN(modeloAnillo[0].voltaje)   ){
-        valor_diagrama_Generador.innerHTML = modeloAnillo[0].voltaje + " kV" + "<br>" ;
+    if (!isNaN(modeloAnillo[0].voltaje)) {
+        valor_diagrama_Generador.innerHTML = modeloAnillo[0].voltaje + " kV" + "<br>";
     } else { valor_diagrama_Generador.innerHTML = " kV" + "<br>"; }
-    if (!isNaN(modeloAnillo[0].potencia) ) { valor_diagrama_Generador.innerHTML =  valor_diagrama_Generador.innerHTML +  modeloAnillo[0].potencia  + " MVA" + "<br>" }
-    
-    if(!isNaN(modeloAnillo[1].impedancia) ) { valor_barra_1_2.innerHTML = modeloAnillo[1].impedancia + " Ω"; } else { valor_barra_1_2.innerText = " Ω";}
+    if (!isNaN(modeloAnillo[0].potencia)) { valor_diagrama_Generador.innerHTML = valor_diagrama_Generador.innerHTML + modeloAnillo[0].potencia + " MVA" + "<br>" }
 
-    if(!isNaN(modeloAnillo[2].impedancia)) { valor_barra_4_1.innerText = modeloAnillo[2].impedancia + " Ω"; } else { valor_barra_4_1.innerText = " Ω";}
+    if (!isNaN(modeloAnillo[1].impedancia)) { valor_barra_1_2.innerHTML = modeloAnillo[1].impedancia + " Ω"; } else { valor_barra_1_2.innerText = " Ω"; }
 
-    if(!isNaN(modeloAnillo[3].potencia)) { valor_carga_izquierda.innerText = modeloAnillo[3].potencia + " MVA"; } else { valor_carga_izquierda.innerText = " MVA";}
+    if (!isNaN(modeloAnillo[2].impedancia)) { valor_barra_4_1.innerText = modeloAnillo[2].impedancia + " Ω"; } else { valor_barra_4_1.innerText = " Ω"; }
 
-    if(!isNaN(modeloAnillo[4].potencia)) { valor_carga_derecha.innerText = modeloAnillo[4].potencia + " MVA"; } else { valor_carga_derecha.innerText = " MVA";}
+    if (!isNaN(modeloAnillo[3].potencia)) { valor_carga_izquierda.innerText = modeloAnillo[3].potencia + " MVA"; } else { valor_carga_izquierda.innerText = " MVA"; }
 
-    if(!isNaN(modeloAnillo[5].impedancia)) { valor_barra_2_3.innerHTML = "<br>"+ modeloAnillo[5].impedancia + " Ω"; } else { valor_barra_2_3.innerHTML = "<br>" + " Ω";}
+    if (!isNaN(modeloAnillo[4].potencia)) { valor_carga_derecha.innerText = modeloAnillo[4].potencia + " MVA"; } else { valor_carga_derecha.innerText = " MVA"; }
 
-    if(!isNaN(modeloAnillo[6].impedancia)) { valor_barra_3_4.innerHTML = "<br>" + modeloAnillo[6].impedancia + " Ω"; } else { valor_barra_3_4.innerHTML = "<br>" + " Ω";}
-    
-    if(!isNaN(modeloAnillo[7].potencia)) { valor_carga_abajo.innerHTML = "<br>" + modeloAnillo[7].potencia   + " MVA"; } else { valor_carga_abajo.innerHTML= "<br>" +  " MVA";}
+    if (!isNaN(modeloAnillo[5].impedancia)) { valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].impedancia + " Ω"; } else { valor_barra_2_3.innerHTML = "<br>" + " Ω"; }
+
+    if (!isNaN(modeloAnillo[6].impedancia)) { valor_barra_3_4.innerHTML = "<br>" + modeloAnillo[6].impedancia + " Ω"; } else { valor_barra_3_4.innerHTML = "<br>" + " Ω"; }
+
+    if (!isNaN(modeloAnillo[7].potencia)) { valor_carga_abajo.innerHTML = "<br>" + modeloAnillo[7].potencia + " MVA"; } else { valor_carga_abajo.innerHTML = "<br>" + " MVA"; }
 
 
-    
+
 }
+
+
+function ejemploAnillo() {
+    modeloAnillo[0].voltaje = 13.2;
+    modeloAnillo[0].potencia = 150;
+    modeloAnillo[1].impedancia = 2;
+    modeloAnillo[2].impedancia = 3;
+    modeloAnillo[3].potencia = 5;
+    modeloAnillo[4].potencia = 7;
+    modeloAnillo[5].impedancia = 2;
+    modeloAnillo[6].impedancia = 4;
+    modeloAnillo[7].potencia = 3;
+    valor_diagrama_Generador.innerHTML = modeloAnillo[0].voltaje + " kV" + "<br>";
+    valor_diagrama_Generador.innerHTML = valor_diagrama_Generador.innerHTML + modeloAnillo[0].potencia + " MVA" + "<br>";
+    valor_barra_1_2.innerHTML = modeloAnillo[1].impedancia + " Ω";
+    valor_barra_4_1.innerText = modeloAnillo[2].impedancia + " Ω";
+    valor_carga_izquierda.innerText = modeloAnillo[3].potencia + " MVA";
+    valor_carga_derecha.innerText = modeloAnillo[4].potencia + " MVA";
+    valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].impedancia + " Ω";
+    valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].impedancia + " Ω";
+    valor_barra_3_4.innerHTML = "<br>" + modeloAnillo[6].impedancia + " Ω";
+    valor_carga_abajo.innerHTML = "<br>" + modeloAnillo[7].potencia + " MVA";
+
+
+
+}
+
+
+
+function calcularValoresRelesAnillo() {
+
+    S1 = modeloAnillo[0].potencia; S2 = modeloAnillo[3].potencia, S3 = modeloAnillo[4].potencia; S4 = modeloAnillo[7].potencia; Z1 = modeloAnillo[1].impedancia; Z2 = modeloAnillo[2].impedancia; Z3 = modeloAnillo[5].impedancia; Z4 = modeloAnillo[6].impedancia; VAnillo = modeloAnillo[0].voltaje;
+
+
+    //Cuando tenemos abierto en  el Relé 1 (A)
+    Ic_B = (((S3 * (1000000)) + (S4 * (1000000)) + (S2) * (1000000)) / ((Math.sqrt(3)) * (VAnillo) * (1000)));
+    Ic_43 = (((S4 * (1000000)) + (S2) * (1000000)) / ((Math.sqrt(3)) * (VAnillo) * (1000)));
+    Ic_32 = (((S2) * (1000000)) / ((Math.sqrt(3)) * (VAnillo) * (1000)));
+    Ic_2 = 0;
+
+    //Cuando tenemos abierto en el Relé 8 (B)
+    Ic_A = (((S2 * (1000000)) + (S4 * (1000000)) + (S3) * (1000000)) / ((Math.sqrt(3)) * (VAnillo) * (1000)));
+    Ic_23 = (((S4 * (1000000)) + (S3) * (1000000)) / ((Math.sqrt(3)) * (VAnillo) * (1000)));
+    Ic_34 = (((S3) * (1000000)) / ((Math.sqrt(3)) * (VAnillo) * (1000)));
+    Ic_4 = 0;
+
+    //Determinamos cuales son las corriente de carga comparando el mayor valor
+    Ic_78 = Math.max(Ic_B, Ic_2).toFixed(2);
+    Ic_56 = Math.max(Ic_43, Ic_34).toFixed(2);
+    Ic_34 = Math.max(Ic_32, Ic_23).toFixed(2);
+    Ic_12 = Math.max(Ic_2, Ic_A).toFixed(2);
+
+
+    tabla_Ic_Rele1.innerText = Ic_12;
+    tabla_Ic_Rele2.innerText = Ic_12;
+    tabla_Ic_Rele3.innerText = Ic_34;
+    tabla_Ic_Rele4.innerText = Ic_34;
+    tabla_Ic_Rele5.innerText = Ic_56;
+    tabla_Ic_Rele6.innerText = Ic_56;
+    tabla_Ic_Rele7.innerText = Ic_78;
+    tabla_Ic_Rele8.innerText = Ic_78;
+
+    modeloReleAnillo[1].Ic = Ic_12;
+    modeloReleAnillo[2].Ic = Ic_12;
+    modeloReleAnillo[3].Ic = Ic_34;
+    modeloReleAnillo[4].Ic = Ic_34;
+    modeloReleAnillo[5].Ic = Ic_56;
+    modeloReleAnillo[6].Ic = Ic_56;
+    modeloReleAnillo[7].Ic = Ic_78;
+    modeloReleAnillo[8].Ic = Ic_78;
+
+    Zfalla = ((Math.pow((VAnillo) * (1000), 2))) / (S1 * (1000000));
+
+    Isc_2 = ((VAnillo) * (1000)) / (((Math.sqrt(3))) * (Zfalla + (1 / ((1 / Z1) + (1 / (Z3 + Z4 + Z2))))));
+    Isc_2D = Isc_2 * ((Z1) / (Z1 + Z3 + Z4 + Z2));
+    Isc_2I = Isc_2 * ((Z3 + Z4 + Z2) / (Z1 + Z3 + Z4 + Z2));
+    Isc_2A = ((VAnillo) * (1000)) / ((Math.sqrt(3)) * (Zfalla + Z3 + Z4 + Z2));
+    Isc_2B = ((VAnillo) * (1000)) / ((Math.sqrt(3)) * (Zfalla + Z1));
+
+    Isc_3 = ((VAnillo) * (1000)) / (((Math.sqrt(3))) * (Zfalla + (1 / ((1 / (Z1 + Z3)) + (1 / (Z4 + Z2))))));
+    Isc_3D = Isc_3 * ((Z1 + Z3) / (Z1 + Z3 + Z4 + Z2));
+    Isc_3I = Isc_3 * ((Z4 + Z2) / (Z1 + Z3 + Z4 + Z2));
+    Isc_3A = ((VAnillo) * (1000)) / ((Math.sqrt(3)) * (Zfalla + Z4 + Z2));
+    Isc_3B = ((VAnillo) * (1000)) / ((Math.sqrt(3)) * (Zfalla + Z1 + Z3));
+
+    Isc_4 = ((VAnillo) * (1000)) / (((Math.sqrt(3))) * (Zfalla + (1 / ((1 / (Z1 + Z3 + Z4)) + (1 / (Z2))))));
+    Isc_4D = Isc_4 * ((Z1 + Z3 + Z4) / (Z1 + Z3 + Z4 + Z2));
+    Isc_4I = Isc_4 * ((Z2) / (Z1 + Z3 + Z4 + Z2));
+    Isc_4A = ((VAnillo) * (1000)) / ((Math.sqrt(3)) * (Zfalla + Z2));
+    Isc_4B = ((VAnillo) * (1000)) / ((Math.sqrt(3)) * (Zfalla + Z1 + Z3 + Z4));
+
+
+    Isc_Rele1 = Math.max(Isc_2I, Isc_2B, Isc_3I, Isc_3B, Isc_4I, Isc_4B);
+    Isc_Rele3 = Math.max(Isc_3I, Isc_3B, Isc_4I, Isc_4B);
+    Isc_Rele4 = Math.max(Isc_2D, Isc_2A);
+    Isc_Rele5 = Math.max(Isc_4I, Isc_4B);
+    Isc_Rele6 = Math.max(Isc_2D, Isc_2A, Isc_3D, Isc_3A);
+    Isc_Rele8 = Math.max(Isc_2D, Isc_2A, Isc_3D, Isc_3A, Isc_4D, Isc_4A)
+
+
+    console.log("Z1: ", Z1)
+    console.log("Z2: ", Z2)
+    console.log("Z3: ", Z3)
+    console.log("Z4: ", Z4)
+    console.log("Zfalla: ", Zfalla)
+
+    console.log("Vanillo: ", VAnillo)
+    console.log("S1: ", S1)
+
+    console.log("v78 ", Ic_78)
+    console.log("v56 ", Ic_56)
+    console.log("v34 ", Ic_34)
+    console.log("v12 ", Ic_12)
+    console.log("Isc_Rele1", Isc_Rele1 * 1.25)
+    console.log("Isc_Rele2", Ic_A * 1.5)
+    console.log("Isc_Rele3", Isc_Rele3 * 1.25)
+    console.log("Isc_Rele4", Isc_Rele4 * 1.25)
+    console.log("Isc_Rele5", Isc_Rele5 * 1.25)
+    console.log("Isc_Rele6", Isc_Rele6 * 1.25)
+    console.log("Isc_Rele7", Ic_B * 1.5)
+    console.log("Isc_Rele8", Isc_Rele8 * 1.25)
+
+    //Se imprime los valores, aplicando su factor de ajuste
+
+    tabla_Isc_Rele1.innerText = (Isc_Rele1 * 1.25).toFixed(2);
+    tabla_Isc_Rele2.innerText = (Ic_A * 1.5).toFixed(2);
+    tabla_Isc_Rele3.innerText = (Isc_Rele3 * 1.25).toFixed(2);
+    tabla_Isc_Rele4.innerText = (Isc_Rele4 * 1.25).toFixed(2);
+    tabla_Isc_Rele5.innerText = (Isc_Rele5 * 1.25).toFixed(2);
+    tabla_Isc_Rele6.innerText = (Isc_Rele6 * 1.25).toFixed(2);
+    tabla_Isc_Rele7.innerText = (Ic_B * 1.5).toFixed(2);
+    tabla_Isc_Rele8.innerText = (Isc_Rele8 * 1.25).toFixed(2);
+
+
+
+    modeloReleAnillo[1].Isc = (Isc_Rele1 * 1.25).toFixed(2);
+    modeloReleAnillo[2].Isc = (Ic_A * 1.5).toFixed(2);
+    modeloReleAnillo[3].Isc = (Isc_Rele3 * 1.25).toFixed(2);
+    modeloReleAnillo[4].Isc = (Isc_Rele4 * 1.25).toFixed(2);
+    modeloReleAnillo[5].Isc = (Isc_Rele5 * 1.25).toFixed(2);
+    modeloReleAnillo[6].Isc = (Isc_Rele6 * 1.25).toFixed(2);
+    modeloReleAnillo[7].Isc = (Ic_B * 1.5).toFixed(2);
+    modeloReleAnillo[8].Isc = (Isc_Rele8 * 1.25).toFixed(2);
+
+
+
+
+
+
+}
+
 
 
 
@@ -480,12 +652,17 @@ async function guardarValoresReles(valores) {
         <table class="table align-middle" style="font-size:13px">
         <tr>
          <th scope="row">Isc</th>
-         <td><input type="number" id="swal-Isc" value="${modeloReleAnillo[valores].Isc}" class="swal2-input" min="0"></td> 
+         <td><input type="number" id="swal-Anillo-Isc" value="${modeloReleAnillo[valores].Isc}" class="swal2-input" min="0"></td> 
          <td>[A]</td> 
          <th scope="row" colspan="1">Ic</th>
-         <td><input type="number" class="swal2-input" id="swal-Ic" value="${modeloReleAnillo[valores].Ic}" min="0"></td>
+         <td><input type="number" class="swal2-input" id="swal-Anillo-Ic" value="${modeloReleAnillo[valores].Ic}" min="0"></td>
          <td>[A]</td>
          </tr>
+
+         <tr>
+            <th scope="row">Margen Ic</th><td><input type="number" class="swal2-input" value="${modeloReleAnillo[valores].margenIc}" min="0" id="swal-Anillo-margenIc"></td><td>%</td>
+
+            <th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-Anillo-tiempo" value="${modeloReleAnillo[valores].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-curva">  <option selected hidden>${modeloReleAnillo[valores].familiaCurva}</option> <option>Normal Inversa</option><option>Muy Inversa</option><option>Extremadamente Inversa</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>
 
         
          </table>
@@ -497,9 +674,9 @@ async function guardarValoresReles(valores) {
         //  <tr>
         //  <th scope="row">Margen Ic</th><td><input type="number" class="swal2-input" value="${modeloRele[nombreRele].margenIc}" min="0" id="swal-margenIc"></td><td>%</td>
 
-        //  <th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-tiempo" value="${modeloRele[nombreRele].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-curva">  <option selected hidden>${modeloRele[nombreRele].familiaCurva}</option> <option>Normal Inversa</option><option>Muy Inversa</option><option>Extremadamente Inversa</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>             <tr><th scope="row">TMS(Dial)</th><td>
+        //  <th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-tiempo" value="$modeloAnillo[valores].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-curva">  <option selected hidden>${modeloAnillo[valores]familiaCurva}</option> <option>Normal Inversa</option><option>Muy Inversa</option><option>Extremadamente Inversa</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>             <tr><th scope="row">TMS(Dial)</th><td>
         // <select class="form-select selectSwal"  id="swal-TMS" >
-        //   <option selected id="option-seleccionada" hidden>${modeloRele[nombreRele].TMS}</option>
+        //   <option selected id="option-seleccionada" hidden>${modeloAnillo[valores].TMS}</option>
         //   <option value="0.05">0.05</option><option value="0.06">0.06</option><option value="0.07">0.07</option>
         //   <option value="0.08">0.08</option><option value="0.09">0.09</option><option value="0.10">0.10</option>
         //   <option value="0.11">0.11</option><option value="0.12">0.12</option><option value="0.13">0.13</option>
@@ -536,13 +713,79 @@ async function guardarValoresReles(valores) {
 
 
         //   </td> <th scope="row">Tiempo(instantaneo)</th><td><input  id="swal-tInstantaneo" type="number" value="${modeloReleAnillo[nombreRele].tiempoInstantaneo}" class="swal2-input" min="0"></td><td>[ms]</td></tr>
+        ,
+        showConfirmButton: true,
+        confirmButtonText: "Guardar",
+        showCloseButton: true,
+        showCancelButton: false,
+        customClass: {
+            confirmButton: 'botonGuardar hoverButton',
+        },
+        preConfirm: () => {
+            return [
 
+                document.getElementById('swal-Anillo-Isc').value,
+                document.getElementById('swal-Anillo-Ic').value,
+                document.getElementById('swal-Anillo-margenIc').value,
+                document.getElementById('swal-Anillo-tiempo').value
 
+                //document.getElementById('swal-Anillo-impedancia').value,
 
+            ]
+        },
 
 
     })
 
+
+    if (formValues) {
+        //Swal.fire(JSON.stringify(formValues))
+        console.log("resultado: ", formValues)
+        guardarAnilloReleGeneral(valores, formValues)
+    }
+
+    function guardarAnilloReleGeneral(valores, datos) {
+
+
+
+
+
+        modeloReleAnillo[valores].Isc = parseFloat(datos[0]);
+        modeloReleAnillo[valores].Ic = parseFloat(datos[1]);
+        modeloReleAnillo[valores].margenIc = parseFloat(datos[2]);
+        //modeloReleAnillo[valores].tiempo = parseFloat(datos[3]);
+
+        // document.getElementById("tabla_Isc_Rele" + valores).innerText =parseFloat(datos[0]);
+        // document.getElementById("tabla_Ic_Rele" + valores).innerText = parseFloat(datos[1]);
+        // document.getElementById("tabla_Margen_Ic_" + valores).innerText = parseFloat(datos[2]);
+
+        tabla_Isc_Rele1.innerText = modeloReleAnillo[1].Isc;
+        tabla_Isc_Rele2.innerText = modeloReleAnillo[2].Isc;
+        tabla_Isc_Rele3.innerText = modeloReleAnillo[3].Isc;
+        tabla_Isc_Rele4.innerText = modeloReleAnillo[4].Isc;
+        tabla_Isc_Rele5.innerText = modeloReleAnillo[5].Isc;
+        tabla_Isc_Rele6.innerText = modeloReleAnillo[6].Isc;
+        tabla_Isc_Rele7.innerText = modeloReleAnillo[7].Isc;
+        tabla_Isc_Rele8.innerText = modeloReleAnillo[8].Isc;
+
+        tabla_Ic_Rele1.innerText = modeloReleAnillo[1].Ic;
+        tabla_Ic_Rele2.innerText = modeloReleAnillo[2].Ic;
+        tabla_Ic_Rele3.innerText = modeloReleAnillo[3].Ic;
+        tabla_Ic_Rele4.innerText = modeloReleAnillo[4].Ic;
+        tabla_Ic_Rele5.innerText = modeloReleAnillo[5].Ic;
+        tabla_Ic_Rele6.innerText = modeloReleAnillo[6].Ic;
+        tabla_Ic_Rele7.innerText = modeloReleAnillo[7].Ic;
+        tabla_Ic_Rele8.innerText = modeloReleAnillo[8].Ic;
+
+        // tabla_Margen_Ic_1.innerText = modeloReleAnillo[1].margen_Ic_r1;
+        // tabla_Margen_Ic_2.innerText = modeloReleAnillo[2].margen_Ic_r2;
+        // tabla_Margen_Ic_3.innerText = modeloReleAnillo[3].margen_Ic_r3;
+        // tabla_Margen_Ic_4.innerText = modeloReleAnillo[4].margen_Ic_r4;
+        // tabla_Margen_Ic_5.innerText = modeloReleAnillo[5].margen_Ic_r5;
+        // tabla_Margen_Ic_6.innerText = modeloReleAnillo[6].margen_Ic_r6;
+        // tabla_Margen_Ic_7.innerText = modeloReleAnillo[7].margen_Ic_r7;
+        // tabla_Margen_Ic_8.innerText = modeloReleAnillo[8].margen_Ic_r8;
+    }
 
 
 }
