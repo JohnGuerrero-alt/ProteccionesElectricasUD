@@ -1,4 +1,4 @@
-// Declaramos las variables globales
+// Definimos objetos que tendrán variables guardadas especificas
 const modeloAnillo = {
     0: {
         nombre: "Generador",
@@ -166,6 +166,85 @@ const modeloReleAnillo = {
     }
 }
 
+const parametrosCurvaAnillo = {
+    "Normal Inversa - IEC": {
+        alfa: 0.02,
+        beta: 0.14,
+        lambda: 0,
+        B: 1,
+        D: 1,
+        E: 1,
+        A: 1,
+        C: 1,
+        IEC: 1,
+        ANSI: 0
+
+    },
+    "Muy Inversa - IEC": {
+        alfa: 1,
+        beta: 13.5,
+        lambda: 0,
+        B: 1,
+        D: 1,
+        E: 1,
+        A: 1,
+        C: 1,
+        IEC: 1,
+        ANSI: 0
+    },
+    "Extremadamente Inversa - IEC": {
+        alfa: 2.1,
+        beta: 80,
+        lambda: 0,
+        B: 1,
+        D: 1,
+        E: 1,
+        A: 1,
+        C: 1,
+        IEC: 1,
+        ANSI: 0
+    },
+    "Normal Inversa - ANSI": {
+        alfa: 1,
+        beta: 1,
+        lambda: 0,
+        B: 2.2614,
+        D: -4.1899,
+        E: 9.1272,
+        A: 0.0274,
+        C: 0.30,
+        IEC: 0,
+        ANSI: 1
+
+    },
+    "Muy Inversa - ANSI": {
+        alfa: 1,
+        beta: 1,
+        lambda: 0,
+        B: 0.7989,
+        D: -0.2840,
+        E: 4.0505,
+        A: 0.0615,
+        C: 0.34,
+        ANSI: 1,
+        IEC: 0
+    },
+    "Extremadamente Inversa - ANSI": {
+        alfa: 1,
+        beta: 1,
+        lambda: 0,
+        B: 0.2294,
+        D: 3.0094,
+        E: 0.7222,
+        A: 0.0399,
+        C: 0.50,
+        IEC: 0,
+        ANSI: 1
+    }
+
+
+}
+
 //Inicializa las variables y agregando campos vacios por defecto
 
 var S1 = "", S2 = "", S3 = "", S4 = "", Z1 = "", Z2 = "", Z3 = "", Z4 = "", VAnillo = "";
@@ -175,6 +254,7 @@ var margen_Ic_r1, margen_Ic_r2, margen_Ic_r3, margen_Ic_r4, margen_Ic_r5, margen
 var familiaCurvaR1, familiaCurvaR2, familiaCurvaR3, familiaCurvaR4, familiaCurvaR5, familiaCurvaR6, familiaCurvaR7, familiaCurvaR8;
 var TMS_r1, TMS_r2, TMS_r3, TMS_r4, TMS_r5, TMS_r6, TMS_r7, TMS_r8;
 var TMS_calculado_r1, TMS_calculado_r2, TMS_calculado_r3, TMS_calculado_r4, TMS_calculado_r5, TMS_calculado_r6, TMS_calculado_r7, TMS_calculado_r8;
+var tiempo_r1, tiempo_r2, tiempo_r3, tiempo_r4, tiempo_r5, tiempo_r6, tiempo_r7, tiempo_r8;
 var tiempo_instantaneo_r1, tiempo_instantaneo_r2, tiempo_instantaneo_r3, tiempo_instantaneo_r4, tiempo_instantaneo_r5, tiempo_instantaneo_r6, tiempo_instantaneo_r7, tiempo_instantaneo_r8;
 var Ic_1_con_margen, Ic_2_con_margen, Ic_3_con_margen, Ic_4_con_margen, Ic_5_con_margen, Ic_6_con_margen, Ic_7_con_margen, Ic_8_con_margen;
 var tmsAnilloOpcion1, tmsAnilloOpcion2;
@@ -302,86 +382,6 @@ var valor_barra_2_3 = document.getElementById("Barra2_3");
 var valor_barra_3_4 = document.getElementById("Barra3_4");
 var valor_carga_abajo = document.getElementById("cargaAbajo");
 
-
-
-const parametrosCurvaAnillo = {
-    "Normal Inversa - IEC": {
-        alfa: 0.02,
-        beta: 0.14,
-        lambda: 0,
-        B: 1,
-        D: 1,
-        E: 1,
-        A: 1,
-        C: 1,
-        IEC: 1,
-        ANSI: 0
-
-    },
-    "Muy Inversa - IEC": {
-        alfa: 1,
-        beta: 13.5,
-        lambda: 0,
-        B: 1,
-        D: 1,
-        E: 1,
-        A: 1,
-        C: 1,
-        IEC: 1,
-        ANSI: 0
-    },
-    "Extremadamente Inversa - IEC": {
-        alfa: 2.1,
-        beta: 80,
-        lambda: 0,
-        B: 1,
-        D: 1,
-        E: 1,
-        A: 1,
-        C: 1,
-        IEC: 1,
-        ANSI: 0
-    },
-    "Normal Inversa - ANSI": {
-        alfa: 1,
-        beta: 1,
-        lambda: 0,
-        B: 2.2614,
-        D: -4.1899,
-        E: 9.1272,
-        A: 0.0274,
-        C: 0.30,
-        IEC: 0,
-        ANSI: 1
-
-    },
-    "Muy Inversa - ANSI": {
-        alfa: 1,
-        beta: 1,
-        lambda: 0,
-        B: 0.7989,
-        D: -0.2840,
-        E: 4.0505,
-        A: 0.0615,
-        C: 0.34,
-        ANSI: 1,
-        IEC: 0
-    },
-    "Extremadamente Inversa - ANSI": {
-        alfa: 1,
-        beta: 1,
-        lambda: 0,
-        B: 0.2294,
-        D: 3.0094,
-        E: 0.7222,
-        A: 0.0399,
-        C: 0.50,
-        IEC: 0,
-        ANSI: 1
-    }
-
-
-}
 
 //FUNCIONES QUE SE UTILIZARÁN
 function escogerSegunTipo(tipo) {
@@ -866,23 +866,212 @@ async function guardarValoresReles(valores) {
 
 function graficarCurvaTopologiaAnillo() {
 
-    console.log("entro gráfica Lados Izquierdo - Derecho")
+    console.log("entro gráfica Lados Izquierdo - Derecho");
+    calculosGraficaAnillo();
     graficarCurvaLadoIzquierdo();
     graficarCurvaLadoDerecho();
 
 }
 
+function calculosGraficaAnillo(){
+
+    Isc_Rele1 = modeloReleAnillo[1].Isc;
+    Isc_Rele2 = modeloReleAnillo[2].Isc;
+    Isc_Rele3 = modeloReleAnillo[3].Isc;
+    Isc_Rele4 = modeloReleAnillo[4].Isc;
+    Isc_Rele5 = modeloReleAnillo[5].Isc;
+    Isc_Rele6 = modeloReleAnillo[6].Isc;
+    Isc_Rele7 = modeloReleAnillo[7].Isc;
+    Isc_Rele8 = modeloReleAnillo[8].Isc;
+    
+    Ic_Rele1 = modeloReleAnillo[1].Ic;
+    Ic_Rele2 = modeloReleAnillo[2].Ic;
+    Ic_Rele3 = modeloReleAnillo[3].Ic;
+    Ic_Rele4 = modeloReleAnillo[4].Ic;
+    Ic_Rele5 = modeloReleAnillo[5].Ic;
+    Ic_Rele6 = modeloReleAnillo[6].Ic;
+    Ic_Rele7 = modeloReleAnillo[7].Ic;
+    Ic_Rele8 = modeloReleAnillo[8].Ic;
+
+    margen_Ic_r1 = modeloReleAnillo[1].margenIc;
+    margen_Ic_r2 = modeloReleAnillo[2].margenIc;
+    margen_Ic_r3 = modeloReleAnillo[3].margenIc;
+    margen_Ic_r4 = modeloReleAnillo[4].margenIc;
+    margen_Ic_r5 = modeloReleAnillo[5].margenIc;
+    margen_Ic_r6 = modeloReleAnillo[6].margenIc;
+    margen_Ic_r7 = modeloReleAnillo[7].margenIc;
+    margen_Ic_r8 = modeloReleAnillo[8].margenIc;
+
+    familiaCurvaR1 = modeloReleAnillo[1].familiaCurva;
+    familiaCurvaR2 = modeloReleAnillo[2].familiaCurva;
+    familiaCurvaR3 = modeloReleAnillo[3].familiaCurva;
+    familiaCurvaR4 = modeloReleAnillo[4].familiaCurva;
+    familiaCurvaR5 = modeloReleAnillo[5].familiaCurva;
+    familiaCurvaR6 = modeloReleAnillo[6].familiaCurva;
+    familiaCurvaR7 = modeloReleAnillo[7].familiaCurva;
+    familiaCurvaR8 = modeloReleAnillo[8].familiaCurva;
+
+    TMS_r1 = modeloReleAnillo[1].TMS;
+    TMS_r2 = modeloReleAnillo[2].TMS;
+    TMS_r3 = modeloReleAnillo[3].TMS;
+    TMS_r4 = modeloReleAnillo[4].TMS;
+    TMS_r5 = modeloReleAnillo[5].TMS;
+    TMS_r6 = modeloReleAnillo[6].TMS;
+    TMS_r7 = modeloReleAnillo[7].TMS;
+    TMS_r8 = modeloReleAnillo[8].TMS;
+
+    tiempo_r1 = modeloReleAnillo[1].tiempo;
+    tiempo_r2 = modeloReleAnillo[2].tiempo;
+    tiempo_r3 = modeloReleAnillo[3].tiempo;
+    tiempo_r4 = modeloReleAnillo[4].tiempo;
+    tiempo_r5 = modeloReleAnillo[5].tiempo;
+    tiempo_r6 = modeloReleAnillo[6].tiempo;
+    tiempo_r7 = modeloReleAnillo[7].tiempo;
+    tiempo_r8 = modeloReleAnillo[8].tiempo;
+
+    tiempo_instantaneo_r1 = modeloReleAnillo[1].tiempoInstantaneo;
+    tiempo_instantaneo_r2 = modeloReleAnillo[2].tiempoInstantaneo;
+    tiempo_instantaneo_r3 = modeloReleAnillo[3].tiempoInstantaneo;
+    tiempo_instantaneo_r4 = modeloReleAnillo[4].tiempoInstantaneo;
+    tiempo_instantaneo_r5 = modeloReleAnillo[5].tiempoInstantaneo;
+    tiempo_instantaneo_r6 = modeloReleAnillo[6].tiempoInstantaneo;
+    tiempo_instantaneo_r7 = modeloReleAnillo[7].tiempoInstantaneo;
+    tiempo_instantaneo_r8 = modeloReleAnillo[8].tiempoInstantaneo;
+
+
+    //Relé 1
+    try {
+        Ic_1_con_margen = Ic_Rele1 +  Ic_Rele1*(margen_Ic_r1/100);
+        //DIAL
+        TMSparteIEC_1 = parametrosCurvaAnillo[familiaCurvaR1].IEC * ((tiempo_r1 / 1000) * (((Math.pow(Isc_Rele1 / Ic_1_con_margen, parametrosCurvaAnillo[familiaCurvaR1].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR1].beta)));
+
+        TMSparteANSI_1 = parametrosCurvaAnillo[familiaCurvaR1].ANSI * ((tiempo_r1 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR1].A) + (parametrosCurvaAnillo[familiaCurvaR1].B / ((Isc_Rele1 / Ic_1_con_margen) - parametrosCurvaAnillo[familiaCurvaR1].C)) + (parametrosCurvaAnillo[familiaCurvaR1].D / (Math.pow((Isc_Rele1 / Ic_1_con_margen) - parametrosCurvaAnillo[familiaCurvaR1].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR1].E / (Math.pow((Isc_Rele1 / Ic_1_con_margen) - parametrosCurvaAnillo[familiaCurvaR1].C, 3)))));
+
+        TMS_calculado_r1 = (TMSparteIEC_1 + TMSparteANSI_1).toFixed(4);
+
+        //Hallar el tiempo 
+
+    } catch (error) {
+
+    }
+    //Relé 2
+    try {
+        Ic_2_con_margen = Ic_Rele2 +  Ic_Rele2*(margen_Ic_r2/100);
+        //DIAL
+        TMSparteIEC_2 = parametrosCurvaAnillo[familiaCurvaR2].IEC * ((tiempo_r2 / 1000) * (((Math.pow(Isc_Rele2 / Ic_2_con_margen, parametrosCurvaAnillo[familiaCurvaR2].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR2].beta)));
+
+        TMSparteANSI_2 = parametrosCurvaAnillo[familiaCurvaR2].ANSI * ((tiempo_r2 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR2].A) + (parametrosCurvaAnillo[familiaCurvaR2].B / ((Isc_Rele2 / Ic_2_con_margen) - parametrosCurvaAnillo[familiaCurvaR2].C)) + (parametrosCurvaAnillo[familiaCurvaR2].D / (Math.pow((Isc_Rele2 / Ic_2_con_margen) - parametrosCurvaAnillo[familiaCurvaR2].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR2].E / (Math.pow((Isc_Rele2 / Ic_2_con_margen) - parametrosCurvaAnillo[familiaCurvaR2].C, 3)))));
+
+        TMS_calculado_r2 = (TMSparteIEC_2 + TMSparteANSI_2).toFixed(4);
+
+    } catch (error) {
+
+    }
+    //Relé 3
+    try {
+        Ic_3_con_margen = Ic_Rele3 +  Ic_Rele3*(margen_Ic_r3/100);
+        //DIAL
+        TMSparteIEC_3 = parametrosCurvaAnillo[familiaCurvaR3].IEC * ((tiempo_r3 / 1000) * (((Math.pow(Isc_Rele3 / Ic_3_con_margen, parametrosCurvaAnillo[familiaCurvaR3].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR3].beta)));
+
+        TMSparteANSI_3 = parametrosCurvaAnillo[familiaCurvaR3].ANSI * ((tiempo_r3 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR3].A) + (parametrosCurvaAnillo[familiaCurvaR3].B / ((Isc_Rele3 / Ic_3_con_margen) - parametrosCurvaAnillo[familiaCurvaR3].C)) + (parametrosCurvaAnillo[familiaCurvaR3].D / (Math.pow((Isc_Rele3 / Ic_3_con_margen) - parametrosCurvaAnillo[familiaCurvaR3].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR3].E / (Math.pow((Isc_Rele3 / Ic_3_con_margen) - parametrosCurvaAnillo[familiaCurvaR3].C, 3)))));
+
+        TMS_calculado_r3 = (TMSparteIEC_3 + TMSparteANSI_3).toFixed(4);
+
+    } catch (error) {
+
+    }
+    //Relé 4
+    try {
+        Ic_4_con_margen = Ic_Rele4 +  Ic_Rele4*(margen_Ic_r4/100);
+        //DIAL
+        TMSparteIEC_4 = parametrosCurvaAnillo[familiaCurvaR4].IEC * ((tiempo_r4 / 1000) * (((Math.pow(Isc_Rele4 / Ic_4_con_margen, parametrosCurvaAnillo[familiaCurvaR4].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR4].beta)));
+
+        TMSparteANSI_4 = parametrosCurvaAnillo[familiaCurvaR4].ANSI * ((tiempo_r4 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR4].A) + (parametrosCurvaAnillo[familiaCurvaR4].B / ((Isc_Rele4 / Ic_4_con_margen) - parametrosCurvaAnillo[familiaCurvaR4].C)) + (parametrosCurvaAnillo[familiaCurvaR4].D / (Math.pow((Isc_Rele4 / Ic_4_con_margen) - parametrosCurvaAnillo[familiaCurvaR4].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR4].E / (Math.pow((Isc_Rele4 / Ic_4_con_margen) - parametrosCurvaAnillo[familiaCurvaR4].C, 3)))));
+
+        TMS_calculado_r4 = (TMSparteIEC_4 + TMSparteANSI_4).toFixed(4);
+
+    } catch (error) {
+
+    }
+    //Relé 5
+    try {
+        Ic_5_con_margen = Ic_Rele5 +  Ic_Rele5*(margen_Ic_r5/100);
+        //DIAL
+        TMSparteIEC_5 = parametrosCurvaAnillo[familiaCurvaR5].IEC * ((tiempo_r5 / 1000) * (((Math.pow(Isc_Rele5 / Ic_5_con_margen, parametrosCurvaAnillo[familiaCurvaR5].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR5].beta)));
+
+        TMSparteANSI_5 = parametrosCurvaAnillo[familiaCurvaR5].ANSI * ((tiempo_r5 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR5].A) + (parametrosCurvaAnillo[familiaCurvaR5].B / ((Isc_Rele5 / Ic_5_con_margen) - parametrosCurvaAnillo[familiaCurvaR5].C)) + (parametrosCurvaAnillo[familiaCurvaR5].D / (Math.pow((Isc_Rele5 / Ic_5_con_margen) - parametrosCurvaAnillo[familiaCurvaR5].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR5].E / (Math.pow((Isc_Rele5 / Ic_5_con_margen) - parametrosCurvaAnillo[familiaCurvaR5].C, 3)))));
+
+        TMS_calculado_r5 = (TMSparteIEC_5 + TMSparteANSI_5).toFixed(4);
+
+    } catch (error) {
+
+    }
+    //Relé 6
+    try {
+        Ic_6_con_margen = Ic_Rele6 +  Ic_Rele6*(margen_Ic_r6/100);
+        //DIAL
+        TMSparteIEC_6 = parametrosCurvaAnillo[familiaCurvaR6].IEC * ((tiempo_r6 / 1000) * (((Math.pow(Isc_Rele6 / Ic_6_con_margen, parametrosCurvaAnillo[familiaCurvaR6].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR6].beta)));
+
+        TMSparteANSI_6 = parametrosCurvaAnillo[familiaCurvaR6].ANSI * ((tiempo_r6 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR6].A) + (parametrosCurvaAnillo[familiaCurvaR6].B / ((Isc_Rele6 / Ic_6_con_margen) - parametrosCurvaAnillo[familiaCurvaR6].C)) + (parametrosCurvaAnillo[familiaCurvaR6].D / (Math.pow((Isc_Rele6 / Ic_6_con_margen) - parametrosCurvaAnillo[familiaCurvaR6].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR6].E / (Math.pow((Isc_Rele6 / Ic_6_con_margen) - parametrosCurvaAnillo[familiaCurvaR6].C, 3)))));
+
+        TMS_calculado_r6 = (TMSparteIEC_6 + TMSparteANSI_6).toFixed(4);
+
+    } catch (error) {
+
+    }
+    //Relé 7
+    try {
+        Ic_7_con_margen = Ic_Rele7 +  Ic_Rele7*(margen_Ic_r7/100);
+        //DIAL
+        TMSparteIEC_7 = parametrosCurvaAnillo[familiaCurvaR7].IEC * ((tiempo_r7 / 1000) * (((Math.pow(Isc_Rele7 / Ic_7_con_margen, parametrosCurvaAnillo[familiaCurvaR7].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR7].beta)));
+
+        TMSparteANSI_7 = parametrosCurvaAnillo[familiaCurvaR7].ANSI * ((tiempo_r7 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR7].A) + (parametrosCurvaAnillo[familiaCurvaR7].B / ((Isc_Rele7 / Ic_7_con_margen) - parametrosCurvaAnillo[familiaCurvaR7].C)) + (parametrosCurvaAnillo[familiaCurvaR7].D / (Math.pow((Isc_Rele7 / Ic_7_con_margen) - parametrosCurvaAnillo[familiaCurvaR7].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR7].E / (Math.pow((Isc_Rele7 / Ic_7_con_margen) - parametrosCurvaAnillo[familiaCurvaR7].C, 3)))));
+
+        TMS_calculado_r7 = (TMSparteIEC_7 + TMSparteANSI_7).toFixed(4);
+
+    } catch (error) {
+
+    }
+    //Relé 8
+    try {
+        Ic_8_con_margen = Ic_Rele8 +  Ic_Rele8*(margen_Ic_r8/100);
+        //DIAL
+        TMSparteIEC_8 = parametrosCurvaAnillo[familiaCurvaR8].IEC * ((tiempo_r8 / 1000) * (((Math.pow(Isc_Rele8 / Ic_8_con_margen, parametrosCurvaAnillo[familiaCurvaR8].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR8].beta)));
+
+        TMSparteANSI_8 = parametrosCurvaAnillo[familiaCurvaR8].ANSI * ((tiempo_r8 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR8].A) + (parametrosCurvaAnillo[familiaCurvaR8].B / ((Isc_Rele8 / Ic_8_con_margen) - parametrosCurvaAnillo[familiaCurvaR8].C)) + (parametrosCurvaAnillo[familiaCurvaR8].D / (Math.pow((Isc_Rele8 / Ic_8_con_margen) - parametrosCurvaAnillo[familiaCurvaR8].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR8].E / (Math.pow((Isc_Rele8 / Ic_8_con_margen) - parametrosCurvaAnillo[familiaCurvaR8].C, 3)))));
+
+        TMS_calculado_r8 = (TMSparteIEC_8 + TMSparteANSI_8).toFixed(4);
+
+    } catch (error) {
+
+    }
+
+}
+
+
 function graficarCurvaLadoIzquierdo() {
 
     functionPlot({
         target: "#Grafica-Lizquierdo",
-        width: 400,
-        height: 400,
+        width: 460,
+        height: 430,
         xAxis: { type: 'log', domain: [10, 100000], label: 'Corriente [A] ' },
         yAxis: { type: 'log', domain: [0.01, 10], label: 'Tiempo [Segundos]' },
         grid: true,
         data: [
-            //Rele 
+            // Graficar curva tiempo relé 2
+            {
+                range: [10, 100000],
+                graphType: 'polyline',
+                fn: function (scope) {
+                    var x = scope.x
+
+                    return (  (parametrosCurvaAnillo[familiaCurvaR2].IEC * TMS_r2 * ((parametrosCurvaAnillo[familiaCurvaR2].beta) / ((Math.pow(x / Ic_2_con_margen, parametrosCurvaAnillo[familiaCurvaR2].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR2].ANSI * TMS_r2 * ((parametrosCurvaAnillo[familiaCurvaR2].A) + (parametrosCurvaAnillo[familiaCurvaR2].B / ((x / Ic_2_con_margen) - (parametrosCurvaAnillo[familiaCurvaR2].C)) + (parametrosCurvaAnillo[familiaCurvaR2].D / (Math.pow((x / Ic_2_con_margen) - (parametrosCurvaAnillo[familiaCurvaR2].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR2].E / (Math.pow((x / Ic_2_con_margen) - (parametrosCurvaAnillo[familiaCurvaR2].C), 3))))))  )
+
+                },
+                color: 'rgba(255, 179, 128, 1)',
+            },
+            // Graficar relé 4
             {
                 range: [10, 100000],
                 graphType: 'polyline',
@@ -891,7 +1080,7 @@ function graficarCurvaLadoIzquierdo() {
 
                 }
             },
-            // Relé
+            // Graficar relé 6
             {
                 range: [10, 100000],
                 graphType: 'polyline',
@@ -900,16 +1089,7 @@ function graficarCurvaLadoIzquierdo() {
 
                 }
             },
-            //Relé
-            {
-                range: [10, 100000],
-                graphType: 'polyline',
-                fn: function (scope) {
-                    var x = scope.x
-
-                }
-            },
-            // Relé
+            // Graficar relé 8
             {
                 range: [10, 100000],
                 graphType: 'polyline',
