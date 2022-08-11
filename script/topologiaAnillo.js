@@ -542,6 +542,8 @@ function calcularValoresRelesAnillo() {
     Ic_32 = (((S2) * (1000000)) / ((Math.sqrt(3)) * (VAnillo) * (1000)));
     Ic_2 = 0;
 
+    
+
     //Cuando tenemos abierto en el Relé 8 (B)
     Ic_A = (((S2 * (1000000)) + (S4 * (1000000)) + (S3) * (1000000)) / ((Math.sqrt(3)) * (VAnillo) * (1000)));
     Ic_23 = (((S4 * (1000000)) + (S3) * (1000000)) / ((Math.sqrt(3)) * (VAnillo) * (1000)));
@@ -640,6 +642,23 @@ function calcularValoresRelesAnillo() {
     modeloReleAnillo[6].Isc = (Isc_Rele6 * 1.25).toFixed(2);
     modeloReleAnillo[7].Isc = (Ic_B * 1.5).toFixed(2);
     modeloReleAnillo[8].Isc = (Isc_Rele8 * 1.25).toFixed(2);
+
+    document.getElementById("Isc_derecha1").innerText = Isc_2D.toFixed(2);
+    document.getElementById("Isc_derecha2").innerText = Isc_3D.toFixed(2);
+    document.getElementById("Isc_derecha3").innerText = Isc_4D.toFixed(2);
+    
+    document.getElementById("Isc_izquierda1").innerText = Isc_2I.toFixed(2);
+    document.getElementById("Isc_izquierda2").innerText = Isc_3I.toFixed(2);
+    document.getElementById("Isc_izquierda3").innerText = Isc_4I.toFixed(2);
+
+    document.getElementById("Isc_abierto_a1").innerText = Isc_2A.toFixed(2);
+    document.getElementById("Isc_abierto_a2").innerText = Isc_3A.toFixed(2);
+    document.getElementById("Isc_abierto_a3").innerText = Isc_4A.toFixed(2);
+
+    document.getElementById("Isc_abierto_b1").innerText = Isc_2B.toFixed(2);
+    document.getElementById("Isc_abierto_b2").innerText = Isc_3B.toFixed(2);
+    document.getElementById("Isc_abierto_b3").innerText = Isc_4B.toFixed(2);
+
 
 }
 
