@@ -377,6 +377,17 @@ canvas {
     margin: auto;
 }
 
+.convenciones {
+    background-image: url('../assets/images/Anillo/convenciones.svg');
+    background-size: 100% 100%;
+    height: 150px;
+}
+
+.botonesAnillo  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
 
 
 .fblanco {

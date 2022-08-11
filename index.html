@@ -401,13 +401,23 @@
                             </div>
 
                             <div class="botonesAnillo">
-                                <div class="botonCalcular  hoverButton" onclick="ejemploAnillo()">Cargar valores</div>
-                                <br>
-                                <div class="botonCalcular  hoverButton" onclick="calcularValoresRelesAnillo()">Calcular
+
+                                <div>
+                                    <div class="convenciones"></div>
                                 </div>
-                                <br>
-                                <div class="botonCalcular  hoverButton" onclick="graficarCurvaTopologiaAnillo()" >Graficar
+                                <div>
+                                    <div class="botonCalcular  hoverButton" onclick="ejemploAnillo()">Cargar valores</div>
+                                    <br>
+                                    <div class="botonCalcular  hoverButton" onclick="calcularValoresRelesAnillo()">Calcular
+                                    </div>
+                                    <br>
+                                    <div class="botonCalcular  hoverButton" onclick="graficarCurvaTopologiaAnillo()" >Graficar
+                                    </div>
                                 </div>
+
+                                 
+
+                               
                             </div>
 
                         </div>
@@ -471,7 +481,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th>Isc</th>
+                                                <th>Isc [A]</th>
                                                 <td id="Isc_r1">-</td>
                                                 <td id="Isc_r2">-</td>
                                                 <td id="Isc_r3">-</td>
@@ -482,7 +492,7 @@
                                                 <td id="Isc_r8">-</td>
                                             </tr>
                                             <tr>
-                                                <th>Ic</th>
+                                                <th>Ic [A]</th>
                                                 <td id="Ic_r1">-</td>
                                                 <td id="Ic_r2">-</td>
                                                 <td id="Ic_r3">-</td>
@@ -493,7 +503,7 @@
                                                 <td id="Ic_r8">-</td>
                                             </tr>
                                             <tr>
-                                                <th>Margen Ic</th>
+                                                <th>Margen Ic [%]</th>
                                                 <td id="Margen_Ic_r1">-</td>
                                                 <td id="Margen_Ic_r2">-</td>
                                                 <td id="Margen_Ic_r3">-</td>
@@ -515,7 +525,7 @@
                                                 <td id="FamiliaC_r8">-</td>
                                             </tr>
                                             <tr>
-                                                <th>Tiempo</th>
+                                                <th>Tiempo [ms]</th>
                                                 <td id="Tiempo_r1">-</td>
                                                 <td id="Tiempo_r2">-</td>
                                                 <td id="Tiempo_r3">-</td>
@@ -537,7 +547,7 @@
                                                 <td id="TMS_r8">-</td>
                                             </tr>
                                             <tr>
-                                                <th>Tiempo <br> Instántaneo</th>
+                                                <th>Tiempo <br> Instántaneo [ms]</th>
                                                 <td id="Tiempo_instantaneo_r1">-</td>
                                                 <td id="Tiempo_instantaneo_r2">-</td>
                                                 <td id="Tiempo_instantaneo_r3">-</td>
@@ -595,12 +605,12 @@
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link active" id="pills-Lizquierdo-tab" data-bs-toggle="pill"
                                                 data-bs-target="#pills-Lizquierdo" type="button" role="tab"
-                                                aria-controls="pills-Lizquierdo" aria-selected="true">Lado izquierdo</button>
+                                                aria-controls="pills-Lizquierdo" aria-selected="true">Relé (2,4,6,8)</button>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link" id="pills-Lderececho-tab" data-bs-toggle="pill"
                                                 data-bs-target="#pills-Lderecho" type="button" role="tab"
-                                                aria-controls="pills-Lderecho" aria-selected="false">lado derecho</button>
+                                                aria-controls="pills-Lderecho" aria-selected="false">Relé (1,3,5,7)</button>
                                         </li>
                                         
                                     </ul>
@@ -614,7 +624,7 @@
                                         </div>
 
                                         <div class="tab-pane fade" id="pills-Lderecho" role="tabpanel"
-                                            aria-labelledby="pills-Lderecho-tab" tabindex="0">Lado derecho
+                                            aria-labelledby="pills-Lderecho-tab" tabindex="0">
                                         
                                             <div id="Grafica-Lderecho" class="Grafica-Lderecho">
 
@@ -634,16 +644,6 @@
 
                     </div>
 
-
-
-
-
-
-
-
-
-                    <!-- Contenido de la pestaña "" -->
-                    ...
                 </div>
 
             </div>

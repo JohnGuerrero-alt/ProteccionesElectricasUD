@@ -867,9 +867,20 @@ async function guardarValoresReles(valores) {
 function graficarCurvaTopologiaAnillo() {
 
     console.log("entro gráfica Lados Izquierdo - Derecho");
-    calculosGraficaAnillo();
-    graficarCurvaLadoIzquierdo();
-    graficarCurvaLadoDerecho();
+    
+    try {
+        calculosGraficaAnillo();
+        graficarCurvaLadoIzquierdo();
+        
+    } catch (error) {
+        console.log("error graficarCurvaLadoIzquierdo()");
+    }
+    try {
+        graficarCurvaLadoDerecho();
+    } catch (error) {
+        console.log("error graficarCurvaLadoDerecho()");
+    }
+    
 
 }
 
