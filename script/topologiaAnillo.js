@@ -178,7 +178,7 @@ var TMS_calculado_r1, TMS_calculado_r2, TMS_calculado_r3, TMS_calculado_r4, TMS_
 var tiempo_instantaneo_r1, tiempo_instantaneo_r2, tiempo_instantaneo_r3, tiempo_instantaneo_r4, tiempo_instantaneo_r5, tiempo_instantaneo_r6, tiempo_instantaneo_r7, tiempo_instantaneo_r8;
 var Ic_1_con_margen, Ic_2_con_margen, Ic_3_con_margen, Ic_4_con_margen, Ic_5_con_margen, Ic_6_con_margen, Ic_7_con_margen, Ic_8_con_margen;
 var tmsAnilloOpcion1, tmsAnilloOpcion2;
-var swal_anillo_tms;
+var swal_Anillo_tms;
 var guardarAnilloOpcionTMS1 = "display:none";
 var guardarAnilloOpcionTMS2 = "display:none";
 var TMSparteIEC_1, TMSparteIEC_2, TMSparteIEC_3, TMSparteIEC_4, TMSparteIEC_5, TMSparteIEC_6, TMSparteIEC_7, TMSparteIEC_8;
@@ -200,6 +200,9 @@ var Isc_4I, Isc_4D, Isc_4A, Isc_4B;
 var Isc_1, Isc_2, Isc_3, Isc_4;
 
 var swalAnilloTMS1, swalAnilloTMS2;
+var swal_Anillo_tms = "swal-AnilloTMS0";
+var guardarOpcionAnilloTMS1 = "display:none";
+var guardarOpcionAnilloTMS2 = "display:none";
 
 modeloReleAnillo[0].familiaCurva = "-";
 modeloReleAnillo[1].familiaCurva = "-";
@@ -254,14 +257,14 @@ var tabla_TMS_5 = document.getElementById("TMS_r5");
 var tabla_TMS_6 = document.getElementById("TMS_r6");
 var tabla_TMS_7 = document.getElementById("TMS_r7");
 var tabla_TMS_8 = document.getElementById("TMS_r8");
-var tabla_Tiempo_A = document.getElementById("Tiempo_r1");
-var tabla_Tiempo_B = document.getElementById("Tiempo_r2");
-var tabla_Tiempo_C = document.getElementById("Tiempo_r3");
-var tabla_Tiempo_A = document.getElementById("Tiempo_r4");
-var tabla_Tiempo_A = document.getElementById("Tiempo_r5");
-var tabla_Tiempo_A = document.getElementById("Tiempo_r6");
-var tabla_Tiempo_A = document.getElementById("Tiempo_r7");
-var tabla_Tiempo_A = document.getElementById("Tiempo_r8");
+var tabla_Tiempo_1 = document.getElementById("Tiempo_r1");
+var tabla_Tiempo_2 = document.getElementById("Tiempo_r2");
+var tabla_Tiempo_3 = document.getElementById("Tiempo_r3");
+var tabla_Tiempo_4 = document.getElementById("Tiempo_r4");
+var tabla_Tiempo_5 = document.getElementById("Tiempo_r5");
+var tabla_Tiempo_6 = document.getElementById("Tiempo_r6");
+var tabla_Tiempo_7 = document.getElementById("Tiempo_r7");
+var tabla_Tiempo_8 = document.getElementById("Tiempo_r8");
 var tabla_TiempoInstantaneo_1 = document.getElementById("Tiempo_instantaneo_r1");
 var tabla_TiempoInstantaneo_2 = document.getElementById("Tiempo_instantaneo_r2");
 var tabla_TiempoInstantaneo_3 = document.getElementById("Tiempo_instantaneo_r3");
@@ -370,9 +373,7 @@ const parametrosCurvaAnillo = {
 
 }
 
-//Funciones
-
-
+//FUNCIONES QUE SE UTILIZARÁN
 function escogerSegunTipo(tipo) {
     console.log("tipo nodo: ", tipo)
 
@@ -402,9 +403,7 @@ function escogerSegunTipo(tipo) {
 
 async function establecerValoresAnillo(valores, tipo) {
 
-
     escogerSegunTipo(tipo);
-
 
     const { value: formValues } = await Swal.fire({
         allowOutsideClick: false,
@@ -460,13 +459,11 @@ async function establecerValoresAnillo(valores, tipo) {
 
     })
 
-
     if (formValues) {
         //Swal.fire(JSON.stringify(formValues))
         console.log("resultado: ", formValues)
         guardarAnilloGeneral(valores, formValues)
     }
-
 
 }
 
@@ -497,8 +494,6 @@ function guardarAnilloGeneral(elemento, datos) {
 
     if (!isNaN(modeloAnillo[7].potencia)) { valor_carga_abajo.innerHTML = "<br>" + modeloAnillo[7].potencia + " MVA"; } else { valor_carga_abajo.innerHTML = "<br>" + " MVA"; }
 
-
-
 }
 
 
@@ -523,8 +518,6 @@ function ejemploAnillo() {
     valor_barra_3_4.innerHTML = "<br>" + modeloAnillo[6].impedancia + " Ω";
     valor_carga_abajo.innerHTML = "<br>" + modeloAnillo[7].potencia + " MVA";
 
-
-
 }
 
 
@@ -532,7 +525,6 @@ function ejemploAnillo() {
 function calcularValoresRelesAnillo() {
 
     S1 = modeloAnillo[0].potencia; S2 = modeloAnillo[3].potencia, S3 = modeloAnillo[4].potencia; S4 = modeloAnillo[7].potencia; Z1 = modeloAnillo[1].impedancia; Z2 = modeloAnillo[2].impedancia; Z3 = modeloAnillo[5].impedancia; Z4 = modeloAnillo[6].impedancia; VAnillo = modeloAnillo[0].voltaje;
-
 
     //Cuando tenemos abierto en  el Relé 1 (A)
     Ic_B = (((S3 * (1000000)) + (S4 * (1000000)) + (S2) * (1000000)) / ((Math.sqrt(3)) * (VAnillo) * (1000)));
@@ -551,7 +543,6 @@ function calcularValoresRelesAnillo() {
     Ic_56 = Math.max(Ic_43, Ic_34).toFixed(2);
     Ic_34 = Math.max(Ic_32, Ic_23).toFixed(2);
     Ic_12 = Math.max(Ic_2, Ic_A).toFixed(2);
-
 
     tabla_Ic_Rele1.innerText = Ic_12;
     tabla_Ic_Rele2.innerText = Ic_12;
@@ -599,7 +590,6 @@ function calcularValoresRelesAnillo() {
     Isc_Rele6 = Math.max(Isc_2D, Isc_2A, Isc_3D, Isc_3A);
     Isc_Rele8 = Math.max(Isc_2D, Isc_2A, Isc_3D, Isc_3A, Isc_4D, Isc_4A)
 
-
     console.log("Z1: ", Z1)
     console.log("Z2: ", Z2)
     console.log("Z3: ", Z3)
@@ -623,7 +613,6 @@ function calcularValoresRelesAnillo() {
     console.log("Isc_Rele8", Isc_Rele8 * 1.25)
 
     //Se imprime los valores, aplicando su factor de ajuste
-
     tabla_Isc_Rele1.innerText = (Isc_Rele1 * 1.25).toFixed(2);
     tabla_Isc_Rele2.innerText = (Ic_A * 1.5).toFixed(2);
     tabla_Isc_Rele3.innerText = (Isc_Rele3 * 1.25).toFixed(2);
@@ -632,8 +621,6 @@ function calcularValoresRelesAnillo() {
     tabla_Isc_Rele6.innerText = (Isc_Rele6 * 1.25).toFixed(2);
     tabla_Isc_Rele7.innerText = (Ic_B * 1.5).toFixed(2);
     tabla_Isc_Rele8.innerText = (Isc_Rele8 * 1.25).toFixed(2);
-
-
 
     modeloReleAnillo[1].Isc = (Isc_Rele1 * 1.25).toFixed(2);
     modeloReleAnillo[2].Isc = (Ic_A * 1.5).toFixed(2);
@@ -644,35 +631,30 @@ function calcularValoresRelesAnillo() {
     modeloReleAnillo[7].Isc = (Ic_B * 1.5).toFixed(2);
     modeloReleAnillo[8].Isc = (Isc_Rele8 * 1.25).toFixed(2);
 
-
-
-
-
-
 }
 
 function habilitarTMSanillo() {
     try {
-        var selectBox = document.getElementById("swal-Anillo-curva");
-        var swalTMS1 = document.getElementById("swal-Anillo-TMS1");
-        var swalTMS2 = document.getElementById("swal-Anillo-TMS2");
-        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-        console.log("selectValue: ", selectedValue)
-        if (selectedValue == "Normal Inversa - IEC" || selectedValue == "Muy Inversa - IEC" || selectedValue == "Extremadamente Inversa - IEC") {
+        var selectBox1 = document.getElementById("swal-Anillo-curva");
+        var swalAnilloTMS1 = document.getElementById("swal-AnilloTMS1");
+        var swalAnilloTMS2 = document.getElementById("swal-AnilloTMS2");
+        var selectedValue1 = selectBox1.options[selectBox1.selectedIndex].value;
+        console.log("selectValue: ", selectedValue1)
+        if (selectedValue1 == "Normal Inversa - IEC" || selectedValue1 == "Muy Inversa - IEC" || selectedValue1 == "Extremadamente Inversa - IEC") {
             console.log("cumple");
             swalAnilloTMS1.style.display = "block";
-            guardarOpcionTMS1 = "display:block";
-            guardarOpcionTMS2 = "display:none";
+            guardarOpcionAnilloTMS1 = "display:block";
+            guardarOpcionAnilloTMS2 = "display:none";
             swalAnilloTMS2.style.display = "none";
-            swal_tms = "swal-TMS1";
+            swal_Anillo_tms = "swal-AnilloTMS1";
         }
-        if (selectedValue == "Normal Inversa - ANSI" || selectedValue == "Muy Inversa - ANSI" || selectedValue == "Extremadamente Inversa - ANSI") {
+        if (selectedValue1 == "Normal Inversa - ANSI" || selectedValue1 == "Muy Inversa - ANSI" || selectedValue1 == "Extremadamente Inversa - ANSI") {
             console.log("cumple 0");
-            swalTMS1.style.display = "none";
-            guardarOpcionTMS1 = "display:none";
-            guardarOpcionTMS2 = "display:block";
-            swalTMS2.style.display = "block";
-            swal_tms = "swal-TMS2";
+            swalAnilloTMS1.style.display = "none";
+            guardarOpcionAnilloTMS1 = "display:none";
+            guardarOpcionAnilloTMS2 = "display:block";
+            swalAnilloTMS2.style.display = "block";
+            swal_Anillo_tms = "swal-AnilloTMS2";
         }
 
     } catch (error) {
@@ -684,76 +666,114 @@ function habilitarTMSanillo() {
 
 async function guardarValoresReles(valores) {
 
-    escogerSegunTipo();
+    habilitarTMSanillo();
 
     const { value: formValues } = await Swal.fire({
+        allowOutsideClick: false,
         title: modeloReleAnillo[valores].nombre,
         html: `
         <div class="table-responsive">
-        <table class="table align-middle" style="font-size:13px">
+            <table class="table align-middle" style="font-size:13px">
+            <tr>
+                <th scope="row">Isc</th>
+                <td>
+                    <input type="number" id="swal-Anillo-Isc" value="${modeloReleAnillo[valores].Isc}" class="swal2-input" min="0">
+                </td> 
+                <td>[A]</td> 
+                <th scope="row" colspan="1">Ic</th>
+                <td>
+                    <input type="number" class="swal2-input" id="swal-Anillo-Ic" value="${modeloReleAnillo[valores].Ic}" min="0">
+                </td>
+                <td>[A]</td>
+            </tr>
         <tr>
-         <th scope="row">Isc</th>
-         <td><input type="number" id="swal-Anillo-Isc" value="${modeloReleAnillo[valores].Isc}" class="swal2-input" min="0"></td> 
-         <td>[A]</td> 
-         <th scope="row" colspan="1">Ic</th>
-         <td><input type="number" class="swal2-input" id="swal-Anillo-Ic" value="${modeloReleAnillo[valores].Ic}" min="0"></td>
-         <td>[A]</td>
-         </tr>
-
-         <tr>
-            <th scope="row">Margen Ic</th><td><input type="number" class="swal2-input" value="${modeloReleAnillo[valores].margenIc}" min="0" id="swal-Anillo-margenIc"></td><td>%</td>
-
-            <th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-Anillo-tiempo" value="${modeloReleAnillo[valores].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-Anillo-curva">  <option selected hidden>${modeloReleAnillo[valores].familiaCurva}</option> <option>Normal Inversa - IEC</option><option >Muy Inversa - IEC</option><option >Extremadamente Inversa - IEC</option><option>Normal Inversa - ANSI</option><option >Muy Inversa - ANSI</option><option >Extremadamente Inversa - ANSI</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>
-
+            <th scope="row">Margen Ic</th>
+            <td>
+                <input type="number" class="swal2-input" value="${modeloReleAnillo[valores].margenIc}" min="0" id="swal-Anillo-margenIc">
+            </td>
+            <td>%</td>
+            <th scope="row">Tiempo</th>
+            <td>
+                <input type="number" class="swal2-input" id="swal-Anillo-tiempo" value="${modeloReleAnillo[valores].tiempo}" min="0">
+            </td>
+            <td>[ms]</td>
+        </tr>
+        <tr>
+            <th scope="row">Familia de curva</th>
+            <td colspan="2">      
+                <select class="form-select" id="swal-Anillo-curva" onchange="habilitarTMSanillo()">  
+                    <option selected hidden>${modeloReleAnillo[valores].familiaCurva}</option> 
+                    <option>Normal Inversa - IEC</option>
+                    <option>Muy Inversa - IEC</option>
+                    <option >Extremadamente Inversa - IEC</option>
+                    <option>Normal Inversa - ANSI</option>
+                    <option >Muy Inversa - ANSI</option>
+                    <option >Extremadamente Inversa - ANSI</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="table-secondary">
+            <th scope="row"></th>
+            <td colspan="5"></td>
+        </tr>
+        <tr>
+            <th scope="row">TMS(Dial)</th>
+            <td>
+                <select class="form-select selectSwal"  id="swal-AnilloTMS0" style="display:none"></select>
+                <select class="form-select selectSwal"  id="swal-AnilloTMS1" style="${guardarOpcionAnilloTMS1}">
+                    <option selected id="option-seleccionada" hidden>${modeloReleAnillo[valores].TMS}</option>
+                    <option value="0.05">0.05</option><option value="0.06">0.06</option><option value="0.07">0.07</option>
+                    <option value="0.08">0.08</option><option value="0.09">0.09</option><option value="0.10">0.10</option>
+                    <option value="0.11">0.11</option><option value="0.12">0.12</option><option value="0.13">0.13</option>
+                    <option value="0.14">0.14</option><option value="0.15">0.15</option><option value="0.16">0.16</option>
+                    <option value="0.17">0.17</option><option value="0.18">0.18</option><option value="0.19">0.19</option>
+                    <option value="0.20">0.20</option><option value="0.21">0.21</option><option value="0.22">0.22</option>
+                    <option value="0.23">0.23</option><option value="0.24">0.24</option><option value="0.25">0.25</option>
+                    <option value="0.26">0.26</option><option value="0.27">0.27</option><option value="0.28">0.28</option>
+                    <option value="0.29">0.29</option><option value="0.30">0.30</option><option value="0.31">0.31</option>
+                    <option value="0.32">0.32</option><option value="0.33">0.33</option><option value="0.34">0.34</option>
+                    <option value="0.35">0.35</option><option value="0.36">0.36</option><option value="0.37">0.37</option>
+                    <option value="0.38">0.38</option><option value="0.39">0.39</option><option value="0.40">0.40</option>
+                    <option value="0.41">0.41</option><option value="0.42">0.42</option><option value="0.43">0.43</option>
+                    <option value="0.44">0.44</option><option value="0.45">0.45</option><option value="0.46">0.46</option>
+                    <option value="0.47">0.47</option><option value="0.48">0.48</option><option value="0.49">0.49</option>
+                    <option value="0.50">0.50</option><option value="0.51">0.51</option><option value="0.52">0.52</option>
+                    <option value="0.53">0.53</option><option value="0.54">0.54</option><option value="0.55">0.55</option>
+                    <option value="0.56">0.56</option><option value="0.57">0.57</option><option value="0.58">0.58</option>
+                    <option value="0.59">0.59</option><option value="0.60">0.60</option><option value="0.61">0.61</option>
+                    <option value="0.62">0.62</option><option value="0.63">0.63</option><option value="0.64">0.64</option>
+                    <option value="0.65">0.65</option><option value="0.66">0.66</option><option value="0.67">0.67</option>
+                    <option value="0.68">0.68</option><option value="0.69">0.69</option><option value="0.70">0.70</option>
+                    <option value="0.71">0.71</option><option value="0.72">0.72</option><option value="0.73">0.73</option>
+                    <option value="0.74">0.74</option><option value="0.75">0.75</option><option value="0.76">0.76</option>
+                    <option value="0.77">0.77</option><option value="0.78">0.78</option><option value="0.79">0.79</option>
+                    <option value="0.80">0.80</option><option value="0.81">0.81</option><option value="0.82">0.82</option>
+                    <option value="0.83">0.83</option><option value="0.84">0.84</option><option value="0.85">0.85</option>
+                    <option value="0.86">0.86</option><option value="0.87">0.87</option><option value="0.88">0.88</option>
+                    <option value="0.89">0.89</option><option value="0.90">0.90</option><option value="0.91">0.91</option>
+                    <option value="0.92">0.92</option><option value="0.93">0.93</option><option value="0.94">0.94</option>
+                    <option value="0.95">0.95</option><option value="0.96">0.96</option><option value="0.99">0.99</option>
+                    <option value="1">1</option>
+                </select>
         
+                <select class="form-select selectSwal"  id="swal-AnilloTMS2" style="${guardarOpcionAnilloTMS2}">
+                    <option selected id="option-seleccionada" hidden>${modeloReleAnillo[valores].TMS}</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+
+        </tr>
          </table>
          </div>
-
          `
-
-
-        //  <tr>
-        
-
-        //  <th scope="row">Tiempo</th><td><input type="number" class="swal2-input" id="swal-tiempo" value="$modeloAnillo[valores].tiempo}" min="0"></td><td>[ms]</td></tr>         <tr><th scope="row">Familia de curva</th><td colspan="2">      <select class="form-select" id="swal-curva">  <option selected hidden>${modeloAnillo[valores]familiaCurva}</option> <option>Normal Inversa</option><option>Muy Inversa</option><option>Extremadamente Inversa</option>     </select></td>          </tr>   <tr class="table-secondary"><th scope="row"></th><td colspan="5"></td></tr>             <tr><th scope="row">TMS(Dial)</th><td>
-        // <select class="form-select selectSwal"  id="swal-TMS" >
-        //   <option selected id="option-seleccionada" hidden>${modeloAnillo[valores].TMS}</option>
-        //   <option value="0.05">0.05</option><option value="0.06">0.06</option><option value="0.07">0.07</option>
-        //   <option value="0.08">0.08</option><option value="0.09">0.09</option><option value="0.10">0.10</option>
-        //   <option value="0.11">0.11</option><option value="0.12">0.12</option><option value="0.13">0.13</option>
-        //   <option value="0.14">0.14</option><option value="0.15">0.15</option><option value="0.16">0.16</option>
-        //   <option value="0.17">0.17</option><option value="0.18">0.18</option><option value="0.19">0.19</option>
-        //   <option value="0.20">0.20</option><option value="0.21">0.21</option><option value="0.22">0.22</option>
-        //   <option value="0.23">0.23</option><option value="0.24">0.24</option><option value="0.25">0.25</option>
-        //   <option value="0.26">0.26</option><option value="0.27">0.27</option><option value="0.28">0.28</option>
-        //   <option value="0.29">0.29</option><option value="0.30">0.30</option><option value="0.31">0.31</option>
-        //   <option value="0.32">0.32</option><option value="0.33">0.33</option><option value="0.34">0.34</option>
-        //   <option value="0.35">0.35</option><option value="0.36">0.36</option><option value="0.37">0.37</option>
-        //   <option value="0.38">0.38</option><option value="0.39">0.39</option><option value="0.40">0.40</option>
-        //   <option value="0.41">0.41</option><option value="0.42">0.42</option><option value="0.43">0.43</option>
-        //   <option value="0.44">0.44</option><option value="0.45">0.45</option><option value="0.46">0.46</option>
-        //   <option value="0.47">0.47</option><option value="0.48">0.48</option><option value="0.49">0.49</option>
-        //   <option value="0.50">0.50</option><option value="0.51">0.51</option><option value="0.52">0.52</option>
-        //   <option value="0.53">0.53</option><option value="0.54">0.54</option><option value="0.55">0.55</option>
-        //   <option value="0.56">0.56</option><option value="0.57">0.57</option><option value="0.58">0.58</option>
-        //   <option value="0.59">0.59</option><option value="0.60">0.60</option><option value="0.61">0.61</option>
-        //   <option value="0.62">0.62</option><option value="0.63">0.63</option><option value="0.64">0.64</option>
-        //   <option value="0.65">0.65</option><option value="0.66">0.66</option><option value="0.67">0.67</option>
-        //   <option value="0.68">0.68</option><option value="0.69">0.69</option><option value="0.70">0.70</option>
-        //   <option value="0.71">0.71</option><option value="0.72">0.72</option><option value="0.73">0.73</option>
-        //   <option value="0.74">0.74</option><option value="0.75">0.75</option><option value="0.76">0.76</option>
-        //   <option value="0.77">0.77</option><option value="0.78">0.78</option><option value="0.79">0.79</option>
-        //   <option value="0.80">0.80</option><option value="0.81">0.81</option><option value="0.82">0.82</option>
-        //   <option value="0.83">0.83</option><option value="0.84">0.84</option><option value="0.85">0.85</option>
-        //   <option value="0.86">0.86</option><option value="0.87">0.87</option><option value="0.88">0.88</option>
-        //   <option value="0.89">0.89</option><option value="0.90">0.90</option><option value="0.91">0.91</option>
-        //   <option value="0.92">0.92</option><option value="0.93">0.93</option><option value="0.94">0.94</option>
-        //   <option value="0.95">0.95</option><option value="0.96">0.96</option><option value="0.99">0.99</option>
-        //   <option value="1">1</option>
-        //   </select>
-
-
-        //   </td> <th scope="row">Tiempo(instantaneo)</th><td><input  id="swal-tInstantaneo" type="number" value="${modeloReleAnillo[nombreRele].tiempoInstantaneo}" class="swal2-input" min="0"></td><td>[ms]</td></tr>
         ,
         showConfirmButton: true,
         confirmButtonText: "Guardar",
@@ -769,8 +789,8 @@ async function guardarValoresReles(valores) {
                 document.getElementById('swal-Anillo-Ic').value,
                 document.getElementById('swal-Anillo-margenIc').value,
                 document.getElementById('swal-Anillo-tiempo').value,
-                document.getElementById('swal-Anillo-curva').value
-                //document.getElementById(swal_Anillo_tms)
+                document.getElementById('swal-Anillo-curva').value,
+                document.getElementById(swal_Anillo_tms).value
 
                 //document.getElementById('swal-Anillo-impedancia').value,
 
@@ -803,7 +823,7 @@ async function guardarValoresReles(valores) {
         document.getElementById("Isc_r" + valores).innerText = datos[0];
         document.getElementById("Ic_r" + valores).innerText = datos[1];
         document.getElementById("Margen_Ic_r" + valores).innerText = datos[2];
-        document.getElementById("Tiempo_r"+ valores).innerText = datos[3];
+        document.getElementById("Tiempo_r" + valores).innerText = datos[3];
         document.getElementById("FamiliaC_r" + valores).innerText = datos[4];
 
         // tabla_Isc_Rele1.innerText = modeloReleAnillo[1].Isc;
@@ -832,6 +852,21 @@ async function guardarValoresReles(valores) {
         // tabla_Margen_Ic_6.innerText = modeloReleAnillo[6].margen_Ic_r6;
         // tabla_Margen_Ic_7.innerText = modeloReleAnillo[7].margen_Ic_r7;
         // tabla_Margen_Ic_8.innerText = modeloReleAnillo[8].margen_Ic_r8;
+
+        Swal.fire({
+            title: "Guardado configuración <p style='color: gray'> " + modeloReleAnillo[valores].nombre + "</p>",
+            toast: true,
+            position: 'top-right',
+            icon: 'success',
+            customClass: {
+                popup: 'colored-toast'
+            },
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true
+        })
+
+
     }
 
 
