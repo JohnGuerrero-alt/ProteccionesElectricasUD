@@ -1071,23 +1071,30 @@ function graficarCurvaLadoIzquierdo() {
                 },
                 color: 'rgba(255, 179, 128, 1)',
             },
-            // Graficar relé 4
+            // Graficar curva tiempo relé 4
             {
                 range: [10, 100000],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
 
+                    return (  (parametrosCurvaAnillo[familiaCurvaR4].IEC * TMS_r4 * ((parametrosCurvaAnillo[familiaCurvaR4].beta) / ((Math.pow(x / Ic_4_con_margen, parametrosCurvaAnillo[familiaCurvaR4].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR4].ANSI * TMS_r4 * ((parametrosCurvaAnillo[familiaCurvaR4].A) + (parametrosCurvaAnillo[familiaCurvaR4].B / ((x / Ic_4_con_margen) - (parametrosCurvaAnillo[familiaCurvaR4].C)) + (parametrosCurvaAnillo[familiaCurvaR4].D / (Math.pow((x / Ic_4_con_margen) - (parametrosCurvaAnillo[familiaCurvaR4].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR4].E / (Math.pow((x / Ic_4_con_margen) - (parametrosCurvaAnillo[familiaCurvaR4].C), 3))))))  )
+
                 }
+                ,
+                color: 'rgba(255, 179, 128, 1)',
             },
-            // Graficar relé 6
+            // Graficar curva tiempo relé 6
             {
                 range: [10, 100000],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
 
-                }
+                    return (  (parametrosCurvaAnillo[familiaCurvaR6].IEC * TMS_r6 * ((parametrosCurvaAnillo[familiaCurvaR6].beta) / ((Math.pow(x / Ic_6_con_margen, parametrosCurvaAnillo[familiaCurvaR6].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR6].ANSI * TMS_r6 * ((parametrosCurvaAnillo[familiaCurvaR6].A) + (parametrosCurvaAnillo[familiaCurvaR6].B / ((x / Ic_6_con_margen) - (parametrosCurvaAnillo[familiaCurvaR6].C)) + (parametrosCurvaAnillo[familiaCurvaR6].D / (Math.pow((x / Ic_6_con_margen) - (parametrosCurvaAnillo[familiaCurvaR6].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR6].E / (Math.pow((x / Ic_6_con_margen) - (parametrosCurvaAnillo[familiaCurvaR6].C), 3))))))  )
+
+                },
+                color: 'rgba(255, 179, 128, 1)',
             },
             // Graficar relé 8
             {
@@ -1095,7 +1102,10 @@ function graficarCurvaLadoIzquierdo() {
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
-                }
+
+                    return (  (parametrosCurvaAnillo[familiaCurvaR8].IEC * TMS_r8 * ((parametrosCurvaAnillo[familiaCurvaR8].beta) / ((Math.pow(x / Ic_8_con_margen, parametrosCurvaAnillo[familiaCurvaR8].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR8].ANSI * TMS_r8 * ((parametrosCurvaAnillo[familiaCurvaR8].A) + (parametrosCurvaAnillo[familiaCurvaR8].B / ((x / Ic_8_con_margen) - (parametrosCurvaAnillo[familiaCurvaR8].C)) + (parametrosCurvaAnillo[familiaCurvaR8].D / (Math.pow((x / Ic_8_con_margen) - (parametrosCurvaAnillo[familiaCurvaR8].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR8].E / (Math.pow((x / Ic_8_con_margen) - (parametrosCurvaAnillo[familiaCurvaR8].C), 3))))))  )
+                },
+                color: 'rgba(255, 179, 128, 1)',
             }
         ]
     })
@@ -1107,42 +1117,50 @@ function graficarCurvaLadoDerecho() {
 
     functionPlot({
         target: "#Grafica-Lderecho",
-        width: 400,
-        height: 400,
+        width: 460,
+        height: 430,
         xAxis: { type: 'log', domain: [10, 100000], label: 'Corriente [A] ' },
         yAxis: { type: 'log', domain: [0.01, 10], label: 'Tiempo [Segundos]' },
         grid: true,
         data: [
-            //Rele 
+            //Graficar curva de tiempo relé 1 
             {
                 range: [10, 100000],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
+
+                    return (  (parametrosCurvaAnillo[familiaCurvaR1].IEC * TMS_r1 * ((parametrosCurvaAnillo[familiaCurvaR1].beta) / ((Math.pow(x / Ic_1_con_margen, parametrosCurvaAnillo[familiaCurvaR1].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR1].ANSI * TMS_r1 * ((parametrosCurvaAnillo[familiaCurvaR1].A) + (parametrosCurvaAnillo[familiaCurvaR1].B / ((x / Ic_1_con_margen) - (parametrosCurvaAnillo[familiaCurvaR1].C)) + (parametrosCurvaAnillo[familiaCurvaR1].D / (Math.pow((x / Ic_1_con_margen) - (parametrosCurvaAnillo[familiaCurvaR1].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR1].E / (Math.pow((x / Ic_1_con_margen) - (parametrosCurvaAnillo[familiaCurvaR1].C), 3))))))  )
                 }
             },
-            // Relé
+            // Graficar curva de tiempo relé 3
             {
                 range: [10, 100000],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
+
+                    return (  (parametrosCurvaAnillo[familiaCurvaR3].IEC * TMS_r3 * ((parametrosCurvaAnillo[familiaCurvaR3].beta) / ((Math.pow(x / Ic_3_con_margen, parametrosCurvaAnillo[familiaCurvaR3].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR3].ANSI * TMS_r3 * ((parametrosCurvaAnillo[familiaCurvaR3].A) + (parametrosCurvaAnillo[familiaCurvaR3].B / ((x / Ic_3_con_margen) - (parametrosCurvaAnillo[familiaCurvaR3].C)) + (parametrosCurvaAnillo[familiaCurvaR3].D / (Math.pow((x / Ic_3_con_margen) - (parametrosCurvaAnillo[familiaCurvaR3].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR3].E / (Math.pow((x / Ic_3_con_margen) - (parametrosCurvaAnillo[familiaCurvaR3].C), 3))))))  )
                 }
             },
-            //Relé
+            // Graficar curva de tiempo relé 5
             {
                 range: [10, 100000],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
+
+                    return (  (parametrosCurvaAnillo[familiaCurvaR5].IEC * TMS_r5 * ((parametrosCurvaAnillo[familiaCurvaR5].beta) / ((Math.pow(x / Ic_5_con_margen, parametrosCurvaAnillo[familiaCurvaR5].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR5].ANSI * TMS_r5 * ((parametrosCurvaAnillo[familiaCurvaR5].A) + (parametrosCurvaAnillo[familiaCurvaR5].B / ((x / Ic_5_con_margen) - (parametrosCurvaAnillo[familiaCurvaR5].C)) + (parametrosCurvaAnillo[familiaCurvaR5].D / (Math.pow((x / Ic_5_con_margen) - (parametrosCurvaAnillo[familiaCurvaR5].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR5].E / (Math.pow((x / Ic_5_con_margen) - (parametrosCurvaAnillo[familiaCurvaR5].C), 3))))))  )
                 }
             },
-            // Relé
+            // Graficar curva de tiempo relé 7
             {
                 range: [10, 100000],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
+
+                    return (  (parametrosCurvaAnillo[familiaCurvaR7].IEC * TMS_r7 * ((parametrosCurvaAnillo[familiaCurvaR7].beta) / ((Math.pow(x / Ic_7_con_margen, parametrosCurvaAnillo[familiaCurvaR7].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR7].ANSI * TMS_r7 * ((parametrosCurvaAnillo[familiaCurvaR7].A) + (parametrosCurvaAnillo[familiaCurvaR7].B / ((x / Ic_7_con_margen) - (parametrosCurvaAnillo[familiaCurvaR7].C)) + (parametrosCurvaAnillo[familiaCurvaR7].D / (Math.pow((x / Ic_7_con_margen) - (parametrosCurvaAnillo[familiaCurvaR7].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR7].E / (Math.pow((x / Ic_7_con_margen) - (parametrosCurvaAnillo[familiaCurvaR7].C), 3))))))  )
                 }
             }
 
