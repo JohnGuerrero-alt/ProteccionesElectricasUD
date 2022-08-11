@@ -10,7 +10,7 @@ const modeloAnillo = {
         potencia: ""
     },
     1: {
-        nombre: "Barra 1-2",
+        nombre: "Barra I-II",
         tipo: "Barra",
         urlImagen: "./assets/images/Anillo/2_2.svg",
         impedancia: '',
@@ -19,7 +19,7 @@ const modeloAnillo = {
         potencia: ""
     },
     2: {
-        nombre: "Barra 4-1",
+        nombre: "Barra IV-I",
         tipo: "Barra",
         urlImagen: "./assets/images/Anillo/2_4.svg",
         impedancia: "",
@@ -44,7 +44,7 @@ const modeloAnillo = {
         etiqueta2: "[MVA]",
     },
     5: {
-        nombre: "Barra 2-3",
+        nombre: "Barra II-III",
         tipo: "Barra",
         urlImagen: "./assets/images/Anillo/4_2.svg",
         impedancia: "",
@@ -53,7 +53,7 @@ const modeloAnillo = {
         potencia: ""
     },
     6: {
-        nombre: "Barra 3-4",
+        nombre: "Barra III-IV",
         tipo: "Barra",
         urlImagen: "./assets/images/Anillo/4_4.svg",
         impedancia: "",
@@ -782,7 +782,7 @@ async function guardarValoresReles(valores) {
 
                 <th scope="row">Tiempo(instantaneo)</th>
                 <td>
-                    <input  id="swal-tInstantaneo" type="number" value="${modeloReleAnillo[valores].tiempoInstantaneo}" class="swal2-input" min="0">
+                    <input  id="swal-Anillo-tInstantaneo" type="number" value="${modeloReleAnillo[valores].tiempoInstantaneo}" class="swal2-input" min="0">
                 </td>
                 <td>[ms]</td>
 
@@ -806,7 +806,8 @@ async function guardarValoresReles(valores) {
                 document.getElementById('swal-Anillo-margenIc').value,
                 document.getElementById('swal-Anillo-tiempo').value,
                 document.getElementById('swal-Anillo-curva').value,
-                document.getElementById(swal_Anillo_tms).value
+                document.getElementById(swal_Anillo_tms).value,
+                document.getElementById('swal-Anillo-tInstantaneo').value
 
                 //document.getElementById('swal-Anillo-impedancia').value,
 
@@ -836,13 +837,15 @@ async function guardarValoresReles(valores) {
         modeloReleAnillo[valores].tiempo = parseFloat(datos[3]);
         modeloReleAnillo[valores].familiaCurva = datos[4];
         modeloReleAnillo[valores].TMS = parseFloat(datos[5]);
+        modeloReleAnillo[valores].tiempoInstantaneo = parseFloat(datos[6]);
 
         document.getElementById("Isc_r" + valores).innerText = datos[0];
         document.getElementById("Ic_r" + valores).innerText = datos[1];
         document.getElementById("Margen_Ic_r" + valores).innerText = datos[2];
         document.getElementById("Tiempo_r" + valores).innerText = datos[3];
         document.getElementById("FamiliaC_r" + valores).innerText = datos[4];
-        document.getElementById("TMS_r"+ valores).innerText = datos[5];
+        document.getElementById("TMS_r" + valores).innerText = datos[5];
+        document.getElementById("Tiempo_instantaneo_r" + valores).innerText = datos[6];
 
         Swal.fire({
             title: "Guardado configuración <p style='color: gray'> " + modeloReleAnillo[valores].nombre + "</p>",
@@ -857,8 +860,113 @@ async function guardarValoresReles(valores) {
             timerProgressBar: true
         })
 
-
     }
 
+}
+
+function graficarCurvaTopologiaAnillo() {
+
+    console.log("entro gráfica Lados Izquierdo - Derecho")
+    graficarCurvaLadoIzquierdo();
+    graficarCurvaLadoDerecho();
+
+}
+
+function graficarCurvaLadoIzquierdo() {
+
+    functionPlot({
+        target: "#Grafica-Lizquierdo",
+        width: 400,
+        height: 400,
+        xAxis: { type: 'log', domain: [10, 100000], label: 'Corriente [A] ' },
+        yAxis: { type: 'log', domain: [0.01, 10], label: 'Tiempo [Segundos]' },
+        grid: true,
+        data: [
+            //Rele 
+            {
+                range: [10, 100000],
+                graphType: 'polyline',
+                fn: function (scope) {
+                    var x = scope.x
+
+                }
+            },
+            // Relé
+            {
+                range: [10, 100000],
+                graphType: 'polyline',
+                fn: function (scope) {
+                    var x = scope.x
+
+                }
+            },
+            //Relé
+            {
+                range: [10, 100000],
+                graphType: 'polyline',
+                fn: function (scope) {
+                    var x = scope.x
+
+                }
+            },
+            // Relé
+            {
+                range: [10, 100000],
+                graphType: 'polyline',
+                fn: function (scope) {
+                    var x = scope.x
+                }
+            }
+        ]
+    })
+
+
+}
+
+function graficarCurvaLadoDerecho() {
+
+    functionPlot({
+        target: "#Grafica-Lderecho",
+        width: 400,
+        height: 400,
+        xAxis: { type: 'log', domain: [10, 100000], label: 'Corriente [A] ' },
+        yAxis: { type: 'log', domain: [0.01, 10], label: 'Tiempo [Segundos]' },
+        grid: true,
+        data: [
+            //Rele 
+            {
+                range: [10, 100000],
+                graphType: 'polyline',
+                fn: function (scope) {
+                    var x = scope.x
+                }
+            },
+            // Relé
+            {
+                range: [10, 100000],
+                graphType: 'polyline',
+                fn: function (scope) {
+                    var x = scope.x
+                }
+            },
+            //Relé
+            {
+                range: [10, 100000],
+                graphType: 'polyline',
+                fn: function (scope) {
+                    var x = scope.x
+                }
+            },
+            // Relé
+            {
+                range: [10, 100000],
+                graphType: 'polyline',
+                fn: function (scope) {
+                    var x = scope.x
+                }
+            }
+
+        ]
+    })
 
 }

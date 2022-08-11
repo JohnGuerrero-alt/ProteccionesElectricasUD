@@ -675,6 +675,7 @@ function graficarCurvaTopologiaBus() {
         yAxis: { type: 'log', domain: [0.01, 10], label: 'Tiempo [Segundos]' },
         grid: true,
         data: [
+            //Relé A
             {
                 range: [10, 100000],
                 graphType: 'polyline',
@@ -683,8 +684,6 @@ function graficarCurvaTopologiaBus() {
                     // scope.x = {lo: Number, hi: number}
                     // simulate a line e.g. y = x
                     var x = scope.x
-
-                    // return  (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x, parametrosCurva[familiaCurva_A].alfa)) - 1))
 
                     console.log('(TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x, parametrosCurva[familiaCurva_A].alfa)) - 1))) ', (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1))))
 
@@ -699,6 +698,7 @@ function graficarCurvaTopologiaBus() {
                 color: 'rgba(255, 179, 128, 1)',
 
             },
+            //Relé B
             {
 
                 graphType: 'polyline',
@@ -708,18 +708,14 @@ function graficarCurvaTopologiaBus() {
                     // simulate a line e.g. y = x
                     var x = scope.x
 
-                    // return  (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x, parametrosCurva[familiaCurva_A].alfa)) - 1))
-
-
                     console.log("x: ", x)
-
-
 
                     return ((parametrosCurva[familiaCurva_B].IEC * TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(x / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1))) + (parametrosCurva[familiaCurva_B].ANSI * TMS_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((x / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 3)))))))
                 },
                 color: 'rgba(85, 153, 255, 1)',
 
             },
+            //Rele C
             {
 
                 graphType: 'polyline',
@@ -728,12 +724,6 @@ function graficarCurvaTopologiaBus() {
                     // scope.x = {lo: Number, hi: number}
                     // simulate a line e.g. y = x
                     var x = scope.x
-
-                    // return  (TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(x, parametrosCurva[familiaCurva_A].alfa)) - 1))
-
-                    // console.log("x: ",   (TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(x / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1))).toFixed(4) )
-
-
 
 
                     return ((parametrosCurva[familiaCurva_C].IEC * TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(x / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1))) + (parametrosCurva[familiaCurva_C].ANSI * TMS_C * ((parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B / ((x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D / (Math.pow((x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C), 2))) + (parametrosCurva[familiaCurva_C].E / (Math.pow((x / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C), 3)))))))
@@ -741,6 +731,7 @@ function graficarCurvaTopologiaBus() {
                 color: 'rgba(113, 200, 55, 1)',
 
             },
+            //Linea corte Relé A
             {
                 points: [
                     [Isc_ReleA, 0.001],
@@ -753,6 +744,7 @@ function graficarCurvaTopologiaBus() {
                 graphType: 'polyline',
                 updateOnMouseMove: true
             },
+            //Linea corte Relé B
             {
                 points: [
                     [Isc_ReleB, 0.001],
@@ -765,6 +757,7 @@ function graficarCurvaTopologiaBus() {
                 graphType: 'polyline',
                 updateOnMouseMove: true
             },
+            //Linea corte Relé C
             {
                 points: [
                     [Isc_ReleC, 0.001],
