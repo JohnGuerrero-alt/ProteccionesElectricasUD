@@ -91,8 +91,8 @@ const modeloReleAnillo = {
         margenIc: tabla_Margen_Ic_1,
         familiaCurva: tabla_familiaCurva_1,
         TMS: tabla_TMS_1,
-        tiempo: tabla_Tiempo_A,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_A,
+        tiempo: tabla_Tiempo_1,
+        tiempoInstantaneo: tabla_TiempoInstantaneo_1,
     },
     2: {
         nombre: "Rele 2",
@@ -101,8 +101,8 @@ const modeloReleAnillo = {
         margenIc: tabla_Margen_Ic_2,
         familiaCurva: tabla_familiaCurva_2,
         TMS: tabla_TMS_2,
-        tiempo: tabla_Tiempo_A,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_A,
+        tiempo: tabla_Tiempo_2,
+        tiempoInstantaneo: tabla_TiempoInstantaneo_2,
     },
     3: {
         nombre: "Rele 3",
@@ -111,8 +111,8 @@ const modeloReleAnillo = {
         margenIc: tabla_Margen_Ic_3,
         familiaCurva: tabla_familiaCurva_3,
         TMS: tabla_TMS_3,
-        tiempo: tabla_Tiempo_A,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_A,
+        tiempo: tabla_Tiempo_3,
+        tiempoInstantaneo: tabla_TiempoInstantaneo_3,
     },
     4: {
         nombre: "Rele 4",
@@ -121,8 +121,8 @@ const modeloReleAnillo = {
         margenIc: tabla_Margen_Ic_4,
         familiaCurva: tabla_familiaCurva_4,
         TMS: tabla_TMS_4,
-        tiempo: tabla_Tiempo_A,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_A,
+        tiempo: tabla_Tiempo_4,
+        tiempoInstantaneo: tabla_TiempoInstantaneo_4,
     },
     5: {
         nombre: "Rele 5",
@@ -131,8 +131,8 @@ const modeloReleAnillo = {
         margenIc: tabla_Margen_Ic_5,
         familiaCurva: tabla_familiaCurva_5,
         TMS: tabla_TMS_5,
-        tiempo: tabla_Tiempo_A,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_A,
+        tiempo: tabla_Tiempo_5,
+        tiempoInstantaneo: tabla_TiempoInstantaneo_5,
     },
     6: {
         nombre: "Rele 6",
@@ -141,8 +141,8 @@ const modeloReleAnillo = {
         margenIc: tabla_Margen_Ic_6,
         familiaCurva: tabla_familiaCurva_6,
         TMS: tabla_TMS_6,
-        tiempo: tabla_Tiempo_A,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_A,
+        tiempo: tabla_Tiempo_6,
+        tiempoInstantaneo: tabla_TiempoInstantaneo_6,
     },
     7: {
         nombre: "Rele 7",
@@ -151,8 +151,8 @@ const modeloReleAnillo = {
         margenIc: tabla_Margen_Ic_7,
         familiaCurva: tabla_familiaCurva_7,
         TMS: tabla_TMS_7,
-        tiempo: tabla_Tiempo_A,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_A,
+        tiempo: tabla_Tiempo_7,
+        tiempoInstantaneo: tabla_TiempoInstantaneo_7,
     },
     8: {
         nombre: "Rele 8",
@@ -161,8 +161,8 @@ const modeloReleAnillo = {
         margenIc: tabla_Margen_Ic_8,
         familiaCurva: tabla_familiaCurva_8,
         TMS: tabla_TMS_8,
-        tiempo: tabla_Tiempo_A,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_A,
+        tiempo: tabla_Tiempo_8,
+        tiempoInstantaneo: tabla_TiempoInstantaneo_8,
     }
 }
 
@@ -213,6 +213,16 @@ modeloReleAnillo[5].familiaCurva = "-";
 modeloReleAnillo[6].familiaCurva = "-";
 modeloReleAnillo[7].familiaCurva = "-";
 modeloReleAnillo[8].familiaCurva = "-";
+
+modeloReleAnillo[0].TMS = "-";
+modeloReleAnillo[1].TMS = "-";
+modeloReleAnillo[2].TMS = "-";
+modeloReleAnillo[3].TMS = "-";
+modeloReleAnillo[4].TMS = "-";
+modeloReleAnillo[5].TMS = "-";
+modeloReleAnillo[6].TMS = "-";
+modeloReleAnillo[7].TMS = "-";
+modeloReleAnillo[8].TMS = "-";
 
 
 
@@ -770,6 +780,12 @@ async function guardarValoresReles(valores) {
                     <option value="10">10</option>
                 </select>
 
+                <th scope="row">Tiempo(instantaneo)</th>
+                <td>
+                    <input  id="swal-tInstantaneo" type="number" value="${modeloReleAnillo[valores].tiempoInstantaneo}" class="swal2-input" min="0">
+                </td>
+                <td>[ms]</td>
+
         </tr>
          </table>
          </div>
@@ -819,39 +835,14 @@ async function guardarValoresReles(valores) {
         modeloReleAnillo[valores].margenIc = parseFloat(datos[2]);
         modeloReleAnillo[valores].tiempo = parseFloat(datos[3]);
         modeloReleAnillo[valores].familiaCurva = datos[4];
+        modeloReleAnillo[valores].TMS = parseFloat(datos[5]);
 
         document.getElementById("Isc_r" + valores).innerText = datos[0];
         document.getElementById("Ic_r" + valores).innerText = datos[1];
         document.getElementById("Margen_Ic_r" + valores).innerText = datos[2];
         document.getElementById("Tiempo_r" + valores).innerText = datos[3];
         document.getElementById("FamiliaC_r" + valores).innerText = datos[4];
-
-        // tabla_Isc_Rele1.innerText = modeloReleAnillo[1].Isc;
-        // tabla_Isc_Rele2.innerText = modeloReleAnillo[2].Isc;
-        // tabla_Isc_Rele3.innerText = modeloReleAnillo[3].Isc;
-        // tabla_Isc_Rele4.innerText = modeloReleAnillo[4].Isc;
-        // tabla_Isc_Rele5.innerText = modeloReleAnillo[5].Isc;
-        // tabla_Isc_Rele6.innerText = modeloReleAnillo[6].Isc;
-        // tabla_Isc_Rele7.innerText = modeloReleAnillo[7].Isc;
-        // tabla_Isc_Rele8.innerText = modeloReleAnillo[8].Isc;
-
-        // tabla_Ic_Rele1.innerText = modeloReleAnillo[1].Ic;
-        // tabla_Ic_Rele2.innerText = modeloReleAnillo[2].Ic;
-        // tabla_Ic_Rele3.innerText = modeloReleAnillo[3].Ic;
-        // tabla_Ic_Rele4.innerText = modeloReleAnillo[4].Ic;
-        // tabla_Ic_Rele5.innerText = modeloReleAnillo[5].Ic;
-        // tabla_Ic_Rele6.innerText = modeloReleAnillo[6].Ic;
-        // tabla_Ic_Rele7.innerText = modeloReleAnillo[7].Ic;
-        // tabla_Ic_Rele8.innerText = modeloReleAnillo[8].Ic;
-
-        // tabla_Margen_Ic_1.innerText = modeloReleAnillo[1].margen_Ic_r1;
-        // tabla_Margen_Ic_2.innerText = modeloReleAnillo[2].margen_Ic_r2;
-        // tabla_Margen_Ic_3.innerText = modeloReleAnillo[3].margen_Ic_r3;
-        // tabla_Margen_Ic_4.innerText = modeloReleAnillo[4].margen_Ic_r4;
-        // tabla_Margen_Ic_5.innerText = modeloReleAnillo[5].margen_Ic_r5;
-        // tabla_Margen_Ic_6.innerText = modeloReleAnillo[6].margen_Ic_r6;
-        // tabla_Margen_Ic_7.innerText = modeloReleAnillo[7].margen_Ic_r7;
-        // tabla_Margen_Ic_8.innerText = modeloReleAnillo[8].margen_Ic_r8;
+        document.getElementById("TMS_r"+ valores).innerText = datos[5];
 
         Swal.fire({
             title: "Guardado configuración <p style='color: gray'> " + modeloReleAnillo[valores].nombre + "</p>",
