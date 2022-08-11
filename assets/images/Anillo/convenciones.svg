@@ -131,8 +131,8 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="290.92061"
-     inkscape:cx="302.1974"
+     inkscape:cy="187.48268"
+     inkscape:cx="175.47914"
      inkscape:zoom="0.35"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -157,7 +157,7 @@
      inkscape:groupmode="layer"
      inkscape:label="Capa 1">
     <text
-       transform="matrix(2.8596421,0,0,3.4036584,-57.616461,-125.11011)"
+       transform="matrix(2.8596421,0,0,3.4036584,-56.633784,-122.97732)"
        style="font-weight:bold;font-size:4.93889px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana Bold';white-space:pre;shape-inside:url(#rect835);fill:#ef476f;fill-opacity:1;filter:url(#filter1021);"
        id="text833"
        xml:space="preserve"><tspan
@@ -168,7 +168,7 @@
        xml:space="preserve"
        id="text833-4"
        style="font-weight:bold;font-size:4.93889px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana Bold';white-space:pre;shape-inside:url(#rect835-8);fill:#ffd166;fill-opacity:1;"
-       transform="matrix(2.8596421,0,0,3.4036585,-57.940583,-88.324347)"><tspan
+       transform="matrix(2.8596421,0,0,3.4036585,93.926878,-123.54114)"><tspan
          x="22.677734"
          y="44.572305"><tspan
            style="font-size:4.93889px;fill:#ffd166;fill-opacity:1">Relé 2</tspan></tspan></text>
@@ -176,7 +176,7 @@
        xml:space="preserve"
        id="text833-0"
        style="font-weight:bold;font-size:4.93889px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana Bold';white-space:pre;shape-inside:url(#rect835-1);fill:#06d6a0;fill-opacity:1;"
-       transform="matrix(2.8596421,0,0,3.4036585,-57.806107,-51.538588)"><tspan
+       transform="matrix(2.8596421,0,0,3.4036585,-56.823429,-87.012434)"><tspan
          x="22.677734"
          y="44.572305"><tspan
            style="font-size:4.93889px;fill:#06d6a0;fill-opacity:1">Relé 3</tspan></tspan></text>
@@ -184,7 +184,7 @@
        xml:space="preserve"
        id="text833-3"
        style="font-weight:bold;font-size:4.93889px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana Bold';white-space:pre;shape-inside:url(#rect835-3);fill:#118ab2;fill-opacity:1;"
-       transform="matrix(2.8596421,0,0,3.4036585,-58.012994,-14.744621)"><tspan
+       transform="matrix(2.8596421,0,0,3.4036585,93.854468,-86.910266)"><tspan
          x="22.677734"
          y="44.572305"><tspan
            style="font-size:4.93889px;fill:#118ab2;fill-opacity:1">Relé 4</tspan></tspan></text>
@@ -192,7 +192,7 @@
        xml:space="preserve"
        id="text833-9"
        style="font-weight:bold;font-size:4.93889px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana Bold';white-space:pre;shape-inside:url(#rect835-0);fill:#073b4c;fill-opacity:1;"
-       transform="matrix(2.8596421,0,0,3.4036585,85.367634,-125.10889)"><tspan
+       transform="matrix(2.8596421,0,0,3.4036585,-56.847566,-51.031604)"><tspan
          x="22.677734"
          y="44.572305"><tspan
            style="font-size:4.93889px;fill:#073b4c;fill-opacity:1">Relé 5</tspan></tspan></text>
@@ -200,7 +200,7 @@
        xml:space="preserve"
        id="text833-7"
        style="font-weight:bold;font-size:4.93889px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana Bold';white-space:pre;shape-inside:url(#rect835-89);fill:#9b5de5;fill-opacity:1;"
-       transform="matrix(2.8596421,0,0,3.4036585,84.833095,-87.777259)"><tspan
+       transform="matrix(2.8596421,0,0,3.4036585,93.933775,-50.279396)"><tspan
          x="22.677734"
          y="44.572305"><tspan
            style="font-size:4.93889px;fill:#9b5de5;fill-opacity:1">Relé 6</tspan></tspan></text>
@@ -208,21 +208,21 @@
        xml:space="preserve"
        id="text833-5"
        style="font-weight:bold;font-size:4.93889px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana Bold';white-space:pre;shape-inside:url(#rect835-03);fill:#5fa8d3;fill-opacity:1;"
-       transform="matrix(2.8596421,0,0,3.4036585,84.298556,-50.44563)"><tspan
+       transform="matrix(2.8596421,0,0,3.4036585,-56.851014,-15.050785)"><tspan
          x="22.677734"
          y="44.572305"><tspan
            style="font-size:4.93889px;fill:#5fa8d3;fill-opacity:1">Relé 7</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text833-09"
-       style="font-weight:bold;font-size:4.93889px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana Bold';white-space:pre;shape-inside:url(#rect835-6);fill:#87677b;fill-opacity:1;"
-       transform="matrix(2.8596421,0,0,3.4036585,84.298556,-14.717606)"><tspan
+       style="font-weight:bold;font-size:4.93889px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana Bold';white-space:pre;shape-inside:url(#rect835-6);fill:#2508e4;fill-opacity:1;"
+       transform="matrix(2.8596421,0,0,3.4036585,93.916534,-13.648519)"><tspan
          x="22.677734"
          y="44.572305"><tspan
-           style="font-size:4.93889px;fill:#87677b;fill-opacity:1">Relé 8</tspan></tspan></text>
+           style="font-size:4.93889px;fill:#2508e4;fill-opacity:1">Relé 8</tspan></tspan></text>
     <rect
        y="8.4364882"
-       x="70.817612"
+       x="71.588432"
        height="26.458332"
        width="55.940475"
        id="rect964"
@@ -232,49 +232,49 @@
        id="rect964-1"
        width="55.940475"
        height="26.458334"
-       x="70.817612"
-       y="45.224976" />
+       x="222.76468"
+       y="8.9391069" />
     <rect
        style="font-variation-settings:normal;opacity:0.907104;vector-effect:none;fill:#06d6a0;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.257637;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
        id="rect964-6"
        width="55.940475"
        height="26.458334"
-       x="70.817612"
-       y="82.013458" />
+       x="70.832474"
+       y="46.097649" />
     <rect
        style="font-variation-settings:normal;opacity:0.907104;vector-effect:none;fill:#118ab2;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.257637;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
        id="rect964-7"
        width="55.940475"
        height="26.458334"
-       x="70.817612"
-       y="118.80196" />
+       x="222.76466"
+       y="46.333599" />
     <rect
        style="font-variation-settings:normal;opacity:0.907104;vector-effect:none;fill:#073b4c;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.257637;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
        id="rect964-5"
        width="55.940475"
        height="26.458334"
-       x="217.12476"
-       y="7.7315979" />
+       x="70.076523"
+       y="83.758797" />
     <rect
        style="font-variation-settings:normal;opacity:0.907104;vector-effect:none;fill:#9b5de5;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.257637;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
        id="rect964-9"
        width="55.940475"
        height="26.458334"
-       x="216.74678"
-       y="42.127464" />
+       x="221.7634"
+       y="83.728096" />
     <rect
        style="font-variation-settings:normal;opacity:0.907104;vector-effect:none;fill:#5fa8d3;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.257637;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
        id="rect964-3"
        width="55.940475"
        height="26.458334"
-       x="217.50273"
-       y="79.464432" />
+       x="70.076523"
+       y="121.41996" />
     <rect
-       style="font-variation-settings:normal;opacity:0.907104;vector-effect:none;fill:#87677b;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.257637;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       style="font-variation-settings:normal;opacity:0.907104;vector-effect:none;fill:#2508e4;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.257637;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
        id="rect964-4"
        width="55.940475"
        height="26.458334"
-       x="217.12476"
-       y="118.28201" />
+       x="221.7634"
+       y="121.12258" />
   </g>
 </svg>
