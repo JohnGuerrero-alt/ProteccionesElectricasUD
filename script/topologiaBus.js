@@ -177,17 +177,17 @@ var TMS_calculado_A = 0.00;
 var TMS_calculado_B = 0.00;
 var TMS_calculado_C = 0.00;
 
-var tiempo_A;
-var tiempo_B;
-var tiempo_C;
+var tiempo_A = 0;
+var tiempo_B = 0;
+var tiempo_C = 0;
 
 var tiempo_instantaneo_A;
 var tiempo_instantaneo_B;
 var tiempo_instantaneo_C;
 
-var tiempo_local_C;
-var tiempo_local_B;
-var tiempo_local_A;
+var tiempo_local_C = 0;
+var tiempo_local_B = 0;
+var tiempo_local_A = 0;
 
 var tiempo_remoto_B;
 var tiempo_remoto_A;
@@ -731,11 +731,12 @@ function graficarCurvaTopologiaBus() {
                 color: 'rgba(113, 200, 55, 1)',
 
             },
-            //Linea corte Relé A
+            //Linea corte Relé A - Punto actuación relé 50
             {
                 points: [
-                    [Isc_ReleA, 0.001],
-                    [Isc_ReleA, 10000000],
+                    //[Isc_ReleA, 0.001],
+                    [Isc_ReleA, tiempo_local_A],
+                    //Punto relé 50
                     [Isc_ReleA, tiempo_instantaneo_A / 1000]
 
                 ],
@@ -744,11 +745,12 @@ function graficarCurvaTopologiaBus() {
                 graphType: 'polyline',
                 updateOnMouseMove: true
             },
-            //Linea corte Relé B
+            //Linea corte Relé B - Punto actuación relé 50
             {
                 points: [
-                    [Isc_ReleB, 0.001],
-                    [Isc_ReleB, 10000000],
+                    //[Isc_ReleB, 0.001],
+                    [Isc_ReleB, tiempo_local_B],
+                    //Punto relé 50
                     [Isc_ReleB, tiempo_instantaneo_B / 1000]
 
                 ],
@@ -757,11 +759,12 @@ function graficarCurvaTopologiaBus() {
                 graphType: 'polyline',
                 updateOnMouseMove: true
             },
-            //Linea corte Relé C
+            //Linea corte Relé C - Punto actuación relé 50
             {
                 points: [
-                    [Isc_ReleC, 0.001],
-                    [Isc_ReleC, 10000000],
+                    //[Isc_ReleC, 0.001],
+                    [Isc_ReleC, tiempo_local_C],
+                    //Punto relé 50
                     [Isc_ReleC, tiempo_instantaneo_C / 1000]
 
                 ],
@@ -769,7 +772,8 @@ function graficarCurvaTopologiaBus() {
                 color: 'rgba(113, 200, 55, 1)',
                 graphType: 'polyline',
                 updateOnMouseMove: true
-            }
+            },
+            
         ],
     });
 }
