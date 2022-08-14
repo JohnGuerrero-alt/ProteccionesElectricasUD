@@ -7,25 +7,32 @@ const modeloAnillo = {
         etiqueta1: "Voltaje",
         etiqueta2: "[kV]",
         voltaje: "",
-        potencia: ""
+        potencia: "",
+        rele1: "",
+        rele2: "",
+         
     },
     1: {
         nombre: "Barra I-II",
         tipo: "Barra",
         urlImagen: "./assets/images/Anillo/2_2.svg",
-        impedancia: '',
+        reactancia: '',
         etiqueta1: "Z",
         etiqueta2: "[Ohmios]",
-        potencia: ""
+        potencia: "",
+        rele1: "1",
+        rele2: "2",
     },
     2: {
         nombre: "Barra IV-I",
         tipo: "Barra",
         urlImagen: "./assets/images/Anillo/2_4.svg",
-        impedancia: "",
+        reactancia: "",
         etiqueta1: "Z",
         etiqueta2: "[Ohmios]",
-        potencia: ""
+        potencia: "",
+        rele1: "7",
+        rele2: "8",
     },
     3: {
         nombre: "Carga",
@@ -34,6 +41,8 @@ const modeloAnillo = {
         potencia: "",
         etiqueta1: "S",
         etiqueta2: "[MVA]",
+        rele1: "",
+        rele2: "",
     },
     4: {
         nombre: "Carga",
@@ -42,24 +51,30 @@ const modeloAnillo = {
         potencia: "",
         etiqueta1: "S",
         etiqueta2: "[MVA]",
+        rele1: "",
+        rele2: "",
     },
     5: {
         nombre: "Barra II-III",
         tipo: "Barra",
         urlImagen: "./assets/images/Anillo/4_2.svg",
-        impedancia: "",
+        reactancia: "",
         etiqueta1: "Z",
         etiqueta2: "[Ohmios]",
-        potencia: ""
+        potencia: "",
+        rele1: "3",
+        rele2: "4",
     },
     6: {
         nombre: "Barra III-IV",
         tipo: "Barra",
         urlImagen: "./assets/images/Anillo/4_4.svg",
-        impedancia: "",
+        reactancia: "",
         etiqueta1: "Z",
         etiqueta2: "[Ohmios]",
-        potencia: ""
+        potencia: "",
+        rele1: "5",
+        rele2: "6",
     },
     7: {
         nombre: "Carga",
@@ -68,7 +83,9 @@ const modeloAnillo = {
         potencia: "",
         etiqueta1: "S",
         etiqueta2: "[MVA]",
-        potencia: ""
+        potencia: "",
+        rele1: "",
+        rele2: "",
     }
 
 }
@@ -265,8 +282,9 @@ var TMSparteIEC_1, TMSparteIEC_2, TMSparteIEC_3, TMSparteIEC_4, TMSparteIEC_5, T
 var TMSparteANSI_1, TMSparteANSI_2, TMSparteANSI_3, TMSparteANSI_4, TMSparteANSI_5, TMSparteANSI_6, TMSparteANSI_7, TMSparteANSI_8;
 
 var displayVoltaje = "display:none";
-var displayImpedancia = "display:none";
+var displayReactancia = "display:none";
 var displayPotencia = "display:none";
+var displayRele = "display:none";
 
 tabla_Margen_Ic_1 = ""; tabla_Margen_Ic_2 = ""; tabla_Margen_Ic_3 = ""; tabla_Margen_Ic_4 = ""; tabla_Margen_Ic_5 = ""; tabla_Margen_Ic_6 = ""; tabla_Margen_Ic_7 = ""; tabla_Margen_Ic_8 = "";
 
@@ -391,17 +409,20 @@ function escogerSegunTipo(tipo) {
         if (tipo == "Generador") {
             displayVoltaje = "display: grid; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr 1fr; ";
             displayPotencia = "display: grid; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr 1fr; ";
-            displayImpedancia = "display:none";
+            displayReactancia = "display:none";
+            displayRele = "display:none";
         }
         if (tipo == "Barra") {
             displayVoltaje = "display:none";
             displayPotencia = "display:none";
-            displayImpedancia = "display: grid; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr 1fr; ";
+            displayReactancia = "display: grid; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr 1fr; ";
+            displayRele = "display: grid; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr 1fr 1fr; ";
         }
         if (tipo == "Carga") {
             displayVoltaje = "display:none";
             displayPotencia = "display: grid; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr 1fr; ";
-            displayImpedancia = "display:none";
+            displayReactancia = "display:none";
+            displayRele = "display:none";
         }
 
     } catch (error) {
@@ -422,6 +443,7 @@ async function establecerValoresAnillo(valores, tipo) {
         imageWidth: 100,
         imageHeight: 100,
         width: 700,
+        background: '#fefefe',
         html: `<div class="table-responsive">
         <table class="table align-middle" style="font-size:13px"> 
         <tr style="${displayVoltaje}; ">
@@ -438,10 +460,27 @@ async function establecerValoresAnillo(valores, tipo) {
             <td >[MVA]</td>
         </tr>
 
-        <tr style="${displayImpedancia};">
-            <th scope="row">Impedancia</th>    
-            <td ><input type="number" id="swal-Anillo-impedancia" value="${modeloAnillo[valores].impedancia}" class="swal2-input" min="0"></td>
+        <tr style="${displayReactancia};">
+            <th scope="row">Reactancia</th>    
+            <td ><input type="number" id="swal-Anillo-reactancia" value="${modeloAnillo[valores].reactancia}" class="swal2-input" min="0"></td>
             <td >[Ω]</td>
+        </tr>
+
+        <tr class="table-secondary">
+            <th></th>
+            <td></td>
+        </tr>
+
+
+        <tr style="${displayRele}">
+            <th scope="row" style="color:#1b31ffff">Rele ${modeloAnillo[valores].rele1}</th>
+            <td>
+                <img  onclick="guardarValoresReles(${modeloAnillo[valores].rele1})" class="seleccionReleAnillo" src="assets/images/Anillo/edit1.svg" width="20" height="20">
+            </td>
+            <th scope="row" style="color:#29b561ff">Rele ${modeloAnillo[valores].rele2}</th>
+            <td>
+                <img  onclick="guardarValoresReles(${modeloAnillo[valores].rele2})" class="seleccionReleAnillo" src="assets/images/Anillo/edit2.svg" width="20" height="20">
+            </td>
         </tr>
 
         </table>
@@ -461,7 +500,7 @@ async function establecerValoresAnillo(valores, tipo) {
 
                 document.getElementById('swal-Anillo-Voltaje').value,
                 document.getElementById('swal-Anillo-potencia').value,
-                document.getElementById('swal-Anillo-impedancia').value,
+                document.getElementById('swal-Anillo-reactancia').value,
 
             ]
         },
@@ -480,27 +519,27 @@ async function establecerValoresAnillo(valores, tipo) {
 
 function guardarAnilloGeneral(elemento, datos) {
     console.log("datos pasados: ", datos);
-    console.log("modeloAnillo[1].impedancia: ", modeloAnillo[1].impedancia)
+    console.log("modeloAnillo[1].reactancia: ", modeloAnillo[1].reactancia)
     modeloAnillo[elemento].voltaje = parseFloat(datos[0]);
     modeloAnillo[elemento].potencia = parseFloat(datos[1]);
-    modeloAnillo[elemento].impedancia = parseFloat(datos[2]);
+    modeloAnillo[elemento].reactancia = parseFloat(datos[2]);
 
     if (!isNaN(modeloAnillo[0].voltaje)) {
         valor_diagrama_Generador.innerHTML = modeloAnillo[0].voltaje + " kV" + "<br>";
     } else { valor_diagrama_Generador.innerHTML = " kV" + "<br>"; }
     if (!isNaN(modeloAnillo[0].potencia)) { valor_diagrama_Generador.innerHTML = valor_diagrama_Generador.innerHTML + modeloAnillo[0].potencia + " MVA" + "<br>" }
 
-    if (!isNaN(modeloAnillo[1].impedancia)) { valor_barra_1_2.innerHTML = modeloAnillo[1].impedancia + " Ω"; } else { valor_barra_1_2.innerText = " Ω"; }
+    if (!isNaN(modeloAnillo[1].reactancia)) { valor_barra_1_2.innerHTML = modeloAnillo[1].reactancia + " Ω"; } else { valor_barra_1_2.innerText = " Ω"; }
 
-    if (!isNaN(modeloAnillo[2].impedancia)) { valor_barra_4_1.innerText = modeloAnillo[2].impedancia + " Ω"; } else { valor_barra_4_1.innerText = " Ω"; }
+    if (!isNaN(modeloAnillo[2].reactancia)) { valor_barra_4_1.innerText = modeloAnillo[2].reactancia + " Ω"; } else { valor_barra_4_1.innerText = " Ω"; }
 
     if (!isNaN(modeloAnillo[3].potencia)) { valor_carga_izquierda.innerText = modeloAnillo[3].potencia + " MVA"; } else { valor_carga_izquierda.innerText = " MVA"; }
 
     if (!isNaN(modeloAnillo[4].potencia)) { valor_carga_derecha.innerText = modeloAnillo[4].potencia + " MVA"; } else { valor_carga_derecha.innerText = " MVA"; }
 
-    if (!isNaN(modeloAnillo[5].impedancia)) { valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].impedancia + " Ω"; } else { valor_barra_2_3.innerHTML = "<br>" + " Ω"; }
+    if (!isNaN(modeloAnillo[5].reactancia)) { valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].reactancia + " Ω"; } else { valor_barra_2_3.innerHTML = "<br>" + " Ω"; }
 
-    if (!isNaN(modeloAnillo[6].impedancia)) { valor_barra_3_4.innerHTML = "<br>" + modeloAnillo[6].impedancia + " Ω"; } else { valor_barra_3_4.innerHTML = "<br>" + " Ω"; }
+    if (!isNaN(modeloAnillo[6].reactancia)) { valor_barra_3_4.innerHTML = "<br>" + modeloAnillo[6].reactancia + " Ω"; } else { valor_barra_3_4.innerHTML = "<br>" + " Ω"; }
 
     if (!isNaN(modeloAnillo[7].potencia)) { valor_carga_abajo.innerHTML = "<br>" + modeloAnillo[7].potencia + " MVA"; } else { valor_carga_abajo.innerHTML = "<br>" + " MVA"; }
 
@@ -510,22 +549,22 @@ function guardarAnilloGeneral(elemento, datos) {
 function ejemploAnillo() {
     modeloAnillo[0].voltaje = 13.2;
     modeloAnillo[0].potencia = 150;
-    modeloAnillo[1].impedancia = 2;
-    modeloAnillo[2].impedancia = 3;
+    modeloAnillo[1].reactancia = 2;
+    modeloAnillo[2].reactancia = 3;
     modeloAnillo[3].potencia = 5;
     modeloAnillo[4].potencia = 7;
-    modeloAnillo[5].impedancia = 2;
-    modeloAnillo[6].impedancia = 4;
+    modeloAnillo[5].reactancia = 2;
+    modeloAnillo[6].reactancia = 4;
     modeloAnillo[7].potencia = 3;
     valor_diagrama_Generador.innerHTML = modeloAnillo[0].voltaje + " kV" + "<br>";
     valor_diagrama_Generador.innerHTML = valor_diagrama_Generador.innerHTML + modeloAnillo[0].potencia + " MVA" + "<br>";
-    valor_barra_1_2.innerHTML = modeloAnillo[1].impedancia + " Ω";
-    valor_barra_4_1.innerText = modeloAnillo[2].impedancia + " Ω";
+    valor_barra_1_2.innerHTML = modeloAnillo[1].reactancia + " Ω";
+    valor_barra_4_1.innerText = modeloAnillo[2].reactancia + " Ω";
     valor_carga_izquierda.innerText = modeloAnillo[3].potencia + " MVA";
     valor_carga_derecha.innerText = modeloAnillo[4].potencia + " MVA";
-    valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].impedancia + " Ω";
-    valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].impedancia + " Ω";
-    valor_barra_3_4.innerHTML = "<br>" + modeloAnillo[6].impedancia + " Ω";
+    valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].reactancia + " Ω";
+    valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].reactancia + " Ω";
+    valor_barra_3_4.innerHTML = "<br>" + modeloAnillo[6].reactancia + " Ω";
     valor_carga_abajo.innerHTML = "<br>" + modeloAnillo[7].potencia + " MVA";
 
 }
@@ -534,7 +573,7 @@ function ejemploAnillo() {
 
 function calcularValoresRelesAnillo() {
 
-    S1 = modeloAnillo[0].potencia; S2 = modeloAnillo[3].potencia, S3 = modeloAnillo[4].potencia; S4 = modeloAnillo[7].potencia; Z1 = modeloAnillo[1].impedancia; Z2 = modeloAnillo[2].impedancia; Z3 = modeloAnillo[5].impedancia; Z4 = modeloAnillo[6].impedancia; VAnillo = modeloAnillo[0].voltaje;
+    S1 = modeloAnillo[0].potencia; S2 = modeloAnillo[3].potencia, S3 = modeloAnillo[4].potencia; S4 = modeloAnillo[7].potencia; Z1 = modeloAnillo[1].reactancia; Z2 = modeloAnillo[2].reactancia; Z3 = modeloAnillo[5].reactancia; Z4 = modeloAnillo[6].reactancia; VAnillo = modeloAnillo[0].voltaje;
 
     //Cuando tenemos abierto en  el Relé 1 (A)
     Ic_B = (((S3 * (1000000)) + (S4 * (1000000)) + (S2) * (1000000)) / ((Math.sqrt(3)) * (VAnillo) * (1000)));
@@ -700,6 +739,7 @@ async function guardarValoresReles(valores) {
     const { value: formValues } = await Swal.fire({
         allowOutsideClick: false,
         title: modeloReleAnillo[valores].nombre,
+        background: '#fefefe',
         html: `
         <div class="table-responsive">
             <table class="table align-middle" style="font-size:13px">
@@ -828,7 +868,7 @@ async function guardarValoresReles(valores) {
                 document.getElementById(swal_Anillo_tms).value,
                 document.getElementById('swal-Anillo-tInstantaneo').value
 
-                //document.getElementById('swal-Anillo-impedancia').value,
+                //document.getElementById('swal-Anillo-reactancia').value,
 
             ]
         },

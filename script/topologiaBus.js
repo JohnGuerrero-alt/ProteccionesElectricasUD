@@ -255,6 +255,7 @@ async function valoresRele(nombreRele) {
         imageWidth: 100,
         imageHeight: 100,
         width: 700,
+        background: '#fefefe',
         html: ` 
         
         <div class="table-responsive" >
