@@ -150,6 +150,11 @@ html {
 }
 
 /* Configuración grid(esquema) para las filas */
+.fgen {
+    font-size: 13px;
+    font-weight: bold;
+}
+
 .fila1tb {
     display: grid;
     grid-template-columns: 1fr 10px 1fr 1fr 10px 1fr 1fr 10px 1fr 1fr;
@@ -456,6 +461,9 @@ canvas {
 .fta2_2_2 {
     background-image: url("../assets/images/Anillo/2_2.svg");
     background-size: 100% 100%;
+    font-size: 12px;
+    font-weight: bold; 
+    text-align: center;
 }
 
 .fta2_3_1 {
@@ -479,6 +487,8 @@ canvas {
     background-size: 100% 100%;
     text-align: right;
     justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
     
 }
 
@@ -513,6 +523,7 @@ canvas {
     background-size: 100% 100%;
     text-align: start;
     font-size: 12px;
+    font-weight: bold;
 }
 
 .fta3_1_1_2 {
@@ -549,6 +560,7 @@ canvas {
     background-size: 100% 100%;
     text-align: right;
     font-size: 12px;
+    font-weight: bold ;
 }
 
 /* Configuración para la fila4 */
@@ -582,8 +594,10 @@ canvas {
 .fta4_2_1 {
     background-image: url("../assets/images/Anillo/4_2.svg");
     background-size: 100% 100%;
-    
-    /* font-size: 12px; */
+    font-size: 11px;
+    /* text-decoration: underline; */
+    font-weight: bold;
+    text-align: center;
 }
 
 .fta4_2_2 {
@@ -610,6 +624,8 @@ canvas {
     background-image: url("../assets/images/Anillo/4_4.svg");
     background-size: 100% 100%;
     text-align: right;
+    font-weight: bold;
+    font-size: 11px;
 }
 
 .fta4_4_2 {
@@ -643,7 +659,10 @@ canvas {
 }
 
 .fta5_4 {
+    font-weight: bold;
     font-size: 12px;
+    
+    
 }
 
 /* Configuración hover para los elementos principales */
