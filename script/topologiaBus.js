@@ -247,7 +247,7 @@ function habilitarTMS() {
 
 }
 
-console.log(modeloRele[0].Isc);
+//console.log(modeloRele[0].Isc);
 
 //Declaramos las funciones que se utilizarán en la topología Bus
 async function valoresRele(nombreRele) {
@@ -257,7 +257,7 @@ async function valoresRele(nombreRele) {
 
     //Evitar el NaN en el TMS
     try {
-        if(isNaN(modeloRele[nombreRele].TMS)){modeloRele[nombreRele].TMS =""}
+        if (isNaN(modeloRele[nombreRele].TMS)) { modeloRele[nombreRele].TMS = "" }
     } catch (error) {
 
     }
@@ -529,20 +529,18 @@ async function ajustarValoresCoordinacion(Rele) {
         preConfirm: () => {
             return [
                 document.getElementById('swal-tiempoLocal').value,
-                document.getElementById('swal-tmsCalculado').innerText,
-                modeloRele[Rele].tiempoLocal
-                
+                document.getElementById('swal-tmsCalculado').innerText
+
             ]
         },
 
     })
 
     if (formValues) {
-        console.log("whattttt :", formValues) 
-        document.getElementById("Tiempo_local_"+Rele).innerText = parseFloat(formValues[0]);
-        document.getElementById("Dial_calculado_"+Rele).innerText = parseFloat(formValues[1]);
-        modeloRele[Rele].tiempoLocal = parseFloat(formValues[0]);
-    
+        document.getElementById("Tiempo_local_" + Rele).innerText = parseFloat(formValues[0]);
+        modeloRele[Rele].tiempo = parseFloat(formValues[0]);
+        document.getElementById("Dial_calculado_" + Rele).innerText = parseFloat(formValues[1]);
+
     }
 
 
@@ -566,162 +564,181 @@ function calcularNuevoDial(Rele) {
     TMS_A = modeloRele[0].TMS;
     TMS_B = modeloRele[1].TMS;
     TMS_C = modeloRele[2].TMS;
-    tiempo_A = modeloRele[0].tiempo;
-    tiempo_B = modeloRele[1].tiempo;
-    if(Rele == 2) {
-        tiempo_C = (document.getElementById("swal-tiempoLocal").value)*1000;
-        console.log("Tiempooooo local: ", tiempo_C)
-    }
-    if(Rele == 1) {
-        tiempo_B = (document.getElementById("swal-tiempoLocal").value)*1000;
-        console.log("Tiempooooo local: ", tiempo_B)
-    }
-    if(Rele == 0) {
-        tiempo_A = (document.getElementById("swal-tiempoLocal").value)*1000;
-        console.log("Tiempooooo local: ", tiempo_A)
-    }
-    
+    // tiempo_A = modeloRele[0].tiempo;
+    // tiempo_B = modeloRele[1].tiempo;
+    // tiempo_C = modeloRele[2].tiempo;
+    console.log("Rele: ", Rele)
 
-   
+
+    if (Rele == 2) {
+        tiempo_C = (document.getElementById("swal-tiempoLocal").value) * 1000;
+        console.log("Tiempooooo local: ", tiempo_C)
+        modeloRele[2].tiempo = tiempo_C;
+
+        try {
+            Ic_c_con_margen = Ic_ReleC + (Ic_ReleC) * (Margen_Ic_C / 100)
+
+            //DIAL en el relé C
+            TMSparteIEC_C = parametrosCurva[familiaCurva_C].IEC * ((tiempo_C / 1000) * (((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1) / (parametrosCurva[familiaCurva_C].beta)));
+            console.log("nuevo tiempo: ", tiempo_C)
+
+
+            TMSparteANSI_C = parametrosCurva[familiaCurva_C].ANSI * ((tiempo_C / 1000) * 1 / ((parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B / ((Isc_ReleC / Ic_c_con_margen) - parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D / (Math.pow((Isc_ReleC / Ic_c_con_margen) - parametrosCurva[familiaCurva_C].C, 2))) + (parametrosCurva[familiaCurva_C].E / (Math.pow((Isc_ReleC / Ic_c_con_margen) - parametrosCurva[familiaCurva_C].C, 3)))));
+
+            console.log("parteIEC C: ", TMSparteIEC_C);
+            console.log("parteANSI C: ", TMSparteANSI_C)
+
+
+            TMS_calculado_C = (TMSparteIEC_C + TMSparteANSI_C).toFixed(2);
+            modeloRele[2].TMS_calculado = TMS_calculado_C;
+            console.log("TMS_calculado_C", TMS_calculado_C)
+
+            document.getElementById('swal-tmsCalculado').innerText = TMS_calculado_C;
+
+            document.getElementById("Dial_calculado_2").innerText = TMS_calculado_C;
+
+
+            // if (isNaN(TMS_calculado_C)) { TMS_calculado_C = "-" }
+            // document.getElementById("Dial_calculado_2").innerText = TMS_calculado_C;
+
+            //tLocalparteIEC_C = (parametrosCurva[familiaCurva_C].IEC * TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1)));
+
+            //tLocalparteANSI_C = (parametrosCurva[familiaCurva_C].ANSI * TMS_C * ((parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B / ((Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D / (Math.pow((Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C), 2))) + (parametrosCurva[familiaCurva_C].E / (Math.pow((Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C), 3))))));
+
+
+
+            //Hallar tiempo Local en C
+            //tiempo_local_C = (tLocalparteIEC_C + tLocalparteANSI_C).toFixed(4);
+            //modeloRele[2].tiempoLocal = tiempo_local_C;
+            //console.log("tiempo local C: ", tiempo_local_C)
+
+            // if (isNaN(tiempo_local_C)) { tiempo_local_C = "__" }
+            // document.getElementById("Tiempo_local_2").innerHTML = tiempo_local_C;
+
+
+
+
+
+        } catch (error) {
+
+        }
+    }
+    if (Rele == 1) {
+        tiempo_B = (document.getElementById("swal-tiempoLocal").value) * 1000;
+        console.log("Tiempooooo local: ", tiempo_B)
+        modeloRele[1].tiempo = tiempo_B;
+
+        try {
+            Ic_b_con_margen = Ic_ReleB + (Ic_ReleB) * (Margen_Ic_B / 100)
+
+            //DIAL en el relé B
+            TMSparteIEC_B = parametrosCurva[familiaCurva_B].IEC * ((tiempo_B / 1000) * (((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1) / (parametrosCurva[familiaCurva_B].beta)));
+
+            TMSparteANSI_B = parametrosCurva[familiaCurva_B].ANSI * ((tiempo_B / 1000) * 1 / ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C, 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C, 3)))));
+
+
+            TMS_calculado_B = (TMSparteIEC_B + TMSparteANSI_B).toFixed(2);
+            modeloRele[1].TMS_calculado = TMS_calculado_B;
+            if (isNaN(TMS_calculado_B)) { TMS_calculado_B = "-" }
+
+
+            document.getElementById('swal-tmsCalculado').innerText = TMS_calculado_B
+
+
+            document.getElementById("Dial_calculado_1").innerText = TMS_calculado_B;
+
+            //tLocalparteIEC_B = (parametrosCurva[familiaCurva_B].IEC * TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)));
+
+            //tLocalparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI * TMS_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 3))))));
+
+
+            //Hallar tiempo local en B
+            //tiempo_local_B = (tLocalparteIEC_B + tLocalparteANSI_B).toFixed(4);
+            //modeloRele[1].tiempoLocal = tiempo_local_B;
+            //if (isNaN(tiempo_local_B)) { tiempo_local_B = "__" }
+            //document.getElementById("Tiempo_local_1").innerHTML = tiempo_local_B;
+
+
+            //Hallar tiempo remoto en B
+            //tRemotoparteIEC_B = (parametrosCurva[familiaCurva_B].IEC * TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)));
+
+            //tRemotoparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI * TMS_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 3))))));
+
+
+            //tiempo_remoto_B = (tRemotoparteIEC_B + tRemotoparteANSI_B).toFixed(4);
+            //if (isNaN(tiempo_remoto_B)) { tiempo_remoto_B = "__" }
+            //document.getElementById("Tiempo_remoto_1").innerHTML = tiempo_remoto_B;
+
+        } catch (error) {
+
+        }
+
+
+    }
+    if (Rele == 0) {
+        tiempo_A = (document.getElementById("swal-tiempoLocal").value) * 1000;
+        console.log("Tiempooooo local: ", tiempo_A)
+        modeloRele[0].tiempo = tiempo_A;
+
+
+        try {
+
+            //DIAL en el relé A
+            Ic_a_con_margen = Ic_ReleA + (Ic_ReleA) * (Margen_Ic_A / 100)
+
+            TMSparteIEC_A = parametrosCurva[familiaCurva_A].IEC * ((tiempo_A / 1000) * (((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta)));
+
+            TMSparteANSI_A = parametrosCurva[familiaCurva_A].ANSI * ((tiempo_A / 1000) * 1 / ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C, 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C, 3)))));
+
+
+            TMS_calculado_A = (TMSparteANSI_A + TMSparteIEC_A).toFixed(2);
+            modeloRele[0].TMS_calculado = TMS_calculado_A;
+            if (isNaN(TMS_calculado_A)) { TMS_calculado_A = "-" }
+
+            document.getElementById('swal-tmsCalculado').innerText = TMS_calculado_A;
+
+            document.getElementById("Dial_calculado_0").innerText = TMS_calculado_A;
+
+            //Hallar tiempo local en A
+            //tLocalparteIEC_A = (parametrosCurva[familiaCurva_A].IEC * TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)));
+
+
+            //tLocalparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI * TMS_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 3))))));
+
+
+
+
+            //Hallar tiempo remoto en A
+            //tRemotoparteIEC_A = (parametrosCurva[familiaCurva_A].IEC * TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)));
+
+            //tRemotoparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI * TMS_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 3))))));
+
+            //tiempo_remoto_A = (tRemotoparteIEC_A + tRemotoparteANSI_A).toFixed(4);
+
+            //if (isNaN(tiempo_remoto_A)) { tiempo_remoto_A = "__" }
+            //document.getElementById("Tiempo_remoto_0").innerHTML = tiempo_remoto_A;
+
+
+        } catch (error) {
+
+        }
+
+    }
+
+
+
     tiempo_instantaneo_A = modeloRele[0].tiempoInstantaneo;
     tiempo_instantaneo_B = modeloRele[1].tiempoInstantaneo;
-    tiempo_instantaneo_C = modeloRele[2].tiempoInstantaneo; 
-
-    try {
-        Ic_c_con_margen = Ic_ReleC + (Ic_ReleC) * (Margen_Ic_C / 100)
-
-        //DIAL en el relé C
-        TMSparteIEC_C = parametrosCurva[familiaCurva_C].IEC * ((tiempo_C / 1000) * (((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1) / (parametrosCurva[familiaCurva_C].beta)));
-        console.log("nuevo tiempo: ", tiempo_C)
-
-
-        TMSparteANSI_C = parametrosCurva[familiaCurva_C].ANSI * ((tiempo_C / 1000) * 1 / ((parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B / ((Isc_ReleC / Ic_c_con_margen) - parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D / (Math.pow((Isc_ReleC / Ic_c_con_margen) - parametrosCurva[familiaCurva_C].C, 2))) + (parametrosCurva[familiaCurva_C].E / (Math.pow((Isc_ReleC / Ic_c_con_margen) - parametrosCurva[familiaCurva_C].C, 3)))));
-
-        console.log("parteIEC C: ", TMSparteIEC_C);
-        console.log("parteANSI C: ", TMSparteANSI_C)
-
-
-        TMS_calculado_C = (TMSparteIEC_C + TMSparteANSI_C).toFixed(4);
-        modeloRele[2].TMS_calculado = TMS_calculado_C;
-        console.log("TMS_calculado_C", TMS_calculado_C)
-
-        document.getElementById('swal-tmsCalculado').innerText = TMS_calculado_C
-       
-
-        // if (isNaN(TMS_calculado_C)) { TMS_calculado_C = "-" }
-        // document.getElementById("Dial_calculado_2").innerText = TMS_calculado_C;
-
-        //tLocalparteIEC_C = (parametrosCurva[familiaCurva_C].IEC * TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(Isc_ReleC / Ic_c_con_margen, parametrosCurva[familiaCurva_C].alfa)) - 1)));
-
-        //tLocalparteANSI_C = (parametrosCurva[familiaCurva_C].ANSI * TMS_C * ((parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B / ((Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D / (Math.pow((Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C), 2))) + (parametrosCurva[familiaCurva_C].E / (Math.pow((Isc_ReleC / Ic_c_con_margen) - (parametrosCurva[familiaCurva_C].C), 3))))));
-
-
-
-        //Hallar tiempo Local en C
-        //tiempo_local_C = (tLocalparteIEC_C + tLocalparteANSI_C).toFixed(4);
-        //modeloRele[2].tiempoLocal = tiempo_local_C;
-        //console.log("tiempo local C: ", tiempo_local_C)
-
-        // if (isNaN(tiempo_local_C)) { tiempo_local_C = "__" }
-        // document.getElementById("Tiempo_local_2").innerHTML = tiempo_local_C;
+    tiempo_instantaneo_C = modeloRele[2].tiempoInstantaneo;
 
 
 
 
 
-    } catch (error) {
-
-    }
-
-    try {
-        Ic_b_con_margen = Ic_ReleB + (Ic_ReleB) * (Margen_Ic_B / 100)
-
-        //DIAL en el relé B
-        TMSparteIEC_B = parametrosCurva[familiaCurva_B].IEC * ((tiempo_B / 1000) * (((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1) / (parametrosCurva[familiaCurva_B].beta)));
-
-        TMSparteANSI_B = parametrosCurva[familiaCurva_B].ANSI * ((tiempo_B / 1000) * 1 / ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C, 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleB / Ic_b_con_margen) - parametrosCurva[familiaCurva_B].C, 3)))));
 
 
-        TMS_calculado_B = (TMSparteIEC_B + TMSparteANSI_B).toFixed(4);
-        modeloRele[1].TMS_calculado =  TMS_calculado_B;
-        if (isNaN(TMS_calculado_B)) { TMS_calculado_B = "-" }
 
 
-        document.getElementById('swal-tmsCalculado').innerText = TMS_calculado_B
-
-
-        document.getElementById("Dial_calculado_1").innerText = TMS_calculado_B;
-
-        //tLocalparteIEC_B = (parametrosCurva[familiaCurva_B].IEC * TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleB / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)));
-
-        //tLocalparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI * TMS_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleB / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 3))))));
-
-
-        //Hallar tiempo local en B
-        //tiempo_local_B = (tLocalparteIEC_B + tLocalparteANSI_B).toFixed(4);
-        //modeloRele[1].tiempoLocal = tiempo_local_B;
-        //if (isNaN(tiempo_local_B)) { tiempo_local_B = "__" }
-        //document.getElementById("Tiempo_local_1").innerHTML = tiempo_local_B;
-
-
-        //Hallar tiempo remoto en B
-        //tRemotoparteIEC_B = (parametrosCurva[familiaCurva_B].IEC * TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_margen, parametrosCurva[familiaCurva_B].alfa)) - 1)));
-
-        //tRemotoparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI * TMS_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleC / Ic_b_con_margen) - (parametrosCurva[familiaCurva_B].C), 3))))));
-
-
-        //tiempo_remoto_B = (tRemotoparteIEC_B + tRemotoparteANSI_B).toFixed(4);
-        //if (isNaN(tiempo_remoto_B)) { tiempo_remoto_B = "__" }
-        //document.getElementById("Tiempo_remoto_1").innerHTML = tiempo_remoto_B;
-
-    } catch (error) {
-
-    }
-
-    try {
-
-        //DIAL en el relé A
-        Ic_a_con_margen = Ic_ReleA + (Ic_ReleA) * (Margen_Ic_A / 100)
-
-        TMSparteIEC_A = parametrosCurva[familiaCurva_A].IEC * ((tiempo_A / 1000) * (((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta)));
-
-        TMSparteANSI_A = parametrosCurva[familiaCurva_A].ANSI * ((tiempo_A / 1000) * 1 / ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C, 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_margen) - parametrosCurva[familiaCurva_A].C, 3)))));
-
-
-        TMS_calculado_A = (TMSparteANSI_A + TMSparteIEC_A).toFixed(4);
-        modeloRele[0].TMS_calculado = TMS_calculado_A;
-        if (isNaN(TMS_calculado_A)) { TMS_calculado_A = "-" }
-
-        document.getElementById('swal-tmsCalculado').innerText = TMS_calculado_A;
-
-        document.getElementById("Dial_calculado_0").innerText = TMS_calculado_A;
-
-        //Hallar tiempo local en A
-        //tLocalparteIEC_A = (parametrosCurva[familiaCurva_A].IEC * TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleA / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)));
-
-
-        //tLocalparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI * TMS_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 3))))));
-
-       
-
-
-        //Hallar tiempo remoto en A
-        //tRemotoparteIEC_A = (parametrosCurva[familiaCurva_A].IEC * TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_margen, parametrosCurva[familiaCurva_A].alfa)) - 1)));
-
-        //tRemotoparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI * TMS_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleB / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 3))))));
-
-        //tiempo_remoto_A = (tRemotoparteIEC_A + tRemotoparteANSI_A).toFixed(4);
-
-        //if (isNaN(tiempo_remoto_A)) { tiempo_remoto_A = "__" }
-        //document.getElementById("Tiempo_remoto_0").innerHTML = tiempo_remoto_A;
-
-
-    } catch (error) {
-        document.getElementById("Dial_calculado_0").innerText = "";
-    }
-
-
-    
 
 
 
@@ -848,7 +865,7 @@ function calcularPasoaPaso() {
 
 
         TMS_calculado_B = (TMSparteIEC_B + TMSparteANSI_B).toFixed(4);
-        modeloRele[1].TMS_calculado =  TMS_calculado_B;
+        modeloRele[1].TMS_calculado = TMS_calculado_B;
         if (isNaN(TMS_calculado_B)) { TMS_calculado_B = "-" }
         document.getElementById("Dial_calculado_1").innerText = TMS_calculado_B;
 
@@ -922,7 +939,7 @@ function calcularPasoaPaso() {
     }
 
     console.log("margen con a: ", Ic_a_con_margen)
-    
+
 
 }
 
