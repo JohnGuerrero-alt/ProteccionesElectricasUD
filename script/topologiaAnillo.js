@@ -554,15 +554,20 @@ function guardarAnilloGeneral(elemento, datos) {
 
 
 function ejemploAnillo() {
-    modeloAnillo[0].voltaje = 13.2;
-    modeloAnillo[0].potencia = 150;
-    modeloAnillo[1].reactancia = 2;
-    modeloAnillo[2].reactancia = 3;
-    modeloAnillo[3].potencia = 5;
-    modeloAnillo[4].potencia = 7;
-    modeloAnillo[5].reactancia = 2;
-    modeloAnillo[6].reactancia = 4;
-    modeloAnillo[7].potencia = 3;
+    guardarOpcionAnilloTMS1 = "display:block";
+    guardarOpcionAnilloTMS2 = "display:none";
+    swal_Anillo_tms = "swal-AnilloTMS1";
+
+
+    modeloAnillo[0].voltaje = parseFloat(13.2);
+    modeloAnillo[0].potencia =  parseFloat (150);
+    modeloAnillo[1].reactancia = parseFloat (2);
+    modeloAnillo[2].reactancia = parseFloat (3);
+    modeloAnillo[3].potencia = parseFloat (5);
+    modeloAnillo[4].potencia =  parseFloat (7);
+    modeloAnillo[5].reactancia =  parseFloat (2);
+    modeloAnillo[6].reactancia = parseFloat (4);
+    modeloAnillo[7].potencia =  parseFloat (3);
     valor_diagrama_Generador.innerHTML = modeloAnillo[0].voltaje + " kV" + "<br>";
     valor_diagrama_Generador.innerHTML = valor_diagrama_Generador.innerHTML + modeloAnillo[0].potencia + " MVA" + "<br>";
     valor_barra_1_2.innerHTML = modeloAnillo[1].reactancia + " Ω";
@@ -575,51 +580,48 @@ function ejemploAnillo() {
     valor_carga_abajo.innerHTML = "<br>" + modeloAnillo[7].potencia + " MVA";
 
 
-    tabla_Margen_Ic_1.innerText = 20; tabla_Margen_Ic_2.innerText = 20; tabla_Margen_Ic_3.innerText = 20;
-    tabla_Margen_Ic_4.innerText = 20; tabla_Margen_Ic_5.innerText = 20; tabla_Margen_Ic_6.innerText = 20;
-    tabla_Margen_Ic_7.innerText = 20; tabla_Margen_Ic_8.innerText = 20;
+    tabla_Margen_Ic_1.innerText =  20; tabla_Margen_Ic_2.innerText =  20; tabla_Margen_Ic_3.innerText = 20;
+    tabla_Margen_Ic_4.innerText = 20; tabla_Margen_Ic_5.innerText = 20; tabla_Margen_Ic_6.innerText =  20;
+    tabla_Margen_Ic_7.innerText =  20; tabla_Margen_Ic_8.innerText = 20;
 
-    modeloReleAnillo[1].margenIc = 20; modeloReleAnillo[2].margenIc = 20; modeloReleAnillo[3].margenIc = 20;
-    modeloReleAnillo[4].margenIc = 20; modeloReleAnillo[5].margenIc = 20; modeloReleAnillo[6].margenIc = 20;
-    modeloReleAnillo[7].margenIc = 20; modeloReleAnillo[8].margenIc = 20;
+    modeloReleAnillo[1].margenIc = parseFloat (20); modeloReleAnillo[2].margenIc = parseFloat (20); modeloReleAnillo[3].margenIc = parseFloat (20);
+    modeloReleAnillo[4].margenIc = parseFloat (20); modeloReleAnillo[5].margenIc =  parseFloat (20); modeloReleAnillo[6].margenIc = parseFloat (20);
+    modeloReleAnillo[7].margenIc = parseFloat (20); modeloReleAnillo[8].margenIc =  parseFloat (20);
 
-    tabla_familiaCurva_1.innerText = "Normal Inversa - IEC" ; tabla_familiaCurva_2.innerText = "Normal Inversa - IEC" ;
-    tabla_familiaCurva_3.innerText = "Normal Inversa - IEC" ; tabla_familiaCurva_4.innerText = "Normal Inversa - IEC" ;
-    tabla_familiaCurva_5.innerText = "Normal Inversa - IEC" ; tabla_familiaCurva_6.innerText = "Normal Inversa - IEC" ;
-    tabla_familiaCurva_7.innerText = "Normal Inversa - IEC" ; tabla_familiaCurva_8.innerText = "Normal Inversa - IEC" ;
+    tabla_familiaCurva_1.innerText = "Normal Inversa - IEC"; tabla_familiaCurva_2.innerText = "Normal Inversa - IEC";
+    tabla_familiaCurva_3.innerText = "Normal Inversa - IEC"; tabla_familiaCurva_4.innerText = "Normal Inversa - IEC";
+    tabla_familiaCurva_5.innerText = "Normal Inversa - IEC"; tabla_familiaCurva_6.innerText = "Normal Inversa - IEC";
+    tabla_familiaCurva_7.innerText = "Normal Inversa - IEC"; tabla_familiaCurva_8.innerText = "Normal Inversa - IEC";
 
     modeloReleAnillo[1].familiaCurva = "Normal Inversa - IEC"; modeloReleAnillo[2].familiaCurva = "Normal Inversa - IEC";
     modeloReleAnillo[3].familiaCurva = "Normal Inversa - IEC"; modeloReleAnillo[4].familiaCurva = "Normal Inversa - IEC";
     modeloReleAnillo[5].familiaCurva = "Normal Inversa - IEC"; modeloReleAnillo[6].familiaCurva = "Normal Inversa - IEC";
     modeloReleAnillo[7].familiaCurva = "Normal Inversa - IEC"; modeloReleAnillo[8].familiaCurva = "Normal Inversa - IEC";
 
-    tabla_Tiempo_1.innerText = 200; tabla_Tiempo_2.innerText = 200; tabla_Tiempo_3.innerText = 200;
+    tabla_Tiempo_1.innerText =  200; tabla_Tiempo_2.innerText =  200; tabla_Tiempo_3.innerText =  200;
     tabla_Tiempo_4.innerText = 200; tabla_Tiempo_5.innerText = 200; tabla_Tiempo_6.innerText = 200;
-    tabla_Tiempo_7.innerText = 200; tabla_Tiempo_8.innerText = 200;
+    tabla_Tiempo_7.innerText = 200; tabla_Tiempo_8.innerText =  200;
 
-    modeloReleAnillo[1].tiempo = 200; modeloReleAnillo[2].tiempo = 200; modeloReleAnillo[3].tiempo = 200;
-    modeloReleAnillo[4].tiempo = 200; modeloReleAnillo[5].tiempo = 200; modeloReleAnillo[6].tiempo = 200;
-    modeloReleAnillo[7].tiempo = 200; modeloReleAnillo[8].tiempo = 200;
+    modeloReleAnillo[1].tiempo = parseFloat(200); modeloReleAnillo[2].tiempo = parseFloat(200); modeloReleAnillo[3].tiempo = parseFloat(200);
+    modeloReleAnillo[4].tiempo = parseFloat(200); modeloReleAnillo[5].tiempo = parseFloat(200); modeloReleAnillo[6].tiempo = parseFloat(200);
+    modeloReleAnillo[7].tiempo = parseFloat(200); modeloReleAnillo[8].tiempo = parseFloat(200);
 
-    tabla_TiempoInstantaneo_1.innerText = 200; tabla_TiempoInstantaneo_2.innerText = 200; tabla_TiempoInstantaneo_3.innerText = 200;
-    tabla_TiempoInstantaneo_4.innerText = 200; tabla_TiempoInstantaneo_5.innerText = 200; tabla_TiempoInstantaneo_6.innerText = 200;
-    tabla_TiempoInstantaneo_7.innerText = 200; tabla_TiempoInstantaneo_8.innerText = 200;
+    // tabla_TiempoInstantaneo_1.innerText = 200; tabla_TiempoInstantaneo_2.innerText = 200; tabla_TiempoInstantaneo_3.innerText =  200;
+    // tabla_TiempoInstantaneo_4.innerText = 200; tabla_TiempoInstantaneo_5.innerText = 200; tabla_TiempoInstantaneo_6.innerText = 200;
+    // tabla_TiempoInstantaneo_7.innerText = 200; tabla_TiempoInstantaneo_8.innerText = 200;
 
-    modeloReleAnillo[1].tiempoInstantaneo = 200; modeloReleAnillo[2].tiempoInstantaneo = 200; modeloReleAnillo[3].tiempoInstantaneo = 200;
-    modeloReleAnillo[4].tiempoInstantaneo = 200; modeloReleAnillo[5].tiempoInstantaneo = 200; modeloReleAnillo[6].tiempoInstantaneo = 200;
-    modeloReleAnillo[7].tiempoInstantaneo = 200; modeloReleAnillo[8].tiempoInstantaneo = 200;
+    // modeloReleAnillo[1].tiempoInstantaneo = parseFloat(200); modeloReleAnillo[2].tiempoInstantaneo = parseFloat(200); modeloReleAnillo[3].tiempoInstantaneo = parseFloat(200);
+    // modeloReleAnillo[4].tiempoInstantaneo = parseFloat(200); modeloReleAnillo[5].tiempoInstantaneo = parseFloat(200); modeloReleAnillo[6].tiempoInstantaneo = parseFloat(200);
+    // modeloReleAnillo[7].tiempoInstantaneo = parseFloat(200); modeloReleAnillo[8].tiempoInstantaneo = parseFloat(200);
 
 
-    tabla_DialCalculado_1.innerText = 0.04; tabla_DialCalculado_2.innerText = 0.01; tabla_DialCalculado_3.innerText = 0.02;
-    tabla_DialCalculado_4.innerText = 0.01; tabla_DialCalculado_5.innerText = 0.01; tabla_DialCalculado_6.innerText = 0.02;
-    tabla_DialCalculado_7.innerText = 0.01; tabla_DialCalculado_8.innerText = 0.03;
+    tabla_DialCalculado_1.innerText = 0.04; tabla_DialCalculado_2.innerText =  0.01; tabla_DialCalculado_3.innerText =  0.02;
+    tabla_DialCalculado_4.innerText = 0.01; tabla_DialCalculado_5.innerText =  0.01; tabla_DialCalculado_6.innerText =  0.02;
+    tabla_DialCalculado_7.innerText =  0.01; tabla_DialCalculado_8.innerText =  0.03;
 
-    modeloReleAnillo[1].TMS = 0.04; modeloReleAnillo[2].TMS = 0.01; modeloReleAnillo[3].TMS = 0.02; modeloReleAnillo[4].TMS = 0.01;
-    modeloReleAnillo[5].TMS = 0.01; modeloReleAnillo[6].TMS = 0.02; modeloReleAnillo[7].TMS = 0.01; modeloReleAnillo[8].TMS = 0.03;
+    modeloReleAnillo[1].TMS = parseFloat (0.04); modeloReleAnillo[2].TMS = parseFloat (0.01); modeloReleAnillo[3].TMS = parseFloat (0.02); modeloReleAnillo[4].TMS = parseFloat (0.01);
+    modeloReleAnillo[5].TMS = parseFloat (0.01); modeloReleAnillo[6].TMS = parseFloat (0.02); modeloReleAnillo[7].TMS = parseFloat (0.01); modeloReleAnillo[8].TMS = parseFloat (0.03);
 
-    calcularValoresRelesAnillo();
-
-    calculosGraficaAnillo();
 
 }
 
@@ -979,14 +981,14 @@ function imprimirResultados() {
     document.getElementById("Isc_criterio_metodo2_r8").innerText = Isc2_Rele8;
 
     //Imprimir valores Ipickup :  (Ipickup_criterio_metodo2_r(numeroDelRele))
-    document.getElementById("Ipickup_criterio_metodo2_r1").innerText = (Isc2_Rele1*1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r1").innerText = (Isc2_Rele1 * 1.25).toFixed(2);
     document.getElementById("Ipickup_criterio_metodo2_r2").innerText = (Isc2_Rele2);
-    document.getElementById("Ipickup_criterio_metodo2_r3").innerText = (Isc2_Rele3*1.25).toFixed(2);
-    document.getElementById("Ipickup_criterio_metodo2_r4").innerText = (Isc2_Rele4*1.25).toFixed(2);
-    document.getElementById("Ipickup_criterio_metodo2_r5").innerText = (Isc2_Rele5*1.25).toFixed(2);
-    document.getElementById("Ipickup_criterio_metodo2_r6").innerText = (Isc2_Rele6*1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r3").innerText = (Isc2_Rele3 * 1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r4").innerText = (Isc2_Rele4 * 1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r5").innerText = (Isc2_Rele5 * 1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r6").innerText = (Isc2_Rele6 * 1.25).toFixed(2);
     document.getElementById("Ipickup_criterio_metodo2_r7").innerText = (Isc2_Rele7);
-    document.getElementById("Ipickup_criterio_metodo2_r8").innerText = (Isc2_Rele8*1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r8").innerText = (Isc2_Rele8 * 1.25).toFixed(2);
 
 
 
@@ -1339,6 +1341,7 @@ function calculosGraficaAnillo() {
     Isc_Rele7 = modeloReleAnillo[7].Isc;
     Isc_Rele8 = modeloReleAnillo[8].Isc;
 
+
     Ic_Rele1 = modeloReleAnillo[1].Ic;
     Ic_Rele2 = modeloReleAnillo[2].Ic;
     Ic_Rele3 = modeloReleAnillo[3].Ic;
@@ -1348,6 +1351,7 @@ function calculosGraficaAnillo() {
     Ic_Rele7 = modeloReleAnillo[7].Ic;
     Ic_Rele8 = modeloReleAnillo[8].Ic;
 
+    
     margen_Ic_r1 = modeloReleAnillo[1].margenIc;
     margen_Ic_r2 = modeloReleAnillo[2].margenIc;
     margen_Ic_r3 = modeloReleAnillo[3].margenIc;
@@ -1407,6 +1411,7 @@ function calculosGraficaAnillo() {
         //Hallar el tiempo 
 
     } catch (error) {
+        console.log("error para Relé 1 - calculosGraficaAnillo()")
 
     }
     //Relé 2
@@ -1420,7 +1425,7 @@ function calculosGraficaAnillo() {
         TMS_calculado_r2 = (TMSparteIEC_2 + TMSparteANSI_2).toFixed(4);
 
     } catch (error) {
-
+        console.log("error para Relé 2 - calculosGraficaAnillo()")
     }
     //Relé 3
     try {
@@ -1433,7 +1438,7 @@ function calculosGraficaAnillo() {
         TMS_calculado_r3 = (TMSparteIEC_3 + TMSparteANSI_3).toFixed(4);
 
     } catch (error) {
-
+        console.log("error para Relé 3 - calculosGraficaAnillo()")
     }
     //Relé 4
     try {
@@ -1446,7 +1451,7 @@ function calculosGraficaAnillo() {
         TMS_calculado_r4 = (TMSparteIEC_4 + TMSparteANSI_4).toFixed(4);
 
     } catch (error) {
-
+        console.log("error para Relé 4 - calculosGraficaAnillo()")
     }
     //Relé 5
     try {
@@ -1459,7 +1464,7 @@ function calculosGraficaAnillo() {
         TMS_calculado_r5 = (TMSparteIEC_5 + TMSparteANSI_5).toFixed(4);
 
     } catch (error) {
-
+        console.log("error para Relé 5 - calculosGraficaAnillo()")
     }
     //Relé 6
     try {
@@ -1472,7 +1477,7 @@ function calculosGraficaAnillo() {
         TMS_calculado_r6 = (TMSparteIEC_6 + TMSparteANSI_6).toFixed(4);
 
     } catch (error) {
-
+        console.log("error para Relé 6 - calculosGraficaAnillo()")
     }
     //Relé 7
     try {
@@ -1485,7 +1490,7 @@ function calculosGraficaAnillo() {
         TMS_calculado_r7 = (TMSparteIEC_7 + TMSparteANSI_7).toFixed(4);
 
     } catch (error) {
-
+        console.log("error para Relé 7 - calculosGraficaAnillo()")
     }
     //Relé 8
     try {
@@ -1498,7 +1503,7 @@ function calculosGraficaAnillo() {
         TMS_calculado_r8 = (TMSparteIEC_8 + TMSparteANSI_8).toFixed(4);
 
     } catch (error) {
-
+        console.log("error para Relé 8 - calculosGraficaAnillo()")
     }
 
 }
