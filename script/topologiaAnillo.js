@@ -671,8 +671,8 @@ function calcularValoresRelesAnillo() {
     Isc_Rele6 = Math.max(Isc_2D, Isc_2A, Isc_3D, Isc_3A);
     Isc_Rele8 = Math.max(Isc_2D, Isc_2A, Isc_3D, Isc_3A, Isc_4D, Isc_4A)
     console.log("Isc_2D ", Isc_2D)
-    console.log("Isc_2A ", Isc_2A)  
-    console.log("Isc_3D  ", Isc_3D )
+    console.log("Isc_2A ", Isc_2A)
+    console.log("Isc_3D  ", Isc_3D)
     console.log("Isc_3A ", Isc_3A)
     console.log("Isc_4D", Isc_4D)
     console.log("Isc_4A", Isc_4A)
@@ -826,7 +826,7 @@ function calcularValoresRelesAnillo() {
 
 function imprimirResultados() {
 
-    //Imprimir resultados para la tabla de la subpestaña "Método 1" y con pestaña principal "Conexión"
+    //Imprimir resultados para la tabla de la subpestaña "Método 1" y con pestaña principal "Conexión" 
     //Imprimir valores de Icarga: (Ic_metodo1_r(numeroDelRele)) 
     document.getElementById("Ic_metodo1_r1").innerText = (Ic_r12);
     document.getElementById("Ic_metodo1_r2").innerText = (Ic_r12);
@@ -839,14 +839,14 @@ function imprimirResultados() {
 
 
     //Imprimir valores de Isc Anillo Cerrado (ac)  : (Isc_ac_metodo1_r(numeroDelRele))
-    document.getElementById("Isc_ac_metodo1_r1").innerText = (Isc_2I).toFixed(2);
-    document.getElementById("Isc_ac_metodo1_r2").innerText = "-";
-    document.getElementById("Isc_ac_metodo1_r3").innerText = (Isc_3I).toFixed(2);
-    document.getElementById("Isc_ac_metodo1_r4").innerText = (Isc_2D).toFixed(2);
-    document.getElementById("Isc_ac_metodo1_r5").innerText = (Isc_4I).toFixed(2)
-    document.getElementById("Isc_ac_metodo1_r6").innerText = (Isc_3D).toFixed(2);
-    document.getElementById("Isc_ac_metodo1_r7").innerText = "-";
-    document.getElementById("Isc_ac_metodo1_r8").innerText = (Isc_4D).toFixed(2);
+    document.getElementById("Isc_aC_metodo1_r1").innerText = (Isc_2I).toFixed(2);
+    document.getElementById("Isc_aC_metodo1_r2").innerText = "-";
+    document.getElementById("Isc_aC_metodo1_r3").innerText = (Isc_3I).toFixed(2);
+    document.getElementById("Isc_aC_metodo1_r4").innerText = (Isc_2D).toFixed(2);
+    document.getElementById("Isc_aC_metodo1_r5").innerText = (Isc_4I).toFixed(2)
+    document.getElementById("Isc_aC_metodo1_r6").innerText = (Isc_3D).toFixed(2);
+    document.getElementById("Isc_aC_metodo1_r7").innerText = "-";
+    document.getElementById("Isc_aC_metodo1_r8").innerText = (Isc_4D).toFixed(2);
 
     //Imprimir valores de Isc Anillo Abierto  en A (aaA) : (Isc_aaA_metodo1_r(numeroDelRele)) id="Isc_aa_metodo1_r1"
     document.getElementById("Isc_aaA_metodo1_r1").innerText = "-";
@@ -857,7 +857,7 @@ function imprimirResultados() {
     document.getElementById("Isc_aaA_metodo1_r6").innerText = (Isc_3A).toFixed(2);
     document.getElementById("Isc_aaA_metodo1_r7").innerText = "-";
     document.getElementById("Isc_aaA_metodo1_r8").innerText = (Isc_4A).toFixed(2);
-    
+
     //Imprimir valores de Isc Anillo Abierto en B (aaB) : (Isc_aaB_metodo1_r(numeroDelRele)) 
     document.getElementById("Isc_aaB_metodo1_r1").innerText = (Isc_2B).toFixed(2);
     document.getElementById("Isc_aaB_metodo1_r2").innerText = "-";
@@ -888,10 +888,63 @@ function imprimirResultados() {
     document.getElementById("Ipickup_metodo1_r7").innerText = (Ic_B * 1.5).toFixed(2);
     document.getElementById("Ipickup_metodo1_r8").innerText = (Isc_Rele8 * 1.25).toFixed(2);
 
+    //-----------------------------------------------------------------------------------------------------------------------------------
+
+    //Imprimir resultados para la tabla de la subpestaña "Método 2" y con pestaña principal "Conexión"
+    //Imprimir valores de Icarga: (Ic_metodo2_r(numeroDelRele)) 
+    document.getElementById("Ic_metodo2_r1").innerText = (Ic_r12);
+    document.getElementById("Ic_metodo2_r2").innerText = (Ic_r12);
+    document.getElementById("Ic_metodo2_r3").innerText = (Ic_r34);
+    document.getElementById("Ic_metodo2_r4").innerText = (Ic_r34);
+    document.getElementById("Ic_metodo2_r5").innerText = (Ic_r56);
+    document.getElementById("Ic_metodo2_r6").innerText = (Ic_r56);
+    document.getElementById("Ic_metodo2_r7").innerText = (Ic_r78);
+    document.getElementById("Ic_metodo2_r8").innerText = (Ic_r78);
+
+    //Imprimir valores de Isc Anillo Cerrado (ac)  : (Isc_aC_metodo2_r(numeroDelRele))
+    document.getElementById("Isc_aC_metodo2_r1").innerText = (Isc2_Rele1_1).toFixed(2);
+    document.getElementById("Isc_aC_metodo2_r2").innerText = (Isc2_Rele2_1).toFixed(2);
+    document.getElementById("Isc_aC_metodo2_r3").innerText = (Isc2_Rele3_1).toFixed(2);
+    document.getElementById("Isc_aC_metodo2_r4").innerText = (Isc2_Rele4_1).toFixed(2);
+    document.getElementById("Isc_aC_metodo2_r5").innerText = (Isc2_Rele5_1).toFixed(2);
+    document.getElementById("Isc_aC_metodo2_r6").innerText = (Isc2_Rele6_1).toFixed(2);
+    document.getElementById("Isc_aC_metodo2_r7").innerText = (Isc2_Rele7_1).toFixed(2);
+    document.getElementById("Isc_aC_metodo2_r8").innerText = (Isc2_Rele8_1).toFixed(2);
+
+    //Imprimir valores de Isc Anillo Abierto (aA) : (Isc_aA_metodo2_r(numeroDelRele))
+    document.getElementById("Isc_aA_metodo2_r1").innerText = (Isc2_Rele1_2).toFixed(2);
+    document.getElementById("Isc_aA_metodo2_r2").innerText = (Isc2_Rele2_2).toFixed(2);
+    document.getElementById("Isc_aA_metodo2_r3").innerText = (Isc2_Rele3_2).toFixed(2);
+    document.getElementById("Isc_aA_metodo2_r4").innerText = (Isc2_Rele4_2).toFixed(2);
+    document.getElementById("Isc_aA_metodo2_r5").innerText = (Isc2_Rele5_2).toFixed(2);
+    document.getElementById("Isc_aA_metodo2_r6").innerText = (Isc2_Rele6_2).toFixed(2);
+    document.getElementById("Isc_aA_metodo2_r7").innerText = (Isc2_Rele7_2).toFixed(2);
+    document.getElementById("Isc_aA_metodo2_r8").innerText = (Isc2_Rele8_2).toFixed(2);
+
+    //Imprimir valores de Isc máx y mín (según el tipo de relé) : (Isc_criterio_metodo2_r(numeroDelRele))
+    document.getElementById("Isc_criterio_metodo2_r1").innerText = Isc2_Rele1;
+    document.getElementById("Isc_criterio_metodo2_r2").innerText = Isc2_Rele2;
+    document.getElementById("Isc_criterio_metodo2_r3").innerText = Isc2_Rele3;
+    document.getElementById("Isc_criterio_metodo2_r4").innerText = Isc2_Rele4;
+    document.getElementById("Isc_criterio_metodo2_r5").innerText = Isc2_Rele5;
+    document.getElementById("Isc_criterio_metodo2_r6").innerText = Isc2_Rele6;
+    document.getElementById("Isc_criterio_metodo2_r7").innerText = Isc2_Rele7;
+    document.getElementById("Isc_criterio_metodo2_r8").innerText = Isc2_Rele8;
+
+    //Imprimir valores Ipickup :  (Ipickup_criterio_metodo2_r(numeroDelRele))
+    document.getElementById("Ipickup_criterio_metodo2_r1").innerText = (Isc2_Rele1*1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r2").innerText = (Isc2_Rele2);
+    document.getElementById("Ipickup_criterio_metodo2_r3").innerText = (Isc2_Rele3*1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r4").innerText = (Isc2_Rele4*1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r5").innerText = (Isc2_Rele5*1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r6").innerText = (Isc2_Rele6*1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r7").innerText = (Isc2_Rele7);
+    document.getElementById("Ipickup_criterio_metodo2_r8").innerText = (Isc2_Rele8*1.25).toFixed(2);
 
 
 
-    //-----------------------------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------------------------------
 
     //Imprimir resultados para la tabla de la subpestaña "Resumen" y con pestaña principal "Conexión"
     //Imprimir valores de Icarga
@@ -957,6 +1010,8 @@ function imprimirResultados() {
     document.getElementById("deltaIpickup_r6").innerText = ((Math.abs((Isc_Rele6 * 1.25) - (Isc2_Rele6 * 1.25)) / (Isc_Rele6 * 1.25)) * 100).toFixed(2);
     document.getElementById("deltaIpickup_r7").innerText = ((Math.abs((Isc_Rele7 * 1.5) - (Isc2_Rele7 * 1.5)) / (Isc_Rele7 * 1.5)) * 100).toFixed(2);
     document.getElementById("deltaIpickup_r8").innerText = ((Math.abs((Isc_Rele8 * 1.25) - (Isc2_Rele8 * 1.25)) / (Isc_Rele8 * 1.25)) * 100).toFixed(2);
+    //-----------------------------------------------------------------------------------------------------------------------------------
+
 
 
 }
