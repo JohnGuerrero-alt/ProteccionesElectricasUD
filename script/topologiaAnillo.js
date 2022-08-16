@@ -627,6 +627,8 @@ function ejemploAnillo() {
 
 
 
+
+
 function calcularValoresRelesAnillo() {
 
     S1 = modeloAnillo[0].potencia; S2 = modeloAnillo[3].potencia, S3 = modeloAnillo[4].potencia; S4 = modeloAnillo[7].potencia; Z12 = modeloAnillo[1].reactancia; Z23 = modeloAnillo[5].reactancia; Z34 = modeloAnillo[6].reactancia; Z41 = modeloAnillo[2].reactancia; VAnillo = modeloAnillo[0].voltaje;
@@ -868,8 +870,66 @@ function calcularValoresRelesAnillo() {
 
 
     imprimirResultados();
+    quitarNaNValoresAnillo();
 
 
+}
+
+function quitarNaNValoresAnillo() {
+    if(isNaN(document.getElementById("Ic_metodo1_r1").innerText)){ document.getElementById("Ic_metodo1_r1").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r2").innerText)){ document.getElementById("Ic_metodo1_r2").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r3").innerText)){ document.getElementById("Ic_metodo1_r3").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r4").innerText)){ document.getElementById("Ic_metodo1_r4").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r5").innerText)){ document.getElementById("Ic_metodo1_r5").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r6").innerText)){ document.getElementById("Ic_metodo1_r6").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r7").innerText)){ document.getElementById("Ic_metodo1_r7").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r8").innerText)){ document.getElementById("Ic_metodo1_r8").innerText = ""}
+
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r1").innerText)){ document.getElementById("Isc_aC_metodo1_r1").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r2").innerText)){ document.getElementById("Isc_aC_metodo1_r2").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r3").innerText)){ document.getElementById("Isc_aC_metodo1_r3").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r4").innerText)){ document.getElementById("Isc_aC_metodo1_r4").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r5").innerText)){ document.getElementById("Isc_aC_metodo1_r5").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r6").innerText)){ document.getElementById("Isc_aC_metodo1_r6").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r7").innerText)){ document.getElementById("Isc_aC_metodo1_r7").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r8").innerText)){ document.getElementById("Isc_aC_metodo1_r8").innerText = ""}
+
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r1").innerText)){ document.getElementById("Isc_aaA_metodo1_r1").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r2").innerText)){ document.getElementById("Isc_aaA_metodo1_r2").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r3").innerText)){ document.getElementById("Isc_aaA_metodo1_r3").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r4").innerText)){ document.getElementById("Isc_aaA_metodo1_r4").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r5").innerText)){ document.getElementById("Isc_aaA_metodo1_r5").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r6").innerText)){ document.getElementById("Isc_aaA_metodo1_r6").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r7").innerText)){ document.getElementById("Isc_aaA_metodo1_r7").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r8").innerText)){ document.getElementById("Isc_aaA_metodo1_r8").innerText = ""}
+
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r1").innerText)){ document.getElementById("Isc_aaB_metodo1_r1").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r2").innerText)){ document.getElementById("Isc_aaB_metodo1_r2").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r3").innerText)){ document.getElementById("Isc_aaB_metodo1_r3").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r4").innerText)){ document.getElementById("Isc_aaB_metodo1_r4").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r5").innerText)){ document.getElementById("Isc_aaB_metodo1_r5").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r6").innerText)){ document.getElementById("Isc_aaB_metodo1_r6").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r7").innerText)){ document.getElementById("Isc_aaB_metodo1_r7").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r8").innerText)){ document.getElementById("Isc_aaB_metodo1_r8").innerText = "-"}
+
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r1").innerText)){ document.getElementById("Isc_maxMetodo1_r1").innerText = "" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r2").innerText)){ document.getElementById("Isc_maxMetodo1_r2").innerText = "-" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r3").innerText)){ document.getElementById("Isc_maxMetodo1_r3").innerText = "" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r4").innerText)){ document.getElementById("Isc_maxMetodo1_r4").innerText = "" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r5").innerText)){ document.getElementById("Isc_maxMetodo1_r5").innerText = "" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r6").innerText)){ document.getElementById("Isc_maxMetodo1_r6").innerText = "" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r7").innerText)){ document.getElementById("Isc_maxMetodo1_r7").innerText = "-" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r8").innerText)){ document.getElementById("Isc_maxMetodo1_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("Ipickup_metodo1_r1").innerText)){ document.getElementById("Ipickup_metodo1_r1").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r2").innerText)){ document.getElementById("Ipickup_metodo1_r2").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r3").innerText)){ document.getElementById("Ipickup_metodo1_r3").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r4").innerText)){ document.getElementById("Ipickup_metodo1_r4").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r5").innerText)){ document.getElementById("Ipickup_metodo1_r5").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r6").innerText)){ document.getElementById("Ipickup_metodo1_r6").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r7").innerText)){ document.getElementById("Ipickup_metodo1_r7").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r8").innerText)){ document.getElementById("Ipickup_metodo1_r8").innerText = "" }
+    
 }
 
 

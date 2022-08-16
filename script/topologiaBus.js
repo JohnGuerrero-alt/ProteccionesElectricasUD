@@ -476,6 +476,30 @@ function guardarInformacion(Rele, datos) {
 }
 
 
+async function ajustarValoresCoordinacion(Rele) {
+    const { value: formValues } = await Swal.fire({
+        allowOutsideClick: false,
+        title: "Coordinación " + modeloRele[Rele].nombreRele,
+        // imageWidth: 100,
+        // imageHeight: 100,
+        width: 800,
+        background: '#fefefe',
+        html: `
+            <div class="table-responsive" >
+                <table class="table align-middle" style="font-size:13px">
+                    <tr>
+                        <th scope="col"></th>
+                    </tr>
+                </table>
+            </div>
+            
+        `,
+
+    })
+
+
+}
+
 //Ajustar el ejemplo1
 function ejemplo1() {
     tabla_Isc_ReleA.innerText = 14000;
@@ -785,7 +809,7 @@ function graficarCurvaTopologiaBus() {
                 graphType: 'polyline',
                 updateOnMouseMove: true
             },
-            
+
         ],
     });
 }

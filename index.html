@@ -224,6 +224,7 @@
                                                             <th scope="col">Dial <br> (Escogido)</th>
                                                             <th scope="col">Tiempo local <br> (seg)</th>
                                                             <th scope="col">Tiempo Remoto <br> (seg)</th>
+                                                            <th></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody class="table-group-divider">
@@ -233,6 +234,9 @@
                                                             <td id="Dial_escogido_2"></td>
                                                             <td id="Tiempo_local_2"></td>
                                                             <td id="Tiempo_remoto_2">-</td>
+                                                            <td onclick="ajustarValoresCoordinacion('2')"><img src="assets/images/Anillo/editar.png"
+                                                                    class="seleccionReleAnillo" width="20" height="20">
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row" class="colorReleB">B</th>
@@ -240,6 +244,9 @@
                                                             <td id="Dial_escogido_1"></td>
                                                             <td id="Tiempo_local_1"></td>
                                                             <td id="Tiempo_remoto_1"></td>
+                                                            <td onclick="ajustarValoresCoordinacion('1')"> <img src="assets/images/Anillo/editar.png"
+                                                                    class="seleccionReleAnillo" width="20" height="20">
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row" class="colorReleA">A</th>
@@ -247,6 +254,10 @@
                                                             <td id="Dial_escogido_0"></td>
                                                             <td id="Tiempo_local_0"></td>
                                                             <td id="Tiempo_remoto_0"></td>
+                                                            <td onclick="ajustarValoresCoordinacion('0')">
+                                                                <img src="assets/images/Anillo/editar.png"
+                                                                    class="seleccionReleAnillo" width="20" height="20">
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -407,7 +418,8 @@
                                     <div class="convenciones"></div>
                                 </div>
                                 <div>
-                                    <div class="botonAjustarEjemplos  hoverButton" onclick="ejemploAnillo()">Cargar valores ejemplo
+                                    <div class="botonAjustarEjemplos  hoverButton" onclick="ejemploAnillo()">Cargar
+                                        valores ejemplo
                                     </div>
                                     <br>
                                     <div class="botonCalcular  hoverButton" onclick="calcularValoresRelesAnillo()">
@@ -445,7 +457,7 @@
                                     <button class="nav-link" id="pills-resultadosCalculos2-2-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-resultadosCalculos2-2" type="button" role="tab"
                                         aria-controls="pills-resultadosCalculos2-2"
-                                        aria-selected="false">Conexión</button>
+                                        aria-selected="false">Resultados</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-resultadosGrafica-2-tab" data-bs-toggle="pill"
@@ -608,7 +620,7 @@
                                     </table>
 
                                 </div>
-                                <!-- Contenido pestaña "Conexión" -->
+                                <!-- Contenido pestaña "Resultados" -->
                                 <div class="tab-pane fade" id="pills-resultadosCalculos2-2" role="tabpanel"
                                     aria-labelledby="pills-resultadosCalculos2-2-tab" tabindex="0">
 
@@ -794,7 +806,7 @@
 
                                                             </tr>
                                                             <tr>
-                                                                
+
                                                                 <th>8</th>
                                                                 <td id="Ic_metodo1_r8"></td>
                                                                 <td id="Isc_aC_metodo1_r8"></td>
@@ -823,12 +835,12 @@
                                                     <thead>
                                                         <tr>
                                                             <th scope="col">Relé</th>
-                                                            <th scope="col" >Ic <br> [A]</th>
-                                                            <th scope="col" >Isc <br> Anillo Cerrado <br> [A]</th>
-                                                            <th scope="col" >Isc - 50%L <br> Anillo Abierto <br> [A]</th>
-                                                            <th scope="col">Isc  <br> máx <br> [A]</th>
-                                                            <th scope="col" > Ipickup <br> [A]</th>
-                                                            
+                                                            <th scope="col">Ic <br> [A]</th>
+                                                            <th scope="col">Isc <br> Anillo Cerrado <br> [A]</th>
+                                                            <th scope="col">Isc - 50%L <br> Anillo Abierto <br> [A]</th>
+                                                            <th scope="col">Isc <br> máx <br> [A]</th>
+                                                            <th scope="col"> Ipickup <br> [A]</th>
+
 
                                                         </tr>
                                                     </thead>
@@ -885,12 +897,12 @@
                                                     <thead>
                                                         <tr>
                                                             <th scope="col">Relé</th>
-                                                            <th scope="col" >Ic <br> [A]</th>
-                                                            <th scope="col" >Isc - 50%L<br> Anillo Cerrado <br> [A]</th>
-                                                            <th scope="col" >Isc <br> Anillo Abierto <br> [A]</th>
-                                                            <th scope="col">Isc  <br> mín <br> [A]</th>
-                                                            <th scope="col" > Ipickup <br> [A]</th>
-                                                            
+                                                            <th scope="col">Ic <br> [A]</th>
+                                                            <th scope="col">Isc - 50%L<br> Anillo Cerrado <br> [A]</th>
+                                                            <th scope="col">Isc <br> Anillo Abierto <br> [A]</th>
+                                                            <th scope="col">Isc <br> mín <br> [A]</th>
+                                                            <th scope="col"> Ipickup <br> [A]</th>
+
 
                                                         </tr>
                                                     </thead>
@@ -934,7 +946,8 @@
                                                             <th scope="col">Ipickup [A]<br> Método 1</th>
                                                             <th scope="col" class="">Ipickup [A]<br> Método 2</th>
                                                             <th scope="col">&#8710; Isc máx [%]<br> Método 1-2</th>
-                                                            <th scope="col" class=""> &#8710; Ipickup [%]<br> Método 1-2</th>
+                                                            <th scope="col" class=""> &#8710; Ipickup [%]<br> Método 1-2
+                                                            </th>
 
                                                         </tr>
                                                     </thead>
