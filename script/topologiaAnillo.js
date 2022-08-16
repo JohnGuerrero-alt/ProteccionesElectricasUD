@@ -875,62 +875,7 @@ function calcularValoresRelesAnillo() {
 
 }
 
-function quitarNaNValoresAnillo() {
-    if(isNaN(document.getElementById("Ic_metodo1_r1").innerText)){ document.getElementById("Ic_metodo1_r1").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r2").innerText)){ document.getElementById("Ic_metodo1_r2").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r3").innerText)){ document.getElementById("Ic_metodo1_r3").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r4").innerText)){ document.getElementById("Ic_metodo1_r4").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r5").innerText)){ document.getElementById("Ic_metodo1_r5").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r6").innerText)){ document.getElementById("Ic_metodo1_r6").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r7").innerText)){ document.getElementById("Ic_metodo1_r7").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r8").innerText)){ document.getElementById("Ic_metodo1_r8").innerText = ""}
 
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r1").innerText)){ document.getElementById("Isc_aC_metodo1_r1").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r2").innerText)){ document.getElementById("Isc_aC_metodo1_r2").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r3").innerText)){ document.getElementById("Isc_aC_metodo1_r3").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r4").innerText)){ document.getElementById("Isc_aC_metodo1_r4").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r5").innerText)){ document.getElementById("Isc_aC_metodo1_r5").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r6").innerText)){ document.getElementById("Isc_aC_metodo1_r6").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r7").innerText)){ document.getElementById("Isc_aC_metodo1_r7").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r8").innerText)){ document.getElementById("Isc_aC_metodo1_r8").innerText = ""}
-
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r1").innerText)){ document.getElementById("Isc_aaA_metodo1_r1").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r2").innerText)){ document.getElementById("Isc_aaA_metodo1_r2").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r3").innerText)){ document.getElementById("Isc_aaA_metodo1_r3").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r4").innerText)){ document.getElementById("Isc_aaA_metodo1_r4").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r5").innerText)){ document.getElementById("Isc_aaA_metodo1_r5").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r6").innerText)){ document.getElementById("Isc_aaA_metodo1_r6").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r7").innerText)){ document.getElementById("Isc_aaA_metodo1_r7").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r8").innerText)){ document.getElementById("Isc_aaA_metodo1_r8").innerText = ""}
-
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r1").innerText)){ document.getElementById("Isc_aaB_metodo1_r1").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r2").innerText)){ document.getElementById("Isc_aaB_metodo1_r2").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r3").innerText)){ document.getElementById("Isc_aaB_metodo1_r3").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r4").innerText)){ document.getElementById("Isc_aaB_metodo1_r4").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r5").innerText)){ document.getElementById("Isc_aaB_metodo1_r5").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r6").innerText)){ document.getElementById("Isc_aaB_metodo1_r6").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r7").innerText)){ document.getElementById("Isc_aaB_metodo1_r7").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r8").innerText)){ document.getElementById("Isc_aaB_metodo1_r8").innerText = "-"}
-
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r1").innerText)){ document.getElementById("Isc_maxMetodo1_r1").innerText = "" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r2").innerText)){ document.getElementById("Isc_maxMetodo1_r2").innerText = "-" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r3").innerText)){ document.getElementById("Isc_maxMetodo1_r3").innerText = "" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r4").innerText)){ document.getElementById("Isc_maxMetodo1_r4").innerText = "" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r5").innerText)){ document.getElementById("Isc_maxMetodo1_r5").innerText = "" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r6").innerText)){ document.getElementById("Isc_maxMetodo1_r6").innerText = "" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r7").innerText)){ document.getElementById("Isc_maxMetodo1_r7").innerText = "-" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r8").innerText)){ document.getElementById("Isc_maxMetodo1_r8").innerText = "" }
-
-    if(isNaN(document.getElementById("Ipickup_metodo1_r1").innerText)){ document.getElementById("Ipickup_metodo1_r1").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r2").innerText)){ document.getElementById("Ipickup_metodo1_r2").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r3").innerText)){ document.getElementById("Ipickup_metodo1_r3").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r4").innerText)){ document.getElementById("Ipickup_metodo1_r4").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r5").innerText)){ document.getElementById("Ipickup_metodo1_r5").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r6").innerText)){ document.getElementById("Ipickup_metodo1_r6").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r7").innerText)){ document.getElementById("Ipickup_metodo1_r7").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r8").innerText)){ document.getElementById("Ipickup_metodo1_r8").innerText = "" }
-    
-}
 
 
 function imprimirResultados() {
@@ -1691,4 +1636,192 @@ function graficarCurvaLadoDerecho() {
         ]
     })
 
+}
+
+
+//Función para evitar los NaN
+function quitarNaNValoresAnillo() {
+
+    if(isNaN(document.getElementById("Ic_metodo1_r1").innerText)){ document.getElementById("Ic_metodo1_r1").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r2").innerText)){ document.getElementById("Ic_metodo1_r2").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r3").innerText)){ document.getElementById("Ic_metodo1_r3").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r4").innerText)){ document.getElementById("Ic_metodo1_r4").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r5").innerText)){ document.getElementById("Ic_metodo1_r5").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r6").innerText)){ document.getElementById("Ic_metodo1_r6").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r7").innerText)){ document.getElementById("Ic_metodo1_r7").innerText = ""}
+    if(isNaN(document.getElementById("Ic_metodo1_r8").innerText)){ document.getElementById("Ic_metodo1_r8").innerText = ""}
+
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r1").innerText)){ document.getElementById("Isc_aC_metodo1_r1").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r2").innerText)){ document.getElementById("Isc_aC_metodo1_r2").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r3").innerText)){ document.getElementById("Isc_aC_metodo1_r3").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r4").innerText)){ document.getElementById("Isc_aC_metodo1_r4").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r5").innerText)){ document.getElementById("Isc_aC_metodo1_r5").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r6").innerText)){ document.getElementById("Isc_aC_metodo1_r6").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r7").innerText)){ document.getElementById("Isc_aC_metodo1_r7").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aC_metodo1_r8").innerText)){ document.getElementById("Isc_aC_metodo1_r8").innerText = ""}
+
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r1").innerText)){ document.getElementById("Isc_aaA_metodo1_r1").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r2").innerText)){ document.getElementById("Isc_aaA_metodo1_r2").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r3").innerText)){ document.getElementById("Isc_aaA_metodo1_r3").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r4").innerText)){ document.getElementById("Isc_aaA_metodo1_r4").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r5").innerText)){ document.getElementById("Isc_aaA_metodo1_r5").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r6").innerText)){ document.getElementById("Isc_aaA_metodo1_r6").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r7").innerText)){ document.getElementById("Isc_aaA_metodo1_r7").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaA_metodo1_r8").innerText)){ document.getElementById("Isc_aaA_metodo1_r8").innerText = ""}
+
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r1").innerText)){ document.getElementById("Isc_aaB_metodo1_r1").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r2").innerText)){ document.getElementById("Isc_aaB_metodo1_r2").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r3").innerText)){ document.getElementById("Isc_aaB_metodo1_r3").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r4").innerText)){ document.getElementById("Isc_aaB_metodo1_r4").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r5").innerText)){ document.getElementById("Isc_aaB_metodo1_r5").innerText = ""}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r6").innerText)){ document.getElementById("Isc_aaB_metodo1_r6").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r7").innerText)){ document.getElementById("Isc_aaB_metodo1_r7").innerText = "-"}
+    if(isNaN(document.getElementById("Isc_aaB_metodo1_r8").innerText)){ document.getElementById("Isc_aaB_metodo1_r8").innerText = "-"}
+
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r1").innerText)){ document.getElementById("Isc_maxMetodo1_r1").innerText = "" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r2").innerText)){ document.getElementById("Isc_maxMetodo1_r2").innerText = "-" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r3").innerText)){ document.getElementById("Isc_maxMetodo1_r3").innerText = "" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r4").innerText)){ document.getElementById("Isc_maxMetodo1_r4").innerText = "" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r5").innerText)){ document.getElementById("Isc_maxMetodo1_r5").innerText = "" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r6").innerText)){ document.getElementById("Isc_maxMetodo1_r6").innerText = "" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r7").innerText)){ document.getElementById("Isc_maxMetodo1_r7").innerText = "-" }
+    if(isNaN(document.getElementById("Isc_maxMetodo1_r8").innerText)){ document.getElementById("Isc_maxMetodo1_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("Ipickup_metodo1_r1").innerText)){ document.getElementById("Ipickup_metodo1_r1").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r2").innerText)){ document.getElementById("Ipickup_metodo1_r2").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r3").innerText)){ document.getElementById("Ipickup_metodo1_r3").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r4").innerText)){ document.getElementById("Ipickup_metodo1_r4").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r5").innerText)){ document.getElementById("Ipickup_metodo1_r5").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r6").innerText)){ document.getElementById("Ipickup_metodo1_r6").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r7").innerText)){ document.getElementById("Ipickup_metodo1_r7").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo1_r8").innerText)){ document.getElementById("Ipickup_metodo1_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("Ic_metodo2_r1").innerText)){ document.getElementById("Ic_metodo2_r1").innerText = "" }
+    if(isNaN(document.getElementById("Ic_metodo2_r2").innerText)){ document.getElementById("Ic_metodo2_r2").innerText = "" }
+    if(isNaN(document.getElementById("Ic_metodo2_r3").innerText)){ document.getElementById("Ic_metodo2_r3").innerText = "" }
+    if(isNaN(document.getElementById("Ic_metodo2_r4").innerText)){ document.getElementById("Ic_metodo2_r4").innerText = "" }
+    if(isNaN(document.getElementById("Ic_metodo2_r5").innerText)){ document.getElementById("Ic_metodo2_r5").innerText = "" }
+    if(isNaN(document.getElementById("Ic_metodo2_r6").innerText)){ document.getElementById("Ic_metodo2_r6").innerText = "" }
+    if(isNaN(document.getElementById("Ic_metodo2_r7").innerText)){ document.getElementById("Ic_metodo2_r7").innerText = "" }
+    if(isNaN(document.getElementById("Ic_metodo2_r8").innerText)){ document.getElementById("Ic_metodo2_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("Isc_aC_metodo2_r1").innerText)){ document.getElementById("Isc_aC_metodo2_r1").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aC_metodo2_r2").innerText)){ document.getElementById("Isc_aC_metodo2_r2").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aC_metodo2_r3").innerText)){ document.getElementById("Isc_aC_metodo2_r3").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aC_metodo2_r4").innerText)){ document.getElementById("Isc_aC_metodo2_r4").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aC_metodo2_r5").innerText)){ document.getElementById("Isc_aC_metodo2_r5").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aC_metodo2_r6").innerText)){ document.getElementById("Isc_aC_metodo2_r6").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aC_metodo2_r7").innerText)){ document.getElementById("Isc_aC_metodo2_r7").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aC_metodo2_r8").innerText)){ document.getElementById("Isc_aC_metodo2_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("Isc_aA_metodo2_r1").innerText)){ document.getElementById("Isc_aA_metodo2_r1").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aA_metodo2_r2").innerText)){ document.getElementById("Isc_aA_metodo2_r2").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aA_metodo2_r3").innerText)){ document.getElementById("Isc_aA_metodo2_r3").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aA_metodo2_r4").innerText)){ document.getElementById("Isc_aA_metodo2_r4").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aA_metodo2_r5").innerText)){ document.getElementById("Isc_aA_metodo2_r5").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aA_metodo2_r6").innerText)){ document.getElementById("Isc_aA_metodo2_r6").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aA_metodo2_r7").innerText)){ document.getElementById("Isc_aA_metodo2_r7").innerText = "" }
+    if(isNaN(document.getElementById("Isc_aA_metodo2_r8").innerText)){ document.getElementById("Isc_aA_metodo2_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("Isc_criterio_metodo2_r1").innerText)){ document.getElementById("Isc_criterio_metodo2_r1").innerText = "" }
+    if(isNaN(document.getElementById("Isc_criterio_metodo2_r2").innerText)){ document.getElementById("Isc_criterio_metodo2_r2").innerText = "" }
+    if(isNaN(document.getElementById("Isc_criterio_metodo2_r3").innerText)){ document.getElementById("Isc_criterio_metodo2_r3").innerText = "" }
+    if(isNaN(document.getElementById("Isc_criterio_metodo2_r4").innerText)){ document.getElementById("Isc_criterio_metodo2_r4").innerText = "" }
+    if(isNaN(document.getElementById("Isc_criterio_metodo2_r5").innerText)){ document.getElementById("Isc_criterio_metodo2_r5").innerText = "" }
+    if(isNaN(document.getElementById("Isc_criterio_metodo2_r6").innerText)){ document.getElementById("Isc_criterio_metodo2_r6").innerText = "" }
+    if(isNaN(document.getElementById("Isc_criterio_metodo2_r7").innerText)){ document.getElementById("Isc_criterio_metodo2_r7").innerText = "" }
+    if(isNaN(document.getElementById("Isc_criterio_metodo2_r8").innerText)){ document.getElementById("Isc_criterio_metodo2_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r1").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r1").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r2").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r2").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r3").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r3").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r4").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r4").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r5").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r5").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r6").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r6").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r7").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r7").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r8").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("resumen_Icarga1").innerText)){ document.getElementById("resumen_Icarga1").innerText = "" }
+    if(isNaN(document.getElementById("resumen_Icarga2").innerText)){ document.getElementById("resumen_Icarga2").innerText = "" }
+    if(isNaN(document.getElementById("resumen_Icarga3").innerText)){ document.getElementById("resumen_Icarga3").innerText = "" }
+    if(isNaN(document.getElementById("resumen_Icarga4").innerText)){ document.getElementById("resumen_Icarga4").innerText = "" }
+    if(isNaN(document.getElementById("resumen_Icarga5").innerText)){ document.getElementById("resumen_Icarga5").innerText = "" }
+    if(isNaN(document.getElementById("resumen_Icarga6").innerText)){ document.getElementById("resumen_Icarga6").innerText = "" }
+    if(isNaN(document.getElementById("resumen_Icarga7").innerText)){ document.getElementById("resumen_Icarga7").innerText = "" }
+    if(isNaN(document.getElementById("resumen_Icarga8").innerText)){ document.getElementById("resumen_Icarga8").innerText = "" }
+
+    if(isNaN(document.getElementById("Isc_metodo1_r1").innerText)){ document.getElementById("Isc_metodo1_r1").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo1_r2").innerText)){ document.getElementById("Isc_metodo1_r2").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo1_r3").innerText)){ document.getElementById("Isc_metodo1_r3").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo1_r4").innerText)){ document.getElementById("Isc_metodo1_r4").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo1_r5").innerText)){ document.getElementById("Isc_metodo1_r5").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo1_r6").innerText)){ document.getElementById("Isc_metodo1_r6").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo1_r7").innerText)){ document.getElementById("Isc_metodo1_r7").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo1_r8").innerText)){ document.getElementById("Isc_metodo1_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("Isc_metodo2_r1").innerText)){ document.getElementById("Isc_metodo2_r1").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo2_r2").innerText)){ document.getElementById("Isc_metodo2_r2").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo2_r3").innerText)){ document.getElementById("Isc_metodo2_r3").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo2_r4").innerText)){ document.getElementById("Isc_metodo2_r4").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo2_r5").innerText)){ document.getElementById("Isc_metodo2_r5").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo2_r6").innerText)){ document.getElementById("Isc_metodo2_r6").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo2_r7").innerText)){ document.getElementById("Isc_metodo2_r7").innerText = "" }
+    if(isNaN(document.getElementById("Isc_metodo2_r8").innerText)){ document.getElementById("Isc_metodo2_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("IpickupR_metodo1_r1").innerText)){ document.getElementById("IpickupR_metodo1_r1").innerText = "" }
+    if(isNaN(document.getElementById("IpickupR_metodo1_r2").innerText)){ document.getElementById("IpickupR_metodo1_r2").innerText = "" }
+    if(isNaN(document.getElementById("IpickupR_metodo1_r3").innerText)){ document.getElementById("IpickupR_metodo1_r3").innerText = "" }
+    if(isNaN(document.getElementById("IpickupR_metodo1_r4").innerText)){ document.getElementById("IpickupR_metodo1_r4").innerText = "" }
+    if(isNaN(document.getElementById("IpickupR_metodo1_r5").innerText)){ document.getElementById("IpickupR_metodo1_r5").innerText = "" }
+    if(isNaN(document.getElementById("IpickupR_metodo1_r6").innerText)){ document.getElementById("IpickupR_metodo1_r6").innerText = "" }
+    if(isNaN(document.getElementById("IpickupR_metodo1_r7").innerText)){ document.getElementById("IpickupR_metodo1_r7").innerText = "" }
+    if(isNaN(document.getElementById("IpickupR_metodo1_r8").innerText)){ document.getElementById("IpickupR_metodo1_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("Ipickup_metodo2_r1").innerText)){ document.getElementById("Ipickup_metodo2_r1").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo2_r2").innerText)){ document.getElementById("Ipickup_metodo2_r2").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo2_r3").innerText)){ document.getElementById("Ipickup_metodo2_r3").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo2_r4").innerText)){ document.getElementById("Ipickup_metodo2_r4").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo2_r5").innerText)){ document.getElementById("Ipickup_metodo2_r5").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo2_r6").innerText)){ document.getElementById("Ipickup_metodo2_r6").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo2_r7").innerText)){ document.getElementById("Ipickup_metodo2_r7").innerText = "" }
+    if(isNaN(document.getElementById("Ipickup_metodo2_r8").innerText)){ document.getElementById("Ipickup_metodo2_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("deltaIsc_r1").innerText)){ document.getElementById("deltaIsc_r1").innerText = "" }
+    if(isNaN(document.getElementById("deltaIsc_r2").innerText)){ document.getElementById("deltaIsc_r2").innerText = "-" }
+    if(isNaN(document.getElementById("deltaIsc_r3").innerText)){ document.getElementById("deltaIsc_r3").innerText = "" }
+    if(isNaN(document.getElementById("deltaIsc_r4").innerText)){ document.getElementById("deltaIsc_r4").innerText = "" }
+    if(isNaN(document.getElementById("deltaIsc_r5").innerText)){ document.getElementById("deltaIsc_r5").innerText = "" }
+    if(isNaN(document.getElementById("deltaIsc_r6").innerText)){ document.getElementById("deltaIsc_r6").innerText = "" }
+    if(isNaN(document.getElementById("deltaIsc_r7").innerText)){ document.getElementById("deltaIsc_r7").innerText = "-" }
+    if(isNaN(document.getElementById("deltaIsc_r8").innerText)){ document.getElementById("deltaIsc_r8").innerText = "" }
+
+    if(isNaN(document.getElementById("deltaIpickup_r1").innerText)){ document.getElementById("deltaIpickup_r1").innerText = "" }
+    if(isNaN(document.getElementById("deltaIpickup_r2").innerText)){ document.getElementById("deltaIpickup_r2").innerText = "-" }
+    if(isNaN(document.getElementById("deltaIpickup_r3").innerText)){ document.getElementById("deltaIpickup_r3").innerText = "" }
+    if(isNaN(document.getElementById("deltaIpickup_r4").innerText)){ document.getElementById("deltaIpickup_r4").innerText = "" }
+    if(isNaN(document.getElementById("deltaIpickup_r5").innerText)){ document.getElementById("deltaIpickup_r5").innerText = "" }
+    if(isNaN(document.getElementById("deltaIpickup_r6").innerText)){ document.getElementById("deltaIpickup_r6").innerText = "" }
+    if(isNaN(document.getElementById("deltaIpickup_r7").innerText)){ document.getElementById("deltaIpickup_r7").innerText = "-" }
+    if(isNaN(document.getElementById("deltaIpickup_r8").innerText)){ document.getElementById("deltaIpickup_r8").innerText = "" }
+
+    if(isNaN(tabla_Isc_Rele1.innerText)){ tabla_Isc_Rele1.innerText = "-" }
+    if(isNaN(tabla_Isc_Rele2.innerText)){ tabla_Isc_Rele2.innerText = "-" }
+    if(isNaN(tabla_Isc_Rele3.innerText)){ tabla_Isc_Rele3.innerText = "-" }
+    if(isNaN(tabla_Isc_Rele4.innerText)){ tabla_Isc_Rele4.innerText = "-" }
+    if(isNaN(tabla_Isc_Rele5.innerText)){ tabla_Isc_Rele5.innerText = "-" }
+    if(isNaN(tabla_Isc_Rele6.innerText)){ tabla_Isc_Rele6.innerText = "-" }
+    if(isNaN(tabla_Isc_Rele7.innerText)){ tabla_Isc_Rele7.innerText = "-" }
+    if(isNaN(tabla_Isc_Rele8.innerText)){ tabla_Isc_Rele8.innerText = "-" }
+
+    if(isNaN(tabla_Ic_Rele1.innerText)){ tabla_Ic_Rele1.innerText = "-" }
+    if(isNaN(tabla_Ic_Rele2.innerText)){ tabla_Ic_Rele2.innerText = "-" }
+    if(isNaN(tabla_Ic_Rele3.innerText)){ tabla_Ic_Rele3.innerText = "-" }
+    if(isNaN(tabla_Ic_Rele4.innerText)){ tabla_Ic_Rele4.innerText = "-" }
+    if(isNaN(tabla_Ic_Rele5.innerText)){ tabla_Ic_Rele5.innerText = "-" }
+    if(isNaN(tabla_Ic_Rele6.innerText)){ tabla_Ic_Rele6.innerText = "-" }
+    if(isNaN(tabla_Ic_Rele7.innerText)){ tabla_Ic_Rele7.innerText = "-" }
+    if(isNaN(tabla_Ic_Rele8.innerText)){ tabla_Ic_Rele8.innerText = "-" }
+    
+
+    
 }
