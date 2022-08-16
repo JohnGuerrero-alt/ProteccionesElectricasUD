@@ -248,6 +248,13 @@ async function valoresRele(nombreRele) {
 
     habilitarTMS()
 
+    //Evitar el NaN en el TMS
+    try {
+        if(isNaN(modeloRele[nombreRele].TMS)){modeloRele[nombreRele].TMS =""}
+    } catch (error) {
+
+    }
+
     const { value: formValues } = await Swal.fire({
         allowOutsideClick: false,
         title: modeloRele[nombreRele].tituloModal,
@@ -687,6 +694,7 @@ function calcularPasoaPaso() {
     }
 
     console.log("margen con a: ", Ic_a_con_margen)
+    
 
 }
 
