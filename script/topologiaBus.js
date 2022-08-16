@@ -1,33 +1,4 @@
 //Declaramos las variables globales
-
-
-//Defino las variables para poder imprimirlas en la tabla
-var tabla_Isc_ReleA = document.getElementById("Isc_0");
-var tabla_Isc_ReleB = document.getElementById("Isc_1");
-var tabla_Isc_ReleC = document.getElementById("Isc_2");
-var tabla_Ic_ReleA = document.getElementById("Ic_0");
-var tabla_Ic_ReleB = document.getElementById("Ic_1");
-var tabla_Ic_ReleC = document.getElementById("Ic_2");
-var tabla_Margen_Ic_A = document.getElementById("Margen_Ic_0");
-var tabla_Margen_Ic_B = document.getElementById("Margen_Ic_1");
-var tabla_Margen_Ic_C = document.getElementById("Margen_Ic_2");
-var tabla_familiaCurva_A = document.getElementById("FamiliaC_0");
-var tabla_familiaCurva_B = document.getElementById("FamiliaC_1");
-var tabla_familiaCurva_C = document.getElementById("FamiliaC_2");
-var tabla_TMS_A = document.getElementById("TMS_0");
-var tabla_TMS_B = document.getElementById("TMS_1");
-var tabla_TMS_C = document.getElementById("TMS_2");
-var tabla_Tiempo_A = document.getElementById("Tiempo_0");
-var tabla_Tiempo_B = document.getElementById("Tiempo_1");
-var tabla_Tiempo_C = document.getElementById("Tiempo_2");
-var tabla_TiempoInstantaneo_A = document.getElementById("Tiempo_instantaneo_0");
-var tabla_TiempoInstantaneo_B = document.getElementById("Tiempo_instantaneo_1");
-var tabla_TiempoInstantaneo_C = document.getElementById("Tiempo_instantaneo_2");
-
-var tabla_DialCalculado_A = document.getElementById("Dial_calculado_0");
-var tabla_DialCalculado_B = document.getElementById("Dial_calculado_1");
-var tabla_DialCalculado_C = document.getElementById("Dial_calculado_2");
-
 //Declaramos un json que tendrá el esquema para ajustar y guardar los valores para cada Relé
 const modeloRele = {
     0: {
@@ -41,6 +12,8 @@ const modeloRele = {
         TMS: tabla_TMS_A,
         tiempo: tabla_Tiempo_A,
         tiempoInstantaneo: tabla_TiempoInstantaneo_A,
+        tiempoLocal: 0,
+        TMS_calculado: "",
     },
     1: {
         nombreRele: "B",
@@ -53,6 +26,8 @@ const modeloRele = {
         TMS: tabla_TMS_B,
         tiempo: tabla_Tiempo_B,
         tiempoInstantaneo: tabla_TiempoInstantaneo_B,
+        tiempoLocal: 0,
+        TMS_calculado: "",
     },
     2: {
         nombreRele: "C",
@@ -65,16 +40,10 @@ const modeloRele = {
         TMS: tabla_TMS_C,
         tiempo: tabla_Tiempo_C,
         tiempoInstantaneo: tabla_TiempoInstantaneo_C,
+        tiempoLocal: 0,
+        TMS_calculado: "",
     }
 }
-
-//Inicializamos valores para los select y option al escoger el tipo de relé
-modeloRele[0].familiaCurva = "-";
-modeloRele[0].TMS = "-";
-modeloRele[1].familiaCurva = "-";
-modeloRele[1].TMS = "-";
-modeloRele[2].familiaCurva = "-";
-modeloRele[2].TMS = "-";
 
 const parametrosCurva = {
     "Normal Inversa - IEC": {
@@ -152,6 +121,44 @@ const parametrosCurva = {
         ANSI: 1
     }
 }
+
+
+//Defino las variables para poder imprimirlas en la tabla
+var tabla_Isc_ReleA = document.getElementById("Isc_0");
+var tabla_Isc_ReleB = document.getElementById("Isc_1");
+var tabla_Isc_ReleC = document.getElementById("Isc_2");
+var tabla_Ic_ReleA = document.getElementById("Ic_0");
+var tabla_Ic_ReleB = document.getElementById("Ic_1");
+var tabla_Ic_ReleC = document.getElementById("Ic_2");
+var tabla_Margen_Ic_A = document.getElementById("Margen_Ic_0");
+var tabla_Margen_Ic_B = document.getElementById("Margen_Ic_1");
+var tabla_Margen_Ic_C = document.getElementById("Margen_Ic_2");
+var tabla_familiaCurva_A = document.getElementById("FamiliaC_0");
+var tabla_familiaCurva_B = document.getElementById("FamiliaC_1");
+var tabla_familiaCurva_C = document.getElementById("FamiliaC_2");
+var tabla_TMS_A = document.getElementById("TMS_0");
+var tabla_TMS_B = document.getElementById("TMS_1");
+var tabla_TMS_C = document.getElementById("TMS_2");
+var tabla_Tiempo_A = document.getElementById("Tiempo_0");
+var tabla_Tiempo_B = document.getElementById("Tiempo_1");
+var tabla_Tiempo_C = document.getElementById("Tiempo_2");
+var tabla_TiempoInstantaneo_A = document.getElementById("Tiempo_instantaneo_0");
+var tabla_TiempoInstantaneo_B = document.getElementById("Tiempo_instantaneo_1");
+var tabla_TiempoInstantaneo_C = document.getElementById("Tiempo_instantaneo_2");
+
+var tabla_DialCalculado_A = document.getElementById("Dial_calculado_0");
+var tabla_DialCalculado_B = document.getElementById("Dial_calculado_1");
+var tabla_DialCalculado_C = document.getElementById("Dial_calculado_2");
+
+
+
+//Inicializamos valores para los select y option al escoger el tipo de relé
+modeloRele[0].familiaCurva = "-";
+modeloRele[0].TMS = "-";
+modeloRele[1].familiaCurva = "-";
+modeloRele[1].TMS = "-";
+modeloRele[2].familiaCurva = "-";
+modeloRele[2].TMS = "-";
 
 var Isc_ReleA = 0.00;
 var Isc_ReleB = 0.00;
@@ -495,7 +502,18 @@ async function ajustarValoresCoordinacion(Rele) {
             <div class="table-responsive" >
                 <table class="table align-middle" style="font-size:13px">
                     <tr>
-                        <th scope="col"></th>
+                        <th scope="col">Tiempo local <br> (seg)</th>
+                        <td><input type="number" class="swal2-input"   value="${modeloRele[Rele].tiempoLocal}" min="0"/> </td>
+                        <td><div class="botonGuardar" onclick="calcularNuevoDial(${Rele})">Calcular nuevo <br> Dial</div></td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row"></th>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Dial <br> Calculado</th>
+                        <td colspan="2">${modeloRele[Rele].TMS_calculado}</td>
+                        
                     </tr>
                 </table>
             </div>
@@ -504,6 +522,12 @@ async function ajustarValoresCoordinacion(Rele) {
 
     })
 
+
+}
+
+//Función para calcular el nuevo DIAL
+function calcularNuevoDial(Rele) {
+    
 
 }
 
@@ -589,6 +613,7 @@ function calcularPasoaPaso() {
 
 
         TMS_calculado_C = (TMSparteIEC_C + TMSparteANSI_C).toFixed(4);
+        modeloRele[2].TMS_calculado = TMS_calculado_C;
 
         if (isNaN(TMS_calculado_C)) { TMS_calculado_C = "-" }
         document.getElementById("Dial_calculado_2").innerText = TMS_calculado_C;
@@ -601,6 +626,7 @@ function calcularPasoaPaso() {
 
         //Hallar tiempo Local en C
         tiempo_local_C = (tLocalparteIEC_C + tLocalparteANSI_C).toFixed(4);
+        modeloRele[2].tiempoLocal = tiempo_local_C;
         console.log("tiempo local C: ", tiempo_local_C)
 
         if (isNaN(tiempo_local_C)) { tiempo_local_C = "__" }
@@ -624,6 +650,7 @@ function calcularPasoaPaso() {
 
 
         TMS_calculado_B = (TMSparteIEC_B + TMSparteANSI_B).toFixed(4);
+        modeloRele[1].TMS_calculado =  TMS_calculado_B;
         if (isNaN(TMS_calculado_B)) { TMS_calculado_B = "-" }
         document.getElementById("Dial_calculado_1").innerText = TMS_calculado_B;
 
@@ -634,6 +661,7 @@ function calcularPasoaPaso() {
 
         //Hallar tiempo local en B
         tiempo_local_B = (tLocalparteIEC_B + tLocalparteANSI_B).toFixed(4);
+        modeloRele[1].tiempoLocal = tiempo_local_B;
         if (isNaN(tiempo_local_B)) { tiempo_local_B = "__" }
         document.getElementById("Tiempo_local_1").innerHTML = tiempo_local_B;
 
@@ -663,6 +691,7 @@ function calcularPasoaPaso() {
 
 
         TMS_calculado_A = (TMSparteANSI_A + TMSparteIEC_A).toFixed(4);
+        modeloRele[0].TMS_calculado = TMS_calculado_A;
         if (isNaN(TMS_calculado_A)) { TMS_calculado_A = "-" }
         document.getElementById("Dial_calculado_0").innerText = TMS_calculado_A;
 
@@ -673,6 +702,7 @@ function calcularPasoaPaso() {
         tLocalparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI * TMS_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_margen) - (parametrosCurva[familiaCurva_A].C), 3))))));
 
         tiempo_local_A = (tLocalparteANSI_A + tLocalparteIEC_A).toFixed(4);
+        modeloRele[0].tiempoLocal = tiempo_local_A;
 
         if (isNaN(tiempo_local_A)) { tiempo_local_A = "__" }
         document.getElementById("Tiempo_local_0").innerHTML = tiempo_local_A;
