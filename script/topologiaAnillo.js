@@ -388,14 +388,14 @@ var tabla_TiempoInstantaneo_5 = document.getElementById("Tiempo_instantaneo_r5")
 var tabla_TiempoInstantaneo_6 = document.getElementById("Tiempo_instantaneo_r6");
 var tabla_TiempoInstantaneo_7 = document.getElementById("Tiempo_instantaneo_r7");
 var tabla_TiempoInstantaneo_8 = document.getElementById("Tiempo_instantaneo_r8");
-var tabla_DialCalculado_1 = document.getElementById("Dial_calculado_r1");
-var tabla_DialCalculado_2 = document.getElementById("Dial_calculado_r2");
-var tabla_DialCalculado_3 = document.getElementById("Dial_calculado_r3");
-var tabla_DialCalculado_4 = document.getElementById("Dial_calculado_r4");
-var tabla_DialCalculado_5 = document.getElementById("Dial_calculado_r5");
-var tabla_DialCalculado_6 = document.getElementById("Dial_calculado_r6");
-var tabla_DialCalculado_7 = document.getElementById("Dial_calculado_r7");
-var tabla_DialCalculado_8 = document.getElementById("Dial_calculado_r8");
+var tabla_DialCalculado_1 = document.getElementById("TMS_r1");
+var tabla_DialCalculado_2 = document.getElementById("TMS_r2");
+var tabla_DialCalculado_3 = document.getElementById("TMS_r3");
+var tabla_DialCalculado_4 = document.getElementById("TMS_r4");
+var tabla_DialCalculado_5 = document.getElementById("TMS_r5");
+var tabla_DialCalculado_6 = document.getElementById("TMS_r6");
+var tabla_DialCalculado_7 = document.getElementById("TMS_r7");
+var tabla_DialCalculado_8 = document.getElementById("TMS_r8");
 
 //Defino las variables para ajustar los valores generales del anillo
 var valor_diagrama_Generador = document.getElementById("1_4");
@@ -573,6 +573,53 @@ function ejemploAnillo() {
     valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].reactancia + " Ω";
     valor_barra_3_4.innerHTML = "<br>" + modeloAnillo[6].reactancia + " Ω";
     valor_carga_abajo.innerHTML = "<br>" + modeloAnillo[7].potencia + " MVA";
+
+
+    tabla_Margen_Ic_1.innerText = 20; tabla_Margen_Ic_2.innerText = 20; tabla_Margen_Ic_3.innerText = 20;
+    tabla_Margen_Ic_4.innerText = 20; tabla_Margen_Ic_5.innerText = 20; tabla_Margen_Ic_6.innerText = 20;
+    tabla_Margen_Ic_7.innerText = 20; tabla_Margen_Ic_8.innerText = 20;
+
+    modeloReleAnillo[1].margenIc = 20; modeloReleAnillo[2].margenIc = 20; modeloReleAnillo[3].margenIc = 20;
+    modeloReleAnillo[4].margenIc = 20; modeloReleAnillo[5].margenIc = 20; modeloReleAnillo[6].margenIc = 20;
+    modeloReleAnillo[7].margenIc = 20; modeloReleAnillo[8].margenIc = 20;
+
+    tabla_familiaCurva_1.innerText = "Normal Inversa - IEC" ; tabla_familiaCurva_2.innerText = "Normal Inversa - IEC" ;
+    tabla_familiaCurva_3.innerText = "Normal Inversa - IEC" ; tabla_familiaCurva_4.innerText = "Normal Inversa - IEC" ;
+    tabla_familiaCurva_5.innerText = "Normal Inversa - IEC" ; tabla_familiaCurva_6.innerText = "Normal Inversa - IEC" ;
+    tabla_familiaCurva_7.innerText = "Normal Inversa - IEC" ; tabla_familiaCurva_8.innerText = "Normal Inversa - IEC" ;
+
+    modeloReleAnillo[1].familiaCurva = "Normal Inversa - IEC"; modeloReleAnillo[2].familiaCurva = "Normal Inversa - IEC";
+    modeloReleAnillo[3].familiaCurva = "Normal Inversa - IEC"; modeloReleAnillo[4].familiaCurva = "Normal Inversa - IEC";
+    modeloReleAnillo[5].familiaCurva = "Normal Inversa - IEC"; modeloReleAnillo[6].familiaCurva = "Normal Inversa - IEC";
+    modeloReleAnillo[7].familiaCurva = "Normal Inversa - IEC"; modeloReleAnillo[8].familiaCurva = "Normal Inversa - IEC";
+
+    tabla_Tiempo_1.innerText = 200; tabla_Tiempo_2.innerText = 200; tabla_Tiempo_3.innerText = 200;
+    tabla_Tiempo_4.innerText = 200; tabla_Tiempo_5.innerText = 200; tabla_Tiempo_6.innerText = 200;
+    tabla_Tiempo_7.innerText = 200; tabla_Tiempo_8.innerText = 200;
+
+    modeloReleAnillo[1].tiempo = 200; modeloReleAnillo[2].tiempo = 200; modeloReleAnillo[3].tiempo = 200;
+    modeloReleAnillo[4].tiempo = 200; modeloReleAnillo[5].tiempo = 200; modeloReleAnillo[6].tiempo = 200;
+    modeloReleAnillo[7].tiempo = 200; modeloReleAnillo[8].tiempo = 200;
+
+    tabla_TiempoInstantaneo_1.innerText = 200; tabla_TiempoInstantaneo_2.innerText = 200; tabla_TiempoInstantaneo_3.innerText = 200;
+    tabla_TiempoInstantaneo_4.innerText = 200; tabla_TiempoInstantaneo_5.innerText = 200; tabla_TiempoInstantaneo_6.innerText = 200;
+    tabla_TiempoInstantaneo_7.innerText = 200; tabla_TiempoInstantaneo_8.innerText = 200;
+
+    modeloReleAnillo[1].tiempoInstantaneo = 200; modeloReleAnillo[2].tiempoInstantaneo = 200; modeloReleAnillo[3].tiempoInstantaneo = 200;
+    modeloReleAnillo[4].tiempoInstantaneo = 200; modeloReleAnillo[5].tiempoInstantaneo = 200; modeloReleAnillo[6].tiempoInstantaneo = 200;
+    modeloReleAnillo[7].tiempoInstantaneo = 200; modeloReleAnillo[8].tiempoInstantaneo = 200;
+
+
+    tabla_DialCalculado_1.innerText = 0.04; tabla_DialCalculado_2.innerText = 0.01; tabla_DialCalculado_3.innerText = 0.02;
+    tabla_DialCalculado_4.innerText = 0.01; tabla_DialCalculado_5.innerText = 0.01; tabla_DialCalculado_6.innerText = 0.02;
+    tabla_DialCalculado_7.innerText = 0.01; tabla_DialCalculado_8.innerText = 0.03;
+
+    modeloReleAnillo[1].TMS = 0.04; modeloReleAnillo[2].TMS = 0.01; modeloReleAnillo[3].TMS = 0.02; modeloReleAnillo[4].TMS = 0.01;
+    modeloReleAnillo[5].TMS = 0.01; modeloReleAnillo[6].TMS = 0.02; modeloReleAnillo[7].TMS = 0.01; modeloReleAnillo[8].TMS = 0.03;
+
+    calcularValoresRelesAnillo();
+
+    calculosGraficaAnillo();
 
 }
 
@@ -956,6 +1003,7 @@ function imprimirResultados() {
     document.getElementById("resumen_Icarga6").innerText = Ic_r56;
     document.getElementById("resumen_Icarga7").innerText = Ic_r78;
     document.getElementById("resumen_Icarga8").innerText = Ic_r78;
+
     //Imprimir valores de Isc máx usando el método 1
     document.getElementById("Isc_metodo1_r1").innerText = Isc_Rele1.toFixed(2);
     document.getElementById("Isc_metodo1_r2").innerText = Ic_A.toFixed(2);
@@ -965,6 +1013,7 @@ function imprimirResultados() {
     document.getElementById("Isc_metodo1_r6").innerText = Isc_Rele6.toFixed(2);
     document.getElementById("Isc_metodo1_r7").innerText = Ic_B.toFixed(2);
     document.getElementById("Isc_metodo1_r8").innerText = Isc_Rele8.toFixed(2);
+
     //Imprimir valores de Isc máx usando el método 2
     document.getElementById("Isc_metodo2_r1").innerText = Isc2_Rele1;
     document.getElementById("Isc_metodo2_r2").innerText = Isc2_Rele2;
@@ -974,6 +1023,7 @@ function imprimirResultados() {
     document.getElementById("Isc_metodo2_r6").innerText = Isc2_Rele6;
     document.getElementById("Isc_metodo2_r7").innerText = Isc2_Rele7;
     document.getElementById("Isc_metodo2_r8").innerText = Isc2_Rele8;
+
     //Imprimir  valores Ipickup usando el método 1 
     document.getElementById("IpickupR_metodo1_r1").innerText = (Isc_Rele1 * 1.25).toFixed(2);
     document.getElementById("IpickupR_metodo1_r2").innerText = (Ic_A * 1.5).toFixed(2);
@@ -983,6 +1033,7 @@ function imprimirResultados() {
     document.getElementById("IpickupR_metodo1_r6").innerText = (Isc_Rele6 * 1.25).toFixed(2);
     document.getElementById("IpickupR_metodo1_r7").innerText = (Ic_B * 1.5).toFixed(2);
     document.getElementById("IpickupR_metodo1_r8").innerText = (Isc_Rele8 * 1.25).toFixed(2);
+
     //Imprimir valores Ipickyp usando el método 2
     document.getElementById("Ipickup_metodo2_r1").innerText = (Isc2_Rele1 * 1.25).toFixed(2);
     document.getElementById("Ipickup_metodo2_r2").innerText = (Isc2_Rele2 * 1.5).toFixed(2);
@@ -992,23 +1043,29 @@ function imprimirResultados() {
     document.getElementById("Ipickup_metodo2_r6").innerText = (Isc2_Rele6 * 1.25).toFixed(2);
     document.getElementById("Ipickup_metodo2_r7").innerText = (Isc2_Rele7 * 1.5).toFixed(2);
     document.getElementById("Ipickup_metodo2_r8").innerText = (Isc2_Rele8 * 1.25).toFixed(2);
+
     //Imprimir delta Isc max
     document.getElementById("deltaIsc_r1").innerText = ((Math.abs(Isc_Rele1 - Isc2_Rele1) / Isc_Rele1) * 100).toFixed(2);
-    document.getElementById("deltaIsc_r2").innerText = ((Math.abs(Isc_Rele2 - Isc2_Rele2) / Isc_Rele2) * 100).toFixed(2);
+    //document.getElementById("deltaIsc_r2").innerText = ((Math.abs(Isc_Rele2 - Isc2_Rele2) / Isc_Rele2) * 100).toFixed(2);
+    document.getElementById("deltaIsc_r2").innerText = "-";
     document.getElementById("deltaIsc_r3").innerText = ((Math.abs(Isc_Rele3 - Isc2_Rele3) / Isc_Rele3) * 100).toFixed(2);
     document.getElementById("deltaIsc_r4").innerText = ((Math.abs(Isc_Rele4 - Isc2_Rele4) / Isc_Rele4) * 100).toFixed(2);
     document.getElementById("deltaIsc_r5").innerText = ((Math.abs(Isc_Rele5 - Isc2_Rele5) / Isc_Rele5) * 100).toFixed(2);
     document.getElementById("deltaIsc_r6").innerText = ((Math.abs(Isc_Rele6 - Isc2_Rele6) / Isc_Rele6) * 100).toFixed(2);
-    document.getElementById("deltaIsc_r7").innerText = ((Math.abs(Isc_Rele7 - Isc2_Rele7) / Isc_Rele7) * 100).toFixed(2);
+    //document.getElementById("deltaIsc_r7").innerText = ((Math.abs(Isc_Rele7 - Isc2_Rele7) / Isc_Rele7) * 100).toFixed(2);
+    document.getElementById("deltaIsc_r7").innerText = "-";
     document.getElementById("deltaIsc_r8").innerText = ((Math.abs(Isc_Rele8 - Isc2_Rele8) / Isc_Rele8) * 100).toFixed(2);
+
     //Imprimir delta Ipickup 
     document.getElementById("deltaIpickup_r1").innerText = ((Math.abs((Isc_Rele1 * 1.25) - (Isc2_Rele1 * 1.25)) / (Isc_Rele1 * 1.25)) * 100).toFixed(2);
-    document.getElementById("deltaIpickup_r2").innerText = ((Math.abs((Isc_Rele2 * 1.5) - (Isc2_Rele2 * 1.5)) / (Isc_Rele2 * 1.5)) * 100).toFixed(2);
+    //document.getElementById("deltaIpickup_r2").innerText = ((Math.abs((Isc_Rele2 * 1.5) - (Isc2_Rele2 * 1.5)) / (Isc_Rele2 * 1.5)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r2").innerText = "-";
     document.getElementById("deltaIpickup_r3").innerText = ((Math.abs((Isc_Rele3 * 1.25) - (Isc2_Rele3 * 1.25)) / (Isc_Rele3 * 1.25)) * 100).toFixed(2);
     document.getElementById("deltaIpickup_r4").innerText = ((Math.abs((Isc_Rele4 * 1.25) - (Isc2_Rele4 * 1.25)) / (Isc_Rele4 * 1.25)) * 100).toFixed(2);
     document.getElementById("deltaIpickup_r5").innerText = ((Math.abs((Isc_Rele5 * 1.25) - (Isc2_Rele5 * 1.25)) / (Isc_Rele5 * 1.25)) * 100).toFixed(2);
     document.getElementById("deltaIpickup_r6").innerText = ((Math.abs((Isc_Rele6 * 1.25) - (Isc2_Rele6 * 1.25)) / (Isc_Rele6 * 1.25)) * 100).toFixed(2);
-    document.getElementById("deltaIpickup_r7").innerText = ((Math.abs((Isc_Rele7 * 1.5) - (Isc2_Rele7 * 1.5)) / (Isc_Rele7 * 1.5)) * 100).toFixed(2);
+    // document.getElementById("deltaIpickup_r7").innerText = ((Math.abs((Isc_Rele7 * 1.5) - (Isc2_Rele7 * 1.5)) / (Isc_Rele7 * 1.5)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r7").innerText = "-";
     document.getElementById("deltaIpickup_r8").innerText = ((Math.abs((Isc_Rele8 * 1.25) - (Isc2_Rele8 * 1.25)) / (Isc_Rele8 * 1.25)) * 100).toFixed(2);
     //-----------------------------------------------------------------------------------------------------------------------------------
 
@@ -1108,6 +1165,8 @@ async function guardarValoresReles(valores) {
                 <select class="form-select selectSwal"  id="swal-AnilloTMS0" style="display:none"></select>
                 <select class="form-select selectSwal"  id="swal-AnilloTMS1" style="${guardarOpcionAnilloTMS1}">
                     <option selected id="option-seleccionada" hidden>${modeloReleAnillo[valores].TMS}</option>
+                    <option value="0.01">0.01</option>
+                    <option value="0.02">0.02</option><option value="0.03">0.03</option><option value="0.04">0.04</option>
                     <option value="0.05">0.05</option><option value="0.06">0.06</option><option value="0.07">0.07</option>
                     <option value="0.08">0.08</option><option value="0.09">0.09</option><option value="0.10">0.10</option>
                     <option value="0.11">0.11</option><option value="0.12">0.12</option><option value="0.13">0.13</option>
