@@ -84,6 +84,38 @@ html {
     color: #ffb380;
 }
 
+.colorRele1 {
+    color: #ef476fff;
+}
+
+.colorRele2 {
+    color: #ffd166ff;
+}
+
+.colorRele3 {
+    color: #06d6a0ff
+}
+
+.colorRele4 {
+    color: #118ab2ff;
+}
+
+.colorRele5 {
+    color: #073b4cff;
+}
+
+.colorRele6 {
+    color: #9b5de5ff;
+}
+
+.colorRele7 {
+    color: #5fa8d3ff;
+}
+
+.colorRele8 {
+    color: #2508e4ff; 
+}
+
 .colored-toast.swal2-icon-success {
     background-color: #a5dc86 !important;
 }
@@ -397,8 +429,8 @@ canvas {
 .grafico_esquemaCorrienteAnillo {
     background-image: url('../assets/images/Anillo/esquema_corriente.svg');
     background-size: 100% 100%;
-    width: 470px;
-    height: 200px;
+    width: 100%;
+    height: 100px;
     margin: 0 auto;
 }
 
@@ -464,6 +496,7 @@ canvas {
     font-size: 12px;
     font-weight: bold; 
     text-align: center;
+    padding: 22px 0px;
 }
 
 .fta2_3_1 {
@@ -485,10 +518,10 @@ canvas {
 .fta2_4_2 {
     background-image: url("../assets/images/Anillo/2_4.svg");
     background-size: 100% 100%;
-    text-align: right;
-    justify-content: center;
+    text-align: center;
     font-weight: bold;
     font-size: 12px;
+    padding: 22px 0px
     
 }
 
@@ -623,7 +656,7 @@ canvas {
 .fta4_4_1 {
     background-image: url("../assets/images/Anillo/4_4.svg");
     background-size: 100% 100%;
-    text-align: right;
+    text-align: center;
     font-weight: bold;
     font-size: 11px;
 }

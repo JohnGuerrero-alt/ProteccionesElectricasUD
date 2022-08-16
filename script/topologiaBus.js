@@ -254,7 +254,7 @@ async function valoresRele(nombreRele) {
         imageUrl: modeloRele[nombreRele].urlImagenRele,
         imageWidth: 100,
         imageHeight: 100,
-        width: 700,
+        width: 800,
         background: '#fefefe',
         html: ` 
         
@@ -278,7 +278,7 @@ async function valoresRele(nombreRele) {
                     <input type="number" class="swal2-input" value="${modeloRele[nombreRele].margenIc}" min="0" id="swal-margenIc">
                 </td>
                 <td>%</td>
-                <th scope="row">Tiempo</th>
+                <th scope="row">Tiempo <br> Operación</th>
                 <td>
                     <input type="number" class="swal2-input" id="swal-tiempo" value="${modeloRele[nombreRele].tiempo}" min="0">
                 </td>
@@ -344,19 +344,28 @@ async function valoresRele(nombreRele) {
                     <select class="form-select selectSwal"  id="swal-TMS2" style="${guardarOpcionTMS2}">
                         <option selected id="option-seleccionada" hidden>${modeloRele[nombreRele].TMS}</option>
                         <option value="1">1</option>
+                        <option value="1.5">1.5</option>
                         <option value="2">2</option>
+                        <option value="2.5">2.5</option>
                         <option value="3">3</option>
+                        <option value="3.5">3.5</option>
                         <option value="4">4</option>
+                        <option value="4.5">4.5</option>
                         <option value="5">5</option>
+                        <option value="5.5">5.5</option>
                         <option value="6">6</option>
+                        <option value="6.5">6.5</option>
                         <option value="7">7</option>
+                        <option value="7.5">7.5</option>
                         <option value="8">8</option>
+                        <option value="8.5">8.5</option>
                         <option value="9">9</option>
+                        <option value="9.5">9.5</option>
                         <option value="10">10</option>
                     </select>
             
                 </td>
-                <th scope="row">Tiempo(instantaneo)</th>
+                <th scope="row">Tiempo <br> Coordinación <br> (Prot. 50)</th>
                 <td>
                     <input  id="swal-tInstantaneo" type="number" value="${modeloRele[nombreRele].tiempoInstantaneo}" class="swal2-input" min="0">
                 </td>
