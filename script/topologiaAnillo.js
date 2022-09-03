@@ -95,91 +95,91 @@ const modeloReleAnillo = {
         nombre: "-",
         Isc: "",
         Ic: "",
-        margenIc: "",
+        IncrementoIc: "",
         familiaCurva: "",
         TMS: "",
         tiempo: "",
-        tiempoInstantaneo: "",
+        tiempoCoordinacion: "",
     },
     1: {
         nombre: "Rele 1",
         Isc: tabla_Isc_Rele1,
         Ic: "",
-        margenIc: tabla_Margen_Ic_1,
+        IncrementoIc: tabla_Incremento_Ic_1,
         familiaCurva: tabla_familiaCurva_1,
         TMS: tabla_TMS_1,
         tiempo: tabla_Tiempo_1,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_1,
+        tiempoCoordinacion: tabla_TiempoCoordinacion_1,
     },
     2: {
         nombre: "Rele 2",
         Isc: tabla_Isc_Rele2,
         Ic: "",
-        margenIc: tabla_Margen_Ic_2,
+        IncrementoIc: tabla_Incremento_Ic_2,
         familiaCurva: tabla_familiaCurva_2,
         TMS: tabla_TMS_2,
         tiempo: tabla_Tiempo_2,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_2,
+        tiempoCoordinacion: tabla_TiempoCoordinacion_2,
     },
     3: {
         nombre: "Rele 3",
         Isc: tabla_Isc_Rele3,
         Ic: "",
-        margenIc: tabla_Margen_Ic_3,
+        IncrementoIc: tabla_Incremento_Ic_3,
         familiaCurva: tabla_familiaCurva_3,
         TMS: tabla_TMS_3,
         tiempo: tabla_Tiempo_3,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_3,
+        tiempoCoordinacion: tabla_TiempoCoordinacion_3,
     },
     4: {
         nombre: "Rele 4",
         Isc: tabla_Isc_Rele4,
         Ic: "",
-        margenIc: tabla_Margen_Ic_4,
+        IncrementoIc: tabla_Incremento_Ic_4,
         familiaCurva: tabla_familiaCurva_4,
         TMS: tabla_TMS_4,
         tiempo: tabla_Tiempo_4,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_4,
+        tiempoCoordinacion: tabla_TiempoCoordinacion_4,
     },
     5: {
         nombre: "Rele 5",
         Isc: tabla_Isc_Rele5,
         Ic: "",
-        margenIc: tabla_Margen_Ic_5,
+        IncrementoIc: tabla_Incremento_Ic_5,
         familiaCurva: tabla_familiaCurva_5,
         TMS: tabla_TMS_5,
         tiempo: tabla_Tiempo_5,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_5,
+        tiempoCoordinacion: tabla_TiempoCoordinacion_5,
     },
     6: {
         nombre: "Rele 6",
         Isc: tabla_Isc_Rele6,
         Ic: "",
-        margenIc: tabla_Margen_Ic_6,
+        IncrementoIc: tabla_Incremento_Ic_6,
         familiaCurva: tabla_familiaCurva_6,
         TMS: tabla_TMS_6,
         tiempo: tabla_Tiempo_6,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_6,
+        tiempoCoordinacion: tabla_TiempoCoordinacion_6,
     },
     7: {
         nombre: "Rele 7",
         Isc: tabla_Isc_Rele7,
         Ic: "",
-        margenIc: tabla_Margen_Ic_7,
+        IncrementoIc: tabla_Incremento_Ic_7,
         familiaCurva: tabla_familiaCurva_7,
         TMS: tabla_TMS_7,
         tiempo: tabla_Tiempo_7,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_7,
+        tiempoCoordinacion: tabla_TiempoCoordinacion_7,
     },
     8: {
         nombre: "Rele 8",
         Isc: tabla_Isc_Rele8,
         Ic: "",
-        margenIc: tabla_Margen_Ic_8,
+        IncrementoIc: tabla_Incremento_Ic_8,
         familiaCurva: tabla_familiaCurva_8,
         TMS: tabla_TMS_8,
         tiempo: tabla_Tiempo_8,
-        tiempoInstantaneo: tabla_TiempoInstantaneo_8,
+        tiempoCoordinacion: tabla_TiempoCoordinacion_8,
     }
 }
 
@@ -263,23 +263,26 @@ const parametrosCurvaAnillo = {
 }
 
 //Inicializa las variables y agregando campos vacios por defecto
+document.getElementById('anillo-tab-pane').style.display = "none";
 
 var S1 = "", S2 = "", S3 = "", S4 = "", Z12 = "", Z23 = "", Z34 = "", Z41 = "", VAnillo = "";
 var Isc_Rele1, Isc_Rele2, Isc_Rele3, Isc_Rele4, Isc_Rele5, Isc_Rele6, Isc_Rele7, Isc_Rele8;
 var Ic_Rele1, Ic_Rele2, Ic_Rele3, Ic_Rele4, Ic_Rele5, Ic_Rele6, Ic_Rele7, Ic_Rele8;
-var margen_Ic_r1, margen_Ic_r2, margen_Ic_r3, margen_Ic_r4, margen_Ic_r5, margen_Ic_r6, margen_Ic_r7, margen_Ic_r8;
+var Incremento_Ic_r1, Incremento_Ic_r2, Incremento_Ic_r3, Incremento_Ic_r4, Incremento_Ic_r5, Incremento_Ic_r6, Incremento_Ic_r7, Incremento_Ic_r8;
 var familiaCurvaR1, familiaCurvaR2, familiaCurvaR3, familiaCurvaR4, familiaCurvaR5, familiaCurvaR6, familiaCurvaR7, familiaCurvaR8;
 var TMS_r1, TMS_r2, TMS_r3, TMS_r4, TMS_r5, TMS_r6, TMS_r7, TMS_r8;
 var TMS_calculado_r1, TMS_calculado_r2, TMS_calculado_r3, TMS_calculado_r4, TMS_calculado_r5, TMS_calculado_r6, TMS_calculado_r7, TMS_calculado_r8;
 var tiempo_r1, tiempo_r2, tiempo_r3, tiempo_r4, tiempo_r5, tiempo_r6, tiempo_r7, tiempo_r8;
-var tiempo_instantaneo_r1, tiempo_instantaneo_r2, tiempo_instantaneo_r3, tiempo_instantaneo_r4, tiempo_instantaneo_r5, tiempo_instantaneo_r6, tiempo_instantaneo_r7, tiempo_instantaneo_r8;
-var Ic_1_con_margen, Ic_2_con_margen, Ic_3_con_margen, Ic_4_con_margen, Ic_5_con_margen, Ic_6_con_margen, Ic_7_con_margen, Ic_8_con_margen;
+var tiempo_coordinacion_r1, tiempo_coordinacion_r2, tiempo_coordinacion_r3, tiempo_coordinacion_r4, tiempo_coordinacion_r5, tiempo_coordinacion_r6, tiempo_coordinacion_r7, tiempo_coordinacion_r8;
+var Ic_1_con_Incremento, Ic_2_con_Incremento, Ic_3_con_Incremento, Ic_4_con_Incremento, Ic_5_con_Incremento, Ic_6_con_Incremento, Ic_7_con_Incremento, Ic_8_con_Incremento;
 var tmsAnilloOpcion1, tmsAnilloOpcion2;
 var swal_Anillo_tms;
 var guardarAnilloOpcionTMS1 = "display:none";
 var guardarAnilloOpcionTMS2 = "display:none";
 var TMSparteIEC_1, TMSparteIEC_2, TMSparteIEC_3, TMSparteIEC_4, TMSparteIEC_5, TMSparteIEC_6, TMSparteIEC_7, TMSparteIEC_8;
 var TMSparteANSI_1, TMSparteANSI_2, TMSparteANSI_3, TMSparteANSI_4, TMSparteANSI_5, TMSparteANSI_6, TMSparteANSI_7, TMSparteANSI_8;
+
+var ajusteR1,  ajusteR2, ajusteR3, ajusteR4, ajusteR5, ajusteR6, ajusteR7, ajusteR8;
 
 //Estos son utilizados para la segunda metodología (Falla 50%) para hallar las corrientes de Isc
 var Isc2_Rele1_50, Isc2_Rele2_50, Isc2_Rele3_50, Isc2_Rele4_50, Isc2_Rele5_50, Isc2_Rele6_50, Isc2_Rele7_50, Isc2_Rele8_50;
@@ -292,7 +295,7 @@ var displayReactancia = "display:none";
 var displayPotencia = "display:none";
 var displayRele = "display:none";
 
-tabla_Margen_Ic_1 = ""; tabla_Margen_Ic_2 = ""; tabla_Margen_Ic_3 = ""; tabla_Margen_Ic_4 = ""; tabla_Margen_Ic_5 = ""; tabla_Margen_Ic_6 = ""; tabla_Margen_Ic_7 = ""; tabla_Margen_Ic_8 = "";
+tabla_Incremento_Ic_1 = ""; tabla_Incremento_Ic_2 = ""; tabla_Incremento_Ic_3 = ""; tabla_Incremento_Ic_4 = ""; tabla_Incremento_Ic_5 = ""; tabla_Incremento_Ic_6 = ""; tabla_Incremento_Ic_7 = ""; tabla_Incremento_Ic_8 = "";
 
 var Ic_A, Ic_B, Ic_43, Ic_32, Ic_2;
 var Ic_23, Ic_34, Ic_4;
@@ -308,6 +311,15 @@ var swalAnilloTMS1, swalAnilloTMS2;
 var swal_Anillo_tms = "swal-AnilloTMS0";
 var guardarOpcionAnilloTMS1 = "display:none";
 var guardarOpcionAnilloTMS2 = "display:none";
+
+ajusteR1 = 1.25;
+ajusteR2 = 1.5;
+ajusteR3 = 1.25;
+ajusteR4 = 1.25;
+ajusteR5 = 1.25;
+ajusteR6 = 1.25;
+ajusteR7 = 1.5;
+ajusteR8 = 1.25;
 
 modeloReleAnillo[0].familiaCurva = "-";
 modeloReleAnillo[1].familiaCurva = "-";
@@ -348,14 +360,14 @@ var tabla_Ic_Rele5 = document.getElementById("Ic_r5");
 var tabla_Ic_Rele6 = document.getElementById("Ic_r6");
 var tabla_Ic_Rele7 = document.getElementById("Ic_r7");
 var tabla_Ic_Rele8 = document.getElementById("Ic_r8");
-var tabla_Margen_Ic_1 = document.getElementById("Margen_Ic_r1");
-var tabla_Margen_Ic_2 = document.getElementById("Margen_Ic_r2");
-var tabla_Margen_Ic_3 = document.getElementById("Margen_Ic_r3");
-var tabla_Margen_Ic_4 = document.getElementById("Margen_Ic_r4");
-var tabla_Margen_Ic_5 = document.getElementById("Margen_Ic_r5");
-var tabla_Margen_Ic_6 = document.getElementById("Margen_Ic_r6");
-var tabla_Margen_Ic_7 = document.getElementById("Margen_Ic_r7");
-var tabla_Margen_Ic_8 = document.getElementById("Margen_Ic_r8");
+var tabla_Incremento_Ic_1 = document.getElementById("Incremento_Ic_r1");
+var tabla_Incremento_Ic_2 = document.getElementById("Incremento_Ic_r2");
+var tabla_Incremento_Ic_3 = document.getElementById("Incremento_Ic_r3");
+var tabla_Incremento_Ic_4 = document.getElementById("Incremento_Ic_r4");
+var tabla_Incremento_Ic_5 = document.getElementById("Incremento_Ic_r5");
+var tabla_Incremento_Ic_6 = document.getElementById("Incremento_Ic_r6");
+var tabla_Incremento_Ic_7 = document.getElementById("Incremento_Ic_r7");
+var tabla_Incremento_Ic_8 = document.getElementById("Incremento_Ic_r8");
 var tabla_familiaCurva_1 = document.getElementById("FamiliaC_r1");
 var tabla_familiaCurva_2 = document.getElementById("FamiliaC_r2");
 var tabla_familiaCurva_3 = document.getElementById("FamiliaC_r3");
@@ -380,14 +392,14 @@ var tabla_Tiempo_5 = document.getElementById("Tiempo_r5");
 var tabla_Tiempo_6 = document.getElementById("Tiempo_r6");
 var tabla_Tiempo_7 = document.getElementById("Tiempo_r7");
 var tabla_Tiempo_8 = document.getElementById("Tiempo_r8");
-var tabla_TiempoInstantaneo_1 = document.getElementById("Tiempo_instantaneo_r1");
-var tabla_TiempoInstantaneo_2 = document.getElementById("Tiempo_instantaneo_r2");
-var tabla_TiempoInstantaneo_3 = document.getElementById("Tiempo_instantaneo_r3");
-var tabla_TiempoInstantaneo_4 = document.getElementById("Tiempo_instantaneo_r4");
-var tabla_TiempoInstantaneo_5 = document.getElementById("Tiempo_instantaneo_r5");
-var tabla_TiempoInstantaneo_6 = document.getElementById("Tiempo_instantaneo_r6");
-var tabla_TiempoInstantaneo_7 = document.getElementById("Tiempo_instantaneo_r7");
-var tabla_TiempoInstantaneo_8 = document.getElementById("Tiempo_instantaneo_r8");
+var tabla_TiempoCoordinacion_1 = document.getElementById("Tiempo_coordinacion_r1");
+var tabla_TiempoCoordinacion_2 = document.getElementById("Tiempo_coordinacion_r2");
+var tabla_TiempoCoordinacion_3 = document.getElementById("Tiempo_coordinacion_r3");
+var tabla_TiempoCoordinacion_4 = document.getElementById("Tiempo_coordinacion_r4");
+var tabla_TiempoCoordinacion_5 = document.getElementById("Tiempo_coordinacion_r5");
+var tabla_TiempoCoordinacion_6 = document.getElementById("Tiempo_coordinacion_r6");
+var tabla_TiempoCoordinacion_7 = document.getElementById("Tiempo_coordinacion_r7");
+var tabla_TiempoCoordinacion_8 = document.getElementById("Tiempo_coordinacion_r8");
 var tabla_DialCalculado_1 = document.getElementById("TMS_r1");
 var tabla_DialCalculado_2 = document.getElementById("TMS_r2");
 var tabla_DialCalculado_3 = document.getElementById("TMS_r3");
@@ -406,6 +418,9 @@ var valor_carga_derecha = document.getElementById("cargaDerecha");
 var valor_barra_2_3 = document.getElementById("Barra2_3");
 var valor_barra_3_4 = document.getElementById("Barra3_4");
 var valor_carga_abajo = document.getElementById("cargaAbajo");
+
+var pillsResultadosGrafica2tab = document.getElementById("pills-resultadosGrafica-2-tab");
+var pillsResultadosCalculos2_2tab = document.getElementById("pills-resultadosCalculos2-2-tab");
 
 
 //FUNCIONES QUE SE UTILIZARÁN
@@ -455,7 +470,7 @@ async function establecerValoresAnillo(valores, tipo) {
         <table class="table align-middle" style="font-size:13px"> 
         <tr style="${displayVoltaje}; ">
             <th scope="row"  >Voltaje</th>    
-            <td ><input type="number" id="swal-Anillo-Voltaje" value="${modeloAnillo[0].voltaje}" class="swal2-input" min="0"></td>
+            <td ><input type="number" id="swal-Anillo-Voltaje" value="${modeloAnillo[0].voltaje}" class="swal2-input" min="0" max="9999999"></td>
             <td >[kV]</td>
             
            
@@ -463,13 +478,13 @@ async function establecerValoresAnillo(valores, tipo) {
 
         <tr style="${displayPotencia};">
             <th scope="row">Potencia</th>    
-            <td ><input type="number" id="swal-Anillo-potencia" value="${modeloAnillo[valores].potencia}" class="swal2-input" min="0"></td>
+            <td ><input type="number" id="swal-Anillo-potencia" value="${modeloAnillo[valores].potencia}" class="swal2-input" min="0" max="999999"></td>
             <td >[MVA]</td>
         </tr>
 
         <tr style="${displayReactancia};">
             <th scope="row">Reactancia</th>    
-            <td ><input type="number" id="swal-Anillo-reactancia" value="${modeloAnillo[valores].reactancia}" class="swal2-input" min="0"></td>
+            <td ><input type="number" id="swal-Anillo-reactancia" value="${modeloAnillo[valores].reactancia}" class="swal2-input" min="0" max="9999999"></td>
             <td >[Ω]</td>
         </tr>
 
@@ -536,17 +551,68 @@ function guardarAnilloGeneral(elemento, datos) {
     } else { valor_diagrama_Generador.innerHTML = " kV" + "<br>"; }
     if (!isNaN(modeloAnillo[0].potencia)) { valor_diagrama_Generador.innerHTML = valor_diagrama_Generador.innerHTML + modeloAnillo[0].potencia + " MVA" + "<br>" }
 
-    if (!isNaN(modeloAnillo[1].reactancia)) { valor_barra_1_2.innerHTML = modeloAnillo[1].reactancia + " Ω"; } else { valor_barra_1_2.innerText = " Ω"; }
+    if (!isNaN(modeloAnillo[1].reactancia)) {
 
-    if (!isNaN(modeloAnillo[2].reactancia)) { valor_barra_4_1.innerText = modeloAnillo[2].reactancia + " Ω"; } else { valor_barra_4_1.innerText = " Ω"; }
+        if (modeloAnillo[1].reactancia < 1000) {
+            valor_barra_1_2.innerHTML = modeloAnillo[1].reactancia + " Ω";
+        }
+
+        if (modeloAnillo[1].reactancia >= 1000 && modeloAnillo[1].reactancia <= 999999) {
+            valor_barra_1_2.innerHTML = (modeloAnillo[1].reactancia / 1000).toFixed(2) + " kΩ"
+        }
+        if (modeloAnillo[1].reactancia >= 1000000 && modeloAnillo[1].reactancia <= 9999999) {
+            valor_barra_1_2.innerHTML = (modeloAnillo[1].reactancia / 1000000).toFixed(2) + " MΩ"
+        }
+    } else { valor_barra_1_2.innerText = " Ω"; }
+
+    if (!isNaN(modeloAnillo[2].reactancia)) {
+
+        if (modeloAnillo[2].reactancia < 1000) {
+            valor_barra_4_1.innerText = modeloAnillo[2].reactancia + " Ω";
+        }
+
+        if (modeloAnillo[2].reactancia >= 1000 && modeloAnillo[2].reactancia <= 999999) {
+            valor_barra_4_1.innerText = (modeloAnillo[2].reactancia / 1000).toFixed(2) + " kΩ"
+        }
+        if (modeloAnillo[2].reactancia >= 1000000 && modeloAnillo[2].reactancia <= 9999999) {
+            valor_barra_4_1.innerText = (modeloAnillo[2].reactancia / 1000000).toFixed(2) + " MΩ"
+        }
+
+    } else { valor_barra_4_1.innerText = " Ω"; }
 
     if (!isNaN(modeloAnillo[3].potencia)) { valor_carga_izquierda.innerText = modeloAnillo[3].potencia + " MVA"; } else { valor_carga_izquierda.innerText = " MVA"; }
 
     if (!isNaN(modeloAnillo[4].potencia)) { valor_carga_derecha.innerText = modeloAnillo[4].potencia + " MVA"; } else { valor_carga_derecha.innerText = " MVA"; }
 
-    if (!isNaN(modeloAnillo[5].reactancia)) { valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].reactancia + " Ω"; } else { valor_barra_2_3.innerHTML = "<br>" + " Ω"; }
+    if (!isNaN(modeloAnillo[5].reactancia)) {
 
-    if (!isNaN(modeloAnillo[6].reactancia)) { valor_barra_3_4.innerHTML = "<br>" + modeloAnillo[6].reactancia + " Ω"; } else { valor_barra_3_4.innerHTML = "<br>" + " Ω"; }
+        if (modeloAnillo[5].reactancia < 1000) {
+            valor_barra_2_3.innerHTML = modeloAnillo[5].reactancia + " Ω";
+        }
+
+        if (modeloAnillo[5].reactancia >= 1000 && modeloAnillo[5].reactancia <= 999999) {
+            valor_barra_2_3.innerHTML = "<br>" + (modeloAnillo[5].reactancia / 1000).toFixed(2) + " kΩ"
+        }
+        if (modeloAnillo[5].reactancia >= 1000000 && modeloAnillo[5].reactancia <= 9999999) {
+            valor_barra_2_3.innerHTML = "<br>" + (modeloAnillo[5].reactancia / 1000000).toFixed(2) + " MΩ"
+        }
+
+    } else { valor_barra_2_3.innerHTML = "<br>" + " Ω"; }
+
+    if (!isNaN(modeloAnillo[6].reactancia)) {
+
+        if (modeloAnillo[6].reactancia < 1000) {
+            valor_barra_3_4.innerHTML = modeloAnillo[6].reactancia + " Ω";
+        }
+
+        if (modeloAnillo[6].reactancia >= 1000 && modeloAnillo[6].reactancia <= 999999) {
+            valor_barra_3_4.innerHTML = "<br>" + (modeloAnillo[6].reactancia / 1000).toFixed(2) + " kΩ"
+        }
+        if (modeloAnillo[6].reactancia >= 1000000 && modeloAnillo[6].reactancia <= 9999999) {
+            valor_barra_3_4.innerHTML = "<br>" + (modeloAnillo[6].reactancia / 1000000).toFixed(2) + " MΩ"
+        }
+
+    } else { valor_barra_3_4.innerHTML = "<br>" + " Ω"; }
 
     if (!isNaN(modeloAnillo[7].potencia)) { valor_carga_abajo.innerHTML = "<br>" + modeloAnillo[7].potencia + " MVA"; } else { valor_carga_abajo.innerHTML = "<br>" + " MVA"; }
 
@@ -560,14 +626,14 @@ function ejemploAnillo() {
 
 
     modeloAnillo[0].voltaje = parseFloat(13.2);
-    modeloAnillo[0].potencia =  parseFloat (150);
-    modeloAnillo[1].reactancia = parseFloat (2);
-    modeloAnillo[2].reactancia = parseFloat (3);
-    modeloAnillo[3].potencia = parseFloat (5);
-    modeloAnillo[4].potencia =  parseFloat (7);
-    modeloAnillo[5].reactancia =  parseFloat (2);
-    modeloAnillo[6].reactancia = parseFloat (4);
-    modeloAnillo[7].potencia =  parseFloat (3);
+    modeloAnillo[0].potencia = parseFloat(150);
+    modeloAnillo[1].reactancia = parseFloat(2);
+    modeloAnillo[2].reactancia = parseFloat(3);
+    modeloAnillo[3].potencia = parseFloat(5);
+    modeloAnillo[4].potencia = parseFloat(7);
+    modeloAnillo[5].reactancia = parseFloat(2);
+    modeloAnillo[6].reactancia = parseFloat(4);
+    modeloAnillo[7].potencia = parseFloat(3);
     valor_diagrama_Generador.innerHTML = modeloAnillo[0].voltaje + " kV" + "<br>";
     valor_diagrama_Generador.innerHTML = valor_diagrama_Generador.innerHTML + modeloAnillo[0].potencia + " MVA" + "<br>";
     valor_barra_1_2.innerHTML = modeloAnillo[1].reactancia + " Ω";
@@ -580,13 +646,13 @@ function ejemploAnillo() {
     valor_carga_abajo.innerHTML = "<br>" + modeloAnillo[7].potencia + " MVA";
 
 
-    tabla_Margen_Ic_1.innerText =  20; tabla_Margen_Ic_2.innerText =  20; tabla_Margen_Ic_3.innerText = 20;
-    tabla_Margen_Ic_4.innerText = 20; tabla_Margen_Ic_5.innerText = 20; tabla_Margen_Ic_6.innerText =  20;
-    tabla_Margen_Ic_7.innerText =  20; tabla_Margen_Ic_8.innerText = 20;
+    tabla_Incremento_Ic_1.innerText = 20; tabla_Incremento_Ic_2.innerText = 20; tabla_Incremento_Ic_3.innerText = 20;
+    tabla_Incremento_Ic_4.innerText = 20; tabla_Incremento_Ic_5.innerText = 20; tabla_Incremento_Ic_6.innerText = 20;
+    tabla_Incremento_Ic_7.innerText = 20; tabla_Incremento_Ic_8.innerText = 20;
 
-    modeloReleAnillo[1].margenIc = parseFloat (20); modeloReleAnillo[2].margenIc = parseFloat (20); modeloReleAnillo[3].margenIc = parseFloat (20);
-    modeloReleAnillo[4].margenIc = parseFloat (20); modeloReleAnillo[5].margenIc =  parseFloat (20); modeloReleAnillo[6].margenIc = parseFloat (20);
-    modeloReleAnillo[7].margenIc = parseFloat (20); modeloReleAnillo[8].margenIc =  parseFloat (20);
+    modeloReleAnillo[1].IncrementoIc = parseFloat(20); modeloReleAnillo[2].IncrementoIc = parseFloat(20); modeloReleAnillo[3].IncrementoIc = parseFloat(20);
+    modeloReleAnillo[4].IncrementoIc = parseFloat(20); modeloReleAnillo[5].IncrementoIc = parseFloat(20); modeloReleAnillo[6].IncrementoIc = parseFloat(20);
+    modeloReleAnillo[7].IncrementoIc = parseFloat(20); modeloReleAnillo[8].IncrementoIc = parseFloat(20);
 
     tabla_familiaCurva_1.innerText = "Normal Inversa - IEC"; tabla_familiaCurva_2.innerText = "Normal Inversa - IEC";
     tabla_familiaCurva_3.innerText = "Normal Inversa - IEC"; tabla_familiaCurva_4.innerText = "Normal Inversa - IEC";
@@ -598,29 +664,31 @@ function ejemploAnillo() {
     modeloReleAnillo[5].familiaCurva = "Normal Inversa - IEC"; modeloReleAnillo[6].familiaCurva = "Normal Inversa - IEC";
     modeloReleAnillo[7].familiaCurva = "Normal Inversa - IEC"; modeloReleAnillo[8].familiaCurva = "Normal Inversa - IEC";
 
-    tabla_Tiempo_1.innerText =  200; tabla_Tiempo_2.innerText =  200; tabla_Tiempo_3.innerText =  200;
+    tabla_Tiempo_1.innerText = 200; tabla_Tiempo_2.innerText = 200; tabla_Tiempo_3.innerText = 200;
     tabla_Tiempo_4.innerText = 200; tabla_Tiempo_5.innerText = 200; tabla_Tiempo_6.innerText = 200;
-    tabla_Tiempo_7.innerText = 200; tabla_Tiempo_8.innerText =  200;
+    tabla_Tiempo_7.innerText = 200; tabla_Tiempo_8.innerText = 200;
 
     modeloReleAnillo[1].tiempo = parseFloat(200); modeloReleAnillo[2].tiempo = parseFloat(200); modeloReleAnillo[3].tiempo = parseFloat(200);
     modeloReleAnillo[4].tiempo = parseFloat(200); modeloReleAnillo[5].tiempo = parseFloat(200); modeloReleAnillo[6].tiempo = parseFloat(200);
     modeloReleAnillo[7].tiempo = parseFloat(200); modeloReleAnillo[8].tiempo = parseFloat(200);
 
-    // tabla_TiempoInstantaneo_1.innerText = 200; tabla_TiempoInstantaneo_2.innerText = 200; tabla_TiempoInstantaneo_3.innerText =  200;
-    // tabla_TiempoInstantaneo_4.innerText = 200; tabla_TiempoInstantaneo_5.innerText = 200; tabla_TiempoInstantaneo_6.innerText = 200;
-    // tabla_TiempoInstantaneo_7.innerText = 200; tabla_TiempoInstantaneo_8.innerText = 200;
+    tabla_TiempoCoordinacion_1.innerText = 200; tabla_TiempoCoordinacion_2.innerText = 200; tabla_TiempoCoordinacion_3.innerText = 200;
+    tabla_TiempoCoordinacion_4.innerText = 200; tabla_TiempoCoordinacion_5.innerText = 200; tabla_TiempoCoordinacion_6.innerText = 200;
+    tabla_TiempoCoordinacion_7.innerText = 200; tabla_TiempoCoordinacion_8.innerText = 200;
 
-    // modeloReleAnillo[1].tiempoInstantaneo = parseFloat(200); modeloReleAnillo[2].tiempoInstantaneo = parseFloat(200); modeloReleAnillo[3].tiempoInstantaneo = parseFloat(200);
-    // modeloReleAnillo[4].tiempoInstantaneo = parseFloat(200); modeloReleAnillo[5].tiempoInstantaneo = parseFloat(200); modeloReleAnillo[6].tiempoInstantaneo = parseFloat(200);
-    // modeloReleAnillo[7].tiempoInstantaneo = parseFloat(200); modeloReleAnillo[8].tiempoInstantaneo = parseFloat(200);
+    modeloReleAnillo[1].tiempoCoordinacion = parseFloat(200); modeloReleAnillo[2].tiempoCoordinacion = parseFloat(200); modeloReleAnillo[3].tiempocoordinacion = parseFloat(200);
+    modeloReleAnillo[4].tiempoCoordinacion = parseFloat(200); modeloReleAnillo[5].tiempoCoordinacion = parseFloat(200); modeloReleAnillo[6].tiempocoordinacion = parseFloat(200);
+    modeloReleAnillo[7].tiempoCoordinacion = parseFloat(200); modeloReleAnillo[8].tiempoCoordinacion = parseFloat(200);
 
 
-    tabla_DialCalculado_1.innerText = 0.04; tabla_DialCalculado_2.innerText =  0.01; tabla_DialCalculado_3.innerText =  0.02;
-    tabla_DialCalculado_4.innerText = 0.01; tabla_DialCalculado_5.innerText =  0.01; tabla_DialCalculado_6.innerText =  0.02;
-    tabla_DialCalculado_7.innerText =  0.01; tabla_DialCalculado_8.innerText =  0.03;
+    tabla_DialCalculado_1.innerText = 0.04; tabla_DialCalculado_2.innerText = 0.01; tabla_DialCalculado_3.innerText = 0.02;
+    tabla_DialCalculado_4.innerText = 0.01; tabla_DialCalculado_5.innerText = 0.01; tabla_DialCalculado_6.innerText = 0.02;
+    tabla_DialCalculado_7.innerText = 0.01; tabla_DialCalculado_8.innerText = 0.03;
 
-    modeloReleAnillo[1].TMS = parseFloat (0.04); modeloReleAnillo[2].TMS = parseFloat (0.01); modeloReleAnillo[3].TMS = parseFloat (0.02); modeloReleAnillo[4].TMS = parseFloat (0.01);
-    modeloReleAnillo[5].TMS = parseFloat (0.01); modeloReleAnillo[6].TMS = parseFloat (0.02); modeloReleAnillo[7].TMS = parseFloat (0.01); modeloReleAnillo[8].TMS = parseFloat (0.03);
+    modeloReleAnillo[1].TMS = parseFloat(0.04); modeloReleAnillo[2].TMS = parseFloat(0.01); modeloReleAnillo[3].TMS = parseFloat(0.02); modeloReleAnillo[4].TMS = parseFloat(0.01);
+    modeloReleAnillo[5].TMS = parseFloat(0.01); modeloReleAnillo[6].TMS = parseFloat(0.02); modeloReleAnillo[7].TMS = parseFloat(0.01); modeloReleAnillo[8].TMS = parseFloat(0.03);
+
+
 
 
 }
@@ -651,9 +719,13 @@ function calcularValoresRelesAnillo() {
 
     //Determinamos cuales son las corriente de carga comparando el mayor valor
     Ic_r78 = Math.max(Ic_B, Ic_2).toFixed(2);
+    Ic_r78 = parseFloat(Ic_r78);
     Ic_r56 = Math.max(Ic_43, Ic_34).toFixed(2);
+    Ic_r56 = parseFloat(Ic_r56);
     Ic_r34 = Math.max(Ic_32, Ic_23).toFixed(2);
+    Ic_r34 = parseFloat(Ic_r34);
     Ic_r12 = Math.max(Ic_2, Ic_A).toFixed(2);
+    Ic_r12 = parseFloat(Ic_r12);
 
 
 
@@ -698,7 +770,7 @@ function calcularValoresRelesAnillo() {
     Isc_4B = ((VAnillo) * (1000)) / ((Math.sqrt(3)) * (Zfalla + Z12 + Z23 + Z34));
 
 
-    Isc_Rele1 = Math.max(Isc_2I, Isc_2B, Isc_3I, Isc_3B, Isc_4I, Isc_4B);
+    Isc_Rele1 = parseFloat(Math.max(Isc_2I, Isc_2B, Isc_3I, Isc_3B, Isc_4I, Isc_4B));
     // console.log("Isc_2 ", Isc_2)
     // console.log("Isc_2D ", Isc_2D)
     // console.log("Isc_2I  ", Isc_2I )
@@ -716,11 +788,11 @@ function calcularValoresRelesAnillo() {
     // console.log("Isc_Rele1: ", Isc_Rele1)
 
 
-    Isc_Rele3 = Math.max(Isc_3I, Isc_3B, Isc_4I, Isc_4B);
-    Isc_Rele4 = Math.max(Isc_2D, Isc_2A);
-    Isc_Rele5 = Math.max(Isc_4I, Isc_4B);
-    Isc_Rele6 = Math.max(Isc_2D, Isc_2A, Isc_3D, Isc_3A);
-    Isc_Rele8 = Math.max(Isc_2D, Isc_2A, Isc_3D, Isc_3A, Isc_4D, Isc_4A)
+    Isc_Rele3 = parseFloat(Math.max(Isc_3I, Isc_3B, Isc_4I, Isc_4B));
+    Isc_Rele4 = parseFloat(Math.max(Isc_2D, Isc_2A));
+    Isc_Rele5 = parseFloat(Math.max(Isc_4I, Isc_4B));
+    Isc_Rele6 = parseFloat(Math.max(Isc_2D, Isc_2A, Isc_3D, Isc_3A));
+    Isc_Rele8 = parseFloat(Math.max(Isc_2D, Isc_2A, Isc_3D, Isc_3A, Isc_4D, Isc_4A));
     console.log("Isc_2D ", Isc_2D)
     console.log("Isc_2A ", Isc_2A)
     console.log("Isc_3D  ", Isc_3D)
@@ -766,6 +838,7 @@ function calcularValoresRelesAnillo() {
     Isc2_Rele7_1 = (Isc2_Rele7_50 * (Z41 / 2)) / (Z12 + Z23 + Z34 + Z41);
     Isc2_Rele7_2 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (Z12 + Z23 + Z34 + Z41)));
     Isc2_Rele7 = Math.min(Isc2_Rele7_1, Isc2_Rele7_2).toFixed(2);
+    Isc2_Rele7 = parseFloat(Isc2_Rele7);
 
     //Relé 5: Se ajusta con el  mayor de los dos valores
     Isc2_Rele5_1 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (((Z41) * (Z12 + Z23 + Z34)) / ((Z41) + (Z12 + Z23 + Z34)))));
@@ -773,6 +846,7 @@ function calcularValoresRelesAnillo() {
     Isc2_Rele5_50 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (Z12 + Z23 + Z34 + (Z41 / 2))));
     Isc2_Rele5_2 = Isc2_Rele5_50;
     Isc2_Rele5 = Math.max(Isc2_Rele5_1, Isc2_Rele5_2).toFixed(2);
+    Isc2_Rele5 = parseFloat(Isc2_Rele5);
 
     //Relé 3: Se ajusta con el  mayor de los dos valores
     Isc2_Rele3_1 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (((Z41 + Z34) * (Z12 + Z23)) / ((Z41 + Z34) + (Z12 + Z23)))));
@@ -780,6 +854,7 @@ function calcularValoresRelesAnillo() {
     Isc2_Rele3_50 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (Z12 + Z23 + (Z34 / 2))));
     Isc2_Rele3_2 = Isc2_Rele3_50;
     Isc2_Rele3 = Math.max(Isc2_Rele3_1, Isc2_Rele3_2).toFixed(2);
+    Isc2_Rele3 = parseFloat(Isc2_Rele3);
 
     //Relé 1: Se ajusta con el  mayor de los dos valores
     Isc2_Rele1_1 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (((Z12) * (Z23 + Z34 + Z41)) / ((Z12) + (Z23 + Z34 + Z41)))));
@@ -787,12 +862,14 @@ function calcularValoresRelesAnillo() {
     Isc2_Rele1_50 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (Z12 + (Z23 / 2))));
     Isc2_Rele1_2 = Isc2_Rele1_50;
     Isc2_Rele1 = Math.max(Isc2_Rele1_1, Isc2_Rele1_2).toFixed(2);
+    Isc2_Rele1 = parseFloat(Isc2_Rele1);
 
     //Relé 2: 50%, luego escoger el menor de los dos valores 
     Isc2_Rele2_50 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (((Z12 / 2) * (Z23 + Z34 + Z41 + (Z12 / 2))) / ((Z12 / 2) + (Z23 + Z34 + Z41 + (Z12 / 2))))));
     Isc2_Rele2_1 = (Isc2_Rele2_50 * (Z12 / 2)) / (Z12 + Z23 + Z34 + Z41);
     Isc2_Rele2_2 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (Z12 + Z23 + Z34 + Z41)));
     Isc2_Rele2 = Math.min(Isc2_Rele2_1, Isc2_Rele2_2).toFixed(2);
+    Isc2_Rele2 = parseFloat(Isc2_Rele2);
 
     //Relé 4: Se ajusta con el  mayor de los dos valores
     Isc2_Rele4_1 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (((Z12) * (Z23 + Z34 + Z41)) / ((Z12) + (Z23 + Z34 + Z41)))));
@@ -800,6 +877,7 @@ function calcularValoresRelesAnillo() {
     Isc2_Rele4_50 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (Z41 + Z34 + Z23 + (Z12 / 2))));
     Isc2_Rele4_2 = Isc2_Rele4_50;
     Isc2_Rele4 = Math.max(Isc2_Rele4_1, Isc2_Rele4_2).toFixed(2);
+    Isc2_Rele4 = parseFloat(Isc2_Rele4);
 
     //Relé 6: Se ajusta con el  mayor de los dos valores
     Isc2_Rele6_1 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (((Z12 + Z23) * (Z34 + Z41)) / ((Z12 + Z23) + (Z34 + Z41)))));
@@ -807,6 +885,7 @@ function calcularValoresRelesAnillo() {
     Isc2_Rele6_50 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (Z41 + Z34 + (Z23 / 2))));
     Isc2_Rele6_2 = Isc2_Rele6_50;
     Isc2_Rele6 = Math.max(Isc2_Rele6_1, Isc2_Rele6_2).toFixed(2);
+    Isc2_Rele6 = parseFloat(Isc2_Rele6);
 
     //Relé 8: Se ajusta con el  mayor de los dos valores
     Isc2_Rele8_1 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (((Z41) * (Z12 + Z23 + Z34)) / ((Z41) + (Z12 + Z23 + Z34)))));
@@ -814,6 +893,7 @@ function calcularValoresRelesAnillo() {
     Isc2_Rele8_50 = (VAnillo * 1000) / (Math.sqrt(3) * (Zfalla + (Z41 + (Z34 / 2))));
     Isc2_Rele8_2 = Isc2_Rele8_50;
     Isc2_Rele8 = Math.max(Isc2_Rele8_1, Isc2_Rele8_2).toFixed(2);
+    Isc2_Rele8 = parseFloat(Isc2_Rele8);
 
 
 
@@ -834,23 +914,23 @@ function calcularValoresRelesAnillo() {
 
 
     //Se imprime los valores, aplicando su factor de ajuste
-    tabla_Isc_Rele1.innerText = (Isc_Rele1 * 1.25).toFixed(2);
-    tabla_Isc_Rele2.innerText = (Ic_A * 1.5).toFixed(2);
-    tabla_Isc_Rele3.innerText = (Isc_Rele3 * 1.25).toFixed(2);
-    tabla_Isc_Rele4.innerText = (Isc_Rele4 * 1.25).toFixed(2);
-    tabla_Isc_Rele5.innerText = (Isc_Rele5 * 1.25).toFixed(2);
-    tabla_Isc_Rele6.innerText = (Isc_Rele6 * 1.25).toFixed(2);
-    tabla_Isc_Rele7.innerText = (Ic_B * 1.5).toFixed(2);
-    tabla_Isc_Rele8.innerText = (Isc_Rele8 * 1.25).toFixed(2);
+    tabla_Isc_Rele1.innerText = parseFloat((Isc_Rele1).toFixed(2));
+    tabla_Isc_Rele2.innerText = parseFloat((Ic_A).toFixed(2));
+    tabla_Isc_Rele3.innerText = parseFloat((Isc_Rele3 ).toFixed(2));
+    tabla_Isc_Rele4.innerText = parseFloat((Isc_Rele4 ).toFixed(2));
+    tabla_Isc_Rele5.innerText = parseFloat((Isc_Rele5 ).toFixed(2));
+    tabla_Isc_Rele6.innerText = parseFloat((Isc_Rele6 ).toFixed(2));
+    tabla_Isc_Rele7.innerText = parseFloat((Ic_B ).toFixed(2));
+    tabla_Isc_Rele8.innerText = parseFloat((Isc_Rele8 ).toFixed(2));
 
-    modeloReleAnillo[1].Isc = (Isc_Rele1 * 1.25).toFixed(2);
-    modeloReleAnillo[2].Isc = (Ic_A * 1.5).toFixed(2);
-    modeloReleAnillo[3].Isc = (Isc_Rele3 * 1.25).toFixed(2);
-    modeloReleAnillo[4].Isc = (Isc_Rele4 * 1.25).toFixed(2);
-    modeloReleAnillo[5].Isc = (Isc_Rele5 * 1.25).toFixed(2);
-    modeloReleAnillo[6].Isc = (Isc_Rele6 * 1.25).toFixed(2);
-    modeloReleAnillo[7].Isc = (Ic_B * 1.5).toFixed(2);
-    modeloReleAnillo[8].Isc = (Isc_Rele8 * 1.25).toFixed(2);
+    modeloReleAnillo[1].Isc = parseFloat((Isc_Rele1 * ajusteR1).toFixed(2));
+    modeloReleAnillo[2].Isc = parseFloat((Ic_A * ajusteR2).toFixed(2));
+    modeloReleAnillo[3].Isc = parseFloat((Isc_Rele3 * ajusteR3).toFixed(2));
+    modeloReleAnillo[4].Isc = parseFloat((Isc_Rele4 * ajusteR4).toFixed(2));
+    modeloReleAnillo[5].Isc = parseFloat((Isc_Rele5 * ajusteR5).toFixed(2));
+    modeloReleAnillo[6].Isc = parseFloat((Isc_Rele6 * ajusteR6).toFixed(2));
+    modeloReleAnillo[7].Isc = parseFloat((Ic_B * ajusteR7).toFixed(2));
+    modeloReleAnillo[8].Isc = parseFloat((Isc_Rele8 * ajusteR8).toFixed(2));
 
     // document.getElementById("Isc_derecha1").innerText = Isc_2D.toFixed(2);
     // document.getElementById("Isc_derecha2").innerText = Isc_3D.toFixed(2);
@@ -871,7 +951,7 @@ function calcularValoresRelesAnillo() {
 
     imprimirResultados();
     quitarNaNValoresAnillo();
-
+    pillsResultadosCalculos2_2tab.style.display = "block";
 
 }
 
@@ -933,14 +1013,14 @@ function imprimirResultados() {
     document.getElementById("Isc_maxMetodo1_r8").innerText = Isc_Rele8.toFixed(2);
 
     //Imprimir valores Ipickup : (Ipickup_metodo1_r(numeroDelRele))
-    document.getElementById("Ipickup_metodo1_r1").innerText = (Isc_Rele1 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_metodo1_r2").innerText = (Ic_A * 1.5).toFixed(2);
-    document.getElementById("Ipickup_metodo1_r3").innerText = (Isc_Rele3 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_metodo1_r4").innerText = (Isc_Rele4 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_metodo1_r5").innerText = (Isc_Rele5 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_metodo1_r6").innerText = (Isc_Rele6 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_metodo1_r7").innerText = (Ic_B * 1.5).toFixed(2);
-    document.getElementById("Ipickup_metodo1_r8").innerText = (Isc_Rele8 * 1.25).toFixed(2);
+    document.getElementById("Ipickup_metodo1_r1").innerText = (Isc_Rele1 * ajusteR1).toFixed(2);
+    document.getElementById("Ipickup_metodo1_r2").innerText = (Ic_A *ajusteR2).toFixed(2);
+    document.getElementById("Ipickup_metodo1_r3").innerText = (Isc_Rele3 * ajusteR3).toFixed(2);
+    document.getElementById("Ipickup_metodo1_r4").innerText = (Isc_Rele4 * ajusteR4).toFixed(2);
+    document.getElementById("Ipickup_metodo1_r5").innerText = (Isc_Rele5 * ajusteR5).toFixed(2);
+    document.getElementById("Ipickup_metodo1_r6").innerText = (Isc_Rele6 * ajusteR6).toFixed(2);
+    document.getElementById("Ipickup_metodo1_r7").innerText = (Ic_B * ajusteR7).toFixed(2);
+    document.getElementById("Ipickup_metodo1_r8").innerText = (Isc_Rele8 * ajusteR8).toFixed(2);
 
     //-----------------------------------------------------------------------------------------------------------------------------------
 
@@ -1032,14 +1112,14 @@ function imprimirResultados() {
     document.getElementById("Isc_metodo2_r8").innerText = Isc2_Rele8;
 
     //Imprimir  valores Ipickup usando el método 1 
-    document.getElementById("IpickupR_metodo1_r1").innerText = (Isc_Rele1 * 1.25).toFixed(2);
-    document.getElementById("IpickupR_metodo1_r2").innerText = (Ic_A * 1.5).toFixed(2);
-    document.getElementById("IpickupR_metodo1_r3").innerText = (Isc_Rele3 * 1.25).toFixed(2);
-    document.getElementById("IpickupR_metodo1_r4").innerText = (Isc_Rele4 * 1.25).toFixed(2);
-    document.getElementById("IpickupR_metodo1_r5").innerText = (Isc_Rele5 * 1.25).toFixed(2);
-    document.getElementById("IpickupR_metodo1_r6").innerText = (Isc_Rele6 * 1.25).toFixed(2);
-    document.getElementById("IpickupR_metodo1_r7").innerText = (Ic_B * 1.5).toFixed(2);
-    document.getElementById("IpickupR_metodo1_r8").innerText = (Isc_Rele8 * 1.25).toFixed(2);
+    document.getElementById("IpickupR_metodo1_r1").innerText = (Isc_Rele1 * ajusteR1).toFixed(2);
+    document.getElementById("IpickupR_metodo1_r2").innerText = (Ic_A * ajusteR2).toFixed(2);
+    document.getElementById("IpickupR_metodo1_r3").innerText = (Isc_Rele3 * ajusteR3).toFixed(2);
+    document.getElementById("IpickupR_metodo1_r4").innerText = (Isc_Rele4 * ajusteR4).toFixed(2);
+    document.getElementById("IpickupR_metodo1_r5").innerText = (Isc_Rele5 * ajusteR5).toFixed(2);
+    document.getElementById("IpickupR_metodo1_r6").innerText = (Isc_Rele6 * ajusteR6).toFixed(2);
+    document.getElementById("IpickupR_metodo1_r7").innerText = (Ic_B * ajusteR7).toFixed(2);
+    document.getElementById("IpickupR_metodo1_r8").innerText = (Isc_Rele8 * ajusteR8).toFixed(2);
 
     //Imprimir valores Ipickyp usando el método 2
     document.getElementById("Ipickup_metodo2_r1").innerText = (Isc2_Rele1 * 1.25).toFixed(2);
@@ -1064,16 +1144,16 @@ function imprimirResultados() {
     document.getElementById("deltaIsc_r8").innerText = ((Math.abs(Isc_Rele8 - Isc2_Rele8) / Isc_Rele8) * 100).toFixed(2);
 
     //Imprimir delta Ipickup 
-    document.getElementById("deltaIpickup_r1").innerText = ((Math.abs((Isc_Rele1 * 1.25) - (Isc2_Rele1 * 1.25)) / (Isc_Rele1 * 1.25)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r1").innerText = ((Math.abs((Isc_Rele1 * ajusteR1) - (Isc2_Rele1 * 1.25)) / (Isc_Rele1 * 1.25)) * 100).toFixed(2);
     //document.getElementById("deltaIpickup_r2").innerText = ((Math.abs((Isc_Rele2 * 1.5) - (Isc2_Rele2 * 1.5)) / (Isc_Rele2 * 1.5)) * 100).toFixed(2);
     document.getElementById("deltaIpickup_r2").innerText = "-";
-    document.getElementById("deltaIpickup_r3").innerText = ((Math.abs((Isc_Rele3 * 1.25) - (Isc2_Rele3 * 1.25)) / (Isc_Rele3 * 1.25)) * 100).toFixed(2);
-    document.getElementById("deltaIpickup_r4").innerText = ((Math.abs((Isc_Rele4 * 1.25) - (Isc2_Rele4 * 1.25)) / (Isc_Rele4 * 1.25)) * 100).toFixed(2);
-    document.getElementById("deltaIpickup_r5").innerText = ((Math.abs((Isc_Rele5 * 1.25) - (Isc2_Rele5 * 1.25)) / (Isc_Rele5 * 1.25)) * 100).toFixed(2);
-    document.getElementById("deltaIpickup_r6").innerText = ((Math.abs((Isc_Rele6 * 1.25) - (Isc2_Rele6 * 1.25)) / (Isc_Rele6 * 1.25)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r3").innerText = ((Math.abs((Isc_Rele3 * ajusteR3) - (Isc2_Rele3 * 1.25)) / (Isc_Rele3 * 1.25)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r4").innerText = ((Math.abs((Isc_Rele4 * ajusteR4) - (Isc2_Rele4 * 1.25)) / (Isc_Rele4 * 1.25)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r5").innerText = ((Math.abs((Isc_Rele5 * ajusteR5) - (Isc2_Rele5 * 1.25)) / (Isc_Rele5 * 1.25)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r6").innerText = ((Math.abs((Isc_Rele6 * ajusteR6) - (Isc2_Rele6 * 1.25)) / (Isc_Rele6 * 1.25)) * 100).toFixed(2);
     // document.getElementById("deltaIpickup_r7").innerText = ((Math.abs((Isc_Rele7 * 1.5) - (Isc2_Rele7 * 1.5)) / (Isc_Rele7 * 1.5)) * 100).toFixed(2);
     document.getElementById("deltaIpickup_r7").innerText = "-";
-    document.getElementById("deltaIpickup_r8").innerText = ((Math.abs((Isc_Rele8 * 1.25) - (Isc2_Rele8 * 1.25)) / (Isc_Rele8 * 1.25)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r8").innerText = ((Math.abs((Isc_Rele8 * ajusteR8) - (Isc2_Rele8 * 1.25)) / (Isc_Rele8 * 1.25)) * 100).toFixed(2);
     //-----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -1137,9 +1217,9 @@ async function guardarValoresReles(valores) {
                 <td>[A]</td>
             </tr>
         <tr>
-            <th scope="row">Margen Ic</th>
+            <th scope="row">Incremento Ic</th>
             <td>
-                <input type="number" class="swal2-input" value="${modeloReleAnillo[valores].margenIc}" min="0" id="swal-Anillo-margenIc">
+                <input type="number" class="swal2-input" value="${modeloReleAnillo[valores].IncrementoIc}" min="0" id="swal-Anillo-IncrementoIc">
             </td>
             <td>%</td>
             <th scope="row">Tiempo <br> Operación</th>
@@ -1233,7 +1313,7 @@ async function guardarValoresReles(valores) {
 
                 <th scope="row">Tiempo <br> Coordinación <br> (Prot. 50)</th>
                 <td>
-                    <input  id="swal-Anillo-tInstantaneo" type="number" value="${modeloReleAnillo[valores].tiempoInstantaneo}" class="swal2-input" min="0">
+                    <input  id="swal-Anillo-tInstantaneo" type="number" value="${modeloReleAnillo[valores].tiempoCoordinacion}" class="swal2-input" min="0">
                 </td>
                 <td>[ms]</td>
 
@@ -1254,7 +1334,7 @@ async function guardarValoresReles(valores) {
 
                 document.getElementById('swal-Anillo-Isc').value,
                 document.getElementById('swal-Anillo-Ic').value,
-                document.getElementById('swal-Anillo-margenIc').value,
+                document.getElementById('swal-Anillo-IncrementoIc').value,
                 document.getElementById('swal-Anillo-tiempo').value,
                 document.getElementById('swal-Anillo-curva').value,
                 document.getElementById(swal_Anillo_tms).value,
@@ -1284,19 +1364,19 @@ async function guardarValoresReles(valores) {
 
         modeloReleAnillo[valores].Isc = parseFloat(datos[0]);
         modeloReleAnillo[valores].Ic = parseFloat(datos[1]);
-        modeloReleAnillo[valores].margenIc = parseFloat(datos[2]);
+        modeloReleAnillo[valores].IncrementoIc = parseFloat(datos[2]);
         modeloReleAnillo[valores].tiempo = parseFloat(datos[3]);
         modeloReleAnillo[valores].familiaCurva = datos[4];
         modeloReleAnillo[valores].TMS = parseFloat(datos[5]);
-        modeloReleAnillo[valores].tiempoInstantaneo = parseFloat(datos[6]);
+        modeloReleAnillo[valores].tiempoCoordinacion = parseFloat(datos[6]);
 
         document.getElementById("Isc_r" + valores).innerText = datos[0];
         document.getElementById("Ic_r" + valores).innerText = datos[1];
-        document.getElementById("Margen_Ic_r" + valores).innerText = datos[2];
+        document.getElementById("Incremento_Ic_r" + valores).innerText = datos[2];
         document.getElementById("Tiempo_r" + valores).innerText = datos[3];
         document.getElementById("FamiliaC_r" + valores).innerText = datos[4];
         document.getElementById("TMS_r" + valores).innerText = datos[5];
-        document.getElementById("Tiempo_instantaneo_r" + valores).innerText = datos[6];
+        document.getElementById("Tiempo_coordinacion_r" + valores).innerText = datos[6];
 
         Swal.fire({
             title: "Guardado configuración <p style='color: gray'> " + modeloReleAnillo[valores].nombre + "</p>",
@@ -1316,6 +1396,8 @@ async function guardarValoresReles(valores) {
 }
 
 function graficarCurvaTopologiaAnillo() {
+
+    pillsResultadosGrafica2tab.style.display = "none";
 
     console.log("entro gráfica Lados Izquierdo - Derecho");
 
@@ -1337,6 +1419,8 @@ function graficarCurvaTopologiaAnillo() {
 
 function calculosGraficaAnillo() {
 
+    pillsResultadosCalculos2_2tab.style.display = "none";
+
     Isc_Rele1 = modeloReleAnillo[1].Isc;
     Isc_Rele2 = modeloReleAnillo[2].Isc;
     Isc_Rele3 = modeloReleAnillo[3].Isc;
@@ -1356,15 +1440,15 @@ function calculosGraficaAnillo() {
     Ic_Rele7 = modeloReleAnillo[7].Ic;
     Ic_Rele8 = modeloReleAnillo[8].Ic;
 
-    
-    margen_Ic_r1 = modeloReleAnillo[1].margenIc;
-    margen_Ic_r2 = modeloReleAnillo[2].margenIc;
-    margen_Ic_r3 = modeloReleAnillo[3].margenIc;
-    margen_Ic_r4 = modeloReleAnillo[4].margenIc;
-    margen_Ic_r5 = modeloReleAnillo[5].margenIc;
-    margen_Ic_r6 = modeloReleAnillo[6].margenIc;
-    margen_Ic_r7 = modeloReleAnillo[7].margenIc;
-    margen_Ic_r8 = modeloReleAnillo[8].margenIc;
+
+    Incremento_Ic_r1 = modeloReleAnillo[1].IncrementoIc;
+    Incremento_Ic_r2 = modeloReleAnillo[2].IncrementoIc;
+    Incremento_Ic_r3 = modeloReleAnillo[3].IncrementoIc;
+    Incremento_Ic_r4 = modeloReleAnillo[4].IncrementoIc;
+    Incremento_Ic_r5 = modeloReleAnillo[5].IncrementoIc;
+    Incremento_Ic_r6 = modeloReleAnillo[6].IncrementoIc;
+    Incremento_Ic_r7 = modeloReleAnillo[7].IncrementoIc;
+    Incremento_Ic_r8 = modeloReleAnillo[8].IncrementoIc;
 
     familiaCurvaR1 = modeloReleAnillo[1].familiaCurva;
     familiaCurvaR2 = modeloReleAnillo[2].familiaCurva;
@@ -1393,23 +1477,23 @@ function calculosGraficaAnillo() {
     tiempo_r7 = modeloReleAnillo[7].tiempo;
     tiempo_r8 = modeloReleAnillo[8].tiempo;
 
-    tiempo_instantaneo_r1 = modeloReleAnillo[1].tiempoInstantaneo;
-    tiempo_instantaneo_r2 = modeloReleAnillo[2].tiempoInstantaneo;
-    tiempo_instantaneo_r3 = modeloReleAnillo[3].tiempoInstantaneo;
-    tiempo_instantaneo_r4 = modeloReleAnillo[4].tiempoInstantaneo;
-    tiempo_instantaneo_r5 = modeloReleAnillo[5].tiempoInstantaneo;
-    tiempo_instantaneo_r6 = modeloReleAnillo[6].tiempoInstantaneo;
-    tiempo_instantaneo_r7 = modeloReleAnillo[7].tiempoInstantaneo;
-    tiempo_instantaneo_r8 = modeloReleAnillo[8].tiempoInstantaneo;
+    tiempo_coordinacion_r1 = modeloReleAnillo[1].tiempoCoordinacion;
+    tiempo_coordinacion_r2 = modeloReleAnillo[2].tiempoCoordinacion;
+    tiempo_coordinacion_r3 = modeloReleAnillo[3].tiempoCoordinacion;
+    tiempo_coordinacion_r4 = modeloReleAnillo[4].tiempoCoordinacion;
+    tiempo_coordinacion_r5 = modeloReleAnillo[5].tiempoCoordinacion;
+    tiempo_coordinacion_r6 = modeloReleAnillo[6].tiempoCoordinacion;
+    tiempo_coordinacion_r7 = modeloReleAnillo[7].tiempoCoordinacion;
+    tiempo_coordinacion_r8 = modeloReleAnillo[8].tiempoCoordinacion;
 
 
     //Relé 1
     try {
-        Ic_1_con_margen = Ic_Rele1 + Ic_Rele1 * (margen_Ic_r1 / 100);
+        Ic_1_con_Incremento = Ic_Rele1 + Ic_Rele1 * (Incremento_Ic_r1 / 100);
         //DIAL
-        TMSparteIEC_1 = parametrosCurvaAnillo[familiaCurvaR1].IEC * ((tiempo_r1 / 1000) * (((Math.pow(Isc_Rele1 / Ic_1_con_margen, parametrosCurvaAnillo[familiaCurvaR1].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR1].beta)));
+        TMSparteIEC_1 = parametrosCurvaAnillo[familiaCurvaR1].IEC * ((tiempo_r1 / 1000) * (((Math.pow(Isc_Rele1 / Ic_1_con_Incremento, parametrosCurvaAnillo[familiaCurvaR1].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR1].beta)));
 
-        TMSparteANSI_1 = parametrosCurvaAnillo[familiaCurvaR1].ANSI * ((tiempo_r1 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR1].A) + (parametrosCurvaAnillo[familiaCurvaR1].B / ((Isc_Rele1 / Ic_1_con_margen) - parametrosCurvaAnillo[familiaCurvaR1].C)) + (parametrosCurvaAnillo[familiaCurvaR1].D / (Math.pow((Isc_Rele1 / Ic_1_con_margen) - parametrosCurvaAnillo[familiaCurvaR1].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR1].E / (Math.pow((Isc_Rele1 / Ic_1_con_margen) - parametrosCurvaAnillo[familiaCurvaR1].C, 3)))));
+        TMSparteANSI_1 = parametrosCurvaAnillo[familiaCurvaR1].ANSI * ((tiempo_r1 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR1].A) + (parametrosCurvaAnillo[familiaCurvaR1].B / ((Isc_Rele1 / Ic_1_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR1].C)) + (parametrosCurvaAnillo[familiaCurvaR1].D / (Math.pow((Isc_Rele1 / Ic_1_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR1].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR1].E / (Math.pow((Isc_Rele1 / Ic_1_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR1].C, 3)))));
 
         TMS_calculado_r1 = (TMSparteIEC_1 + TMSparteANSI_1).toFixed(4);
 
@@ -1421,11 +1505,11 @@ function calculosGraficaAnillo() {
     }
     //Relé 2
     try {
-        Ic_2_con_margen = Ic_Rele2 + Ic_Rele2 * (margen_Ic_r2 / 100);
+        Ic_2_con_Incremento = Ic_Rele2 + Ic_Rele2 * (Incremento_Ic_r2 / 100);
         //DIAL
-        TMSparteIEC_2 = parametrosCurvaAnillo[familiaCurvaR2].IEC * ((tiempo_r2 / 1000) * (((Math.pow(Isc_Rele2 / Ic_2_con_margen, parametrosCurvaAnillo[familiaCurvaR2].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR2].beta)));
+        TMSparteIEC_2 = parametrosCurvaAnillo[familiaCurvaR2].IEC * ((tiempo_r2 / 1000) * (((Math.pow(Isc_Rele2 / Ic_2_con_Incremento, parametrosCurvaAnillo[familiaCurvaR2].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR2].beta)));
 
-        TMSparteANSI_2 = parametrosCurvaAnillo[familiaCurvaR2].ANSI * ((tiempo_r2 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR2].A) + (parametrosCurvaAnillo[familiaCurvaR2].B / ((Isc_Rele2 / Ic_2_con_margen) - parametrosCurvaAnillo[familiaCurvaR2].C)) + (parametrosCurvaAnillo[familiaCurvaR2].D / (Math.pow((Isc_Rele2 / Ic_2_con_margen) - parametrosCurvaAnillo[familiaCurvaR2].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR2].E / (Math.pow((Isc_Rele2 / Ic_2_con_margen) - parametrosCurvaAnillo[familiaCurvaR2].C, 3)))));
+        TMSparteANSI_2 = parametrosCurvaAnillo[familiaCurvaR2].ANSI * ((tiempo_r2 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR2].A) + (parametrosCurvaAnillo[familiaCurvaR2].B / ((Isc_Rele2 / Ic_2_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR2].C)) + (parametrosCurvaAnillo[familiaCurvaR2].D / (Math.pow((Isc_Rele2 / Ic_2_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR2].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR2].E / (Math.pow((Isc_Rele2 / Ic_2_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR2].C, 3)))));
 
         TMS_calculado_r2 = (TMSparteIEC_2 + TMSparteANSI_2).toFixed(4);
 
@@ -1434,11 +1518,11 @@ function calculosGraficaAnillo() {
     }
     //Relé 3
     try {
-        Ic_3_con_margen = Ic_Rele3 + Ic_Rele3 * (margen_Ic_r3 / 100);
+        Ic_3_con_Incremento = Ic_Rele3 + Ic_Rele3 * (Incremento_Ic_r3 / 100);
         //DIAL
-        TMSparteIEC_3 = parametrosCurvaAnillo[familiaCurvaR3].IEC * ((tiempo_r3 / 1000) * (((Math.pow(Isc_Rele3 / Ic_3_con_margen, parametrosCurvaAnillo[familiaCurvaR3].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR3].beta)));
+        TMSparteIEC_3 = parametrosCurvaAnillo[familiaCurvaR3].IEC * ((tiempo_r3 / 1000) * (((Math.pow(Isc_Rele3 / Ic_3_con_Incremento, parametrosCurvaAnillo[familiaCurvaR3].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR3].beta)));
 
-        TMSparteANSI_3 = parametrosCurvaAnillo[familiaCurvaR3].ANSI * ((tiempo_r3 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR3].A) + (parametrosCurvaAnillo[familiaCurvaR3].B / ((Isc_Rele3 / Ic_3_con_margen) - parametrosCurvaAnillo[familiaCurvaR3].C)) + (parametrosCurvaAnillo[familiaCurvaR3].D / (Math.pow((Isc_Rele3 / Ic_3_con_margen) - parametrosCurvaAnillo[familiaCurvaR3].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR3].E / (Math.pow((Isc_Rele3 / Ic_3_con_margen) - parametrosCurvaAnillo[familiaCurvaR3].C, 3)))));
+        TMSparteANSI_3 = parametrosCurvaAnillo[familiaCurvaR3].ANSI * ((tiempo_r3 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR3].A) + (parametrosCurvaAnillo[familiaCurvaR3].B / ((Isc_Rele3 / Ic_3_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR3].C)) + (parametrosCurvaAnillo[familiaCurvaR3].D / (Math.pow((Isc_Rele3 / Ic_3_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR3].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR3].E / (Math.pow((Isc_Rele3 / Ic_3_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR3].C, 3)))));
 
         TMS_calculado_r3 = (TMSparteIEC_3 + TMSparteANSI_3).toFixed(4);
 
@@ -1447,11 +1531,11 @@ function calculosGraficaAnillo() {
     }
     //Relé 4
     try {
-        Ic_4_con_margen = Ic_Rele4 + Ic_Rele4 * (margen_Ic_r4 / 100);
+        Ic_4_con_Incremento = Ic_Rele4 + Ic_Rele4 * (Incremento_Ic_r4 / 100);
         //DIAL
-        TMSparteIEC_4 = parametrosCurvaAnillo[familiaCurvaR4].IEC * ((tiempo_r4 / 1000) * (((Math.pow(Isc_Rele4 / Ic_4_con_margen, parametrosCurvaAnillo[familiaCurvaR4].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR4].beta)));
+        TMSparteIEC_4 = parametrosCurvaAnillo[familiaCurvaR4].IEC * ((tiempo_r4 / 1000) * (((Math.pow(Isc_Rele4 / Ic_4_con_Incremento, parametrosCurvaAnillo[familiaCurvaR4].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR4].beta)));
 
-        TMSparteANSI_4 = parametrosCurvaAnillo[familiaCurvaR4].ANSI * ((tiempo_r4 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR4].A) + (parametrosCurvaAnillo[familiaCurvaR4].B / ((Isc_Rele4 / Ic_4_con_margen) - parametrosCurvaAnillo[familiaCurvaR4].C)) + (parametrosCurvaAnillo[familiaCurvaR4].D / (Math.pow((Isc_Rele4 / Ic_4_con_margen) - parametrosCurvaAnillo[familiaCurvaR4].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR4].E / (Math.pow((Isc_Rele4 / Ic_4_con_margen) - parametrosCurvaAnillo[familiaCurvaR4].C, 3)))));
+        TMSparteANSI_4 = parametrosCurvaAnillo[familiaCurvaR4].ANSI * ((tiempo_r4 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR4].A) + (parametrosCurvaAnillo[familiaCurvaR4].B / ((Isc_Rele4 / Ic_4_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR4].C)) + (parametrosCurvaAnillo[familiaCurvaR4].D / (Math.pow((Isc_Rele4 / Ic_4_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR4].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR4].E / (Math.pow((Isc_Rele4 / Ic_4_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR4].C, 3)))));
 
         TMS_calculado_r4 = (TMSparteIEC_4 + TMSparteANSI_4).toFixed(4);
 
@@ -1460,11 +1544,11 @@ function calculosGraficaAnillo() {
     }
     //Relé 5
     try {
-        Ic_5_con_margen = Ic_Rele5 + Ic_Rele5 * (margen_Ic_r5 / 100);
+        Ic_5_con_Incremento = Ic_Rele5 + Ic_Rele5 * (Incremento_Ic_r5 / 100);
         //DIAL
-        TMSparteIEC_5 = parametrosCurvaAnillo[familiaCurvaR5].IEC * ((tiempo_r5 / 1000) * (((Math.pow(Isc_Rele5 / Ic_5_con_margen, parametrosCurvaAnillo[familiaCurvaR5].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR5].beta)));
+        TMSparteIEC_5 = parametrosCurvaAnillo[familiaCurvaR5].IEC * ((tiempo_r5 / 1000) * (((Math.pow(Isc_Rele5 / Ic_5_con_Incremento, parametrosCurvaAnillo[familiaCurvaR5].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR5].beta)));
 
-        TMSparteANSI_5 = parametrosCurvaAnillo[familiaCurvaR5].ANSI * ((tiempo_r5 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR5].A) + (parametrosCurvaAnillo[familiaCurvaR5].B / ((Isc_Rele5 / Ic_5_con_margen) - parametrosCurvaAnillo[familiaCurvaR5].C)) + (parametrosCurvaAnillo[familiaCurvaR5].D / (Math.pow((Isc_Rele5 / Ic_5_con_margen) - parametrosCurvaAnillo[familiaCurvaR5].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR5].E / (Math.pow((Isc_Rele5 / Ic_5_con_margen) - parametrosCurvaAnillo[familiaCurvaR5].C, 3)))));
+        TMSparteANSI_5 = parametrosCurvaAnillo[familiaCurvaR5].ANSI * ((tiempo_r5 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR5].A) + (parametrosCurvaAnillo[familiaCurvaR5].B / ((Isc_Rele5 / Ic_5_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR5].C)) + (parametrosCurvaAnillo[familiaCurvaR5].D / (Math.pow((Isc_Rele5 / Ic_5_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR5].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR5].E / (Math.pow((Isc_Rele5 / Ic_5_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR5].C, 3)))));
 
         TMS_calculado_r5 = (TMSparteIEC_5 + TMSparteANSI_5).toFixed(4);
 
@@ -1473,11 +1557,11 @@ function calculosGraficaAnillo() {
     }
     //Relé 6
     try {
-        Ic_6_con_margen = Ic_Rele6 + Ic_Rele6 * (margen_Ic_r6 / 100);
+        Ic_6_con_Incremento = Ic_Rele6 + Ic_Rele6 * (Incremento_Ic_r6 / 100);
         //DIAL
-        TMSparteIEC_6 = parametrosCurvaAnillo[familiaCurvaR6].IEC * ((tiempo_r6 / 1000) * (((Math.pow(Isc_Rele6 / Ic_6_con_margen, parametrosCurvaAnillo[familiaCurvaR6].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR6].beta)));
+        TMSparteIEC_6 = parametrosCurvaAnillo[familiaCurvaR6].IEC * ((tiempo_r6 / 1000) * (((Math.pow(Isc_Rele6 / Ic_6_con_Incremento, parametrosCurvaAnillo[familiaCurvaR6].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR6].beta)));
 
-        TMSparteANSI_6 = parametrosCurvaAnillo[familiaCurvaR6].ANSI * ((tiempo_r6 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR6].A) + (parametrosCurvaAnillo[familiaCurvaR6].B / ((Isc_Rele6 / Ic_6_con_margen) - parametrosCurvaAnillo[familiaCurvaR6].C)) + (parametrosCurvaAnillo[familiaCurvaR6].D / (Math.pow((Isc_Rele6 / Ic_6_con_margen) - parametrosCurvaAnillo[familiaCurvaR6].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR6].E / (Math.pow((Isc_Rele6 / Ic_6_con_margen) - parametrosCurvaAnillo[familiaCurvaR6].C, 3)))));
+        TMSparteANSI_6 = parametrosCurvaAnillo[familiaCurvaR6].ANSI * ((tiempo_r6 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR6].A) + (parametrosCurvaAnillo[familiaCurvaR6].B / ((Isc_Rele6 / Ic_6_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR6].C)) + (parametrosCurvaAnillo[familiaCurvaR6].D / (Math.pow((Isc_Rele6 / Ic_6_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR6].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR6].E / (Math.pow((Isc_Rele6 / Ic_6_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR6].C, 3)))));
 
         TMS_calculado_r6 = (TMSparteIEC_6 + TMSparteANSI_6).toFixed(4);
 
@@ -1486,11 +1570,11 @@ function calculosGraficaAnillo() {
     }
     //Relé 7
     try {
-        Ic_7_con_margen = Ic_Rele7 + Ic_Rele7 * (margen_Ic_r7 / 100);
+        Ic_7_con_Incremento = Ic_Rele7 + Ic_Rele7 * (Incremento_Ic_r7 / 100);
         //DIAL
-        TMSparteIEC_7 = parametrosCurvaAnillo[familiaCurvaR7].IEC * ((tiempo_r7 / 1000) * (((Math.pow(Isc_Rele7 / Ic_7_con_margen, parametrosCurvaAnillo[familiaCurvaR7].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR7].beta)));
+        TMSparteIEC_7 = parametrosCurvaAnillo[familiaCurvaR7].IEC * ((tiempo_r7 / 1000) * (((Math.pow(Isc_Rele7 / Ic_7_con_Incremento, parametrosCurvaAnillo[familiaCurvaR7].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR7].beta)));
 
-        TMSparteANSI_7 = parametrosCurvaAnillo[familiaCurvaR7].ANSI * ((tiempo_r7 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR7].A) + (parametrosCurvaAnillo[familiaCurvaR7].B / ((Isc_Rele7 / Ic_7_con_margen) - parametrosCurvaAnillo[familiaCurvaR7].C)) + (parametrosCurvaAnillo[familiaCurvaR7].D / (Math.pow((Isc_Rele7 / Ic_7_con_margen) - parametrosCurvaAnillo[familiaCurvaR7].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR7].E / (Math.pow((Isc_Rele7 / Ic_7_con_margen) - parametrosCurvaAnillo[familiaCurvaR7].C, 3)))));
+        TMSparteANSI_7 = parametrosCurvaAnillo[familiaCurvaR7].ANSI * ((tiempo_r7 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR7].A) + (parametrosCurvaAnillo[familiaCurvaR7].B / ((Isc_Rele7 / Ic_7_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR7].C)) + (parametrosCurvaAnillo[familiaCurvaR7].D / (Math.pow((Isc_Rele7 / Ic_7_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR7].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR7].E / (Math.pow((Isc_Rele7 / Ic_7_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR7].C, 3)))));
 
         TMS_calculado_r7 = (TMSparteIEC_7 + TMSparteANSI_7).toFixed(4);
 
@@ -1499,17 +1583,19 @@ function calculosGraficaAnillo() {
     }
     //Relé 8
     try {
-        Ic_8_con_margen = Ic_Rele8 + Ic_Rele8 * (margen_Ic_r8 / 100);
+        Ic_8_con_Incremento = Ic_Rele8 + Ic_Rele8 * (Incremento_Ic_r8 / 100);
         //DIAL
-        TMSparteIEC_8 = parametrosCurvaAnillo[familiaCurvaR8].IEC * ((tiempo_r8 / 1000) * (((Math.pow(Isc_Rele8 / Ic_8_con_margen, parametrosCurvaAnillo[familiaCurvaR8].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR8].beta)));
+        TMSparteIEC_8 = parametrosCurvaAnillo[familiaCurvaR8].IEC * ((tiempo_r8 / 1000) * (((Math.pow(Isc_Rele8 / Ic_8_con_Incremento, parametrosCurvaAnillo[familiaCurvaR8].alfa)) - 1) / (parametrosCurvaAnillo[familiaCurvaR8].beta)));
 
-        TMSparteANSI_8 = parametrosCurvaAnillo[familiaCurvaR8].ANSI * ((tiempo_r8 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR8].A) + (parametrosCurvaAnillo[familiaCurvaR8].B / ((Isc_Rele8 / Ic_8_con_margen) - parametrosCurvaAnillo[familiaCurvaR8].C)) + (parametrosCurvaAnillo[familiaCurvaR8].D / (Math.pow((Isc_Rele8 / Ic_8_con_margen) - parametrosCurvaAnillo[familiaCurvaR8].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR8].E / (Math.pow((Isc_Rele8 / Ic_8_con_margen) - parametrosCurvaAnillo[familiaCurvaR8].C, 3)))));
+        TMSparteANSI_8 = parametrosCurvaAnillo[familiaCurvaR8].ANSI * ((tiempo_r8 / 1000) * 1 / ((parametrosCurvaAnillo[familiaCurvaR8].A) + (parametrosCurvaAnillo[familiaCurvaR8].B / ((Isc_Rele8 / Ic_8_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR8].C)) + (parametrosCurvaAnillo[familiaCurvaR8].D / (Math.pow((Isc_Rele8 / Ic_8_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR8].C, 2))) + (parametrosCurvaAnillo[familiaCurvaR8].E / (Math.pow((Isc_Rele8 / Ic_8_con_Incremento) - parametrosCurvaAnillo[familiaCurvaR8].C, 3)))));
 
         TMS_calculado_r8 = (TMSparteIEC_8 + TMSparteANSI_8).toFixed(4);
 
     } catch (error) {
         console.log("error para Relé 8 - calculosGraficaAnillo()")
     }
+
+    pillsResultadosCalculos2_2tab.style.display = "block";
 
 }
 
@@ -1531,7 +1617,7 @@ function graficarCurvaLadoIzquierdo() {
                 fn: function (scope) {
                     var x = scope.x
 
-                    return ((parametrosCurvaAnillo[familiaCurvaR2].IEC * TMS_r2 * ((parametrosCurvaAnillo[familiaCurvaR2].beta) / ((Math.pow(x / Ic_2_con_margen, parametrosCurvaAnillo[familiaCurvaR2].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR2].ANSI * TMS_r2 * ((parametrosCurvaAnillo[familiaCurvaR2].A) + (parametrosCurvaAnillo[familiaCurvaR2].B / ((x / Ic_2_con_margen) - (parametrosCurvaAnillo[familiaCurvaR2].C)) + (parametrosCurvaAnillo[familiaCurvaR2].D / (Math.pow((x / Ic_2_con_margen) - (parametrosCurvaAnillo[familiaCurvaR2].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR2].E / (Math.pow((x / Ic_2_con_margen) - (parametrosCurvaAnillo[familiaCurvaR2].C), 3)))))))
+                    return ((parametrosCurvaAnillo[familiaCurvaR2].IEC * TMS_r2 * ((parametrosCurvaAnillo[familiaCurvaR2].beta) / ((Math.pow(x / Ic_2_con_Incremento, parametrosCurvaAnillo[familiaCurvaR2].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR2].ANSI * TMS_r2 * ((parametrosCurvaAnillo[familiaCurvaR2].A) + (parametrosCurvaAnillo[familiaCurvaR2].B / ((x / Ic_2_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR2].C)) + (parametrosCurvaAnillo[familiaCurvaR2].D / (Math.pow((x / Ic_2_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR2].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR2].E / (Math.pow((x / Ic_2_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR2].C), 3)))))))
 
                 },
                 color: 'rgba(255, 209, 102, 1)',
@@ -1543,7 +1629,7 @@ function graficarCurvaLadoIzquierdo() {
                 fn: function (scope) {
                     var x = scope.x
 
-                    return ((parametrosCurvaAnillo[familiaCurvaR4].IEC * TMS_r4 * ((parametrosCurvaAnillo[familiaCurvaR4].beta) / ((Math.pow(x / Ic_4_con_margen, parametrosCurvaAnillo[familiaCurvaR4].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR4].ANSI * TMS_r4 * ((parametrosCurvaAnillo[familiaCurvaR4].A) + (parametrosCurvaAnillo[familiaCurvaR4].B / ((x / Ic_4_con_margen) - (parametrosCurvaAnillo[familiaCurvaR4].C)) + (parametrosCurvaAnillo[familiaCurvaR4].D / (Math.pow((x / Ic_4_con_margen) - (parametrosCurvaAnillo[familiaCurvaR4].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR4].E / (Math.pow((x / Ic_4_con_margen) - (parametrosCurvaAnillo[familiaCurvaR4].C), 3)))))))
+                    return ((parametrosCurvaAnillo[familiaCurvaR4].IEC * TMS_r4 * ((parametrosCurvaAnillo[familiaCurvaR4].beta) / ((Math.pow(x / Ic_4_con_Incremento, parametrosCurvaAnillo[familiaCurvaR4].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR4].ANSI * TMS_r4 * ((parametrosCurvaAnillo[familiaCurvaR4].A) + (parametrosCurvaAnillo[familiaCurvaR4].B / ((x / Ic_4_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR4].C)) + (parametrosCurvaAnillo[familiaCurvaR4].D / (Math.pow((x / Ic_4_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR4].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR4].E / (Math.pow((x / Ic_4_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR4].C), 3)))))))
 
                 }
                 ,
@@ -1556,7 +1642,7 @@ function graficarCurvaLadoIzquierdo() {
                 fn: function (scope) {
                     var x = scope.x
 
-                    return ((parametrosCurvaAnillo[familiaCurvaR6].IEC * TMS_r6 * ((parametrosCurvaAnillo[familiaCurvaR6].beta) / ((Math.pow(x / Ic_6_con_margen, parametrosCurvaAnillo[familiaCurvaR6].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR6].ANSI * TMS_r6 * ((parametrosCurvaAnillo[familiaCurvaR6].A) + (parametrosCurvaAnillo[familiaCurvaR6].B / ((x / Ic_6_con_margen) - (parametrosCurvaAnillo[familiaCurvaR6].C)) + (parametrosCurvaAnillo[familiaCurvaR6].D / (Math.pow((x / Ic_6_con_margen) - (parametrosCurvaAnillo[familiaCurvaR6].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR6].E / (Math.pow((x / Ic_6_con_margen) - (parametrosCurvaAnillo[familiaCurvaR6].C), 3)))))))
+                    return ((parametrosCurvaAnillo[familiaCurvaR6].IEC * TMS_r6 * ((parametrosCurvaAnillo[familiaCurvaR6].beta) / ((Math.pow(x / Ic_6_con_Incremento, parametrosCurvaAnillo[familiaCurvaR6].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR6].ANSI * TMS_r6 * ((parametrosCurvaAnillo[familiaCurvaR6].A) + (parametrosCurvaAnillo[familiaCurvaR6].B / ((x / Ic_6_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR6].C)) + (parametrosCurvaAnillo[familiaCurvaR6].D / (Math.pow((x / Ic_6_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR6].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR6].E / (Math.pow((x / Ic_6_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR6].C), 3)))))))
 
                 },
                 color: 'rgba(155, 93, 229, 1)',
@@ -1568,10 +1654,67 @@ function graficarCurvaLadoIzquierdo() {
                 fn: function (scope) {
                     var x = scope.x
 
-                    return ((parametrosCurvaAnillo[familiaCurvaR8].IEC * TMS_r8 * ((parametrosCurvaAnillo[familiaCurvaR8].beta) / ((Math.pow(x / Ic_8_con_margen, parametrosCurvaAnillo[familiaCurvaR8].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR8].ANSI * TMS_r8 * ((parametrosCurvaAnillo[familiaCurvaR8].A) + (parametrosCurvaAnillo[familiaCurvaR8].B / ((x / Ic_8_con_margen) - (parametrosCurvaAnillo[familiaCurvaR8].C)) + (parametrosCurvaAnillo[familiaCurvaR8].D / (Math.pow((x / Ic_8_con_margen) - (parametrosCurvaAnillo[familiaCurvaR8].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR8].E / (Math.pow((x / Ic_8_con_margen) - (parametrosCurvaAnillo[familiaCurvaR8].C), 3)))))))
+                    return ((parametrosCurvaAnillo[familiaCurvaR8].IEC * TMS_r8 * ((parametrosCurvaAnillo[familiaCurvaR8].beta) / ((Math.pow(x / Ic_8_con_Incremento, parametrosCurvaAnillo[familiaCurvaR8].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR8].ANSI * TMS_r8 * ((parametrosCurvaAnillo[familiaCurvaR8].A) + (parametrosCurvaAnillo[familiaCurvaR8].B / ((x / Ic_8_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR8].C)) + (parametrosCurvaAnillo[familiaCurvaR8].D / (Math.pow((x / Ic_8_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR8].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR8].E / (Math.pow((x / Ic_8_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR8].C), 3)))))))
                 },
                 color: 'rgba(37, 8, 228, 1)',
-            }
+            },
+            //Linea corte Graficar curva tiempo relé 2
+            {
+                points: [
+                    [Ic_Rele2*ajusteR2, tiempoOperacionCalculado_A],
+                    //[Isc_ReleA, tiempo_local_A],
+                    //Punto relé 50 instantáneo: 50ms
+                    [Isc_Rele2*ajusteR2, 0.05]
+
+                ],
+                fnType: 'points',
+                color: 'rgba(255, 209, 102, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
+            },
+             //Linea corte Graficar curva tiempo relé 4
+             {
+                points: [
+                    [Isc_Rele4*ajusteR4, tiempoOperacionCalculado_A],
+                    //[Isc_ReleA, tiempo_local_A],
+                    //Punto relé 50 instantáneo: 50ms
+                    [Isc_Rele4*ajusteR4, 0.05]
+
+                ],
+                fnType: 'points',
+                color: 'rgba(17, 138, 178, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
+            },
+             //Linea corte Graficar curva tiempo relé 6
+             {
+                points: [
+                    [Isc_Rele6*ajusteR6, tiempoOperacionCalculado_A],
+                    //[Isc_ReleA, tiempo_local_A],
+                    //Punto relé 50 instantáneo: 50ms
+                    [Isc_Rele6*ajusteR6, 0.05]
+
+                ],
+                fnType: 'points',
+                color: 'rgba(155, 93, 229, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
+            },
+             //Linea corte Graficar curva tiempo relé 8
+             {
+                points: [
+                    [Isc_Rele8*ajusteR8, tiempoOperacionCalculado_A],
+                    //[Isc_ReleA, tiempo_local_A],
+                    //Punto relé 50 instantáneo: 50ms
+                    [Isc_Rele8*ajusteR8, 0.05]
+
+                ],
+                fnType: 'points',
+                color: 'rgba(37, 8, 228, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
+            },
+
         ]
     })
 
@@ -1595,7 +1738,7 @@ function graficarCurvaLadoDerecho() {
                 fn: function (scope) {
                     var x = scope.x
 
-                    return ((parametrosCurvaAnillo[familiaCurvaR1].IEC * TMS_r1 * ((parametrosCurvaAnillo[familiaCurvaR1].beta) / ((Math.pow(x / Ic_1_con_margen, parametrosCurvaAnillo[familiaCurvaR1].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR1].ANSI * TMS_r1 * ((parametrosCurvaAnillo[familiaCurvaR1].A) + (parametrosCurvaAnillo[familiaCurvaR1].B / ((x / Ic_1_con_margen) - (parametrosCurvaAnillo[familiaCurvaR1].C)) + (parametrosCurvaAnillo[familiaCurvaR1].D / (Math.pow((x / Ic_1_con_margen) - (parametrosCurvaAnillo[familiaCurvaR1].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR1].E / (Math.pow((x / Ic_1_con_margen) - (parametrosCurvaAnillo[familiaCurvaR1].C), 3)))))))
+                    return ((parametrosCurvaAnillo[familiaCurvaR1].IEC * TMS_r1 * ((parametrosCurvaAnillo[familiaCurvaR1].beta) / ((Math.pow(x / Ic_1_con_Incremento, parametrosCurvaAnillo[familiaCurvaR1].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR1].ANSI * TMS_r1 * ((parametrosCurvaAnillo[familiaCurvaR1].A) + (parametrosCurvaAnillo[familiaCurvaR1].B / ((x / Ic_1_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR1].C)) + (parametrosCurvaAnillo[familiaCurvaR1].D / (Math.pow((x / Ic_1_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR1].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR1].E / (Math.pow((x / Ic_1_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR1].C), 3)))))))
                 },
                 color: 'rgba(239, 71, 111, 1)',
             },
@@ -1606,7 +1749,7 @@ function graficarCurvaLadoDerecho() {
                 fn: function (scope) {
                     var x = scope.x
 
-                    return ((parametrosCurvaAnillo[familiaCurvaR3].IEC * TMS_r3 * ((parametrosCurvaAnillo[familiaCurvaR3].beta) / ((Math.pow(x / Ic_3_con_margen, parametrosCurvaAnillo[familiaCurvaR3].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR3].ANSI * TMS_r3 * ((parametrosCurvaAnillo[familiaCurvaR3].A) + (parametrosCurvaAnillo[familiaCurvaR3].B / ((x / Ic_3_con_margen) - (parametrosCurvaAnillo[familiaCurvaR3].C)) + (parametrosCurvaAnillo[familiaCurvaR3].D / (Math.pow((x / Ic_3_con_margen) - (parametrosCurvaAnillo[familiaCurvaR3].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR3].E / (Math.pow((x / Ic_3_con_margen) - (parametrosCurvaAnillo[familiaCurvaR3].C), 3)))))))
+                    return ((parametrosCurvaAnillo[familiaCurvaR3].IEC * TMS_r3 * ((parametrosCurvaAnillo[familiaCurvaR3].beta) / ((Math.pow(x / Ic_3_con_Incremento, parametrosCurvaAnillo[familiaCurvaR3].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR3].ANSI * TMS_r3 * ((parametrosCurvaAnillo[familiaCurvaR3].A) + (parametrosCurvaAnillo[familiaCurvaR3].B / ((x / Ic_3_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR3].C)) + (parametrosCurvaAnillo[familiaCurvaR3].D / (Math.pow((x / Ic_3_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR3].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR3].E / (Math.pow((x / Ic_3_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR3].C), 3)))))))
                 },
                 color: 'rgba(6, 214, 160, 1)',
             },
@@ -1617,7 +1760,7 @@ function graficarCurvaLadoDerecho() {
                 fn: function (scope) {
                     var x = scope.x
 
-                    return ((parametrosCurvaAnillo[familiaCurvaR5].IEC * TMS_r5 * ((parametrosCurvaAnillo[familiaCurvaR5].beta) / ((Math.pow(x / Ic_5_con_margen, parametrosCurvaAnillo[familiaCurvaR5].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR5].ANSI * TMS_r5 * ((parametrosCurvaAnillo[familiaCurvaR5].A) + (parametrosCurvaAnillo[familiaCurvaR5].B / ((x / Ic_5_con_margen) - (parametrosCurvaAnillo[familiaCurvaR5].C)) + (parametrosCurvaAnillo[familiaCurvaR5].D / (Math.pow((x / Ic_5_con_margen) - (parametrosCurvaAnillo[familiaCurvaR5].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR5].E / (Math.pow((x / Ic_5_con_margen) - (parametrosCurvaAnillo[familiaCurvaR5].C), 3)))))))
+                    return ((parametrosCurvaAnillo[familiaCurvaR5].IEC * TMS_r5 * ((parametrosCurvaAnillo[familiaCurvaR5].beta) / ((Math.pow(x / Ic_5_con_Incremento, parametrosCurvaAnillo[familiaCurvaR5].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR5].ANSI * TMS_r5 * ((parametrosCurvaAnillo[familiaCurvaR5].A) + (parametrosCurvaAnillo[familiaCurvaR5].B / ((x / Ic_5_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR5].C)) + (parametrosCurvaAnillo[familiaCurvaR5].D / (Math.pow((x / Ic_5_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR5].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR5].E / (Math.pow((x / Ic_5_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR5].C), 3)))))))
                 },
                 color: 'rgba(7, 59, 76, 1)',
             },
@@ -1628,13 +1771,71 @@ function graficarCurvaLadoDerecho() {
                 fn: function (scope) {
                     var x = scope.x
 
-                    return ((parametrosCurvaAnillo[familiaCurvaR7].IEC * TMS_r7 * ((parametrosCurvaAnillo[familiaCurvaR7].beta) / ((Math.pow(x / Ic_7_con_margen, parametrosCurvaAnillo[familiaCurvaR7].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR7].ANSI * TMS_r7 * ((parametrosCurvaAnillo[familiaCurvaR7].A) + (parametrosCurvaAnillo[familiaCurvaR7].B / ((x / Ic_7_con_margen) - (parametrosCurvaAnillo[familiaCurvaR7].C)) + (parametrosCurvaAnillo[familiaCurvaR7].D / (Math.pow((x / Ic_7_con_margen) - (parametrosCurvaAnillo[familiaCurvaR7].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR7].E / (Math.pow((x / Ic_7_con_margen) - (parametrosCurvaAnillo[familiaCurvaR7].C), 3)))))))
+                    return ((parametrosCurvaAnillo[familiaCurvaR7].IEC * TMS_r7 * ((parametrosCurvaAnillo[familiaCurvaR7].beta) / ((Math.pow(x / Ic_7_con_Incremento, parametrosCurvaAnillo[familiaCurvaR7].alfa)) - 1))) + (parametrosCurvaAnillo[familiaCurvaR7].ANSI * TMS_r7 * ((parametrosCurvaAnillo[familiaCurvaR7].A) + (parametrosCurvaAnillo[familiaCurvaR7].B / ((x / Ic_7_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR7].C)) + (parametrosCurvaAnillo[familiaCurvaR7].D / (Math.pow((x / Ic_7_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR7].C), 2))) + (parametrosCurvaAnillo[familiaCurvaR7].E / (Math.pow((x / Ic_7_con_Incremento) - (parametrosCurvaAnillo[familiaCurvaR7].C), 3)))))))
                 },
                 color: 'rgba(95, 168, 211, 1)',
-            }
+            },
+            //Linea corte Graficar curva tiempo relé 1
+            {
+                points: [
+                    [Isc_Rele1*ajusteR1, tiempoOperacionCalculado_A],
+                    //[Isc_ReleA, tiempo_local_A],
+                    //Punto relé 50 instantáneo: 50ms
+                    [Isc_Rele1*ajusteR1, 0.05]
+
+                ],
+                fnType: 'points',
+                color: 'rgba(239, 71, 111, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
+            },
+            //Linea corte Graficar curva tiempo relé 3
+            {
+                points: [
+                    [Isc_Rele3*ajusteR3, tiempoOperacionCalculado_A],
+                    //[Isc_ReleA, tiempo_local_A],
+                    //Punto relé 50 instantáneo: 50ms
+                    [Isc_Rele3*ajusteR3, 0.05]
+
+                ],
+                fnType: 'points',
+                color: 'rgba(6, 214, 160, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
+            },
+            //Linea corte Graficar curva tiempo relé 5
+            {
+                points: [
+                    [Isc_Rele5*ajusteR5, tiempoOperacionCalculado_A],
+                    //[Isc_ReleA, tiempo_local_A],
+                    //Punto relé 50 instantáneo: 50ms
+                    [Isc_Rele5*ajusteR5, 0.05]
+
+                ],
+                fnType: 'points',
+                color: 'rgba(7, 59, 76, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
+            },
+            //Linea corte Graficar curva tiempo relé 7
+            {
+                points: [
+                    [Ic_Rele7*ajusteR7, tiempoOperacionCalculado_A],
+                    //[Isc_ReleA, tiempo_local_A],
+                    //Punto relé 50 instantáneo: 50ms
+                    [Ic_Rele7*ajusteR7, 0.05]
+
+                ],
+                fnType: 'points',
+                color: 'rgba(95, 168, 211, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
+            },
 
         ]
     })
+
+    pillsResultadosGrafica2tab.style.display = "block";
 
 }
 
@@ -1642,186 +1843,346 @@ function graficarCurvaLadoDerecho() {
 //Función para evitar los NaN
 function quitarNaNValoresAnillo() {
 
-    if(isNaN(document.getElementById("Ic_metodo1_r1").innerText)){ document.getElementById("Ic_metodo1_r1").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r2").innerText)){ document.getElementById("Ic_metodo1_r2").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r3").innerText)){ document.getElementById("Ic_metodo1_r3").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r4").innerText)){ document.getElementById("Ic_metodo1_r4").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r5").innerText)){ document.getElementById("Ic_metodo1_r5").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r6").innerText)){ document.getElementById("Ic_metodo1_r6").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r7").innerText)){ document.getElementById("Ic_metodo1_r7").innerText = ""}
-    if(isNaN(document.getElementById("Ic_metodo1_r8").innerText)){ document.getElementById("Ic_metodo1_r8").innerText = ""}
+    if (isNaN(document.getElementById("Ic_metodo1_r1").innerText)) { document.getElementById("Ic_metodo1_r1").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo1_r2").innerText)) { document.getElementById("Ic_metodo1_r2").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo1_r3").innerText)) { document.getElementById("Ic_metodo1_r3").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo1_r4").innerText)) { document.getElementById("Ic_metodo1_r4").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo1_r5").innerText)) { document.getElementById("Ic_metodo1_r5").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo1_r6").innerText)) { document.getElementById("Ic_metodo1_r6").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo1_r7").innerText)) { document.getElementById("Ic_metodo1_r7").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo1_r8").innerText)) { document.getElementById("Ic_metodo1_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r1").innerText)){ document.getElementById("Isc_aC_metodo1_r1").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r2").innerText)){ document.getElementById("Isc_aC_metodo1_r2").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r3").innerText)){ document.getElementById("Isc_aC_metodo1_r3").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r4").innerText)){ document.getElementById("Isc_aC_metodo1_r4").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r5").innerText)){ document.getElementById("Isc_aC_metodo1_r5").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r6").innerText)){ document.getElementById("Isc_aC_metodo1_r6").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r7").innerText)){ document.getElementById("Isc_aC_metodo1_r7").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aC_metodo1_r8").innerText)){ document.getElementById("Isc_aC_metodo1_r8").innerText = ""}
+    if (isNaN(document.getElementById("Isc_aC_metodo1_r1").innerText)) { document.getElementById("Isc_aC_metodo1_r1").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo1_r2").innerText)) { document.getElementById("Isc_aC_metodo1_r2").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_aC_metodo1_r3").innerText)) { document.getElementById("Isc_aC_metodo1_r3").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo1_r4").innerText)) { document.getElementById("Isc_aC_metodo1_r4").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo1_r5").innerText)) { document.getElementById("Isc_aC_metodo1_r5").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo1_r6").innerText)) { document.getElementById("Isc_aC_metodo1_r6").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo1_r7").innerText)) { document.getElementById("Isc_aC_metodo1_r7").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_aC_metodo1_r8").innerText)) { document.getElementById("Isc_aC_metodo1_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r1").innerText)){ document.getElementById("Isc_aaA_metodo1_r1").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r2").innerText)){ document.getElementById("Isc_aaA_metodo1_r2").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r3").innerText)){ document.getElementById("Isc_aaA_metodo1_r3").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r4").innerText)){ document.getElementById("Isc_aaA_metodo1_r4").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r5").innerText)){ document.getElementById("Isc_aaA_metodo1_r5").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r6").innerText)){ document.getElementById("Isc_aaA_metodo1_r6").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r7").innerText)){ document.getElementById("Isc_aaA_metodo1_r7").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaA_metodo1_r8").innerText)){ document.getElementById("Isc_aaA_metodo1_r8").innerText = ""}
+    if (isNaN(document.getElementById("Isc_aaA_metodo1_r1").innerText)) { document.getElementById("Isc_aaA_metodo1_r1").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_aaA_metodo1_r2").innerText)) { document.getElementById("Isc_aaA_metodo1_r2").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_aaA_metodo1_r3").innerText)) { document.getElementById("Isc_aaA_metodo1_r3").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_aaA_metodo1_r4").innerText)) { document.getElementById("Isc_aaA_metodo1_r4").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aaA_metodo1_r5").innerText)) { document.getElementById("Isc_aaA_metodo1_r5").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_aaA_metodo1_r6").innerText)) { document.getElementById("Isc_aaA_metodo1_r6").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aaA_metodo1_r7").innerText)) { document.getElementById("Isc_aaA_metodo1_r7").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_aaA_metodo1_r8").innerText)) { document.getElementById("Isc_aaA_metodo1_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r1").innerText)){ document.getElementById("Isc_aaB_metodo1_r1").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r2").innerText)){ document.getElementById("Isc_aaB_metodo1_r2").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r3").innerText)){ document.getElementById("Isc_aaB_metodo1_r3").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r4").innerText)){ document.getElementById("Isc_aaB_metodo1_r4").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r5").innerText)){ document.getElementById("Isc_aaB_metodo1_r5").innerText = ""}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r6").innerText)){ document.getElementById("Isc_aaB_metodo1_r6").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r7").innerText)){ document.getElementById("Isc_aaB_metodo1_r7").innerText = "-"}
-    if(isNaN(document.getElementById("Isc_aaB_metodo1_r8").innerText)){ document.getElementById("Isc_aaB_metodo1_r8").innerText = "-"}
+    if (isNaN(document.getElementById("Isc_aaB_metodo1_r1").innerText)) { document.getElementById("Isc_aaB_metodo1_r1").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aaB_metodo1_r2").innerText)) { document.getElementById("Isc_aaB_metodo1_r2").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_aaB_metodo1_r3").innerText)) { document.getElementById("Isc_aaB_metodo1_r3").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aaB_metodo1_r4").innerText)) { document.getElementById("Isc_aaB_metodo1_r4").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_aaB_metodo1_r5").innerText)) { document.getElementById("Isc_aaB_metodo1_r5").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aaB_metodo1_r6").innerText)) { document.getElementById("Isc_aaB_metodo1_r6").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_aaB_metodo1_r7").innerText)) { document.getElementById("Isc_aaB_metodo1_r7").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_aaB_metodo1_r8").innerText)) { document.getElementById("Isc_aaB_metodo1_r8").innerText = "-" }
 
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r1").innerText)){ document.getElementById("Isc_maxMetodo1_r1").innerText = "" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r2").innerText)){ document.getElementById("Isc_maxMetodo1_r2").innerText = "-" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r3").innerText)){ document.getElementById("Isc_maxMetodo1_r3").innerText = "" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r4").innerText)){ document.getElementById("Isc_maxMetodo1_r4").innerText = "" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r5").innerText)){ document.getElementById("Isc_maxMetodo1_r5").innerText = "" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r6").innerText)){ document.getElementById("Isc_maxMetodo1_r6").innerText = "" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r7").innerText)){ document.getElementById("Isc_maxMetodo1_r7").innerText = "-" }
-    if(isNaN(document.getElementById("Isc_maxMetodo1_r8").innerText)){ document.getElementById("Isc_maxMetodo1_r8").innerText = "" }
+    if (isNaN(document.getElementById("Isc_maxMetodo1_r1").innerText)) { document.getElementById("Isc_maxMetodo1_r1").innerText = "" }
+    if (isNaN(document.getElementById("Isc_maxMetodo1_r2").innerText)) { document.getElementById("Isc_maxMetodo1_r2").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_maxMetodo1_r3").innerText)) { document.getElementById("Isc_maxMetodo1_r3").innerText = "" }
+    if (isNaN(document.getElementById("Isc_maxMetodo1_r4").innerText)) { document.getElementById("Isc_maxMetodo1_r4").innerText = "" }
+    if (isNaN(document.getElementById("Isc_maxMetodo1_r5").innerText)) { document.getElementById("Isc_maxMetodo1_r5").innerText = "" }
+    if (isNaN(document.getElementById("Isc_maxMetodo1_r6").innerText)) { document.getElementById("Isc_maxMetodo1_r6").innerText = "" }
+    if (isNaN(document.getElementById("Isc_maxMetodo1_r7").innerText)) { document.getElementById("Isc_maxMetodo1_r7").innerText = "-" }
+    if (isNaN(document.getElementById("Isc_maxMetodo1_r8").innerText)) { document.getElementById("Isc_maxMetodo1_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("Ipickup_metodo1_r1").innerText)){ document.getElementById("Ipickup_metodo1_r1").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r2").innerText)){ document.getElementById("Ipickup_metodo1_r2").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r3").innerText)){ document.getElementById("Ipickup_metodo1_r3").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r4").innerText)){ document.getElementById("Ipickup_metodo1_r4").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r5").innerText)){ document.getElementById("Ipickup_metodo1_r5").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r6").innerText)){ document.getElementById("Ipickup_metodo1_r6").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r7").innerText)){ document.getElementById("Ipickup_metodo1_r7").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo1_r8").innerText)){ document.getElementById("Ipickup_metodo1_r8").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo1_r1").innerText)) { document.getElementById("Ipickup_metodo1_r1").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo1_r2").innerText)) { document.getElementById("Ipickup_metodo1_r2").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo1_r3").innerText)) { document.getElementById("Ipickup_metodo1_r3").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo1_r4").innerText)) { document.getElementById("Ipickup_metodo1_r4").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo1_r5").innerText)) { document.getElementById("Ipickup_metodo1_r5").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo1_r6").innerText)) { document.getElementById("Ipickup_metodo1_r6").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo1_r7").innerText)) { document.getElementById("Ipickup_metodo1_r7").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo1_r8").innerText)) { document.getElementById("Ipickup_metodo1_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("Ic_metodo2_r1").innerText)){ document.getElementById("Ic_metodo2_r1").innerText = "" }
-    if(isNaN(document.getElementById("Ic_metodo2_r2").innerText)){ document.getElementById("Ic_metodo2_r2").innerText = "" }
-    if(isNaN(document.getElementById("Ic_metodo2_r3").innerText)){ document.getElementById("Ic_metodo2_r3").innerText = "" }
-    if(isNaN(document.getElementById("Ic_metodo2_r4").innerText)){ document.getElementById("Ic_metodo2_r4").innerText = "" }
-    if(isNaN(document.getElementById("Ic_metodo2_r5").innerText)){ document.getElementById("Ic_metodo2_r5").innerText = "" }
-    if(isNaN(document.getElementById("Ic_metodo2_r6").innerText)){ document.getElementById("Ic_metodo2_r6").innerText = "" }
-    if(isNaN(document.getElementById("Ic_metodo2_r7").innerText)){ document.getElementById("Ic_metodo2_r7").innerText = "" }
-    if(isNaN(document.getElementById("Ic_metodo2_r8").innerText)){ document.getElementById("Ic_metodo2_r8").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo2_r1").innerText)) { document.getElementById("Ic_metodo2_r1").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo2_r2").innerText)) { document.getElementById("Ic_metodo2_r2").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo2_r3").innerText)) { document.getElementById("Ic_metodo2_r3").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo2_r4").innerText)) { document.getElementById("Ic_metodo2_r4").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo2_r5").innerText)) { document.getElementById("Ic_metodo2_r5").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo2_r6").innerText)) { document.getElementById("Ic_metodo2_r6").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo2_r7").innerText)) { document.getElementById("Ic_metodo2_r7").innerText = "" }
+    if (isNaN(document.getElementById("Ic_metodo2_r8").innerText)) { document.getElementById("Ic_metodo2_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("Isc_aC_metodo2_r1").innerText)){ document.getElementById("Isc_aC_metodo2_r1").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aC_metodo2_r2").innerText)){ document.getElementById("Isc_aC_metodo2_r2").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aC_metodo2_r3").innerText)){ document.getElementById("Isc_aC_metodo2_r3").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aC_metodo2_r4").innerText)){ document.getElementById("Isc_aC_metodo2_r4").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aC_metodo2_r5").innerText)){ document.getElementById("Isc_aC_metodo2_r5").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aC_metodo2_r6").innerText)){ document.getElementById("Isc_aC_metodo2_r6").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aC_metodo2_r7").innerText)){ document.getElementById("Isc_aC_metodo2_r7").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aC_metodo2_r8").innerText)){ document.getElementById("Isc_aC_metodo2_r8").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo2_r1").innerText)) { document.getElementById("Isc_aC_metodo2_r1").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo2_r2").innerText)) { document.getElementById("Isc_aC_metodo2_r2").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo2_r3").innerText)) { document.getElementById("Isc_aC_metodo2_r3").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo2_r4").innerText)) { document.getElementById("Isc_aC_metodo2_r4").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo2_r5").innerText)) { document.getElementById("Isc_aC_metodo2_r5").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo2_r6").innerText)) { document.getElementById("Isc_aC_metodo2_r6").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo2_r7").innerText)) { document.getElementById("Isc_aC_metodo2_r7").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aC_metodo2_r8").innerText)) { document.getElementById("Isc_aC_metodo2_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("Isc_aA_metodo2_r1").innerText)){ document.getElementById("Isc_aA_metodo2_r1").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aA_metodo2_r2").innerText)){ document.getElementById("Isc_aA_metodo2_r2").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aA_metodo2_r3").innerText)){ document.getElementById("Isc_aA_metodo2_r3").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aA_metodo2_r4").innerText)){ document.getElementById("Isc_aA_metodo2_r4").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aA_metodo2_r5").innerText)){ document.getElementById("Isc_aA_metodo2_r5").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aA_metodo2_r6").innerText)){ document.getElementById("Isc_aA_metodo2_r6").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aA_metodo2_r7").innerText)){ document.getElementById("Isc_aA_metodo2_r7").innerText = "" }
-    if(isNaN(document.getElementById("Isc_aA_metodo2_r8").innerText)){ document.getElementById("Isc_aA_metodo2_r8").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aA_metodo2_r1").innerText)) { document.getElementById("Isc_aA_metodo2_r1").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aA_metodo2_r2").innerText)) { document.getElementById("Isc_aA_metodo2_r2").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aA_metodo2_r3").innerText)) { document.getElementById("Isc_aA_metodo2_r3").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aA_metodo2_r4").innerText)) { document.getElementById("Isc_aA_metodo2_r4").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aA_metodo2_r5").innerText)) { document.getElementById("Isc_aA_metodo2_r5").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aA_metodo2_r6").innerText)) { document.getElementById("Isc_aA_metodo2_r6").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aA_metodo2_r7").innerText)) { document.getElementById("Isc_aA_metodo2_r7").innerText = "" }
+    if (isNaN(document.getElementById("Isc_aA_metodo2_r8").innerText)) { document.getElementById("Isc_aA_metodo2_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("Isc_criterio_metodo2_r1").innerText)){ document.getElementById("Isc_criterio_metodo2_r1").innerText = "" }
-    if(isNaN(document.getElementById("Isc_criterio_metodo2_r2").innerText)){ document.getElementById("Isc_criterio_metodo2_r2").innerText = "" }
-    if(isNaN(document.getElementById("Isc_criterio_metodo2_r3").innerText)){ document.getElementById("Isc_criterio_metodo2_r3").innerText = "" }
-    if(isNaN(document.getElementById("Isc_criterio_metodo2_r4").innerText)){ document.getElementById("Isc_criterio_metodo2_r4").innerText = "" }
-    if(isNaN(document.getElementById("Isc_criterio_metodo2_r5").innerText)){ document.getElementById("Isc_criterio_metodo2_r5").innerText = "" }
-    if(isNaN(document.getElementById("Isc_criterio_metodo2_r6").innerText)){ document.getElementById("Isc_criterio_metodo2_r6").innerText = "" }
-    if(isNaN(document.getElementById("Isc_criterio_metodo2_r7").innerText)){ document.getElementById("Isc_criterio_metodo2_r7").innerText = "" }
-    if(isNaN(document.getElementById("Isc_criterio_metodo2_r8").innerText)){ document.getElementById("Isc_criterio_metodo2_r8").innerText = "" }
+    if (isNaN(document.getElementById("Isc_criterio_metodo2_r1").innerText)) { document.getElementById("Isc_criterio_metodo2_r1").innerText = "" }
+    if (isNaN(document.getElementById("Isc_criterio_metodo2_r2").innerText)) { document.getElementById("Isc_criterio_metodo2_r2").innerText = "" }
+    if (isNaN(document.getElementById("Isc_criterio_metodo2_r3").innerText)) { document.getElementById("Isc_criterio_metodo2_r3").innerText = "" }
+    if (isNaN(document.getElementById("Isc_criterio_metodo2_r4").innerText)) { document.getElementById("Isc_criterio_metodo2_r4").innerText = "" }
+    if (isNaN(document.getElementById("Isc_criterio_metodo2_r5").innerText)) { document.getElementById("Isc_criterio_metodo2_r5").innerText = "" }
+    if (isNaN(document.getElementById("Isc_criterio_metodo2_r6").innerText)) { document.getElementById("Isc_criterio_metodo2_r6").innerText = "" }
+    if (isNaN(document.getElementById("Isc_criterio_metodo2_r7").innerText)) { document.getElementById("Isc_criterio_metodo2_r7").innerText = "" }
+    if (isNaN(document.getElementById("Isc_criterio_metodo2_r8").innerText)) { document.getElementById("Isc_criterio_metodo2_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r1").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r1").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r2").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r2").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r3").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r3").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r4").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r4").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r5").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r5").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r6").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r6").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r7").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r7").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_criterio_metodo2_r8").innerText)){ document.getElementById("Ipickup_criterio_metodo2_r8").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_criterio_metodo2_r1").innerText)) { document.getElementById("Ipickup_criterio_metodo2_r1").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_criterio_metodo2_r2").innerText)) { document.getElementById("Ipickup_criterio_metodo2_r2").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_criterio_metodo2_r3").innerText)) { document.getElementById("Ipickup_criterio_metodo2_r3").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_criterio_metodo2_r4").innerText)) { document.getElementById("Ipickup_criterio_metodo2_r4").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_criterio_metodo2_r5").innerText)) { document.getElementById("Ipickup_criterio_metodo2_r5").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_criterio_metodo2_r6").innerText)) { document.getElementById("Ipickup_criterio_metodo2_r6").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_criterio_metodo2_r7").innerText)) { document.getElementById("Ipickup_criterio_metodo2_r7").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_criterio_metodo2_r8").innerText)) { document.getElementById("Ipickup_criterio_metodo2_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("resumen_Icarga1").innerText)){ document.getElementById("resumen_Icarga1").innerText = "" }
-    if(isNaN(document.getElementById("resumen_Icarga2").innerText)){ document.getElementById("resumen_Icarga2").innerText = "" }
-    if(isNaN(document.getElementById("resumen_Icarga3").innerText)){ document.getElementById("resumen_Icarga3").innerText = "" }
-    if(isNaN(document.getElementById("resumen_Icarga4").innerText)){ document.getElementById("resumen_Icarga4").innerText = "" }
-    if(isNaN(document.getElementById("resumen_Icarga5").innerText)){ document.getElementById("resumen_Icarga5").innerText = "" }
-    if(isNaN(document.getElementById("resumen_Icarga6").innerText)){ document.getElementById("resumen_Icarga6").innerText = "" }
-    if(isNaN(document.getElementById("resumen_Icarga7").innerText)){ document.getElementById("resumen_Icarga7").innerText = "" }
-    if(isNaN(document.getElementById("resumen_Icarga8").innerText)){ document.getElementById("resumen_Icarga8").innerText = "" }
+    if (isNaN(document.getElementById("resumen_Icarga1").innerText)) { document.getElementById("resumen_Icarga1").innerText = "" }
+    if (isNaN(document.getElementById("resumen_Icarga2").innerText)) { document.getElementById("resumen_Icarga2").innerText = "" }
+    if (isNaN(document.getElementById("resumen_Icarga3").innerText)) { document.getElementById("resumen_Icarga3").innerText = "" }
+    if (isNaN(document.getElementById("resumen_Icarga4").innerText)) { document.getElementById("resumen_Icarga4").innerText = "" }
+    if (isNaN(document.getElementById("resumen_Icarga5").innerText)) { document.getElementById("resumen_Icarga5").innerText = "" }
+    if (isNaN(document.getElementById("resumen_Icarga6").innerText)) { document.getElementById("resumen_Icarga6").innerText = "" }
+    if (isNaN(document.getElementById("resumen_Icarga7").innerText)) { document.getElementById("resumen_Icarga7").innerText = "" }
+    if (isNaN(document.getElementById("resumen_Icarga8").innerText)) { document.getElementById("resumen_Icarga8").innerText = "" }
 
-    if(isNaN(document.getElementById("Isc_metodo1_r1").innerText)){ document.getElementById("Isc_metodo1_r1").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo1_r2").innerText)){ document.getElementById("Isc_metodo1_r2").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo1_r3").innerText)){ document.getElementById("Isc_metodo1_r3").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo1_r4").innerText)){ document.getElementById("Isc_metodo1_r4").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo1_r5").innerText)){ document.getElementById("Isc_metodo1_r5").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo1_r6").innerText)){ document.getElementById("Isc_metodo1_r6").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo1_r7").innerText)){ document.getElementById("Isc_metodo1_r7").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo1_r8").innerText)){ document.getElementById("Isc_metodo1_r8").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo1_r1").innerText)) { document.getElementById("Isc_metodo1_r1").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo1_r2").innerText)) { document.getElementById("Isc_metodo1_r2").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo1_r3").innerText)) { document.getElementById("Isc_metodo1_r3").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo1_r4").innerText)) { document.getElementById("Isc_metodo1_r4").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo1_r5").innerText)) { document.getElementById("Isc_metodo1_r5").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo1_r6").innerText)) { document.getElementById("Isc_metodo1_r6").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo1_r7").innerText)) { document.getElementById("Isc_metodo1_r7").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo1_r8").innerText)) { document.getElementById("Isc_metodo1_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("Isc_metodo2_r1").innerText)){ document.getElementById("Isc_metodo2_r1").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo2_r2").innerText)){ document.getElementById("Isc_metodo2_r2").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo2_r3").innerText)){ document.getElementById("Isc_metodo2_r3").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo2_r4").innerText)){ document.getElementById("Isc_metodo2_r4").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo2_r5").innerText)){ document.getElementById("Isc_metodo2_r5").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo2_r6").innerText)){ document.getElementById("Isc_metodo2_r6").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo2_r7").innerText)){ document.getElementById("Isc_metodo2_r7").innerText = "" }
-    if(isNaN(document.getElementById("Isc_metodo2_r8").innerText)){ document.getElementById("Isc_metodo2_r8").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo2_r1").innerText)) { document.getElementById("Isc_metodo2_r1").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo2_r2").innerText)) { document.getElementById("Isc_metodo2_r2").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo2_r3").innerText)) { document.getElementById("Isc_metodo2_r3").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo2_r4").innerText)) { document.getElementById("Isc_metodo2_r4").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo2_r5").innerText)) { document.getElementById("Isc_metodo2_r5").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo2_r6").innerText)) { document.getElementById("Isc_metodo2_r6").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo2_r7").innerText)) { document.getElementById("Isc_metodo2_r7").innerText = "" }
+    if (isNaN(document.getElementById("Isc_metodo2_r8").innerText)) { document.getElementById("Isc_metodo2_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("IpickupR_metodo1_r1").innerText)){ document.getElementById("IpickupR_metodo1_r1").innerText = "" }
-    if(isNaN(document.getElementById("IpickupR_metodo1_r2").innerText)){ document.getElementById("IpickupR_metodo1_r2").innerText = "" }
-    if(isNaN(document.getElementById("IpickupR_metodo1_r3").innerText)){ document.getElementById("IpickupR_metodo1_r3").innerText = "" }
-    if(isNaN(document.getElementById("IpickupR_metodo1_r4").innerText)){ document.getElementById("IpickupR_metodo1_r4").innerText = "" }
-    if(isNaN(document.getElementById("IpickupR_metodo1_r5").innerText)){ document.getElementById("IpickupR_metodo1_r5").innerText = "" }
-    if(isNaN(document.getElementById("IpickupR_metodo1_r6").innerText)){ document.getElementById("IpickupR_metodo1_r6").innerText = "" }
-    if(isNaN(document.getElementById("IpickupR_metodo1_r7").innerText)){ document.getElementById("IpickupR_metodo1_r7").innerText = "" }
-    if(isNaN(document.getElementById("IpickupR_metodo1_r8").innerText)){ document.getElementById("IpickupR_metodo1_r8").innerText = "" }
+    if (isNaN(document.getElementById("IpickupR_metodo1_r1").innerText)) { document.getElementById("IpickupR_metodo1_r1").innerText = "" }
+    if (isNaN(document.getElementById("IpickupR_metodo1_r2").innerText)) { document.getElementById("IpickupR_metodo1_r2").innerText = "" }
+    if (isNaN(document.getElementById("IpickupR_metodo1_r3").innerText)) { document.getElementById("IpickupR_metodo1_r3").innerText = "" }
+    if (isNaN(document.getElementById("IpickupR_metodo1_r4").innerText)) { document.getElementById("IpickupR_metodo1_r4").innerText = "" }
+    if (isNaN(document.getElementById("IpickupR_metodo1_r5").innerText)) { document.getElementById("IpickupR_metodo1_r5").innerText = "" }
+    if (isNaN(document.getElementById("IpickupR_metodo1_r6").innerText)) { document.getElementById("IpickupR_metodo1_r6").innerText = "" }
+    if (isNaN(document.getElementById("IpickupR_metodo1_r7").innerText)) { document.getElementById("IpickupR_metodo1_r7").innerText = "" }
+    if (isNaN(document.getElementById("IpickupR_metodo1_r8").innerText)) { document.getElementById("IpickupR_metodo1_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("Ipickup_metodo2_r1").innerText)){ document.getElementById("Ipickup_metodo2_r1").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo2_r2").innerText)){ document.getElementById("Ipickup_metodo2_r2").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo2_r3").innerText)){ document.getElementById("Ipickup_metodo2_r3").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo2_r4").innerText)){ document.getElementById("Ipickup_metodo2_r4").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo2_r5").innerText)){ document.getElementById("Ipickup_metodo2_r5").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo2_r6").innerText)){ document.getElementById("Ipickup_metodo2_r6").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo2_r7").innerText)){ document.getElementById("Ipickup_metodo2_r7").innerText = "" }
-    if(isNaN(document.getElementById("Ipickup_metodo2_r8").innerText)){ document.getElementById("Ipickup_metodo2_r8").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo2_r1").innerText)) { document.getElementById("Ipickup_metodo2_r1").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo2_r2").innerText)) { document.getElementById("Ipickup_metodo2_r2").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo2_r3").innerText)) { document.getElementById("Ipickup_metodo2_r3").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo2_r4").innerText)) { document.getElementById("Ipickup_metodo2_r4").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo2_r5").innerText)) { document.getElementById("Ipickup_metodo2_r5").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo2_r6").innerText)) { document.getElementById("Ipickup_metodo2_r6").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo2_r7").innerText)) { document.getElementById("Ipickup_metodo2_r7").innerText = "" }
+    if (isNaN(document.getElementById("Ipickup_metodo2_r8").innerText)) { document.getElementById("Ipickup_metodo2_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("deltaIsc_r1").innerText)){ document.getElementById("deltaIsc_r1").innerText = "" }
-    if(isNaN(document.getElementById("deltaIsc_r2").innerText)){ document.getElementById("deltaIsc_r2").innerText = "-" }
-    if(isNaN(document.getElementById("deltaIsc_r3").innerText)){ document.getElementById("deltaIsc_r3").innerText = "" }
-    if(isNaN(document.getElementById("deltaIsc_r4").innerText)){ document.getElementById("deltaIsc_r4").innerText = "" }
-    if(isNaN(document.getElementById("deltaIsc_r5").innerText)){ document.getElementById("deltaIsc_r5").innerText = "" }
-    if(isNaN(document.getElementById("deltaIsc_r6").innerText)){ document.getElementById("deltaIsc_r6").innerText = "" }
-    if(isNaN(document.getElementById("deltaIsc_r7").innerText)){ document.getElementById("deltaIsc_r7").innerText = "-" }
-    if(isNaN(document.getElementById("deltaIsc_r8").innerText)){ document.getElementById("deltaIsc_r8").innerText = "" }
+    if (isNaN(document.getElementById("deltaIsc_r1").innerText)) { document.getElementById("deltaIsc_r1").innerText = "" }
+    if (isNaN(document.getElementById("deltaIsc_r2").innerText)) { document.getElementById("deltaIsc_r2").innerText = "-" }
+    if (isNaN(document.getElementById("deltaIsc_r3").innerText)) { document.getElementById("deltaIsc_r3").innerText = "" }
+    if (isNaN(document.getElementById("deltaIsc_r4").innerText)) { document.getElementById("deltaIsc_r4").innerText = "" }
+    if (isNaN(document.getElementById("deltaIsc_r5").innerText)) { document.getElementById("deltaIsc_r5").innerText = "" }
+    if (isNaN(document.getElementById("deltaIsc_r6").innerText)) { document.getElementById("deltaIsc_r6").innerText = "" }
+    if (isNaN(document.getElementById("deltaIsc_r7").innerText)) { document.getElementById("deltaIsc_r7").innerText = "-" }
+    if (isNaN(document.getElementById("deltaIsc_r8").innerText)) { document.getElementById("deltaIsc_r8").innerText = "" }
 
-    if(isNaN(document.getElementById("deltaIpickup_r1").innerText)){ document.getElementById("deltaIpickup_r1").innerText = "" }
-    if(isNaN(document.getElementById("deltaIpickup_r2").innerText)){ document.getElementById("deltaIpickup_r2").innerText = "-" }
-    if(isNaN(document.getElementById("deltaIpickup_r3").innerText)){ document.getElementById("deltaIpickup_r3").innerText = "" }
-    if(isNaN(document.getElementById("deltaIpickup_r4").innerText)){ document.getElementById("deltaIpickup_r4").innerText = "" }
-    if(isNaN(document.getElementById("deltaIpickup_r5").innerText)){ document.getElementById("deltaIpickup_r5").innerText = "" }
-    if(isNaN(document.getElementById("deltaIpickup_r6").innerText)){ document.getElementById("deltaIpickup_r6").innerText = "" }
-    if(isNaN(document.getElementById("deltaIpickup_r7").innerText)){ document.getElementById("deltaIpickup_r7").innerText = "-" }
-    if(isNaN(document.getElementById("deltaIpickup_r8").innerText)){ document.getElementById("deltaIpickup_r8").innerText = "" }
+    if (isNaN(document.getElementById("deltaIpickup_r1").innerText)) { document.getElementById("deltaIpickup_r1").innerText = "" }
+    if (isNaN(document.getElementById("deltaIpickup_r2").innerText)) { document.getElementById("deltaIpickup_r2").innerText = "-" }
+    if (isNaN(document.getElementById("deltaIpickup_r3").innerText)) { document.getElementById("deltaIpickup_r3").innerText = "" }
+    if (isNaN(document.getElementById("deltaIpickup_r4").innerText)) { document.getElementById("deltaIpickup_r4").innerText = "" }
+    if (isNaN(document.getElementById("deltaIpickup_r5").innerText)) { document.getElementById("deltaIpickup_r5").innerText = "" }
+    if (isNaN(document.getElementById("deltaIpickup_r6").innerText)) { document.getElementById("deltaIpickup_r6").innerText = "" }
+    if (isNaN(document.getElementById("deltaIpickup_r7").innerText)) { document.getElementById("deltaIpickup_r7").innerText = "-" }
+    if (isNaN(document.getElementById("deltaIpickup_r8").innerText)) { document.getElementById("deltaIpickup_r8").innerText = "" }
 
-    if(isNaN(tabla_Isc_Rele1.innerText)){ tabla_Isc_Rele1.innerText = "-" }
-    if(isNaN(tabla_Isc_Rele2.innerText)){ tabla_Isc_Rele2.innerText = "-" }
-    if(isNaN(tabla_Isc_Rele3.innerText)){ tabla_Isc_Rele3.innerText = "-" }
-    if(isNaN(tabla_Isc_Rele4.innerText)){ tabla_Isc_Rele4.innerText = "-" }
-    if(isNaN(tabla_Isc_Rele5.innerText)){ tabla_Isc_Rele5.innerText = "-" }
-    if(isNaN(tabla_Isc_Rele6.innerText)){ tabla_Isc_Rele6.innerText = "-" }
-    if(isNaN(tabla_Isc_Rele7.innerText)){ tabla_Isc_Rele7.innerText = "-" }
-    if(isNaN(tabla_Isc_Rele8.innerText)){ tabla_Isc_Rele8.innerText = "-" }
+    if (isNaN(tabla_Isc_Rele1.innerText)) { tabla_Isc_Rele1.innerText = "-" }
+    if (isNaN(tabla_Isc_Rele2.innerText)) { tabla_Isc_Rele2.innerText = "-" }
+    if (isNaN(tabla_Isc_Rele3.innerText)) { tabla_Isc_Rele3.innerText = "-" }
+    if (isNaN(tabla_Isc_Rele4.innerText)) { tabla_Isc_Rele4.innerText = "-" }
+    if (isNaN(tabla_Isc_Rele5.innerText)) { tabla_Isc_Rele5.innerText = "-" }
+    if (isNaN(tabla_Isc_Rele6.innerText)) { tabla_Isc_Rele6.innerText = "-" }
+    if (isNaN(tabla_Isc_Rele7.innerText)) { tabla_Isc_Rele7.innerText = "-" }
+    if (isNaN(tabla_Isc_Rele8.innerText)) { tabla_Isc_Rele8.innerText = "-" }
 
-    if(isNaN(tabla_Ic_Rele1.innerText)){ tabla_Ic_Rele1.innerText = "-" }
-    if(isNaN(tabla_Ic_Rele2.innerText)){ tabla_Ic_Rele2.innerText = "-" }
-    if(isNaN(tabla_Ic_Rele3.innerText)){ tabla_Ic_Rele3.innerText = "-" }
-    if(isNaN(tabla_Ic_Rele4.innerText)){ tabla_Ic_Rele4.innerText = "-" }
-    if(isNaN(tabla_Ic_Rele5.innerText)){ tabla_Ic_Rele5.innerText = "-" }
-    if(isNaN(tabla_Ic_Rele6.innerText)){ tabla_Ic_Rele6.innerText = "-" }
-    if(isNaN(tabla_Ic_Rele7.innerText)){ tabla_Ic_Rele7.innerText = "-" }
-    if(isNaN(tabla_Ic_Rele8.innerText)){ tabla_Ic_Rele8.innerText = "-" }
-    
+    if (isNaN(tabla_Ic_Rele1.innerText)) { tabla_Ic_Rele1.innerText = "-" }
+    if (isNaN(tabla_Ic_Rele2.innerText)) { tabla_Ic_Rele2.innerText = "-" }
+    if (isNaN(tabla_Ic_Rele3.innerText)) { tabla_Ic_Rele3.innerText = "-" }
+    if (isNaN(tabla_Ic_Rele4.innerText)) { tabla_Ic_Rele4.innerText = "-" }
+    if (isNaN(tabla_Ic_Rele5.innerText)) { tabla_Ic_Rele5.innerText = "-" }
+    if (isNaN(tabla_Ic_Rele6.innerText)) { tabla_Ic_Rele6.innerText = "-" }
+    if (isNaN(tabla_Ic_Rele7.innerText)) { tabla_Ic_Rele7.innerText = "-" }
+    if (isNaN(tabla_Ic_Rele8.innerText)) { tabla_Ic_Rele8.innerText = "-" }
 
-    
+
+
+}
+
+function metodologiaAnillo() {
+
+        Swal.fire({
+            title: "Metodología <p style='color: gray'>Protección sobrecorriente 67 </p> ",
+            background: '#fefefe',
+            width: 700,
+            showConfirmButton: false,
+            showCloseButton: true,
+            html: `
+                <div class="divMetodo justify">
+                    <h4><b><u>Pasos </u></b></h4>
+                    <p>1. Se revisa que datos son los que tengo para trabajar y la topología del sistema.</p>
+                    <p>2. Se necesita Isc (máximos y mínimos). Para el caso de un anillo: </p>
+                    <p>2.1.1 Observando el anillo abierto, haciendo un recorrido en sentido horario y antihorario en un mismo (Nodo). <b>Se recomienda que ese nodo sea al más cercano del generador (más favorable)</b>.  Determinando una corriente de falla que vería en su debido momento el relé (dependiendo donde la ubique). Cada relé va a estar mirando a su extremo opuesto (genera una dirección).</p>
+                    <p>2.1.2 Se halla la corriente de corto circuito con el anillo cerrado (sentido horario y antihorario). </p>
+                    <p>Con base en esas corrientes, aplicó el criterio del ajuste del relé de sobrecorriente (para este caso sería el de lineas), <u><b>EXCEPTO</b></u> los relés que están mirando hacia la fuente (en este caso el <b>relé 2 y 7</b>) porque no me interesa que vean fallas fuera de la linea, a ellos aplicó otro criterio aparte. </p>
+                    <img src="../assets/images/Anillo/esquema_corriente.svg" style="width:100%; height: 100px">
+                    <p>
+                    <p>3. Determinar corriente de carga máxima que están observando en cada linea:</b> No me interesa la dirección, va circular por la línea.  Se toma el valor máximo que se presenta en cualquier sentido (horario o anti-horario). Con estos datos, voy a determinar las relaciones de CTs.</p>
+
+                    <h4 style="text-align:center; color: green"><u>Método 1</u></h4>
+                    <p>Este método consiste en aplicar un factor expresado en porcentaje de la corriente de corto, carga (según se requiera) que vea el relé aguas abajo, es decir, se aplica uno u otro criterio de acuerdo al elemento a proteger (línea, transformador o carga). </p>
+                    <p>Para los relés 2 y 7 (los que están mirando el generador), tomar un 50% adicional (1.5) la <b> corriente de carga máxima Icargamáx </b>. Los demás relés, las instantáneas se coordinan con <b>Isc</b>.</p>
+
+
+                    <h4 style="text-align:center; color: green"><u>Método 2</u></h4>
+                    <p>Para el ajuste de las unidades instantáneas: </p>
+                    <p>1. Se ajusta primero el  relé de la S/E adyacente a la generadora, correspondiente al interruptor que se considera abierto con el menor de los dos valores siguientes: </p>
+                    <p> - Primer valor: El nivel de corriente que ve el interruptor para una falla en la mitad de la línea que con el generadora, <b>estando el anillo cerrado</b> </p>
+                    <p> - Segundo valor:  El nivel de la corriente que ve el interruptor para una falla en el extremo de la linea <b>estando abierto el anillo</b>. <span style="color:blue;">(*)</span>  </p> 
+                    
+                    <p>2. Se ajusta luego el relé siguiente (hacia atrás) con el <b>mayor</b> de los dos valores siguientes: <p>
+                    <p> - Primer valor: 1.25 veces la <u>Isc</u> que ve el interruptor asociado para una falla en la S/E adyacente a la generadora, <b>estando el anillo cerrado</b>. </p>
+                    <p> - Segundo valor: 1.25 veces la  <u>Isc</u> que ve el mismo interruptor para una falla en el 50% de la linea (o en el porcentaje de cubrimiento con el valor de ajuste que se obtuvo en <span style="color:blue">(*)</span> <b>estando el anillo abierto</b>. </p> 
+                    
+                </div>
+            
+            `,
+        })
+
+
+}
+
+
+async function criterioAjuste(rele) {
+
+    var ajusteDelRele;
+    var valorAjuste;
+
+    if(rele == "r1"){
+        ajusteDelRele = "Ajuste Relé 1";
+        valorAjuste = ajusteR1;
+    }
+    if(rele == "r3"){
+        ajusteDelRele = "Ajuste Relé 3";
+        valorAjuste = ajusteR3;
+    }
+    if(rele == "r4"){
+        ajusteDelRele = "Ajuste Relé 4";
+        valorAjuste = ajusteR4;
+    }
+    if(rele == "r5"){
+        ajusteDelRele = "Ajuste Relé 5";
+        valorAjuste = ajusteR5;
+    }
+    if(rele == "r6"){
+        ajusteDelRele = "Ajuste Relé 6";
+        valorAjuste = ajusteR6;
+        
+    }
+    if(rele == "r8"){
+        ajusteDelRele = "Ajuste Relé 8";
+        valorAjuste = ajusteR8;
+        
+    }
+
+    const { value: formValues } = await Swal.fire({
+        title: "Editar  " + ajusteDelRele,
+        background: '#fefefe',
+        html: `
+            <table class="table table-responsive "> 
+                <p>Rango 1.25 - 1.50</p>
+                <tr>
+                    <td>${ajusteDelRele}:</td>
+                    <td><input type="number" class="swal2-input" id="swal2-InputtAjuste" value="${valorAjuste}" min="1.25" max="1.50"></td>
+                    <td>%</td>
+                </tr>
+
+            </table>
+        `,
+        showConfirmButton: true,
+        confirmButtonText: "Guardar",
+        showCloseButton: true,
+        showCancelButton: false,
+        customClass: {
+            confirmButton: 'botonGuardar hoverButton',
+        },
+        preConfirm: () => {
+            return [
+                document.getElementById("swal2-InputtAjuste").value
+            ]
+        }
+
+    })
+
+    if (formValues) {
+        //Swal.fire(JSON.stringify(formValues))
+
+        console.log("Valor colocadoooooo: ", formValues[0])
+
+        if (formValues[0] <= 1.25) {
+            formValues[0] = "1.25";
+            console.log("formValues[0]: ", formValues[0])
+        }
+        if (formValues[0] > 1.50) {
+            formValues[0] = "1.50"
+            console.log("formValues[0]: ", formValues[0])
+        }
+
+        if(rele == "r1") {
+            ajusteR1 = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0]);
+        }
+
+        if(rele == "r3") {
+            ajusteR3 = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0]);
+        }
+        if(rele == "r4") {
+            ajusteR4 = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0]);
+        }
+
+        if(rele == "r5") {
+            ajusteR5 = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0]);
+        }
+        if(rele == "r6") {
+            ajusteR6 = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0]);
+        }
+
+        if(rele == "r8") {
+            ajusteR8 = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0])
+        }
+
+    }
+
+
+}
+
+function desparecerAnillo() {
+    document.getElementById('anillo-tab-pane').style.display = "none";
+}
+
+function aparecerAnillo() {
+    document.getElementById('anillo-tab-pane').style.display = "block";
 }
