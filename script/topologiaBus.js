@@ -199,11 +199,13 @@ var tabla_umbral_tiempo_B = document.getElementById("umbral_tiempo_B");
 var tabla_umbral_tiempoRemoto_B = document.getElementById("umbral_tiempoRemoto_B");
 var tabla_umbral_tiempo_C = document.getElementById("umbral_tiempo_C");
 var tabla_nuevoumbral_tiempo_B = document.getElementById("nuevoumbral_tiempo_B");
-//var tabla_nuevoumbral_tiempoRemoto_B = document.getElementById("nuevoumbral_tiempoRemoto_B");
 var tabla_umbral_tiempoRemoto_A = document.getElementById("umbral_tiempoRemoto_A");
-//var tabla_nuevoumbral_tiempoRemoto_A = document.getElementById("nuevoumbral_tiempoRemoto_A");
 var tabla_umbral_tiempo_A = document.getElementById("umbral_tiempo_A");
-//var tabla_nuevoumbral_tiempo_A = document.getElementById("nuevoumbral_tiempo_A");
+
+var tabla_tiempoCoordinacionSuministrado_B = document.getElementById("tiempoCoordinacionSuministrado_B");
+var tabla_tiempoCoordinacionSuministrado_B_editar = document.getElementById("tiempoCoordinacionSuministrado_B_editar");
+var tabla_tiempoCoordinacionSuministrado_A = document.getElementById("tiempoCoordinacionSuministrado_A");
+var tabla_tiempoCoordinacionSuministrado_A_editar = document.getElementById("tiempoCoordinacionSuministrado_A_editar");
 
 var tabla_TMS_calculado_B = document.getElementById("TMS_calculado_B");
 var tabla_TMS_ingresado_B_IEC = document.getElementById("TMS_ingresado_B_IEC");
@@ -948,6 +950,11 @@ function CoordinacionBus() {
     tabla_umbral_tiempo_A.style.background = "#fefefe";
     tabla_umbral_tiempoRemoto_A.style.background = "#fefefe";
 
+    tabla_tiempoCoordinacionSuministrado_B.style.display = "block";
+    tabla_tiempoCoordinacionSuministrado_A.style.direction = "block";
+    tabla_tiempoCoordinacionSuministrado_B_editar.style.display = "none";
+    tabla_tiempoCoordinacionSuministrado_A_editar.style.display = "none";
+
     //tabla_nuevoumbral_tiempoRemoto_A.style.background = "#fefefe";
     //tabla_nuevoumbral_tiempo_A.style.background = "#fefefe";
 
@@ -1310,7 +1317,16 @@ function CalcularTiempoReleB_usandoTiempo(ajusteManual) {
 
     }
     else {
-        valorAjusteManualTMS = tabla_TMS_ingresado_B_IEC.value;
+
+        if(parametrosCurva[familiaCurva_B].IEC == 1){
+            valorAjusteManualTMS = tabla_TMS_ingresado_B_IEC.value;
+        }
+        else {
+            valorAjusteManualTMS = tabla_TMS_ingresado_B_ANSI.value;
+        }
+
+        
+        
         TMS_calculado_B = parseFloat(valorAjusteManualTMS);
     }
 
@@ -1340,6 +1356,9 @@ function CalcularTiempoReleB_usandoTiempo(ajusteManual) {
 
     tRemotoparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI * TMS_calculado_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C), 3))))));
 
+
+
+
     tiempoRemotoCalculado_B = tRemotoparteIEC_B + tRemotoparteANSI_B;
     console.log("tiempoRemotoCalculado_B ", tiempoRemotoCalculado_B)
 
@@ -1354,6 +1373,8 @@ function CalcularTiempoReleB_usandoTiempo(ajusteManual) {
     if ((umbral_tiempo_B > valor_umbral_tiempo_B) || (parseFloat(umbral_tiempoRemoto_B) > valor_umbral_tiempoRemoto_B)) {
 
         tabla_TMS_calculado_B.style.display = "none";
+        tabla_tiempoCoordinacionSuministrado_B_editar.style.display = "block";
+        
         if (parametrosCurva[familiaCurva_B].IEC == 1) {
             tabla_TMS_ingresado_B_IEC.style.display = "block";
             tabla_TMS_calculado_B_IEC.innerText = TMS_calculado_B;
@@ -1368,6 +1389,8 @@ function CalcularTiempoReleB_usandoTiempo(ajusteManual) {
     } else {
         tabla_TMS_calculado_B.style.display = "block";
         tabla_TMS_calculado_B.innerText = TMS_calculado_B;
+        tabla_tiempoCoordinacionSuministrado_B_editar.style.display = "none";
+        tabla_tiempoCoordinacionSuministrado_A_editar.style.display = "none";
     }
 
 
@@ -1693,7 +1716,13 @@ function CalcularTiempoReleA_usandoTiempo(ajusteManual) {
         TMS_calculado_A = parseFloat(TMSparteIEC_A) + parseFloat(TMSparteANSI_A);
 
     } else {
-        valorAjusteManualTMS = tabla_TMS_ingresado_A_IEC.value;
+        if(parametrosCurva[familiaCurva_A].IEC == 1){
+            valorAjusteManualTMS = tabla_TMS_ingresado_A_IEC.value;
+        }
+        else {
+            valorAjusteManualTMS = tabla_TMS_ingresado_A_ANSI.value;
+        }
+        
         TMS_calculado_A = parseFloat(valorAjusteManualTMS);
     }
 
@@ -1731,6 +1760,7 @@ function CalcularTiempoReleA_usandoTiempo(ajusteManual) {
     if ((umbral_tiempo_A > valor_umbral_tiempo_A) || (parseFloat(umbral_tiempoRemoto_A) > valor_umbral_tiempoRemoto_A)) {
 
         tabla_TMS_calculado_A.style.display = "none";
+        tabla_tiempoCoordinacionSuministrado_A_editar.style.display = "block";
         if (parametrosCurva[familiaCurva_A].IEC == 1) {
             tabla_TMS_ingresado_A_IEC.style.display = "block";
             tabla_TMS_calculado_A_IEC.innerText = TMS_calculado_A;
@@ -1747,6 +1777,8 @@ function CalcularTiempoReleA_usandoTiempo(ajusteManual) {
     } else {
         tabla_TMS_calculado_A.style.display = "block";
         tabla_TMS_calculado_A.innerText = TMS_calculado_A;
+        tabla_tiempoCoordinacionSuministrado_B_editar.style.display = "none";
+        tabla_tiempoCoordinacionSuministrado_A_editar.style.display = "none";
     }
 
 
@@ -1861,7 +1893,7 @@ function CalcularTiempoReleA_usandoTiempo(ajusteManual) {
 
     if ((umbral_tiempo_A <= valor_umbral_tiempo_A) && (parseFloat(umbral_tiempoRemoto_A) <= valor_umbral_tiempoRemoto_A)) {
         //CalcularTiempoReleA_usandoTiempo('no')
-        tabla_TMS_calculado_A.style.display = "none";
+        tabla_TMS_calculado_A.style.display = "block";
         modeloRele[0].TMS = TMS_calculado_A;
         graficarCurvaTopologiaBus();
         ReleA_Coordinacion.style.display = "block";
@@ -2089,7 +2121,7 @@ function ajustarTiempoA_usandoTiempo(reajustoManual) {
 }
 
 
-//PROCEDIMIENTO CUANDO EL USUARIO COLOCA EL TMS ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//PROCEDIMIENTO CUANDO EL USUARIO COLOCA EL TMS -------------------------------------------------------
 
 function CalcularConDialReleC() {
     Isc_ReleA = modeloRele[0].Isc;
@@ -2254,9 +2286,7 @@ function CalcularTiempoReleB_usandoDial() {
         }
         else {
 
-
         }
-
 
         ReleB_Coordinacion.style.display = "block";
         CoordinacionBporDial.style.display = "block";
@@ -2832,6 +2862,83 @@ async function valorUmbral(umbral) {
 
 }
 
+async function ajustarTiempoCoordinacion(rele) {
+    var tiempoCoordinacion;
+    var nombreCoordinacion;
+
+    if(rele == "B") {
+        nombreCoordinacion = "Tiempo coordinación B";
+        tiempoCoordinacion = modeloRele[1].tiempoCoordinacion;
+    }
+
+    if(rele == "A") {
+        nombreCoordinacion = "Tiempo coordinación A";
+        tiempoCoordinacion = modeloRele[0].tiempoCoordinacion;
+    }
+
+    const { value: formValues } = await Swal.fire({
+        title: "Editar  " +  nombreCoordinacion,
+        background: '#fefefe',
+        html: `
+            <table class="table table-responsive "> 
+                <tr>
+                    <td>${nombreCoordinacion}:</td>
+                    <td><input type="number" class="swal2-input" id="swal2-Inputttt" value="${tiempoCoordinacion/1000}" min="0" max="2"></td>
+                    <td>[seg]</td>
+                </tr>
+                <p>Rango: (0 - 2 ) </p>
+
+            </table>
+        `,
+        showConfirmButton: true,
+        confirmButtonText: "Guardar",
+        showCloseButton: true,
+        showCancelButton: false,
+        customClass: {
+            confirmButton: 'botonGuardar hoverButton',
+        },
+        preConfirm: () => {
+            return [
+                document.getElementById("swal2-Inputttt").value
+            ]
+        }
+
+    })
+
+    if (formValues) {
+        //Swal.fire(JSON.stringify(formValues))
+
+        console.log("Valor colocadoooooo: ", formValues[0])
+
+        if (formValues[0] <= 0) {
+            formValues[0] = "0";
+            console.log("formValues[0]: ", formValues[0])
+        }
+        if (formValues[0] > 2) {
+            formValues[0] = "2"
+            console.log("formValues[0]: ", formValues[0])
+        }
+
+
+        if (rele == "B") {
+            modeloRele[1].tiempoCoordinacion = parseFloat(formValues[0])*1000;
+            tabla_tiempoCoordinacionSuministrado_B.innerText = formValues[0];
+            console.log("Elllllll valor: ", parseFloat(formValues[0]))
+
+        }
+        if (rele == "A") {
+            modeloRele[0].tiempoCoordinacion = parseFloat(formValues[0])*1000;
+            tabla_tiempoCoordinacionSuministrado_A.innerText = formValues[0];
+            console.log("Elllllll valor: ", parseFloat(formValues[0]))
+
+        }
+
+        CoordinacionBus()   
+    }
+
+    
+}
+
 
 function ocultarGraficaBus() {
     document.getElementById('myChart').style.display = "none";
@@ -2840,5 +2947,4 @@ function ocultarGraficaBus() {
 function mostrarGraficaBus() {
     document.getElementById('myChart').style.display = "block";
 }
-
 

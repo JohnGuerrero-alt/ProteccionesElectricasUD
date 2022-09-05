@@ -566,8 +566,11 @@
                                                                             <option value="1">1</option>
                                                                         </select>
 
-                                                                        <select name="" id="TMS_ingresado_B_ANSI"
-                                                                            style="display: none">
+                                                                        <select
+                                                                            onchange="CalcularTiempoReleB_usandoTiempo('si') "
+                                                                            name="" id="TMS_ingresado_B_ANSI"
+                                                                            style="display: none"
+                                                                            class="form-select form-select-sm">
                                                                             <option id="TMS_calculado_B_ANSI" selected>
                                                                                 Open this select menu
                                                                             </option>
@@ -683,7 +686,16 @@
                                                                     <th>Error <br> tiempo remoto <br> [%]</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td id="tiempoCoordinacionSuministrado_B"></td>
+                                                                    <td
+                                                                        style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
+                                                                        <p id="tiempoCoordinacionSuministrado_B"></p>
+                                                                        <img src="assets/images/Anillo/editar.png"
+                                                                            class="seleccionReleAnillo botonEditar"
+                                                                            width="17" height="17"
+                                                                            id="tiempoCoordinacionSuministrado_B_editar"
+                                                                            onclick="ajustarTiempoCoordinacion('B')">
+
+                                                                    </td>
                                                                     <td id="tiempoRemotoEsperado_B"></td>
                                                                     <td id="tiempoRemotoCalculado_B"></td>
                                                                     <td id="umbral_tiempoRemoto_B"></td>
@@ -891,16 +903,16 @@
                                                             </thead>
                                                             <tbody class="tabla-rele-bus">
                                                                 <tr>
-                                                                    <td >
+                                                                    <td>
                                                                         <p id="TMS_calculado_A"></p>
-                                                                        
+
                                                                         <select
                                                                             onchange="CalcularTiempoReleA_usandoTiempo('si') "
                                                                             class="form-select form-select-sm"
                                                                             aria-label=".form-select-sm example"
                                                                             id="TMS_ingresado_A_IEC">
                                                                             <option id="TMS_calculado_A_IEC" selected>
-                                                                                
+
                                                                             </option>
 
                                                                             <option value="0.01">0.01</option>
@@ -1003,8 +1015,11 @@
                                                                             <option value="1">1</option>
                                                                         </select>
 
-                                                                        <select name="" id="TMS_ingresado_A_ANSI"
-                                                                            style="display: none">
+                                                                        <select
+                                                                            onchange="CalcularTiempoReleA_usandoTiempo('si') "
+                                                                            name="" id="TMS_ingresado_A_ANSI"
+                                                                            style="display: none"
+                                                                            class="form-select form-select-sm">
                                                                             <option id="TMS_calculado_A_ANSI" selected>
                                                                             </option>
                                                                             <option value="1">1</option>
@@ -1120,7 +1135,16 @@
                                                                     <th>Error <br> tiempo remoto <br> [%]</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td id="tiempoCoordinacionSuministrado_A"></td>
+                                                                    <td
+                                                                        style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
+                                                                        <p id="tiempoCoordinacionSuministrado_A"></p>
+                                                                        <img src="assets/images/Anillo/editar.png"
+                                                                            class="seleccionReleAnillo botonEditar"
+                                                                            width="17" height="17"
+                                                                            id="tiempoCoordinacionSuministrado_A_editar"
+                                                                            onclick="ajustarTiempoCoordinacion('A')">
+
+                                                                    </td>
                                                                     <td id="tiempoRemotoEsperado_A"></td>
                                                                     <td id="tiempoRemotoCalculado_A"></td>
                                                                     <td id="umbral_tiempoRemoto_A"></td>
@@ -1965,6 +1989,7 @@
                                                             <th scope="col">Isc <br> Anillo Abierto A <br> [A]</th>
                                                             <th scope="col">Isc <br> Anillo Abierto B <br> [A]</th>
                                                             <th scope="col">Isc <br> máx <br> [A]</th>
+                                                            <th scope="col">Ajuste <br>unidad</th>
                                                             <th scope="col">Ipickup <br> [A]</th>
                                                         </tr>
                                                     </thead>
@@ -1984,10 +2009,11 @@
                                                             <td id="Isc_aaA_metodo1_r1"></td>
                                                             <td id="Isc_aaB_metodo1_r1"></td>
                                                             <td id="Isc_maxMetodo1_r1"></td>
+                                                            <td id="Ajuste_Metodo1_r1"></td>
                                                             <td id="Ipickup_metodo1_r1"></td>
 
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="relesMiranGenerador">
                                                             <!-- <th>Isc Izquieda [A]</th>
                                                                 <td id="Isc_izquierda1"></td>
                                                                 <td id="">1</td>
@@ -2001,6 +2027,7 @@
                                                             <td id="Isc_aaA_metodo1_r2"></td>
                                                             <td id="Isc_aaB_metodo1_r2"></td>
                                                             <td id="Isc_maxMetodo1_r2"></td>
+                                                            <td id="Ajuste_Metodo1_r2"></td>
                                                             <td id="Ipickup_metodo1_r2"></td>
 
                                                         </tr>
@@ -2018,6 +2045,7 @@
                                                             <td id="Isc_aaA_metodo1_r3"></td>
                                                             <td id="Isc_aaB_metodo1_r3"></td>
                                                             <td id="Isc_maxMetodo1_r3"></td>
+                                                            <td id="Ajuste_Metodo1_r3"></td>
                                                             <td id="Ipickup_metodo1_r3"></td>
 
                                                         </tr>
@@ -2035,6 +2063,7 @@
                                                             <td id="Isc_aaA_metodo1_r4"></td>
                                                             <td id="Isc_aaB_metodo1_r4"></td>
                                                             <td id="Isc_maxMetodo1_r4"></td>
+                                                            <td id="Ajuste_Metodo1_r4"></td>
                                                             <td id="Ipickup_metodo1_r4"></td>
 
                                                         </tr>
@@ -2053,6 +2082,7 @@
                                                             <td id="Isc_aaA_metodo1_r5"></td>
                                                             <td id="Isc_aaB_metodo1_r5"></td>
                                                             <td id="Isc_maxMetodo1_r5"></td>
+                                                            <td id="Ajuste_Metodo1_r5"></td>
                                                             <td id="Ipickup_metodo1_r5"></td>
 
                                                         </tr>
@@ -2071,10 +2101,11 @@
                                                             <td id="Isc_aaA_metodo1_r6"></td>
                                                             <td id="Isc_aaB_metodo1_r6"></td>
                                                             <td id="Isc_maxMetodo1_r6"></td>
+                                                            <td id="Ajuste_Metodo1_r6"></td>
                                                             <td id="Ipickup_metodo1_r6"></td>
 
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="relesMiranGenerador">
                                                             <!-- <th>Isc Derecha [A]</th>
                                                                 <td id="Isc_derecha1"></td>
                                                                 <td id="">8-6-4</td>
@@ -2089,6 +2120,7 @@
                                                             <td id="Isc_aaA_metodo1_r7"></td>
                                                             <td id="Isc_aaB_metodo1_r7"></td>
                                                             <td id="Isc_maxMetodo1_r7"></td>
+                                                            <td id="Ajuste_Metodo1_r7"></td>
                                                             <td id="Ipickup_metodo1_r7"></td>
 
                                                         </tr>
@@ -2100,6 +2132,7 @@
                                                             <td id="Isc_aaA_metodo1_r8"></td>
                                                             <td id="Isc_aaB_metodo1_r8"></td>
                                                             <td id="Isc_maxMetodo1_r8"></td>
+                                                            <td id="Ajuste_Metodo1_r8"></td>
                                                             <td id="Ipickup_metodo1_r8"></td>
 
                                                         </tr>
@@ -2108,6 +2141,10 @@
 
 
                                             </div>
+
+                                            <p class="justify"> <span style="color: #5599ff;">█</span> Los relés que miran
+                                                hacia el generador (2 y 7), se ajustan con la corriente de carga máxima y
+                                                usando un criterio del 50% adicional (1.5) </p>
 
                                         </div>
 
@@ -2124,81 +2161,16 @@
                                         </div>
 
                                         <div class="tabla_metodo2CorrienteAnillo">
-                                            <table class="table align-middle tamañoLetraAspectosRele table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Relé</th>
-                                                        <th scope="col">Ic <br> [A]</th>
-                                                        <th scope="col">Isc <br> Anillo Cerrado <br> [A]</th>
-                                                        <th scope="col">Isc - 50%L <br> Anillo Abierto <br> [A]</th>
-                                                        <th scope="col">Isc <br> máx <br> [A]</th>
-                                                        <th scope="col"> Ipickup <br> [A]</th>
-
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th>1</th>
-                                                        <td id="Ic_metodo2_r1"></td>
-                                                        <td id="Isc_aC_metodo2_r1"></td>
-                                                        <td id="Isc_aA_metodo2_r1"></td>
-                                                        <td id="Isc_criterio_metodo2_r1"></td>
-                                                        <td id="Ipickup_criterio_metodo2_r1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>3</th>
-                                                        <td id="Ic_metodo2_r3"></td>
-                                                        <td id="Isc_aC_metodo2_r3"></td>
-                                                        <td id="Isc_aA_metodo2_r3"></td>
-                                                        <td id="Isc_criterio_metodo2_r3"></td>
-                                                        <td id="Ipickup_criterio_metodo2_r3"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>4</th>
-                                                        <td id="Ic_metodo2_r4"></td>
-                                                        <td id="Isc_aC_metodo2_r4"></td>
-                                                        <td id="Isc_aA_metodo2_r4"></td>
-                                                        <td id="Isc_criterio_metodo2_r4"></td>
-                                                        <td id="Ipickup_criterio_metodo2_r4"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>5</th>
-                                                        <td id="Ic_metodo2_r5"></td>
-                                                        <td id="Isc_aC_metodo2_r5"></td>
-                                                        <td id="Isc_aA_metodo2_r5"></td>
-                                                        <td id="Isc_criterio_metodo2_r5"></td>
-                                                        <td id="Ipickup_criterio_metodo2_r5"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>6</th>
-                                                        <td id="Ic_metodo2_r6"></td>
-                                                        <td id="Isc_aC_metodo2_r6"></td>
-                                                        <td id="Isc_aA_metodo2_r6"></td>
-                                                        <td id="Isc_criterio_metodo2_r6"></td>
-                                                        <td id="Ipickup_criterio_metodo2_r6"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>8</th>
-                                                        <td id="Ic_metodo2_r8"></td>
-                                                        <td id="Isc_aC_metodo2_r8"></td>
-                                                        <td id="Isc_aA_metodo2_r8"></td>
-                                                        <td id="Isc_criterio_metodo2_r8"></td>
-                                                        <td id="Ipickup_criterio_metodo2_r8"></td>
-                                                    </tr>
-                                                </tbody>
-
-                                            </table>
-                                            <br>
 
                                             <table class="table table-bordered  align-middle tamañoLetraAspectosRele">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Relé</th>
                                                         <th scope="col">Ic <br> [A]</th>
-                                                        <th scope="col">Isc - 50%L<br> Anillo Cerrado <br> [A]</th>
-                                                        <th scope="col">Isc <br> Anillo Abierto <br> [A]</th>
+                                                        <th scope="col">Isc - 50%Linea<br> Anillo Cerrado <br> [A]</th>
+                                                        <th scope="col">Isc - Extremo Linea <br> Anillo Abierto <br> [A]</th>
                                                         <th scope="col">Isc <br> mín <br> [A]</th>
+                                                        <th scope="col">Ajuste <br> unidad</th>
                                                         <th scope="col"> Ipickup <br> [A]</th>
 
 
@@ -2212,6 +2184,7 @@
                                                         <td id="Isc_aC_metodo2_r2"></td>
                                                         <td id="Isc_aA_metodo2_r2"></td>
                                                         <td id="Isc_criterio_metodo2_r2"></td>
+                                                        <td id="Ajuste_criterio_metodo2_r2"></td>
                                                         <td id="Ipickup_criterio_metodo2_r2"></td>
                                                     </tr>
                                                     <tr>
@@ -2220,10 +2193,88 @@
                                                         <td id="Isc_aC_metodo2_r7"></td>
                                                         <td id="Isc_aA_metodo2_r7"></td>
                                                         <td id="Isc_criterio_metodo2_r7"></td>
+                                                        <td id="Ajuste_criterio_metodo2_r7"></td>
                                                         <td id="Ipickup_criterio_metodo2_r7"> </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
+                                            <br>
+
+                                            <table class="table align-middle tamañoLetraAspectosRele table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Relé</th>
+                                                        <th scope="col">Ic <br> [A]</th>
+                                                        <th scope="col">Isc - Extremo Linea<br> Anillo Cerrado <br> [A]</th>
+                                                        <th scope="col">Isc - 50%Linea <br> Anillo Abierto <br> [A]</th>
+                                                        <th scope="col">Isc <br> máx <br> [A]</th>
+                                                        <th scope="col">Ajuste <br> unidad </th>
+                                                        <th scope="col"> Ipickup <br> [A]</th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>1</th>
+                                                        <td id="Ic_metodo2_r1"></td>
+                                                        <td id="Isc_aC_metodo2_r1"></td>
+                                                        <td id="Isc_aA_metodo2_r1"></td>
+                                                        <td id="Isc_criterio_metodo2_r1"></td>
+                                                        <td id="Ajuste_criterio_metodo2_r1"></td>
+                                                        <td id="Ipickup_criterio_metodo2_r1"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>3</th>
+                                                        <td id="Ic_metodo2_r3"></td>
+                                                        <td id="Isc_aC_metodo2_r3"></td>
+                                                        <td id="Isc_aA_metodo2_r3"></td>
+                                                        <td id="Isc_criterio_metodo2_r3"></td>
+                                                        <td id="Ajuste_criterio_metodo2_r3"></td>
+                                                        <td id="Ipickup_criterio_metodo2_r3"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>4</th>
+                                                        <td id="Ic_metodo2_r4"></td>
+                                                        <td id="Isc_aC_metodo2_r4"></td>
+                                                        <td id="Isc_aA_metodo2_r4"></td>
+                                                        <td id="Isc_criterio_metodo2_r4"></td>
+                                                        <td id="Ajuste_criterio_metodo2_r4"></td>
+                                                        <td id="Ipickup_criterio_metodo2_r4"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>5</th>
+                                                        <td id="Ic_metodo2_r5"></td>
+                                                        <td id="Isc_aC_metodo2_r5"></td>
+                                                        <td id="Isc_aA_metodo2_r5"></td>
+                                                        <td id="Isc_criterio_metodo2_r5"></td>
+                                                        <td id="Ajuste_criterio_metodo2_r5"></td>
+                                                        <td id="Ipickup_criterio_metodo2_r5"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>6</th>
+                                                        <td id="Ic_metodo2_r6"></td>
+                                                        <td id="Isc_aC_metodo2_r6"></td>
+                                                        <td id="Isc_aA_metodo2_r6"></td>
+                                                        <td id="Isc_criterio_metodo2_r6"></td>
+                                                        <td id="Ajuste_criterio_metodo2_r6"></td>
+                                                        <td id="Ipickup_criterio_metodo2_r6"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>8</th>
+                                                        <td id="Ic_metodo2_r8"></td>
+                                                        <td id="Isc_aC_metodo2_r8"></td>
+                                                        <td id="Isc_aA_metodo2_r8"></td>
+                                                        <td id="Isc_criterio_metodo2_r8"></td>
+                                                        <td id="Ajuste_criterio_metodo2_r8"></td>
+                                                        <td id="Ipickup_criterio_metodo2_r8"></td>
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+                                            <br>
+
+
                                         </div>
 
                                     </div>
@@ -2242,6 +2293,7 @@
                                                             Método 1</th>
                                                         <th scope="col" class="">Isc máx [A] <br>
                                                             Método 2</th>
+                                                        <th scope="col">Ajuste<br> unidad</th>
                                                         <th scope="col">Ipickup [A]<br> Método 1</th>
                                                         <th scope="col" class="">Ipickup [A]<br> Método 2</th>
                                                         <th scope="col">&#8710; Isc máx [%]<br> Método 1-2</th>
@@ -2256,6 +2308,7 @@
                                                         <td id="resumen_Icarga1"></td>
                                                         <td id="Isc_metodo1_r1"></td>
                                                         <td id="Isc_metodo2_r1"></td>
+                                                        <td id="Ajuste_resumen_r1"></td>
                                                         <td id="IpickupR_metodo1_r1"></td>
                                                         <td id="Ipickup_metodo2_r1"> </td>
                                                         <td id="deltaIsc_r1"></td>
@@ -2266,6 +2319,7 @@
                                                         <td id="resumen_Icarga2"></td>
                                                         <td id="Isc_metodo1_r2"></td>
                                                         <td id="Isc_metodo2_r2"></td>
+                                                        <td id="Ajuste_resumen_r2"></td>
                                                         <td id="IpickupR_metodo1_r2"> </td>
                                                         <td id="Ipickup_metodo2_r2"></td>
                                                         <td id="deltaIsc_r2"></td>
@@ -2276,6 +2330,7 @@
                                                         <td id="resumen_Icarga3"></td>
                                                         <td id="Isc_metodo1_r3"></td>
                                                         <td id="Isc_metodo2_r3"></td>
+                                                        <td id="Ajuste_resumen_r3"></td>
                                                         <td id="IpickupR_metodo1_r3"></td>
                                                         <td id="Ipickup_metodo2_r3"></td>
                                                         <td id="deltaIsc_r3"> </td>
@@ -2286,6 +2341,7 @@
                                                         <td id="resumen_Icarga4"></td>
                                                         <td id="Isc_metodo1_r4"></td>
                                                         <td id="Isc_metodo2_r4"></td>
+                                                        <td id="Ajuste_resumen_r4"></td>
                                                         <td id="IpickupR_metodo1_r4"></td>
                                                         <td id="Ipickup_metodo2_r4"></td>
                                                         <td id="deltaIsc_r4"></td>
@@ -2296,6 +2352,7 @@
                                                         <td id="resumen_Icarga5"></td>
                                                         <td id="Isc_metodo1_r5"></td>
                                                         <td id="Isc_metodo2_r5"></td>
+                                                        <td id="Ajuste_resumen_r5"></td>
                                                         <td id="IpickupR_metodo1_r5"></td>
                                                         <td id="Ipickup_metodo2_r5"></td>
                                                         <td id="deltaIsc_r5"></td>
@@ -2306,6 +2363,7 @@
                                                         <td id="resumen_Icarga6"></td>
                                                         <td id="Isc_metodo1_r6"></td>
                                                         <td id="Isc_metodo2_r6"></td>
+                                                        <td id="Ajuste_resumen_r6"></td>
                                                         <td id="IpickupR_metodo1_r6"></td>
                                                         <td id="Ipickup_metodo2_r6"></td>
                                                         <td id="deltaIsc_r6"></td>
@@ -2316,6 +2374,7 @@
                                                         <td id="resumen_Icarga7"></td>
                                                         <td id="Isc_metodo1_r7"></td>
                                                         <td id="Isc_metodo2_r7"></td>
+                                                        <td id="Ajuste_resumen_r7"></td>
                                                         <td id="IpickupR_metodo1_r7"></td>
                                                         <td id="Ipickup_metodo2_r7"></td>
                                                         <td id="deltaIsc_r7"></td>
@@ -2326,6 +2385,7 @@
                                                         <td id="resumen_Icarga8"></td>
                                                         <td id="Isc_metodo1_r8"></td>
                                                         <td id="Isc_metodo2_r8"></td>
+                                                        <td id="Ajuste_resumen_r8"></td>
                                                         <td id="IpickupR_metodo1_r8"></td>
                                                         <td id="Ipickup_metodo2_r8"></td>
                                                         <td id="deltaIsc_r8"></td>

@@ -1021,6 +1021,16 @@ function imprimirResultados() {
     document.getElementById("Isc_maxMetodo1_r7").innerText = "-";
     document.getElementById("Isc_maxMetodo1_r8").innerText = Isc_Rele8.toFixed(2);
 
+    //Imprimir valores ajuste unidad : (Ajuste_Metodo1_r(numeroDelRele))
+    document.getElementById("Ajuste_Metodo1_r1").innerText = ajusteR1.toFixed(2);
+    document.getElementById("Ajuste_Metodo1_r2").innerText = ajusteR2.toFixed(2);
+    document.getElementById("Ajuste_Metodo1_r3").innerText = ajusteR3.toFixed(2);
+    document.getElementById("Ajuste_Metodo1_r4").innerText = ajusteR4.toFixed(2);
+    document.getElementById("Ajuste_Metodo1_r5").innerText = ajusteR5.toFixed(2);
+    document.getElementById("Ajuste_Metodo1_r6").innerText = ajusteR6.toFixed(2);
+    document.getElementById("Ajuste_Metodo1_r7").innerText = ajusteR7.toFixed(2);
+    document.getElementById("Ajuste_Metodo1_r8").innerText = ajusteR8.toFixed(2);
+
     //Imprimir valores Ipickup : (Ipickup_metodo1_r(numeroDelRele))
     document.getElementById("Ipickup_metodo1_r1").innerText = (Isc_Rele1 * ajusteR1).toFixed(2);
     document.getElementById("Ipickup_metodo1_r2").innerText = (Ic_A *ajusteR2).toFixed(2);
@@ -1074,15 +1084,25 @@ function imprimirResultados() {
     document.getElementById("Isc_criterio_metodo2_r7").innerText = Isc2_Rele7;
     document.getElementById("Isc_criterio_metodo2_r8").innerText = Isc2_Rele8;
 
+    //Imprimir valores Ipickup :  (Ajuste_criterio_metodo2_r(numeroDelRele))
+    document.getElementById("Ajuste_criterio_metodo2_r1").innerText = ajusteR1.toFixed(2);
+    document.getElementById("Ajuste_criterio_metodo2_r2").innerText = ajusteR2.toFixed(2);
+    document.getElementById("Ajuste_criterio_metodo2_r3").innerText = ajusteR3.toFixed(2);
+    document.getElementById("Ajuste_criterio_metodo2_r4").innerText = ajusteR4.toFixed(2);
+    document.getElementById("Ajuste_criterio_metodo2_r5").innerText = ajusteR5.toFixed(2);
+    document.getElementById("Ajuste_criterio_metodo2_r6").innerText = ajusteR6.toFixed(2);
+    document.getElementById("Ajuste_criterio_metodo2_r7").innerText = ajusteR7.toFixed(2);
+    document.getElementById("Ajuste_criterio_metodo2_r8").innerText = ajusteR8.toFixed(2);
+
     //Imprimir valores Ipickup :  (Ipickup_criterio_metodo2_r(numeroDelRele))
-    document.getElementById("Ipickup_criterio_metodo2_r1").innerText = (Isc2_Rele1 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_criterio_metodo2_r2").innerText = (Isc2_Rele2);
-    document.getElementById("Ipickup_criterio_metodo2_r3").innerText = (Isc2_Rele3 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_criterio_metodo2_r4").innerText = (Isc2_Rele4 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_criterio_metodo2_r5").innerText = (Isc2_Rele5 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_criterio_metodo2_r6").innerText = (Isc2_Rele6 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_criterio_metodo2_r7").innerText = (Isc2_Rele7);
-    document.getElementById("Ipickup_criterio_metodo2_r8").innerText = (Isc2_Rele8 * 1.25).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r1").innerText = (Isc2_Rele1 * ajusteR1).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r2").innerText = (Isc2_Rele2 * 1.5).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r3").innerText = (Isc2_Rele3 * ajusteR3).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r4").innerText = (Isc2_Rele4 * ajusteR4).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r5").innerText = (Isc2_Rele5 * ajusteR5).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r6").innerText = (Isc2_Rele6 * ajusteR6).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r7").innerText = (Isc2_Rele7 * 1.5).toFixed(2);
+    document.getElementById("Ipickup_criterio_metodo2_r8").innerText = (Isc2_Rele8 * ajusteR8).toFixed(2);
 
 
 
@@ -1120,6 +1140,17 @@ function imprimirResultados() {
     document.getElementById("Isc_metodo2_r7").innerText = Isc2_Rele7;
     document.getElementById("Isc_metodo2_r8").innerText = Isc2_Rele8;
 
+    //Imprimir valores ajuste resumen
+    document.getElementById("Ajuste_resumen_r1").innerText = ajusteR1.toFixed(2);
+    document.getElementById("Ajuste_resumen_r2").innerText = ajusteR2.toFixed(2);
+    document.getElementById("Ajuste_resumen_r3").innerText = ajusteR3.toFixed(2);
+    document.getElementById("Ajuste_resumen_r4").innerText = ajusteR4.toFixed(2);
+    document.getElementById("Ajuste_resumen_r5").innerText = ajusteR5.toFixed(2);
+    document.getElementById("Ajuste_resumen_r6").innerText = ajusteR6.toFixed(2);
+    document.getElementById("Ajuste_resumen_r7").innerText = ajusteR7.toFixed(2);
+    document.getElementById("Ajuste_resumen_r8").innerText = ajusteR8.toFixed(2);
+
+
     //Imprimir  valores Ipickup usando el método 1 
     document.getElementById("IpickupR_metodo1_r1").innerText = (Isc_Rele1 * ajusteR1).toFixed(2);
     document.getElementById("IpickupR_metodo1_r2").innerText = (Ic_A * ajusteR2).toFixed(2);
@@ -1131,14 +1162,14 @@ function imprimirResultados() {
     document.getElementById("IpickupR_metodo1_r8").innerText = (Isc_Rele8 * ajusteR8).toFixed(2);
 
     //Imprimir valores Ipickyp usando el método 2
-    document.getElementById("Ipickup_metodo2_r1").innerText = (Isc2_Rele1 * 1.25).toFixed(2);
+    document.getElementById("Ipickup_metodo2_r1").innerText = (Isc2_Rele1 * ajusteR1).toFixed(2);
     document.getElementById("Ipickup_metodo2_r2").innerText = (Isc2_Rele2 * 1.5).toFixed(2);
-    document.getElementById("Ipickup_metodo2_r3").innerText = (Isc2_Rele3 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_metodo2_r4").innerText = (Isc2_Rele4 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_metodo2_r5").innerText = (Isc2_Rele5 * 1.25).toFixed(2);
-    document.getElementById("Ipickup_metodo2_r6").innerText = (Isc2_Rele6 * 1.25).toFixed(2);
+    document.getElementById("Ipickup_metodo2_r3").innerText = (Isc2_Rele3 * ajusteR3).toFixed(2);
+    document.getElementById("Ipickup_metodo2_r4").innerText = (Isc2_Rele4 * ajusteR4).toFixed(2);
+    document.getElementById("Ipickup_metodo2_r5").innerText = (Isc2_Rele5 * ajusteR5).toFixed(2);
+    document.getElementById("Ipickup_metodo2_r6").innerText = (Isc2_Rele6 * ajusteR6).toFixed(2);
     document.getElementById("Ipickup_metodo2_r7").innerText = (Isc2_Rele7 * 1.5).toFixed(2);
-    document.getElementById("Ipickup_metodo2_r8").innerText = (Isc2_Rele8 * 1.25).toFixed(2);
+    document.getElementById("Ipickup_metodo2_r8").innerText = (Isc2_Rele8 * ajusteR8).toFixed(2);
 
     //Imprimir delta Isc max
     document.getElementById("deltaIsc_r1").innerText = ((Math.abs(Isc_Rele1 - Isc2_Rele1) / Isc_Rele1) * 100).toFixed(2);
@@ -1153,16 +1184,16 @@ function imprimirResultados() {
     document.getElementById("deltaIsc_r8").innerText = ((Math.abs(Isc_Rele8 - Isc2_Rele8) / Isc_Rele8) * 100).toFixed(2);
 
     //Imprimir delta Ipickup 
-    document.getElementById("deltaIpickup_r1").innerText = ((Math.abs((Isc_Rele1 * ajusteR1) - (Isc2_Rele1 * 1.25)) / (Isc_Rele1 * 1.25)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r1").innerText = ((Math.abs((Isc_Rele1 * ajusteR1) - (Isc2_Rele1 * ajusteR1)) / (Isc_Rele1 * ajusteR1)) * 100).toFixed(2);
     //document.getElementById("deltaIpickup_r2").innerText = ((Math.abs((Isc_Rele2 * 1.5) - (Isc2_Rele2 * 1.5)) / (Isc_Rele2 * 1.5)) * 100).toFixed(2);
     document.getElementById("deltaIpickup_r2").innerText = "-";
-    document.getElementById("deltaIpickup_r3").innerText = ((Math.abs((Isc_Rele3 * ajusteR3) - (Isc2_Rele3 * 1.25)) / (Isc_Rele3 * 1.25)) * 100).toFixed(2);
-    document.getElementById("deltaIpickup_r4").innerText = ((Math.abs((Isc_Rele4 * ajusteR4) - (Isc2_Rele4 * 1.25)) / (Isc_Rele4 * 1.25)) * 100).toFixed(2);
-    document.getElementById("deltaIpickup_r5").innerText = ((Math.abs((Isc_Rele5 * ajusteR5) - (Isc2_Rele5 * 1.25)) / (Isc_Rele5 * 1.25)) * 100).toFixed(2);
-    document.getElementById("deltaIpickup_r6").innerText = ((Math.abs((Isc_Rele6 * ajusteR6) - (Isc2_Rele6 * 1.25)) / (Isc_Rele6 * 1.25)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r3").innerText = ((Math.abs((Isc_Rele3 * ajusteR3) - (Isc2_Rele3 * ajusteR3)) / (Isc_Rele3 * ajusteR3)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r4").innerText = ((Math.abs((Isc_Rele4 * ajusteR4) - (Isc2_Rele4 * ajusteR4)) / (Isc_Rele4 * ajusteR4)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r5").innerText = ((Math.abs((Isc_Rele5 * ajusteR5) - (Isc2_Rele5 * ajusteR5)) / (Isc_Rele5 * ajusteR5)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r6").innerText = ((Math.abs((Isc_Rele6 * ajusteR6) - (Isc2_Rele6 * ajusteR6)) / (Isc_Rele6 * ajusteR6)) * 100).toFixed(2);
     // document.getElementById("deltaIpickup_r7").innerText = ((Math.abs((Isc_Rele7 * 1.5) - (Isc2_Rele7 * 1.5)) / (Isc_Rele7 * 1.5)) * 100).toFixed(2);
     document.getElementById("deltaIpickup_r7").innerText = "-";
-    document.getElementById("deltaIpickup_r8").innerText = ((Math.abs((Isc_Rele8 * ajusteR8) - (Isc2_Rele8 * 1.25)) / (Isc_Rele8 * 1.25)) * 100).toFixed(2);
+    document.getElementById("deltaIpickup_r8").innerText = ((Math.abs((Isc_Rele8 * ajusteR8) - (Isc2_Rele8 * ajusteR8)) / (Isc_Rele8 * ajusteR8)) * 100).toFixed(2);
     //-----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -2156,8 +2187,8 @@ function metodologiaAnillo() {
                     <p> - Segundo valor:  El nivel de la corriente que ve el interruptor para una falla en el extremo de la linea <b>estando abierto el anillo</b>. <span style="color:blue;">(*)</span>  </p> 
                     
                     <p>2. Se ajusta luego el relé siguiente (hacia atrás) con el <b>mayor</b> de los dos valores siguientes: <p>
-                    <p> - Primer valor: 1.25 veces la <u>Isc</u> que ve el interruptor asociado para una falla en la S/E adyacente a la generadora, <b>estando el anillo cerrado</b>. </p>
-                    <p> - Segundo valor: 1.25 veces la  <u>Isc</u> que ve el mismo interruptor para una falla en el 50% de la linea (o en el porcentaje de cubrimiento con el valor de ajuste que se obtuvo en <span style="color:blue">(*)</span> <b>estando el anillo abierto</b>. </p> 
+                    <p> - Primer valor: (1.25-1.5) veces la <u>Isc</u> que ve el interruptor asociado para una falla en la S/E adyacente a la generadora, <b>estando el anillo cerrado</b>. </p>
+                    <p> - Segundo valor: (1.25-1.5) veces la  <u>Isc</u> que ve el mismo interruptor para una falla en el 50% de la linea (o en el porcentaje de cubrimiento con el valor de ajuste que se obtuvo en <span style="color:blue">(*)</span> <b>estando el anillo abierto</b>. </p> 
                     
                 </div>
             
@@ -2246,32 +2277,33 @@ async function criterioAjuste(rele) {
 
         if(rele == "r1") {
             ajusteR1 = parseFloat(formValues[0]);
-            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0]).toFixed(2);
         }
 
         if(rele == "r3") {
             ajusteR3 = parseFloat(formValues[0]);
-            document.getElementById("ajuste_r3").innerText = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r3").innerText = parseFloat(formValues[0]).toFixed(2);
         }
         if(rele == "r4") {
             ajusteR4 = parseFloat(formValues[0]);
-            document.getElementById("ajuste_r4").innerText = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r4").innerText = parseFloat(formValues[0]).toFixed(2);
         }
 
         if(rele == "r5") {
             ajusteR5 = parseFloat(formValues[0]);
-            document.getElementById("ajuste_r5").innerText = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r5").innerText = parseFloat(formValues[0]).toFixed(2);
         }
         if(rele == "r6") {
             ajusteR6 = parseFloat(formValues[0]);
-            document.getElementById("ajuste_r6").innerText = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r6").innerText = parseFloat(formValues[0]).toFixed(2);
         }
 
         if(rele == "r8") {
             ajusteR8 = parseFloat(formValues[0]);
-            document.getElementById("ajuste_r8").innerText = parseFloat(formValues[0])
+            document.getElementById("ajuste_r8").innerText = parseFloat(formValues[0]).toFixed(2);
         }
 
+        calcularValoresRelesAnillo()
     }
 
 
