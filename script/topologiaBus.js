@@ -14,7 +14,7 @@ const modeloRele = {
         tiempoCoordinacion: tabla_tiempoCoordinacion_A,
         tiempoLocal: 0,
         TMS_calculado: "",
-        tiempoInstantaneo: 50
+        tiempoInstantaneo: null
     },
     1: {
         nombreRele: "B",
@@ -29,7 +29,7 @@ const modeloRele = {
         tiempoCoordinacion: tabla_tiempoCoordinacion_B,
         tiempoLocal: 0,
         TMS_calculado: "",
-        tiempoInstantaneo: 50
+        tiempoInstantaneo: null
     },
     2: {
         nombreRele: "C",
@@ -44,7 +44,7 @@ const modeloRele = {
         tiempoCoordinacion: tabla_tiempoCoordinacion_C,
         tiempoLocal: 0,
         TMS_calculado: "",
-        tiempoInstantaneo: 50
+        tiempoInstantaneo: null
     }
 }
 
@@ -148,6 +148,9 @@ var tabla_Tiempo_C = document.getElementById("Tiempo_2");
 var tabla_tiempoCoordinacion_A = document.getElementById("Tiempo_coordinacion_0");
 var tabla_tiempoCoordinacion_B = document.getElementById("Tiempo_coordinacion_1");
 var tabla_tiempoCoordinacion_C = document.getElementById("Tiempo_coordinacion_2");
+var tabla_tiempoInstantaneo50_A = document.getElementById("Tiempo_rele50_0");
+var tabla_tiempoInstantaneo50_B = document.getElementById("Tiempo_rele50_1");
+var tabla_tiempoInstantaneo50_C = document.getElementById("Tiempo_rele50_2");
 
 var tabla_DialCalculado_A = document.getElementById("Dial_calculado_0");
 var tabla_DialCalculado_B = document.getElementById("Dial_calculado_1");
@@ -177,8 +180,16 @@ var ReleA_Coordinacion = document.getElementById("ReleA_Coordinacion");
 var ReleB_Coordinacion = document.getElementById("ReleB_Coordinacion");
 var ReleC_Coordinacion = document.getElementById("ReleC_Coordinacion");
 
+var Paso0 = document.getElementById("Paso0");
 var Paso1 = document.getElementById("Paso1");
-var Paso2 = document.getElementById("Paso2");
+var VariableSeleccionada = document.getElementById("VariableSeleccionada");
+var celdaVariableSeleccionada = document.getElementById("celdaVariableSeleccionada");
+var ConsideracionesCoordinacion = document.getElementById("ConsideracionesCoordinacion");
+
+var radioInvisible = document.getElementById("radioInvisible");
+var radioTiempo = document.getElementById("radioTiempo");
+var radioTMS = document.getElementById("radioTMS");
+
 var ajustarTiempoA = document.getElementById("ajustarTiempoA");
 var ajustarTiempoB = document.getElementById("ajustarTiempoB");
 var ajustarTiempoA_dial = document.getElementById("ajustarTiempoA_dial");
@@ -188,14 +199,27 @@ var tabla_umbral_tiempo_B = document.getElementById("umbral_tiempo_B");
 var tabla_umbral_tiempoRemoto_B = document.getElementById("umbral_tiempoRemoto_B");
 var tabla_umbral_tiempo_C = document.getElementById("umbral_tiempo_C");
 var tabla_nuevoumbral_tiempo_B = document.getElementById("nuevoumbral_tiempo_B");
-var tabla_nuevoumbral_tiempoRemoto_B = document.getElementById("nuevoumbral_tiempoRemoto_B");
+//var tabla_nuevoumbral_tiempoRemoto_B = document.getElementById("nuevoumbral_tiempoRemoto_B");
 var tabla_umbral_tiempoRemoto_A = document.getElementById("umbral_tiempoRemoto_A");
-var tabla_nuevoumbral_tiempoRemoto_A = document.getElementById("nuevoumbral_tiempoRemoto_A");
+//var tabla_nuevoumbral_tiempoRemoto_A = document.getElementById("nuevoumbral_tiempoRemoto_A");
 var tabla_umbral_tiempo_A = document.getElementById("umbral_tiempo_A");
-var tabla_nuevoumbral_tiempo_A = document.getElementById("nuevoumbral_tiempo_A");
+//var tabla_nuevoumbral_tiempo_A = document.getElementById("nuevoumbral_tiempo_A");
+
+var tabla_TMS_calculado_B = document.getElementById("TMS_calculado_B");
+var tabla_TMS_ingresado_B_IEC = document.getElementById("TMS_ingresado_B_IEC");
+var tabla_TMS_calculado_B_IEC = document.getElementById("TMS_calculado_B_IEC");
+var tabla_TMS_ingresado_B_ANSI = document.getElementById("TMS_ingresado_B_ANSI");
+var tabla_TMS_calculado_B_ANSI = document.getElementById("TMS_calculado_B_ANSI");
+var tabla_TMS_calculado_A = document.getElementById("TMS_calculado_A");
+var tabla_TMS_ingresado_A_IEC = document.getElementById("TMS_ingresado_A_IEC");
+var tabla_TMS_calculado_A_IEC = document.getElementById("TMS_calculado_A_IEC");
+var tabla_TMS_ingresado_A_ANSI = document.getElementById("TMS_ingresado_A_ANSI");
+var tabla_TMS_calculado_A_ANSI = document.getElementById("TMS_calculado_A_ANSI");
 
 var PanelCoordinacionBus = document.getElementById("PanelCoordinacionBus");
 var divcoordinacionBus = document.getElementById("divcoordinacionBus");
+
+
 
 //----------------------------------------------------------------------------------------------------------------//
 
@@ -345,7 +369,7 @@ async function valoresRele(nombreRele) {
         html: ` 
         
         <div class="table-responsive" >
-            <table class="table align-middle" style="font-size:13px">               
+            <table class="table align-middle " style="font-size:13px">               
             <tr>
                 <th scope="row">Isc</th>
                 <td>
@@ -475,7 +499,7 @@ async function valoresRele(nombreRele) {
             <tr>
                 <th scope="row">Tiempo <br> Coordinación <br></th>
                 <td>
-                    <input  id="swal-tInstantaneo" type="number" value="${modeloRele[nombreRele].tiempoCoordinacion}" class="swal2-input" min="0">
+                    <input  id="swal-tCoordinacion" type="number" value="${modeloRele[nombreRele].tiempoCoordinacion}" class="swal2-input" min="0">
                 </td>
                 <td>[ms]</td>
                 
@@ -507,7 +531,7 @@ async function valoresRele(nombreRele) {
                 document.getElementById('swal-tiempo').value,
                 document.getElementById('swal-curva').value,
                 document.getElementById(swal_tms).value,
-                document.getElementById('swal-tInstantaneo').value,
+                document.getElementById('swal-tCoordinacion').value,
                 document.getElementById("swal-tInstantaneo50").value
             ]
         },
@@ -532,12 +556,25 @@ function guardarInformacion(Rele, datos) {
     document.getElementById("Tiempo_" + Rele).innerText = datos[3];
     document.getElementById("FamiliaC_" + Rele).innerText = datos[4];
     document.getElementById("TMS_" + Rele).innerText = datos[5];
-    document.getElementById("Tiempo_coordinacion_" + Rele).innerText = datos[6];
-    document.getElementById("Tiempo_rele50_"+ Rele).innerText = datos[7];
+
+    if (Rele == 2) {
+        document.getElementById("Tiempo_coordinacion_" + Rele).innerText = "";
+    } else {
+        document.getElementById("Tiempo_coordinacion_" + Rele).innerText = datos[6];
+    }
+
+
+
+
 
     if (isNaN(datos[5])) { datos[5] = "__" }
 
-    if(parseFloat(datos[7])<=0 ) { datos[7] = "0"; }  if(parseFloat(datos[7])>=50 ) { datos[7] = "50"; } 
+    if (parseFloat(datos[7]) <= 0) { datos[7] = "0"; } if (parseFloat(datos[7]) >= 50) { datos[7] = "50"; }
+
+    //El valor del tiempo instantáneo es el mismo para los tres relés
+    document.getElementById("Tiempo_rele50_" + 0).innerText = datos[7];
+    document.getElementById("Tiempo_rele50_" + 1).innerText = datos[7];
+    document.getElementById("Tiempo_rele50_" + 2).innerText = datos[7];
 
     //Almacenar los datos en las variables
     modeloRele[Rele].Isc = parseFloat(datos[0]);
@@ -547,7 +584,10 @@ function guardarInformacion(Rele, datos) {
     modeloRele[Rele].familiaCurva = datos[4];
     modeloRele[Rele].TMS = parseFloat(datos[5]);
     modeloRele[Rele].tiempoCoordinacion = parseFloat(datos[6]);
-    modeloRele[Rele].tiempoInstantaneo = parseFloat(datos[7]);
+    //El tiempo instantáneo es el mismo para los tres relés
+    modeloRele[0].tiempoInstantaneo = parseFloat(datos[7]);
+    modeloRele[1].tiempoInstantaneo = parseFloat(datos[7]);
+    modeloRele[2].tiempoInstantaneo = parseFloat(datos[7]);
 
     //Cuando guarde el valor también quite el icono de warning si está en el background
     console.log("isNaN(datos[0])? : ", isNaN(datos[0]))
@@ -582,62 +622,6 @@ function guardarInformacion(Rele, datos) {
 }
 
 
-async function ajustarValoresCoordinacion(Rele) {
-    const { value: formValues } = await Swal.fire({
-        allowOutsideClick: false,
-        title: "Coordinación " + modeloRele[Rele].nombreRele,
-        // imageWidth: 100,
-        // imageHeight: 100,
-        width: 800,
-        background: '#fefefe',
-        html: `
-            <div class="table-responsive" >
-                <table class="table align-middle" style="font-size:13px">
-                    <tr>
-                        <th scope="col">Tiempo local <br> (seg)</th>
-                        <td><input type="number" class="swal2-input" id="swal-tiempoLocal"  value="${modeloRele[Rele].tiempoLocal}" min="0"/> </td>
-                        <td><div class="botonGuardar hoverButton" style="height:50px; width: 100px" onclick="calcularNuevoDial(${Rele})">Calcular nuevo Dial</div></td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row"></th>
-                        <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                        <th scope="col">Dial <br> Calculado</th>
-                        <td colspan="2" id="swal-tmsCalculado">${modeloRele[Rele].TMS_calculado}</td>
-                        
-                    </tr>
-                </table>
-            </div>
-            
-        `,
-        showConfirmButton: true,
-        confirmButtonText: "Guardar",
-        showCloseButton: true,
-        showCancelButton: false,
-        customClass: {
-            confirmButton: 'botonGuardar hoverButton',
-        },
-        preConfirm: () => {
-            return [
-                document.getElementById('swal-tiempoLocal').value,
-                document.getElementById('swal-tmsCalculado').innerText
-
-            ]
-        },
-
-    })
-
-    if (formValues) {
-        document.getElementById("Tiempo_local_" + Rele).innerText = parseFloat(formValues[0]);
-        modeloRele[Rele].tiempo = parseFloat(formValues[0]);
-        document.getElementById("Dial_calculado_" + Rele).innerText = parseFloat(formValues[1]);
-
-    }
-
-
-}
-
 //Ajustar el ejemplo1
 function ejemplo1() {
     tabla_Isc_ReleA.innerText = 14000;
@@ -657,7 +641,12 @@ function ejemplo1() {
     tabla_Tiempo_C.innerText = 200;
     tabla_tiempoCoordinacion_A.innerText = 200;
     tabla_tiempoCoordinacion_B.innerText = 200;
-    tabla_tiempoCoordinacion_C.innerText = 200;
+    //tabla_tiempoCoordinacion_C.innerText = 200;
+    tabla_tiempoInstantaneo50_A.innerText = 50;
+    tabla_tiempoInstantaneo50_B.innerText = 50;
+    tabla_tiempoInstantaneo50_C.innerText = 50;
+
+
 
     //Almacenar datos en las variables
     modeloRele[0].Isc = 14000;
@@ -684,7 +673,10 @@ function ejemplo1() {
 
     ListaVariablesPrincipales = [modeloRele[0].Isc, modeloRele[0].Ic, modeloRele[0].IncrementoIc, modeloRele[1].Isc, modeloRele[1].Ic, modeloRele[1].IncrementoIc, modeloRele[2].Isc, modeloRele[2].Ic, modeloRele[2].IncrementoIc]
 
-    //console.log("variables : ", ListaVariablesPrincipales)
+    //Borrar alerta por falta de información
+    tabla_Isc_ReleA.style.background = ""; tabla_Isc_ReleB.style.background = ""; tabla_Isc_ReleC.style.background = "";
+    tabla_Ic_ReleA.style.background = ""; tabla_Ic_ReleB.style.background = ""; tabla_Ic_ReleC.style.background = "";
+    tabla_Incremento_Ic_A.style.background = ""; tabla_Incremento_Ic_B.style.background = ""; tabla_Incremento_Ic_C.style.background = "";
 
 }
 
@@ -709,155 +701,6 @@ function borrarTMSBus() {
 
 }
 
-//Calcular el DIAL
-function calcularPasoaPaso() {
-
-    //Para mejor comprensión en el diseño del código se inicializa valores con nombres más reconocidos
-    Isc_ReleA = modeloRele[0].Isc;
-    Isc_ReleB = modeloRele[1].Isc;
-    Isc_ReleC = modeloRele[2].Isc;
-    Ic_ReleA = modeloRele[0].Ic;
-    Ic_ReleB = modeloRele[1].Ic;
-    Ic_ReleC = modeloRele[2].Ic;
-    Incremento_Ic_A = modeloRele[0].IncrementoIc;
-    Incremento_Ic_B = modeloRele[1].IncrementoIc;
-    Incremento_Ic_C = modeloRele[2].IncrementoIc;
-    familiaCurva_A = modeloRele[0].familiaCurva;
-    familiaCurva_B = modeloRele[1].familiaCurva;
-    familiaCurva_C = modeloRele[2].familiaCurva;
-    TMS_A = modeloRele[0].TMS;
-    TMS_B = modeloRele[1].TMS;
-    TMS_C = modeloRele[2].TMS;
-    tiempo_A = modeloRele[0].tiempo;
-    tiempo_B = modeloRele[1].tiempo;
-    tiempo_C = modeloRele[2].tiempo;
-    tiempo_coordionacion_A = modeloRele[0].tiempoCoordinacion;
-    tiempo_coordinacion_B = modeloRele[1].tiempoCoordinacion;
-    tiempo_coordinacion_C = modeloRele[2].tiempoCoordinacion;
-
-    try {
-        Ic_c_con_Incremento = Ic_ReleC + (Ic_ReleC) * (Incremento_Ic_C / 100)
-
-        //DIAL en el relé C
-        TMSparteIEC_C = parametrosCurva[familiaCurva_C].IEC * ((tiempo_C / 1000) * (((Math.pow(Isc_ReleC / Ic_c_con_Incremento, parametrosCurva[familiaCurva_C].alfa)) - 1) / (parametrosCurva[familiaCurva_C].beta)));
-        console.log("nuevo tiempo: ", tiempo_C)
-
-        TMSparteANSI_C = parametrosCurva[familiaCurva_C].ANSI * ((tiempo_C / 1000) * 1 / ((parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B / ((Isc_ReleC / Ic_c_con_Incremento) - parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D / (Math.pow((Isc_ReleC / Ic_c_con_Incremento) - parametrosCurva[familiaCurva_C].C, 2))) + (parametrosCurva[familiaCurva_C].E / (Math.pow((Isc_ReleC / Ic_c_con_Incremento) - parametrosCurva[familiaCurva_C].C, 3)))));
-
-        console.log("parteIEC C: ", TMSparteIEC_C);
-        console.log("parteANSI C: ", TMSparteANSI_C)
-
-
-        TMS_calculado_C = (TMSparteIEC_C + TMSparteANSI_C).toFixed(4);
-        modeloRele[2].TMS_calculado = TMS_calculado_C;
-
-        if (isNaN(TMS_calculado_C)) { TMS_calculado_C = "-" }
-        document.getElementById("Dial_calculado_2").innerText = TMS_calculado_C;
-
-        tLocalparteIEC_C = (parametrosCurva[familiaCurva_C].IEC * TMS_C * ((parametrosCurva[familiaCurva_C].beta) / ((Math.pow(Isc_ReleC / Ic_c_con_Incremento, parametrosCurva[familiaCurva_C].alfa)) - 1)));
-
-        tLocalparteANSI_C = (parametrosCurva[familiaCurva_C].ANSI * TMS_C * ((parametrosCurva[familiaCurva_C].A) + (parametrosCurva[familiaCurva_C].B / ((Isc_ReleC / Ic_c_con_Incremento) - (parametrosCurva[familiaCurva_C].C)) + (parametrosCurva[familiaCurva_C].D / (Math.pow((Isc_ReleC / Ic_c_con_Incremento) - (parametrosCurva[familiaCurva_C].C), 2))) + (parametrosCurva[familiaCurva_C].E / (Math.pow((Isc_ReleC / Ic_c_con_Incremento) - (parametrosCurva[familiaCurva_C].C), 3))))));
-
-        //Hallar tiempo Local en C
-        tiempo_local_C = (tLocalparteIEC_C + tLocalparteANSI_C).toFixed(4);
-        modeloRele[2].tiempoLocal = tiempo_local_C;
-        console.log("tiempo local C: ", tiempo_local_C)
-
-        if (isNaN(tiempo_local_C)) { tiempo_local_C = "__" }
-        document.getElementById("Tiempo_local_2").innerHTML = tiempo_local_C;
-
-
-    } catch (error) {
-
-    }
-
-    try {
-        Ic_b_con_Incremento = Ic_ReleB + (Ic_ReleB) * (Incremento_Ic_B / 100)
-
-        //DIAL en el relé B
-        TMSparteIEC_B = parametrosCurva[familiaCurva_B].IEC * ((tiempo_B / 1000) * (((Math.pow(Isc_ReleB / Ic_b_con_Incremento, parametrosCurva[familiaCurva_B].alfa)) - 1) / (parametrosCurva[familiaCurva_B].beta)));
-
-        TMSparteANSI_B = parametrosCurva[familiaCurva_B].ANSI * ((tiempo_B / 1000) * 1 / ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleB / Ic_b_con_Incremento) - parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleB / Ic_b_con_Incremento) - parametrosCurva[familiaCurva_B].C, 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleB / Ic_b_con_Incremento) - parametrosCurva[familiaCurva_B].C, 3)))));
-
-
-        TMS_calculado_B = (TMSparteIEC_B + TMSparteANSI_B).toFixed(4);
-        modeloRele[1].TMS_calculado = TMS_calculado_B;
-        if (isNaN(TMS_calculado_B)) { TMS_calculado_B = "-" }
-        document.getElementById("Dial_calculado_1").innerText = TMS_calculado_B;
-
-        tLocalparteIEC_B = (parametrosCurva[familiaCurva_B].IEC * TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleB / Ic_b_con_Incremento, parametrosCurva[familiaCurva_B].alfa)) - 1)));
-
-        tLocalparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI * TMS_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleB / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleB / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleB / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C), 3))))));
-
-
-        //Hallar tiempo local en B
-        tiempo_local_B = (tLocalparteIEC_B + tLocalparteANSI_B).toFixed(4);
-        modeloRele[1].tiempoLocal = tiempo_local_B;
-        if (isNaN(tiempo_local_B)) { tiempo_local_B = "__" }
-        document.getElementById("Tiempo_local_1").innerHTML = tiempo_local_B;
-
-
-        //Hallar tiempo remoto en B
-        tRemotoparteIEC_B = (parametrosCurva[familiaCurva_B].IEC * TMS_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_Incremento, parametrosCurva[familiaCurva_B].alfa)) - 1)));
-
-        tRemotoparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI * TMS_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C), 3))))));
-
-
-        tiempo_remoto_B = (tRemotoparteIEC_B + tRemotoparteANSI_B).toFixed(4);
-        if (isNaN(tiempo_remoto_B)) { tiempo_remoto_B = "__" }
-        document.getElementById("Tiempo_remoto_1").innerHTML = tiempo_remoto_B;
-
-    } catch (error) {
-
-    }
-
-    try {
-
-        //DIAL en el relé A
-        Ic_a_con_Incremento = Ic_ReleA + (Ic_ReleA) * (Incremento_Ic_A / 100)
-
-        TMSparteIEC_A = parametrosCurva[familiaCurva_A].IEC * ((tiempo_A / 1000) * (((Math.pow(Isc_ReleA / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta)));
-
-        TMSparteANSI_A = parametrosCurva[familiaCurva_A].ANSI * ((tiempo_A / 1000) * 1 / ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_Incremento) - parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_Incremento) - parametrosCurva[familiaCurva_A].C, 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_Incremento) - parametrosCurva[familiaCurva_A].C, 3)))));
-
-
-        TMS_calculado_A = (TMSparteANSI_A + TMSparteIEC_A).toFixed(4);
-        modeloRele[0].TMS_calculado = TMS_calculado_A;
-        if (isNaN(TMS_calculado_A)) { TMS_calculado_A = "-" }
-        document.getElementById("Dial_calculado_0").innerText = TMS_calculado_A;
-
-        //Hallar tiempo local en A
-        tLocalparteIEC_A = (parametrosCurva[familiaCurva_A].IEC * TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleA / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1)));
-
-
-        tLocalparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI * TMS_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C), 3))))));
-
-        tiempo_local_A = (tLocalparteANSI_A + tLocalparteIEC_A).toFixed(4);
-        modeloRele[0].tiempoLocal = tiempo_local_A;
-
-        if (isNaN(tiempo_local_A)) { tiempo_local_A = "__" }
-        document.getElementById("Tiempo_local_0").innerHTML = tiempo_local_A;
-
-
-        //Hallar tiempo remoto en A
-        tRemotoparteIEC_A = (parametrosCurva[familiaCurva_A].IEC * TMS_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1)));
-
-        tRemotoparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI * TMS_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleB / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleB / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleB / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C), 3))))));
-
-        tiempo_remoto_A = (tRemotoparteIEC_A + tRemotoparteANSI_A).toFixed(4);
-
-        if (isNaN(tiempo_remoto_A)) { tiempo_remoto_A = "__" }
-        document.getElementById("Tiempo_remoto_0").innerHTML = tiempo_remoto_A;
-
-
-    } catch (error) {
-        //document.getElementById("Dial_calculado_0").innerText = "";
-    }
-
-    console.log("Incremento con a: ", Ic_a_con_Incremento)
-
-
-}
 
 
 //Inicializar los tooltips
@@ -875,6 +718,21 @@ function graficarCurvaTopologiaBus() {
     tiempo_coordinacion_A = modeloRele[0].tiempoCoordinacion;
     tiempo_coordinacion_B = modeloRele[1].tiempoCoordinacion;
     tiempo_coordinacion_C = modeloRele[2].tiempoCoordinacion;
+
+    console.log("valor del rele: ", modeloRele[0].tiempoInstantaneo)
+
+    //Si el usuario no administro tiempo actuación del relé 50, detectar asignar el valor máximo, como los tres campos tienen el mismo valor y se actualizan entre si, solo se necesita hacer la comprobación con una variable
+    if (modeloRele[0].tiempoInstantaneo == null || modeloRele[0].tiempoInstantaneo == undefined || modeloRele[0].tiempoInstantaneo == "" || isNaN(modeloRele[0].tiempoInstantaneo)) {
+        modeloRele[0].tiempoInstantaneo = 50;
+        modeloRele[1].tiempoInstantaneo = 50;
+        modeloRele[2].tiempoInstantaneo = 50;
+
+        tabla_tiempoInstantaneo50_A.innerText = 50;
+        tabla_tiempoInstantaneo50_B.innerText = 50;
+        tabla_tiempoInstantaneo50_C.innerText = 50;
+
+    }
+
 
 
 
@@ -958,7 +816,7 @@ function graficarCurvaTopologiaBus() {
                     [Isc_ReleA, tiempoOperacionCalculado_A],
                     //[Isc_ReleA, tiempo_local_A],
                     //Punto relé 50 instantáneo: 50ms
-                    [Isc_ReleA, modeloRele[0].tiempoInstantaneo/1000]
+                    [Isc_ReleA, modeloRele[0].tiempoInstantaneo / 1000]
 
                 ],
                 fnType: 'points',
@@ -972,7 +830,7 @@ function graficarCurvaTopologiaBus() {
                     [Isc_ReleB, tiempoOperacionCalculado_B],
                     //[Isc_ReleB, tiempo_local_B],
                     //Punto relé 50 , instantáneo 50ms
-                    [Isc_ReleB, modeloRele[1].tiempoInstantaneo/1000]
+                    [Isc_ReleB, modeloRele[1].tiempoInstantaneo / 1000]
 
                 ],
                 fnType: 'points',
@@ -986,11 +844,24 @@ function graficarCurvaTopologiaBus() {
                     [Isc_ReleC, parseFloat(tiempoOperacionCalculado_C)],
                     //[Isc_ReleC, tiempo_local_C],
                     //Punto relé 50  : instantáneo 50mS
-                    [Isc_ReleC, modeloRele[2].tiempoInstantaneo/1000]
+                    [Isc_ReleC, modeloRele[2].tiempoInstantaneo / 1000]
 
                 ],
                 fnType: 'points',
                 color: 'rgba(113, 200, 55, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
+            },
+            //Linea recorte de los relés de actuación Protección 50
+            {
+                points: [
+                    [10, modeloRele[0].tiempoInstantaneo / 1000],
+                    [100000, modeloRele[0].tiempoInstantaneo / 1000]
+
+
+                ],
+                fnType: 'points',
+                color: 'rgba(0, 0, 0, 1)',
                 graphType: 'polyline',
                 updateOnMouseMove: true
             },
@@ -999,12 +870,12 @@ function graficarCurvaTopologiaBus() {
     });
 
     //Reestablecer variables para una nueva gráfica
-    if (opcionVariable == "Tiempo") {
-        borrarTMSBus()
-    }
-    if (opcionVariable == "Dial") {
-        ""
-    }
+    // if (opcionVariable == "Tiempo") {
+    //     borrarTMSBus()
+    // }
+    // if (opcionVariable == "Dial") {
+    //     ""
+    // }
 
 
 }
@@ -1023,8 +894,10 @@ function CoordinacionBus() {
     })
 
 
+
+
     Paso1.style.display = "none";
-    Paso2.style.display = "none";
+    VariableSeleccionada.style.display = "none";
     tabGraficaBus.style.display = "none";
     ReleA_Coordinacion.style.display = "none";
     ReleB_Coordinacion.style.display = "none";
@@ -1035,6 +908,27 @@ function CoordinacionBus() {
     estadoReleC.style.display = "none";
     estado.innerText = "Estado";
     estado.style.background = "#7ba9ee";
+
+    tabla_TMS_calculado_B.style.display = "none";
+    tabla_TMS_calculado_B_ANSI.style.display = "none";
+    tabla_TMS_calculado_B_IEC.style.display = "none";
+    tabla_TMS_ingresado_B_IEC.style.display = "none";
+    tabla_TMS_ingresado_B_ANSI.style.display = "none";
+    tabla_TMS_calculado_A.style.display = "none";
+    tabla_TMS_calculado_A_ANSI.style.display = "none";
+    tabla_TMS_calculado_A_IEC.style.display = "none";
+    tabla_TMS_ingresado_A_IEC.style.display = "none";
+    tabla_TMS_ingresado_A_ANSI.style.display = "none";
+
+    tabla_TMS_calculado_A_ANSI.innerText = "";
+    tabla_TMS_calculado_B_ANSI.innerText = "";
+    tabla_TMS_calculado_A_IEC.innerText = "";
+    tabla_TMS_calculado_B_IEC.innerText = "";
+
+    TMS_calculado_A_IEC.selected = true;
+    TMS_calculado_B_IEC.selected = true;
+    TMS_calculado_A_ANSI.selected = true;
+    TMS_calculado_B_ANSI.selected = true;
 
     CoordinacionCporTiempo.style.display = "none";
     CoordinacionCporDial.style.display = "none";
@@ -1049,19 +943,20 @@ function CoordinacionBus() {
     tabla_umbral_tiempo_C.style.background = "#fefefe";
     tabla_umbral_tiempo_B.style.background = "#fefefe";
     tabla_umbral_tiempoRemoto_B.style.background = "#fefefe";
-    tabla_nuevoumbral_tiempo_B.style.background = "#fefefe";
-    tabla_nuevoumbral_tiempoRemoto_B.style.background = "#fefefe";
+    // tabla_nuevoumbral_tiempo_B.style.background = "#fefefe";
+    // tabla_nuevoumbral_tiempoRemoto_B.style.background = "#fefefe";
     tabla_umbral_tiempo_A.style.background = "#fefefe";
     tabla_umbral_tiempoRemoto_A.style.background = "#fefefe";
-    tabla_nuevoumbral_tiempoRemoto_A.style.background = "#fefefe";
-    tabla_nuevoumbral_tiempo_A.style.background = "#fefefe";
+
+    //tabla_nuevoumbral_tiempoRemoto_A.style.background = "#fefefe";
+    //tabla_nuevoumbral_tiempo_A.style.background = "#fefefe";
 
     ajustarTiempoB_dial.style.display = "none";
 
-    document.getElementById("nuevoTMS_calculado_A").style.background = "#fefefe";
-    document.getElementById("nuevoumbral_tiempo_A").style.background = "#fefefe";
-    document.getElementById("nuevoumbral_tiempoRemoto_A").style.background = "#fefefe";
-    document.getElementById("umbral_tiempoRemoto_B_dial").style.background = "#fefefe";
+    //document.getElementById("nuevoTMS_calculado_A").style.background = "#fefefe";
+    //document.getElementById("nuevoumbral_tiempo_A").style.background = "#fefefe";
+    //document.getElementById("nuevoumbral_tiempoRemoto_A").style.background = "#fefefe";
+    //document.getElementById("umbral_tiempoRemoto_B_dial").style.background = "#fefefe";
 
     //Comprobar que las variables principales si tienen un valor asignado
     var ComprobacionDatos;// Variable interna para hacer la comprobación de campos
@@ -1134,21 +1029,72 @@ function camposFaltantes(ListaCamposFaltantes) {
 
 }
 
+function camposFaltantesVariableCoordinacion(ListaCamposFaltantes, tipo) {
+
+}
 
 function paso1() {
     //Inicializo variables para comprobar si hay valor asignado en los tiempos o en los dial
+
+
     var ListaTiempo = [modeloRele[0].tiempo, modeloRele[1].tiempo, modeloRele[2].tiempo];
     var ListaDIAL = [modeloRele[2].TMS];
     var ComprobarTiempo;
     var ComprobarDial;
 
-    ListaTiempo.forEach(element => {
-        if (element == null || isNaN(element) || element == undefined) { ComprobarTiempo = false }
-    });
+    if (radioInvisible.checked == true) {
+        Paso0.style.display = "none";
+        Paso1.style.display = "block";
+    } else {
 
-    ListaDIAL.forEach(element => {
-        if (element == null || isNaN(element) || element == undefined) { ComprobarDial = false } else { ComprobarDial = true }
-    });
+        if (radioTiempo.checked == true) {
+            console.log("radiotiempo")
+
+            ListaTiempo.forEach(element => {
+                if (element == null || isNaN(element) || element == undefined) { ComprobarTiempo = false }
+            });
+            if (ComprobarTiempo == false) {
+                Swal.fire({
+                    title: 'Datos incompletos',
+                    showCloseButton: true,
+                    icon: 'error',
+                    text: "Se detecto campos faltantes en la variable 'Tiempo de operación', ingrese los valores para continuar con la operación. "
+                })
+                Paso1.style.display = "block";
+                estado.innerText = "Campos faltantes en las variables 'Tiempo de operación'. "
+                estado.style.background = "#fa1e4e";
+            }
+            else {
+                paso2('Tiempo')
+
+                celdaVariableSeleccionada.innerText = "Tiempo de operación";
+                ConsideracionesCoordinacion.style.display = "block";
+                ConsideracionesCoordinacion.innerHTML = ` <b>Consideraciones</b>:
+                    <p>- Las variables (Isc, Ic, Incremento Ic, Tiempo de operación) son datos de entrada. Durante  el proceso de coordinación, no pueden ser modificados ni se deben realizar ajustes de ellos.  
+                    </p>
+                    <p>- El programa ajusta el valor del TMS calculado  
+
+                    </p>
+                `;
+            }
+
+            if (radioTMS.checked == true) {
+                ListaDIAL.forEach(element => {
+                    if (element == null || isNaN(element) || element == undefined) { ComprobarDial = false } else { ComprobarDial = true }
+                });
+
+                // if(){
+
+                // }
+
+            }
+        }
+
+    }
+
+
+
+
 
     console.log("modeloRele[0].tiempo ", modeloRele[0].tiempo)
     console.log("modeloRele[1].tiempo ", modeloRele[1].tiempo)
@@ -1159,19 +1105,20 @@ function paso1() {
     console.log("ComprobarTiempo: ", ComprobarTiempo)
     console.log("ComprobarDial: ", ComprobarDial)
 
-    if (ComprobarTiempo == false && ComprobarDial == false) {
-        Paso1.style.display = "block";
-    } else {
-        if (ComprobarTiempo !== false && ComprobarDial == false) {
-            opcionVariable = "Tiempo"
-            paso2('Tiempo')
+    // if (ComprobarTiempo == false && ComprobarDial == false) {
+    //     Paso1.style.display = "block";
+    // } else {
+    //     if (ComprobarTiempo !== false && ComprobarDial == false) {
+    //         opcionVariable = "Tiempo"
+    //         paso2('Tiempo')
 
-        }
-        if (ComprobarDial == true) {
-            opcionVariable = "Dial"
-            paso2('Dial')
-        }
-    }
+    //     }
+    //     if (ComprobarDial == true) {
+    //         opcionVariable = "Dial"
+    //         paso2('Dial')
+    //     }
+    // }
+
 
 }
 
@@ -1181,19 +1128,23 @@ function paso2(tipoDeVaribleUtilizar) {
 
 
     if (tipoDeVaribleUtilizar == "Tiempo") {
-        Paso2.style.display = "block";
-        Paso2.innerText = "La variable predominante para la siguiente coordinación son los valores de los tiempos de operación para los relés A, B y C.";
+        VariableSeleccionada.style.display = "block";
+        //Paso2.innerText = "La variable predominante para la siguiente coordinación son los valores de los tiempos de operación para los relés A, B y C.";
         tablaVariableTiempo.style.background = "#bde0fe"
         CalcularConTiempoReleC();
 
     }
     if (tipoDeVaribleUtilizar == "Dial") {
-        Paso2.style.display = "block";
-        Paso2.innerText = "La variable predominante para la siguiente coordinación es el valor del TMS presente en el relé C y si están almacenados, los del relé B y relé A.";
+        VariableSeleccionada.style.display = "block";
+        //Paso2.innerText = "La variable predominante para la siguiente coordinación es el valor del TMS presente en el relé C y si están almacenados, los del relé B y relé A.";
         tablaVariableDial.style.background = "#bde0fe";
         CalcularConDialReleC();
     }
 
+
+}
+
+function cambiarVariableSeleccionada() {
 
 }
 
@@ -1293,7 +1244,7 @@ function CalcularConTiempoReleC() {
             estadoReleC.style.display = "block",
             estadoReleC.innerText = "Con este DIAL, esta dentro del umbral aceptable.",
             tabla_umbral_tiempo_C.style.background = "#d0f4de",
-            CalcularTiempoReleB_usandoTiempo()
+            CalcularTiempoReleB_usandoTiempo('no')
         );
 
 
@@ -1315,11 +1266,11 @@ function CalcularConTiempoReleC() {
         modeloRele[2].TMS = "-";
     }
 
-
-
 }
 
-function CalcularTiempoReleB_usandoTiempo() {
+function CalcularTiempoReleB_usandoTiempo(ajusteManual) {
+
+    var valorAjusteManualTMS;
 
     Isc_ReleA = modeloRele[0].Isc;
     Isc_ReleB = modeloRele[1].Isc;
@@ -1346,15 +1297,24 @@ function CalcularTiempoReleB_usandoTiempo() {
     tiempo_B = modeloRele[1].tiempo;
     console.log("Ic_b_con_Incremento", Ic_b_con_Incremento)
 
-    //DIAL en el relé B
-    TMSparteIEC_B = parametrosCurva[familiaCurva_B].IEC * ((tiempo_B / 1000) * (((Math.pow(Isc_ReleB / Ic_b_con_Incremento, parametrosCurva[familiaCurva_B].alfa)) - 1) / (parametrosCurva[familiaCurva_B].beta)));
-    TMSparteIEC_B = TMSparteIEC_B.toFixed(2);
+    if (ajusteManual == "no") {
+        //DIAL en el relé B
+        TMSparteIEC_B = parametrosCurva[familiaCurva_B].IEC * ((tiempo_B / 1000) * (((Math.pow(Isc_ReleB / Ic_b_con_Incremento, parametrosCurva[familiaCurva_B].alfa)) - 1) / (parametrosCurva[familiaCurva_B].beta)));
+        TMSparteIEC_B = TMSparteIEC_B.toFixed(2);
 
-    TMSparteANSI_B = parametrosCurva[familiaCurva_B].ANSI * ((tiempo_B / 1000) * 1 / ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleB / Ic_b_con_Incremento) - parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleB / Ic_b_con_Incremento) - parametrosCurva[familiaCurva_B].C, 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleB / Ic_b_con_Incremento) - parametrosCurva[familiaCurva_B].C, 3)))));
-    TMSparteANSI_B = TMSparteANSI_B.toFixed(1);
+        TMSparteANSI_B = parametrosCurva[familiaCurva_B].ANSI * ((tiempo_B / 1000) * 1 / ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleB / Ic_b_con_Incremento) - parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleB / Ic_b_con_Incremento) - parametrosCurva[familiaCurva_B].C, 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleB / Ic_b_con_Incremento) - parametrosCurva[familiaCurva_B].C, 3)))));
+        TMSparteANSI_B = TMSparteANSI_B.toFixed(1);
 
-    //valor del Dial Total teniendo en cuenta el tipo de curva con el que se trabajo
-    TMS_calculado_B = parseFloat(TMSparteIEC_B) + parseFloat(TMSparteANSI_B);
+        //valor del Dial Total teniendo en cuenta el tipo de curva con el que se trabajo
+        TMS_calculado_B = parseFloat(TMSparteIEC_B) + parseFloat(TMSparteANSI_B);
+
+    }
+    else {
+        valorAjusteManualTMS = tabla_TMS_ingresado_B_IEC.value;
+        TMS_calculado_B = parseFloat(valorAjusteManualTMS);
+    }
+
+
 
     //Comprobar tiempo calculado con el tiempo dado - tiempoOperacionCalculado_B
     tLocalparteIEC_B = (parametrosCurva[familiaCurva_B].IEC * TMS_calculado_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleB / Ic_b_con_Incremento, parametrosCurva[familiaCurva_B].alfa)) - 1)));
@@ -1367,7 +1327,52 @@ function CalcularTiempoReleB_usandoTiempo() {
     umbral_tiempo_B = (Math.abs((tiempo_B / 1000) - parseFloat(tiempoOperacionCalculado_B)) / (tiempo_B / 1000)) * 100;
     console.log(Math.abs((tiempo_B / 1000) - parseFloat(tiempoOperacionCalculado_B)))
 
+    console.log("tiempo cooooo: ", tiempo_coordinacion_B)
+
+    isNaN(tiempo_coordinacion_B) ? tiempo_coordinacion_B = tiempoOperacionCalculado_C * 1000 : "";
+
+    //Tiempo en operación en tiempo remoto
+    tiempoRemotoEsperado_B = parseFloat(tiempoOperacionCalculado_C) + (tiempo_coordinacion_B / 1000);
+    console.log("tiempoRemotoEsperado_B", tiempoRemotoEsperado_B)
+
+    //Hallar tiempo remoto en B
+    tRemotoparteIEC_B = (parametrosCurva[familiaCurva_B].IEC * TMS_calculado_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_Incremento, parametrosCurva[familiaCurva_B].alfa)) - 1)));
+
+    tRemotoparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI * TMS_calculado_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C), 3))))));
+
+    tiempoRemotoCalculado_B = tRemotoparteIEC_B + tRemotoparteANSI_B;
+    console.log("tiempoRemotoCalculado_B ", tiempoRemotoCalculado_B)
+
+
+
+    //Hallar umbral del tiempo remoto en B
+    umbral_tiempoRemoto_B = ((Math.abs((parseFloat(tiempoOperacionCalculado_C) + (tiempo_coordinacion_B / 1000)) - tiempoRemotoCalculado_B) / (parseFloat(tiempoOperacionCalculado_C) + (tiempo_coordinacion_B / 1000))) * 100);
+
+    console.log("umbral remoto B ", umbral_tiempoRemoto_B)
+
+
+    if ((umbral_tiempo_B > valor_umbral_tiempo_B) || (parseFloat(umbral_tiempoRemoto_B) > valor_umbral_tiempoRemoto_B)) {
+
+        tabla_TMS_calculado_B.style.display = "none";
+        if (parametrosCurva[familiaCurva_B].IEC == 1) {
+            tabla_TMS_ingresado_B_IEC.style.display = "block";
+            tabla_TMS_calculado_B_IEC.innerText = TMS_calculado_B;
+            tabla_TMS_ingresado_B_ANSI.style.display = "none";
+
+        } else {
+            tabla_TMS_ingresado_B_IEC.style.display = "none";
+            tabla_TMS_ingresado_B_ANSI.style.display = "block";
+            tabla_TMS_calculado_B_ANSI.innerText = TMS_calculado_B;
+        }
+
+    } else {
+        tabla_TMS_calculado_B.style.display = "block";
+        tabla_TMS_calculado_B.innerText = TMS_calculado_B;
+    }
+
+
     if (umbral_tiempo_B > valor_umbral_tiempo_B) {
+
         tabla_umbral_tiempo_B.style.background = "#ffc8dd";
         estado.innerText = "El valor del tiempo local B supera el umbral.";
         ReleB_Coordinacion.style.display = "block";
@@ -1375,116 +1380,108 @@ function CalcularTiempoReleB_usandoTiempo() {
         CoordinacionBporTiempo.style.display = "block";
         estadoReleB.innerText = "El valor del tiempo local B supera el umbral suministrado, modifique el parámetro del umbral del tiempo local o el valor del tiempo de operación. ";
         estadoReleB.style.display = "block";
-
-        modeloRele[0].TMS = "-";
-        modeloRele[1].TMS = "-";
-        modeloRele[2].TMS = "-";
-
-
     } else {
+
         tabla_umbral_tiempo_B.style.background = "#d0f4de";
-
-        console.log("tiempo cooooo: ", tiempo_coordinacion_B)
-
-        isNaN(tiempo_coordinacion_B) ? tiempo_coordinacion_B = tiempoOperacionCalculado_C * 1000 : "";
-
-
-        //Tiempo en operación en tiempo remoto
-        tiempoRemotoEsperado_B = parseFloat(tiempoOperacionCalculado_C) + (tiempo_coordinacion_B / 1000);
-        console.log("tiempoRemotoEsperado_B", tiempoRemotoEsperado_B)
+        ReleB_Coordinacion.style.display = "block";
+    }
 
 
 
-        //Hallar tiempo remoto en B
-        tRemotoparteIEC_B = (parametrosCurva[familiaCurva_B].IEC * TMS_calculado_B * ((parametrosCurva[familiaCurva_B].beta) / ((Math.pow(Isc_ReleC / Ic_b_con_Incremento, parametrosCurva[familiaCurva_B].alfa)) - 1)));
+    //     tabla_umbral_tiempo_B.style.background = "#ffc8dd";
+    //     estado.innerText = "El valor del tiempo local B supera el umbral.";
+    //     ReleB_Coordinacion.style.display = "block";
+    //     estado.style.backgroundColor = "#fa1e4e";
+    //     CoordinacionBporTiempo.style.display = "block";
+    //     estadoReleB.innerText = "El valor del tiempo local B supera el umbral suministrado, modifique el parámetro del umbral del tiempo local o el valor del tiempo de operación. ";
+    //     estadoReleB.style.display = "block";
 
-        tRemotoparteANSI_B = (parametrosCurva[familiaCurva_B].ANSI * TMS_calculado_B * ((parametrosCurva[familiaCurva_B].A) + (parametrosCurva[familiaCurva_B].B / ((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C)) + (parametrosCurva[familiaCurva_B].D / (Math.pow((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C), 2))) + (parametrosCurva[familiaCurva_B].E / (Math.pow((Isc_ReleC / Ic_b_con_Incremento) - (parametrosCurva[familiaCurva_B].C), 3))))));
+    //     modeloRele[0].TMS = "-";
+    //     modeloRele[1].TMS = "-";
+    //     modeloRele[2].TMS = "-";
 
-        tiempoRemotoCalculado_B = tRemotoparteIEC_B + tRemotoparteANSI_B;
-        console.log("tiempoRemotoCalculado_B ", tiempoRemotoCalculado_B)
+    //     tabla_TMS_calculado_B.style.display = "none";
+    //     if (parametrosCurva[familiaCurva_B].IEC == 1) {
 
-
-        //Hallar umbral del tiempo remoto en B
-        umbral_tiempoRemoto_B = ((Math.abs((parseFloat(tiempoOperacionCalculado_C) + (tiempo_coordinacion_B / 1000)) - tiempoRemotoCalculado_B) / (parseFloat(tiempoOperacionCalculado_C) + (tiempo_coordinacion_B / 1000))) * 100);
-
-        console.log("umbral remoto B ", umbral_tiempoRemoto_B)
-        //tiempoRemotoCalculado_B = tiempoRemotoCalculado_B.toFixed(4);
-
-        if (parseFloat(umbral_tiempoRemoto_B) > valor_umbral_tiempoRemoto_B) {
-            console.log("entro al umbral B")
-            estado.innerText = "El tiempo de operación remoto B no se ajusta";
-            estado.style.backgroundColor = "#fa1e4e";
-            tabla_umbral_tiempoRemoto_B.style.background = "#ffc8dd";
-
-            //-------------------------------------------------------------Imprimir datos-------------------------
-            ReleB_Coordinacion.style.display = "block";
-            CoordinacionBporTiempo.style.display = "block";
-            //
-            document.getElementById("TMS_calculado_B").innerText = TMS_calculado_B;
-            document.getElementById("umbral_tiempo_B").innerText = umbral_tiempo_B.toFixed(4);
-            document.getElementById("tiempoOperacionSuministrado_B").innerText = (tiempo_B / 1000).toFixed(4);
-            document.getElementById("tiempoOperacionCalculado_B").innerText = tiempoOperacionCalculado_B.toFixed(4);
-            //document.getElementById("umbral_tiempo_C").innerText = umbral_tiempo_C.toFixed(4);
-            document.getElementById("tiempoCoordinacionSuministrado_B").innerHTML = (tiempo_coordinacion_B / 1000).toFixed(4);
-            document.getElementById("tiempoRemotoEsperado_B").innerText = tiempoRemotoEsperado_B.toFixed(4);
-            document.getElementById("tiempoRemotoCalculado_B").innerText = tiempoRemotoCalculado_B.toFixed(4);
-            document.getElementById("umbral_tiempoRemoto_B").innerText = umbral_tiempoRemoto_B.toFixed(4);
+    //         tabla_TMS_calculado_B_IEC.style.display = "block";
+    //         tabla_TMS_calculado_B_ANSI.style.display = "none";
+    //         tabla_TMS_calculado_B_IEC.innerText = TMS_calculado_B;
+    //     } else {
+    //         tabla_TMS_calculado_B_ANSI.style.display = "block";
+    //         tabla_TMS_calculado_B_IEC.style.display = "none";
+    //         tabla_TMS_calculado_B_ANSI.innerText = TMS_calculado_B
+    //     }
 
 
-            //Cuadro resultado
-            ajustarTiempoB.style.display = "block";
+    // } else {
+    // tabla_umbral_tiempo_B.style.background = "#d0f4de";
+    // tabla_TMS_calculado_B.style.display = "block";
+    // tabla_TMS_calculado_B.innerText = TMS_calculado_B;
 
-            ajustarTiempoB_usandoTiempo()
 
-        } else {
 
-            estado.innerText = "El tiempo de operación remoto  B se ajusta ";
-            estado.style.backgroundColor = "green";
-            estadoReleB.style.display = "block";
-            estadoReleB.innerText = "Con el DIAL presente, se ajusta el relé B.";
-            tabla_umbral_tiempoRemoto_B.style.background = "#d0f4de";
+    //tiempoRemotoCalculado_B = tiempoRemotoCalculado_B.toFixed(4);
+
+    if (parseFloat(umbral_tiempoRemoto_B) > valor_umbral_tiempoRemoto_B) {
+        console.log("entro al umbral B")
+        estado.innerText = "El tiempo de operación remoto B no se ajusta";
+        estado.style.backgroundColor = "#fa1e4e";
+        tabla_umbral_tiempoRemoto_B.style.background = "#ffc8dd";
+    } else {
+        tabla_umbral_tiempoRemoto_B.style.background = "#d0f4de";
+    }
 
 
 
 
-            //Imprimir valores para el cuadro B
-            ReleB_Coordinacion.style.display = "block";
-            CoordinacionBporTiempo.style.display = "block";
-            document.getElementById("TMS_calculado_B").innerText = TMS_calculado_B;
-            document.getElementById("tiempoOperacionSuministrado_B").innerText = (tiempo_B / 1000).toFixed(4);
-            document.getElementById("umbral_tiempo_B").innerText = umbral_tiempo_B.toFixed(4);
-            document.getElementById("tiempoOperacionSuministrado_B").innerText = (tiempo_B / 1000).toFixed(4);
-            document.getElementById("tiempoOperacionCalculado_B").innerText = tiempoOperacionCalculado_B.toFixed(4);
-            //document.getElementById("umbral_tiempo_C").innerText = umbral_tiempo_C.toFixed(4);
-            document.getElementById("tiempoCoordinacionSuministrado_B").innerHTML = (tiempo_coordinacion_B / 1000).toFixed(4);
-            document.getElementById("tiempoRemotoEsperado_B").innerText = tiempoRemotoEsperado_B.toFixed(4);
-            document.getElementById("tiempoRemotoCalculado_B").innerText = tiempoRemotoCalculado_B.toFixed(4);
-            document.getElementById("umbral_tiempoRemoto_B").innerText = umbral_tiempoRemoto_B.toFixed(4);
+    // document.getElementById("TMS_calculado_B").innerText = TMS_calculado_B;
+    // document.getElementById("umbral_tiempo_B").innerText = umbral_tiempo_B.toFixed(4);
+    // document.getElementById("tiempoOperacionSuministrado_B").innerText = (tiempo_B / 1000).toFixed(4);
+    // document.getElementById("tiempoOperacionCalculado_B").innerText = tiempoOperacionCalculado_B.toFixed(4);
+    // //document.getElementById("umbral_tiempo_C").innerText = umbral_tiempo_C.toFixed(4);
+    // document.getElementById("tiempoCoordinacionSuministrado_B").innerHTML = (tiempo_coordinacion_B / 1000).toFixed(4);
+    // document.getElementById("tiempoRemotoEsperado_B").innerText = tiempoRemotoEsperado_B.toFixed(4);
+    // document.getElementById("tiempoRemotoCalculado_B").innerText = tiempoRemotoCalculado_B.toFixed(4);
+    // document.getElementById("umbral_tiempoRemoto_B").innerText = umbral_tiempoRemoto_B.toFixed(4);
 
-            //Cuadro resultado
-            ajustarTiempoB.style.display = "none";
-
-
-            modeloRele[1].TMS = TMS_calculado_B;
-            CalcularTiempoReleA()
+    // // estado.innerText = "El tiempo de operación remoto  B se ajusta ";
+    // estado.style.backgroundColor = "green";
+    // estadoReleB.style.display = "block";
+    // estadoReleB.innerText = "Con el DIAL presente, se ajusta el relé B.";
+    // tabla_umbral_tiempoRemoto_B.style.background = "#d0f4de";
 
 
-        }
+    //Imprimir valores para el cuadro B
+    ReleB_Coordinacion.style.display = "block";
+    CoordinacionBporTiempo.style.display = "block";
+    document.getElementById("TMS_calculado_B").innerText = TMS_calculado_B;
+    document.getElementById("tiempoOperacionSuministrado_B").innerText = (tiempo_B / 1000).toFixed(4);
+    document.getElementById("umbral_tiempo_B").innerText = umbral_tiempo_B.toFixed(4);
+    document.getElementById("tiempoOperacionSuministrado_B").innerText = (tiempo_B / 1000).toFixed(4);
+    document.getElementById("tiempoOperacionCalculado_B").innerText = tiempoOperacionCalculado_B.toFixed(4);
+    //document.getElementById("umbral_tiempo_C").innerText = umbral_tiempo_C.toFixed(4);
+    document.getElementById("tiempoCoordinacionSuministrado_B").innerHTML = (tiempo_coordinacion_B / 1000).toFixed(4);
+    document.getElementById("tiempoRemotoEsperado_B").innerText = tiempoRemotoEsperado_B.toFixed(4);
+    document.getElementById("tiempoRemotoCalculado_B").innerText = tiempoRemotoCalculado_B.toFixed(4);
+    document.getElementById("umbral_tiempoRemoto_B").innerText = umbral_tiempoRemoto_B.toFixed(4);
 
 
-
+    if ((umbral_tiempo_B <= valor_umbral_tiempo_B) && (parseFloat(umbral_tiempoRemoto_B) <= valor_umbral_tiempoRemoto_B)) {
+        modeloRele[1].TMS = TMS_calculado_B;
+        CalcularTiempoReleA_usandoTiempo('no')
+        
+    } else {
+        ajustarTiempoB.style.display = "block";
     }
 
 
 
 
 
+    // }
 
 
-
-
-
-
+    //}
 
 }
 
@@ -1662,7 +1659,9 @@ function ajustarTiempoB_usandoTiempo() {
 }
 
 
-function CalcularTiempoReleA() {
+function CalcularTiempoReleA_usandoTiempo(ajusteManual) {
+
+    var valorAjusteManualTMS;
 
     Isc_ReleA = modeloRele[0].Isc;
     Isc_ReleB = modeloRele[1].Isc;
@@ -1684,14 +1683,19 @@ function CalcularTiempoReleA() {
     Ic_a_con_Incremento = Ic_ReleA + (Ic_ReleA) * (Incremento_Ic_A / 100)
     tiempo_A = modeloRele[0].tiempo;
 
-    TMSparteIEC_A = parametrosCurva[familiaCurva_A].IEC * ((tiempo_A / 1000) * (((Math.pow(Isc_ReleA / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta)));
-    TMSparteIEC_A = TMSparteIEC_A.toFixed(2);
+    if (ajusteManual == "no") {
+        TMSparteIEC_A = parametrosCurva[familiaCurva_A].IEC * ((tiempo_A / 1000) * (((Math.pow(Isc_ReleA / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta)));
+        TMSparteIEC_A = TMSparteIEC_A.toFixed(2);
 
-    TMSparteANSI_A = parametrosCurva[familiaCurva_A].ANSI * ((tiempo_A / 1000) * 1 / ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_Incremento) - parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_Incremento) - parametrosCurva[familiaCurva_A].C, 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_Incremento) - parametrosCurva[familiaCurva_A].C, 3)))));
-    TMSparteANSI_A = TMSparteANSI_A.toFixed(1);
+        TMSparteANSI_A = parametrosCurva[familiaCurva_A].ANSI * ((tiempo_A / 1000) * 1 / ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleA / Ic_a_con_Incremento) - parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleA / Ic_a_con_Incremento) - parametrosCurva[familiaCurva_A].C, 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleA / Ic_a_con_Incremento) - parametrosCurva[familiaCurva_A].C, 3)))));
+        TMSparteANSI_A = TMSparteANSI_A.toFixed(1);
 
-    TMS_calculado_A = parseFloat(TMSparteIEC_A) + parseFloat(TMSparteANSI_A);
+        TMS_calculado_A = parseFloat(TMSparteIEC_A) + parseFloat(TMSparteANSI_A);
 
+    } else {
+        valorAjusteManualTMS = tabla_TMS_ingresado_A_IEC.value;
+        TMS_calculado_A = parseFloat(valorAjusteManualTMS);
+    }
 
     //Comprobar tiempo calculado con el tiempo dado - tiempoOperacionCalculado_A
     tLocalparteIEC_A = (parametrosCurva[familiaCurva_A].IEC * TMS_calculado_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleA / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1)));
@@ -1706,89 +1710,169 @@ function CalcularTiempoReleA() {
     umbral_tiempo_A = (Math.abs((tiempo_A / 1000) - parseFloat(tiempoOperacionCalculado_A)) / (tiempo_A / 1000)) * 100;
     console.log(Math.abs((tiempo_A / 1000) - parseFloat(tiempoOperacionCalculado_A)))
 
-    if (umbral_tiempo_A > valor_umbral_tiempo_A) {
-        tabla_umbral_tiempo_A.style.background = "#ffc8dd";
-        estado.innerText = "El tiempo local A no está dentro del umbral establecido.";
-        estado.style.background = "#fa1e4e"
-        modeloRele[0].TMS = "-";
-        modeloRele[1].TMS = "-";
-        modeloRele[2].TMS = "-";
-    }
-    else {
-        tabla_umbral_tiempo_A.style.background = "#d0f4de";
+    isNaN(tiempo_coordinacion_A) ? tiempo_coordinacion_A = tiempoOperacionCalculado_B * 1000 : "";
 
-        isNaN(tiempo_coordinacion_A) ? tiempo_coordinacion_A = tiempoOperacionCalculado_B * 1000 : "";
-
-        //Tiempo en operación en tiempo remoto A
-        tiempoRemotoEsperado_A = parseFloat(tiempoOperacionCalculado_B) + (tiempo_coordinacion_A / 1000);
-        console.log("tiempoRemotoEsperado_A", tiempoRemotoEsperado_A)
+    //Tiempo en operación en tiempo remoto A
+    tiempoRemotoEsperado_A = parseFloat(tiempoOperacionCalculado_B) + (tiempo_coordinacion_A / 1000);
+    console.log("tiempoRemotoEsperado_A", tiempoRemotoEsperado_A)
 
 
 
-        //Hallar tiempo remoto en B
-        tRemotoparteIEC_A = (parametrosCurva[familiaCurva_A].IEC * TMS_calculado_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1)));
+    //Hallar tiempo remoto en B
+    tRemotoparteIEC_A = (parametrosCurva[familiaCurva_A].IEC * TMS_calculado_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1)));
 
-        tRemotoparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI * TMS_calculado_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleB / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleB / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleB / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C), 3))))));
+    tRemotoparteANSI_A = (parametrosCurva[familiaCurva_A].ANSI * TMS_calculado_A * ((parametrosCurva[familiaCurva_A].A) + (parametrosCurva[familiaCurva_A].B / ((Isc_ReleB / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C)) + (parametrosCurva[familiaCurva_A].D / (Math.pow((Isc_ReleB / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C), 2))) + (parametrosCurva[familiaCurva_A].E / (Math.pow((Isc_ReleB / Ic_a_con_Incremento) - (parametrosCurva[familiaCurva_A].C), 3))))));
 
-        tiempoRemotoCalculado_A = tRemotoparteIEC_A + tRemotoparteANSI_A;
+    tiempoRemotoCalculado_A = tRemotoparteIEC_A + tRemotoparteANSI_A;
 
-        //Hallar umbral del tiempo remoto en A
-        umbral_tiempoRemoto_A = ((Math.abs((parseFloat(tiempoOperacionCalculado_B) + (tiempo_coordinacion_A / 1000)) - tiempoRemotoCalculado_A) / (parseFloat(tiempoOperacionCalculado_B) + (tiempo_coordinacion_A / 1000))) * 100);
+    //Hallar umbral del tiempo remoto en A
+    umbral_tiempoRemoto_A = ((Math.abs((parseFloat(tiempoOperacionCalculado_B) + (tiempo_coordinacion_A / 1000)) - tiempoRemotoCalculado_A) / (parseFloat(tiempoOperacionCalculado_B) + (tiempo_coordinacion_A / 1000))) * 100);
 
+    if ((umbral_tiempo_A > valor_umbral_tiempo_A) || (parseFloat(umbral_tiempoRemoto_A) > valor_umbral_tiempoRemoto_A)) {
 
-
-        //Caso en el que se supere el umbral en el tiempo remoto
-        if (parseFloat(umbral_tiempoRemoto_A) > valor_umbral_tiempoRemoto_A) {
-
-            estado.innerText = "El tiempo de operación remoto A no se ajusta.";
-            estado.style.backgroundColor = "#fa1e4e";
-            tabla_umbral_tiempoRemoto_A.style.background = "#ffc8dd";
-            
-
-
-
-            //-------------------------------------------------------------Imprimir datos-------------------------
-            ReleA_Coordinacion.style.display = "block";
-            CoordinacionAporTiempo.style.display = "block";
-            document.getElementById("TMS_calculado_A").innerText = TMS_calculado_A;
-            document.getElementById("tiempoOperacionSuministrado_A").innerText = (tiempo_A / 1000).toFixed(4);
-            document.getElementById("tiempoOperacionCalculado_A").innerText = tiempoOperacionCalculado_A.toFixed(4);
-            document.getElementById("umbral_tiempo_A").innerText = umbral_tiempo_A.toFixed(4);
-            document.getElementById("tiempoCoordinacionSuministrado_A").innerHTML = (tiempo_coordinacion_A / 1000).toFixed(4);
-            document.getElementById("tiempoRemotoEsperado_A").innerText = tiempoRemotoEsperado_A.toFixed(4);
-            document.getElementById("tiempoRemotoCalculado_A").innerText = tiempoRemotoCalculado_A.toFixed(4);
-            document.getElementById("umbral_tiempoRemoto_A").innerText = umbral_tiempoRemoto_A.toFixed(4);
-            document.getElementById("nuevoumbral_tiempoRemoto_A").style.background = "rgb(208, 244, 222)";
-
-            //Cuadro resultado
-            ajustarTiempoA.style.display = "block";
-
-            ajustarTiempoA_usandoTiempo()
+        tabla_TMS_calculado_A.style.display = "none";
+        if (parametrosCurva[familiaCurva_A].IEC == 1) {
+            tabla_TMS_ingresado_A_IEC.style.display = "block";
+            tabla_TMS_calculado_A_IEC.innerText = TMS_calculado_A;
+            tabla_TMS_ingresado_A_ANSI.style.display = "none";
+            tabla_TMS_calculado_A_ANSI.innerText = "";
 
         } else {
-
-            estado.innerText = "El tiempo de operación remoto A se ajusta.";
-            estado.style.backgroundColor = "green";
-            tabla_umbral_tiempoRemoto_A.style.background = "#d0f4de";
-
-            modeloRele[0].TMS = TMS_calculado_A;
-            ReleA_Coordinacion.style.display = "block";
-            CoordinacionAporTiempo.style.display = "block";
-
-            //Imprimir los valores
-            document.getElementById("TMS_calculado_A").innerText = TMS_calculado_A;
-            document.getElementById("tiempoOperacionCalculado_A").innerText = tiempoOperacionCalculado_A.toFixed(4);
-            document.getElementById("umbral_tiempo_A").innerText = umbral_tiempo_A.toFixed(4);
-            document.getElementById("tiempoCoordinacionSuministrado_A").innerHTML = (tiempo_coordinacion_A / 1000).toFixed(4);
-            document.getElementById("tiempoRemotoEsperado_A").innerText = tiempoRemotoEsperado_A.toFixed(4);
-            document.getElementById("tiempoRemotoCalculado_A").innerText = tiempoRemotoCalculado_A.toFixed(4);
-            document.getElementById("umbral_tiempoRemoto_A").innerText = umbral_tiempoRemoto_A.toFixed(4);
-
-            graficarCurvaTopologiaBus();
-
+            tabla_TMS_ingresado_A_IEC.style.display = "none";
+            tabla_TMS_ingresado_A_ANSI.style.display = "block";
+            tabla_TMS_calculado_A_IEC.innerText = "";
+            tabla_TMS_calculado_A_ANSI.innerText = TMS_calculado_A;
         }
 
+    } else {
+        tabla_TMS_calculado_A.style.display = "block";
+        tabla_TMS_calculado_A.innerText = TMS_calculado_A;
+    }
 
+
+    if (umbral_tiempo_A > valor_umbral_tiempo_A) {
+
+        tabla_umbral_tiempo_A.style.background = "#ffc8dd";
+        estado.innerText = "El valor del tiempo local A supera el umbral.";
+        ReleA_Coordinacion.style.display = "block";
+        estado.style.backgroundColor = "#fa1e4e";
+        CoordinacionBporTiempo.style.display = "block";
+        estadoReleB.innerText = "El valor del tiempo local A supera el umbral suministrado, modifique el parámetro del umbral del tiempo local o el valor del tiempo de operación. ";
+        estadoReleA.style.display = "block";
+    } else {
+
+        tabla_umbral_tiempo_A.style.background = "#d0f4de";
+        ReleA_Coordinacion.style.display = "block";
+    }
+
+
+    if (parseFloat(umbral_tiempoRemoto_A) > valor_umbral_tiempoRemoto_A) {
+        console.log("entro al umbral A")
+        estado.innerText = "El tiempo de operación remoto A no se ajusta";
+        estado.style.backgroundColor = "#fa1e4e";
+        tabla_umbral_tiempoRemoto_A.style.background = "#ffc8dd";
+    } else {
+        tabla_umbral_tiempoRemoto_A.style.background = "#d0f4de";
+    }
+
+
+
+    ReleA_Coordinacion.style.display = "block";
+    CoordinacionAporTiempo.style.display = "block";
+    //document.getElementById("TMS_calculado_A").innerText = TMS_calculado_A;
+    document.getElementById("tiempoOperacionSuministrado_A").innerText = (tiempo_A / 1000).toFixed(4);
+    document.getElementById("umbral_tiempo_A").innerText = umbral_tiempo_A.toFixed(4);
+    document.getElementById("tiempoOperacionSuministrado_A").innerText = (tiempo_A / 1000).toFixed(4);
+    document.getElementById("tiempoOperacionCalculado_A").innerText = tiempoOperacionCalculado_A.toFixed(4);
+    //document.getElementById("umbral_tiempo_C").innerText = umbral_tiempo_C.toFixed(4);
+    document.getElementById("tiempoCoordinacionSuministrado_A").innerHTML = (tiempo_coordinacion_A / 1000).toFixed(4);
+    document.getElementById("tiempoRemotoEsperado_A").innerText = tiempoRemotoEsperado_A.toFixed(4);
+    document.getElementById("tiempoRemotoCalculado_A").innerText = tiempoRemotoCalculado_A.toFixed(4);
+    document.getElementById("umbral_tiempoRemoto_A").innerText = umbral_tiempoRemoto_A.toFixed(4);
+
+
+
+
+    // if (umbral_tiempo_A > valor_umbral_tiempo_A) {
+    //     tabla_umbral_tiempo_A.style.background = "#ffc8dd";
+    //     estado.innerText = "El tiempo local A no está dentro del umbral establecido.";
+    //     estado.style.background = "#fa1e4e"
+    //     modeloRele[0].TMS = "-";
+    //     modeloRele[1].TMS = "-";
+    //     modeloRele[2].TMS = "-";
+    // }
+    // else {
+    //     tabla_umbral_tiempo_A.style.background = "#d0f4de";
+
+
+
+
+
+    //     //Caso en el que se supere el umbral en el tiempo remoto
+    //     if (parseFloat(umbral_tiempoRemoto_A) > valor_umbral_tiempoRemoto_A) {
+
+    //         estado.innerText = "El tiempo de operación remoto A no se ajusta.";
+    //         estado.style.backgroundColor = "#fa1e4e";
+    //         tabla_umbral_tiempoRemoto_A.style.background = "#ffc8dd";
+
+    //         //-------------------------------------------------------------Imprimir datos-------------------------
+    //         ReleA_Coordinacion.style.display = "block";
+    //         CoordinacionAporTiempo.style.display = "block";
+    //         document.getElementById("TMS_calculado_A").innerText = TMS_calculado_A;
+    //         document.getElementById("tiempoOperacionSuministrado_A").innerText = (tiempo_A / 1000).toFixed(4);
+    //         document.getElementById("tiempoOperacionCalculado_A").innerText = tiempoOperacionCalculado_A.toFixed(4);
+    //         document.getElementById("umbral_tiempo_A").innerText = umbral_tiempo_A.toFixed(4);
+    //         document.getElementById("tiempoCoordinacionSuministrado_A").innerHTML = (tiempo_coordinacion_A / 1000).toFixed(4);
+    //         document.getElementById("tiempoRemotoEsperado_A").innerText = tiempoRemotoEsperado_A.toFixed(4);
+    //         document.getElementById("tiempoRemotoCalculado_A").innerText = tiempoRemotoCalculado_A.toFixed(4);
+    //         document.getElementById("umbral_tiempoRemoto_A").innerText = umbral_tiempoRemoto_A.toFixed(4);
+    //         // document.getElementById("nuevoumbral_tiempoRemoto_A").style.background = "rgb(208, 244, 222)";
+
+    //         //Cuadro resultado
+    //         ajustarTiempoA.style.display = "block";
+
+    //         //   ajustarTiempoA_usandoTiempo("no")
+
+    //     } else {
+
+    //         estado.innerText = "El tiempo de operación remoto A se ajusta.";
+    //         estado.style.backgroundColor = "green";
+    //         tabla_umbral_tiempoRemoto_A.style.background = "#d0f4de";
+
+    //         modeloRele[0].TMS = TMS_calculado_A;
+    //         ReleA_Coordinacion.style.display = "block";
+    //         CoordinacionAporTiempo.style.display = "block";
+
+    //         //Imprimir los valores
+    //         document.getElementById("TMS_calculado_A").innerText = TMS_calculado_A;
+    //         document.getElementById("tiempoOperacionCalculado_A").innerText = tiempoOperacionCalculado_A.toFixed(4);
+    //         document.getElementById("umbral_tiempo_A").innerText = umbral_tiempo_A.toFixed(4);
+    //         document.getElementById("tiempoCoordinacionSuministrado_A").innerHTML = (tiempo_coordinacion_A / 1000).toFixed(4);
+    //         document.getElementById("tiempoRemotoEsperado_A").innerText = tiempoRemotoEsperado_A.toFixed(4);
+    //         document.getElementById("tiempoRemotoCalculado_A").innerText = tiempoRemotoCalculado_A.toFixed(4);
+    //         document.getElementById("umbral_tiempoRemoto_A").innerText = umbral_tiempoRemoto_A.toFixed(4);
+
+    //         graficarCurvaTopologiaBus();
+
+    //     }
+
+
+    // }
+
+    if ((umbral_tiempo_A <= valor_umbral_tiempo_A) && (parseFloat(umbral_tiempoRemoto_A) <= valor_umbral_tiempoRemoto_A)) {
+        //CalcularTiempoReleA_usandoTiempo('no')
+        tabla_TMS_calculado_A.style.display = "none";
+        modeloRele[0].TMS = TMS_calculado_A;
+        graficarCurvaTopologiaBus();
+        ReleA_Coordinacion.style.display = "block";
+        CoordinacionAporTiempo.style.display = "block";
+        estado.style.backgroundColor = "green";
+        tabla_umbral_tiempoRemoto_A.style.background = "#d0f4de";
+        estado.innerText = "Ajustes realizados";
+        tabGraficaBus.style.display = "block";
+
+    } else {
+        ajustarTiempoA.style.display = "block";
     }
 
 
@@ -1800,61 +1884,53 @@ var nuevotiempoRemotoCalculado_A, nuevotiempoRemotoEsperado_A, nuevoTMS_calculad
 var nuevotiempoLocalCalculado_A
 var nuevotRemoto_A, nuevoumbral_tiempoRemoto_A, nuevotiempoOperacionCalculado_A, nuevoumbral_tiempoOperacion_A
 
-function ajustarTiempoA_usandoTiempo() {
+function ajustarTiempoA_usandoTiempo(reajustoManual) {
 
-    //Se halla el nuevo Dial con el tiempo remoto esperado
-
-    console.log("parametrosCurva[familiaCurva_A].IEC", parametrosCurva[familiaCurva_A].IEC)
-
+    var valorReajustado;
     //Si se esta trabajando con curva IEC
     if (parametrosCurva[familiaCurva_A].IEC == 1) {
 
-        nuevoTMS_calculado_A = parametrosCurva[familiaCurva_A].IEC * ((tiempoRemotoEsperado_A) * (((Math.pow(Isc_ReleB / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta)));
-        nuevoTMS_calculado_A = nuevoTMS_calculado_A.toFixed(3);
-        nuevoTMS_calculado_A = parseFloat(nuevoTMS_calculado_A);
-
-        if (nuevoTMS_calculado_A <= 0.007) {
-
-
-            estado.innerText = "No se encuentra un valor del Dial perteneciente al rango de la curva suministrada.";
-            estado.style.background = "#fa1e4e";
-            tabGraficaBus.style.display = "none";
-
-
-            document.getElementById("nuevoTMS_calculado_A").innerText = nuevoTMS_calculado_A;
-            document.getElementById("nuevoTMS_calculado_A").style.background = "#ffc8dd";
-
-            document.getElementById("nuevotiempoOperacionCalculado_A").innerText = "-----";
-            document.getElementById("nuevoumbral_tiempo_A").innerText = "-----";
-            document.getElementById("nuevotiempoRemotoEsperado_A").innerText = "------";
-            document.getElementById("nuevotiempoRemotoCalculado_A").innerText = "------";
-            document.getElementById("nuevoumbral_tiempoRemoto_A").innerText = "------";
-
-            borrarTMSBus();
-        }
-        else {
-
-            //Volver a reajustar el valor
-            nuevoTMS_calculado_A = nuevoTMS_calculado_A.toFixed(2);
+        if (reajustoManual == "no") {
+            nuevoTMS_calculado_A = parametrosCurva[familiaCurva_A].IEC * ((tiempoRemotoEsperado_A) * (((Math.pow(Isc_ReleB / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta)));
+            nuevoTMS_calculado_A = nuevoTMS_calculado_A.toFixed(3);
             nuevoTMS_calculado_A = parseFloat(nuevoTMS_calculado_A);
 
+            if (nuevoTMS_calculado_A <= 0.007) {
 
 
+                estado.innerText = "No se encuentra un valor del Dial perteneciente al rango de la curva suministrada.";
+                estado.style.background = "#fa1e4e";
+                tabGraficaBus.style.display = "none";
 
 
-            console.log("complemento tms A: ", ((tiempoRemotoEsperado_A) * (((Math.pow(Isc_ReleB / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta))))
+                document.getElementById("nuevoTMS_calculado_A").innerText = nuevoTMS_calculado_A;
+                document.getElementById("nuevoTMS_calculado_A").style.background = "#ffc8dd";
 
-            console.log("TMS_calculado_A", nuevoTMS_calculado_A)
-            console.log("tiempoRemotoEsperado_A", tiempoRemotoEsperado_A)
+                document.getElementById("nuevotiempoOperacionCalculado_A").innerText = "-----";
+                document.getElementById("nuevoumbral_tiempo_A").innerText = "-----";
+                document.getElementById("nuevotiempoRemotoEsperado_A").innerText = "------";
+                document.getElementById("nuevotiempoRemotoCalculado_A").innerText = "------";
+                document.getElementById("nuevoumbral_tiempoRemoto_A").innerText = "------";
+
+                borrarTMSBus();
+            }
+            else {
+
+                //Volver a reajustar el valor
+                nuevoTMS_calculado_A = nuevoTMS_calculado_A.toFixed(2);
+                nuevoTMS_calculado_A = parseFloat(nuevoTMS_calculado_A);
+
+                console.log("complemento tms A: ", ((tiempoRemotoEsperado_A) * (((Math.pow(Isc_ReleB / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1) / (parametrosCurva[familiaCurva_A].beta))))
+
+                console.log("TMS_calculado_A", nuevoTMS_calculado_A)
+                console.log("tiempoRemotoEsperado_A", tiempoRemotoEsperado_A)
+            }
 
             nuevotiempoOperacionCalculado_A = (parametrosCurva[familiaCurva_A].IEC * nuevoTMS_calculado_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleA / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1)));
 
-            console.log("nuevotiempoOperacionCalculado_A", parseFloat(nuevotiempoOperacionCalculado_A))
-
-            nuevotiempoRemotoEsperado_A = tiempoOperacionCalculado_B + (tiempo_A / 1000)
+            nuevotiempoRemotoEsperado_A = tiempoOperacionCalculado_B + (tiempo_coordinacion_A / 1000)
 
             nuevotiempoRemotoCalculado_A = (parametrosCurva[familiaCurva_A].IEC * nuevoTMS_calculado_A * ((parametrosCurva[familiaCurva_A].beta) / ((Math.pow(Isc_ReleB / Ic_a_con_Incremento, parametrosCurva[familiaCurva_A].alfa)) - 1)));
-
 
             console.log("nuevotiempoRemotoCalculado_A ", nuevotiempoRemotoCalculado_A)
 
@@ -1872,60 +1948,67 @@ function ajustarTiempoA_usandoTiempo() {
             document.getElementById("nuevotiempoRemotoCalculado_A").innerText = nuevotiempoRemotoCalculado_A.toFixed(4);
             document.getElementById("nuevoumbral_tiempoRemoto_A").innerText = nuevoumbral_tiempoRemoto_A.toFixed(4);
 
-            if (nuevoumbral_tiempoOperacion_A > valor_umbral_tiempo_A) {
-                document.getElementById("nuevoumbral_tiempo_A").style.background = "#ffc8dd";
-                estadoReleA.innerText = "Con este DIAL, supera el valor del umbral en el tiempo local A. ";
-                modeloRele[0].TMS = "-";
-                modeloRele[1].TMS = "-";
-                modeloRele[2].TMS = "-";
-            }
+        }
+        if (reajustoManual == "si") {
+            valorReajustado = document.getElementById("select_tms_A").value;
+
+            nuevoTMS_calculado_A = parseFloat(valorReajustado);
 
 
-
-            if (nuevoumbral_tiempoOperacion_A >= 0 && nuevoumbral_tiempoOperacion_A <= valor_umbral_tiempo_A) {
-                document.getElementById("nuevoumbral_tiempo_A").style.background = "#d0f4de";
-                estadoReleA.innerText = "Con este DIAL, está dentro del rango aceptable en el tiempo local. ";
-
-                
-
-                if (nuevoumbral_tiempoRemoto_A > valor_umbral_tiempoRemoto_A) {
-                    tabla_nuevoumbral_tiempoRemoto_A.style.background = "#ffc8dd";
-                    estadoReleA.innerText = estadoReleA.innerText + " No cumple para que el relé A sea respaldo del relé B."
-
-                } else {
-                    tabla_nuevoumbral_tiempoRemoto_A.style.background = "#d0f4de";
-                    estadoReleA.innerText = estadoReleA.innerText + "Aunque permite ajustar el relé A como respaldo del relé B."
-                }
-
-                estadoReleA.style.display = "block";
-
-                //Comprobar si son las mismas curvas
-                if ((modeloRele[0].familiaCurva == modeloRele[1].familiaCurva) && (modeloRele[0].familiaCurva == modeloRele[2].familiaCurva)) {
-                    console.log("modeloRele[0].familiaCurva: ", modeloRele[0].familiaCurva)
-                    console.log("modeloRele[1].familiaCurva: ", modeloRele[1].familiaCurva)
-                    console.log("modeloRele[2].familiaCurva: ", modeloRele[2].familiaCurva)
-                    estado.innerText = "Ajustes completados";
-                    estado.style.background = "green";
-
-                } else {
-                    console.log("modeloRele[0].familiaCurva: ", modeloRele[0].familiaCurva)
-                    console.log("modeloRele[1].familiaCurva: ", modeloRele[1].familiaCurva)
-                    console.log("modeloRele[2].familiaCurva: ", modeloRele[2].familiaCurva)
-                    estado.innerText = "No se recomienda utilizar diferentes familias de curva.";
-                    estado.style.background = "#fee440"
-                }
-
-                //Establecer valores para la gráfica topología bus
-                modeloRele[0].TMS = nuevoTMS_calculado_A;
-                tabGraficaBus.style.display = "block";
-
-
-                console.log("nuevoTMS_calculado_A nuevoTMS_calculado_A: ", nuevoTMS_calculado_A)
-                graficarCurvaTopologiaBus();
-
-            }
 
         }
+
+
+        if (nuevoumbral_tiempoOperacion_A > valor_umbral_tiempo_A) {
+            document.getElementById("nuevoumbral_tiempo_A").style.background = "#ffc8dd";
+            estadoReleA.innerText = "Con este DIAL, supera el valor del umbral en el tiempo local A. ";
+            modeloRele[0].TMS = "-";
+            modeloRele[1].TMS = "-";
+            modeloRele[2].TMS = "-";
+            estado.innerText = "El tiempo de operación local A supera el rango máximo permitido.";
+            estado.style.background = "#fa1e4e";
+        }
+        else {
+
+            if (nuevoumbral_tiempoRemoto_A > valor_umbral_tiempoRemoto_A) {
+                tabla_nuevoumbral_tiempoRemoto_A.style.background = "#ffc8dd";
+                estadoReleA.innerText = estadoReleA.innerText + " No cumple para que el relé A sea respaldo del relé B."
+
+            } else {
+                tabla_nuevoumbral_tiempoRemoto_A.style.background = "#d0f4de";
+                estadoReleA.innerText = estadoReleA.innerText + "Aunque permite ajustar el relé A como respaldo del relé B."
+            }
+
+            estadoReleA.style.display = "block";
+
+            //Comprobar si son las mismas curvas
+            if ((modeloRele[0].familiaCurva == modeloRele[1].familiaCurva) && (modeloRele[0].familiaCurva == modeloRele[2].familiaCurva)) {
+                console.log("modeloRele[0].familiaCurva: ", modeloRele[0].familiaCurva)
+                console.log("modeloRele[1].familiaCurva: ", modeloRele[1].familiaCurva)
+                console.log("modeloRele[2].familiaCurva: ", modeloRele[2].familiaCurva)
+                estado.innerText = "Ajustes completados";
+                estado.style.background = "green";
+
+            } else {
+                console.log("modeloRele[0].familiaCurva: ", modeloRele[0].familiaCurva)
+                console.log("modeloRele[1].familiaCurva: ", modeloRele[1].familiaCurva)
+                console.log("modeloRele[2].familiaCurva: ", modeloRele[2].familiaCurva)
+                estado.innerText = "No se recomienda utilizar diferentes familias de curva.";
+                estado.style.background = "#fee440"
+            }
+
+            //Establecer valores para la gráfica topología bus
+            modeloRele[0].TMS = nuevoTMS_calculado_A;
+            tabGraficaBus.style.display = "block";
+
+
+            console.log("nuevoTMS_calculado_A nuevoTMS_calculado_A: ", nuevoTMS_calculado_A)
+            graficarCurvaTopologiaBus();
+
+        }
+
+
+
 
     }
 
@@ -2734,7 +2817,7 @@ async function valorUmbral(umbral) {
         if (umbral == "B_remoto") {
             valor_umbral_tiempoRemoto_B = parseFloat(formValues[0]);
             document.getElementById("valor_umbral_tiempo_B_remoto").innerText = formValues[0];
-            
+
 
         }
         if (umbral == "A_remoto") {
@@ -2742,6 +2825,8 @@ async function valorUmbral(umbral) {
             document.getElementById("valor_umbral_tiempo_A_remoto").innerText = formValues[0];
 
         }
+
+        CoordinacionBus()
     }
 
 

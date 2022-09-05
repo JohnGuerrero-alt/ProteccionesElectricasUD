@@ -329,7 +329,7 @@ tr {
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     /* width: 100%; */
     margin-top: 220px;
     height: 120px;
@@ -338,7 +338,7 @@ tr {
 .botonesBorrar {
     display: flex;
     flex-direction: row;
-    
+
 
 }
 
@@ -417,13 +417,6 @@ tr {
 
 }
 
-.pill-metodologia1 {
-    overflow-y: auto !important;
-    padding: 1px;
-    height: 450px;
-}
-
-
 /*  */
 .resultados {
     padding: 0 20px;
@@ -476,13 +469,37 @@ canvas {
 
 .CoordinacionBus::-webkit-scrollbar-track {
     background: rgb(226, 226, 226);
+    border-radius: 10px;
 }
 
 .CoordinacionBus::-webkit-scrollbar-thumb {
     background: rgb(85, 84, 84);
+    border-radius: 10px;
 }
 
+.buttonCambiarVariable {
+    background-color: #fefefe;
+    border-radius: 10px;
+    padding: 0 3px;
+    outline: 2px solid #32d3e9;
+}
 
+.buttonCambiarVariable:hover {
+    cursor: pointer;
+    background-color: #32d3e9;
+    outline: 2px solid #000;
+}
+
+.botonEditar {
+
+}
+
+.botonEditar:hover {
+    cursor: pointer;
+    background-color: #32d3e9;
+    border-radius: 3px;
+    padding: 1px;
+}
 
 #pills-resultados-grafica-1-tab {
     display: none;
@@ -492,18 +509,45 @@ canvas {
     border: 2px solid #7ba9ee;
 }
 
-
-.Paso1 {
+.Paso0, .Paso1, .Paso2 {
     display: none;
     text-align: justify;
-    padding: 4px;
+    padding: 10px;
 }
 
-.Paso2 {
-    display: none;
-    text-align: justify;
-    padding: 4px;
+.Paso0 {
+    display: block;
 }
+
+.checkBoxVariable {
+    border-radius: 10px;
+    border: 2px solid #5599ff;
+    padding: 10px;
+    margin: 10px;
+}
+
+#radioTiempo, #radioTMS {
+    height: 17px;
+    width: 17px;
+}
+
+#radioTiempo:hover, #radioTMS:hover {
+    cursor: pointer;
+    background-color: #1cbfce;
+}
+
+.VariableSeleccionada {
+    display: none;
+    background-color: rgb(189, 224, 254);
+}
+
+.ConsideracionesCoordinacion {
+    display: none;
+    padding: 10px;
+    border: 3px solid #5432e9;
+}
+
+
 
 .ajustarTiempoA,
 .ajustarTiempoB,
@@ -556,55 +600,8 @@ canvas {
 
 .bordeadoTablaUmbral {
     border: 2px solid #32d3e9;
-    
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* <-------------------------------- Inicializar la figura en anillo */
 
@@ -944,17 +941,6 @@ canvas {
     background-color: #8eecf5;
 }
 
-/* Configuración hover para las barras */
-
-
-
-/* Configur */
-
-
-
-
-
-
 .celda {
     height: 70px;
     width: 70px;
@@ -984,6 +970,45 @@ canvas {
     display: none;
 }
 
+.instrucciones {
+    overflow: auto;
+    height: 480px;
+    padding: 4px;
+}
+
+.instrucciones::-webkit-scrollbar {
+    width: 10px !important;
+}
+
+.instrucciones::-webkit-scrollbar-track {
+    background: rgb(206, 203, 203) !important;
+    border-radius: 10px;
+}
+
+.instrucciones::-webkit-scrollbar-thumb {
+    background: rgb(87, 85, 85) !important;
+    border-radius: 10px;
+}
+
+.tablaRelesAnillo {
+    overflow: auto;
+    height: 480px;
+}
+
+.tablaRelesAnillo::-webkit-scrollbar {
+    width: 10px !important;
+}
+
+.tablaRelesAnillo::-webkit-scrollbar-track {
+    background: rgb(206, 203, 203) !important;
+    border-radius: 10px;
+}
+
+.tablaRelesAnillo::-webkit-scrollbar-thumb {
+    background: rgb(87, 85, 85) !important;
+    border-radius: 10px;
+}
+
 .divMetodo1 {
     padding: 2px;
 }
@@ -993,17 +1018,18 @@ canvas {
 }
 
 .iconoExplain {
-    background-image: url('../assets/images/explain.svg'); 
-    height:40px;
+    background-image: url('../assets/images/explain.svg');
+    height: 40px;
     width: 40px;
     margin: 3px auto;
     border: 2px solid #5432e9;
     border-radius: 2px;
 
 }
+
 .iconoExplain:hover {
     cursor: pointer;
-    border: 2px solid #1cbfce;    
+    border: 2px solid #1cbfce;
     border-radius: 2px;
 }
 

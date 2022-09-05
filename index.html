@@ -143,17 +143,18 @@
 
                                             </thead>
                                             <tr>
-                                                <th>Tiempo <br> Coordinación <br></th>
+                                                <th>Tiempo de <br> Coordinación <br></th>
                                                 <td id="Tiempo_coordinacion_0">-</td>
                                                 <td id="Tiempo_coordinacion_1">-</td>
-                                                <td id="Tiempo_coordinacion_2">-</td>
+                                                <td style="background-color: rgb(103, 103, 103);"
+                                                    id="Tiempo_coordinacion_2"></td>
                                                 <td>[ms]</td>
                                             </tr>
                                             <tr>
                                                 <th>Tiempo <br> Prot 50 <br></th>
-                                                <td id="Tiempo_rele50_0">50</td>
-                                                <td id="Tiempo_rele50_1">50</td>
-                                                <td id="Tiempo_rele50_2">50</td>
+                                                <td id="Tiempo_rele50_0">-</td>
+                                                <td id="Tiempo_rele50_1">-</td>
+                                                <td id="Tiempo_rele50_2">-</td>
                                                 <td>[ms]</td>
                                             </tr>
                                         </tbody>
@@ -170,7 +171,7 @@
 
                                 <div class="botonesBorrar">
                                     <div onclick="borrarTiemposBus()" class="botonAjustarBorrar hoverButton">Borrar
-                                        "tiempos" </div>
+                                        "tiempos operación" </div>
 
                                     <div onclick="borrarTMSBus()" class="botonAjustarBorrar hoverButton">Borrar "TMS"
                                     </div>
@@ -215,128 +216,117 @@
                                 <div class="tab-pane pill-metodologia1 fade show active" id="pills-metodologia1"
                                     role="tabpanel" aria-labelledby="pills-metodologia1-tab">
 
-                                    <h3>Pasos</h3>
-                                    <p style="text-align: justify;">1. Para comenzar la coordinación de los Relés, se
-                                        comienza desde el relé C hasta el A. Es importante ingresar las variables Isc,
-                                        Ic, Incremento Ic, Familia de curvas y de su elección (el tiempo o TMS). Para
-                                        modificar los valores de cada relé, <b>presione la imagen del relé que quiere
-                                            configurar</b> .</p>
-                                    <p style="text-align: justify;">2. Presione el botón "Calcular". En la pestaña
-                                        "Coordinación", el programa realizará el proceso de ajuste de coordinación
-                                        empezando con el relé C, continuando con el relé B y por último el relé A.
-                                        <br><br>
-                                        <b>Nota:</b> Si se presenta alguna novedad, en la barra que contiene el texto
-                                        "Estado", avisará si es necesario cambiar el valor de alguna variable o se
-                                        completo el proceso exitosamente.
-                                    </p>
+                                    <div class="instrucciones">
+                                        <h3>Pasos</h3>
+                                        <p class="justify">1. Para comenzar la coordinación de los Relés, se
+                                            comienza desde el relé C hasta el A. Es importante ingresar las variables
+                                            Isc, Ic, Incremento Ic, Familia de curvas. Para modificar los valores de
+                                            cada relé, <b>presione la imagen del relé que quiere configurar</b> .</p>
+                                        <p class="justify">2. Presione el botón 'Calcular' ubicado en la pestaña
+                                            "Coordinación", el programa requerirá que
+                                            escoja la variable con la cual trabajará para realizar el proceso de ajuste
+                                            de coordinación (Tiempo de operación o TMS), administre los datos
+                                            correspondientes a la variable con la que necesita trabajar. </p>
 
-                                    <p style="text-align: justify;">3. Una vez finalice el programa de realizar los
-                                        ajustes correspondientes, habilitará la pestaña "Grafica",
-                                        donde se visualizará la curva de tiempo inverso
-                                        según los datos suministrados. </p>
+                                        <p class="justify">3. Una vez administrado los datos y seleccionado la variable
+                                            a trabajar, vuelva a presionar el botón 'Calcular'. El programa realizá el
+                                            proceso de coordinación empezando con el relé C, continuando con el relé B y
+                                            por último el relé A.
+                                            <br><br>
+                                            <b>Nota:</b> Si se presenta alguna novedad, en la barra que contiene el
+                                            texto
+                                            "Estado", avisará si es necesario cambiar el valor de alguna variable o si
+                                            completo el proceso exitosamente.
+                                        </p>
+
+                                        <p class="justify">4. Una vez finalice el programa de realizar los
+                                            ajustes correspondientes, habilitará la pestaña "Grafica",
+                                            donde se visualizará la curva de tiempo inverso
+                                            según los datos suministrados. </p>
+                                    </div>
+
 
 
                                 </div>
                                 <div class="tab-pane fade" id="pills-resultados-calculos-1" role="tabpanel"
                                     aria-labelledby="pills-resultados-calculos-1-tab">
 
-                                    <!--  <div class="resultadosDiagramaBus">
-
-                                         <div class="tablaResultadosDiagramaBus">
-                                            <div class="textoResultados ">Resultados</div>
-                                            <div class="resultados table-responsive ">
-                                                <table class="table align-middle">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Relé</th>
-                                                            <th scope="col">Dial <br> (Calculado)</th>
-                                                            <th scope="col">Dial <br> (Escogido)</th>
-                                                            <th scope="col">Tiempo local <br> (seg)</th>
-                                                            <th></th>
-                                                            <th scope="col">Tiempo Remoto <br> (seg)</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="table-group-divider">
-                                                        <tr>
-                                                            <th scope="row" class="colorReleC">C</th>
-                                                            <td id="Dial_calculado_2"></td>
-                                                            <td id="Dial_escogido_2"></td>
-                                                            <td id="Tiempo_local_2"></td>
-                                                            <td onclick="ajustarValoresCoordinacion('2')"><img
-                                                                    src="assets/images/Anillo/editar.png"
-                                                                    class="seleccionReleAnillo" width="20" height="20">
-                                                            </td>
-                                                            <td id="Tiempo_remoto_2">-</td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row" class="colorReleB">B</th>
-                                                            <td id="Dial_calculado_1"></td>
-                                                            <td id="Dial_escogido_1"></td>
-                                                            <td id="Tiempo_local_1"></td>
-                                                            <td onclick="ajustarValoresCoordinacion('1')"> <img
-                                                                    src="assets/images/Anillo/editar.png"
-                                                                    class="seleccionReleAnillo" width="20" height="20">
-                                                            </td>
-                                                            <td id="Tiempo_remoto_1"></td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row" class="colorReleA">A</th>
-                                                            <td id="Dial_calculado_0"></td>
-                                                            <td id="Dial_escogido_0"></td>
-                                                            <td id="Tiempo_local_0"></td>
-                                                            <td onclick="ajustarValoresCoordinacion('0')">
-                                                                <img src="assets/images/Anillo/editar.png"
-                                                                    class="seleccionReleAnillo" width="20" height="20">
-                                                            </td>
-                                                            <td id="Tiempo_remoto_0"></td>
-
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div> -->
-
-                                    <!-- <br>
-                                        <div class="botonCalcular  hoverButton" onclick="graficarCurvaTopologiaBus()">
-                                            Graficar</div> -->
 
                                     <div class="Estado" id="Estado">Estado</div>
                                     <div class="PanelCoordinacionBus" id="PanelCoordinacionBus">
 
                                         <div class="CoordinacionBus" id="divcoordinacionBus"
                                             style="background-color: #fefefe; height: 370px; overflow: auto;">
+
+                                            <div class="Paso0" id="Paso0">
+                                                <h3><u>Nota</u></h3>
+                                                <p>- Tener en cuenta que el programa toma valores primarios, pero
+                                                    trabaja al final con valores secundarios.</p>
+                                                <p>- No se utiliza relación de transformación (TAP).</p>
+                                            </div>
+
                                             <div id="Paso1" class="Paso1">
                                                 <!-- Seleccionar de que método realizarlo primero por medio del tiempo o por medio del DIAL -->
                                                 Los datos iniciales de cada uno de los relés han sido cargados.
-                                                La coordinación comienza desde el relé C. Hay dos formas para realizar
-                                                el proceso de coordinación: <br><br>
+                                                Seleccione la variable para realizar
+                                                el proceso de coordinación e ingrese su valor correspondiente a cada
+                                                relé (en caso que esté vacio el campo): <br><br>
+
+                                                <div class="checkBoxVariable">
+                                                    <h5><b>Variable a trabajar</b>:</h5>
+                                                    <div class="form-check" style="display: none;">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="exampleRadios" id="radioInvisible" value="
+                                                        Ninguno" checked>
+                                                        <label class="form-check-label" for="exampleRadios1">
+                                                            Invisible
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="exampleRadios" id="radioTiempo" value="Tiempo">
+                                                        <label class="form-check-label" for="exampleRadios2">
+                                                            Tiempo de operación
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="exampleRadios" id="radioTMS" value="TMS">
+                                                        <label class="form-check-label" for="exampleRadios3">
+                                                            TMS
+                                                        </label>
+                                                    </div>
+                                                </div>
 
 
-                                                <b>1. Variable "TIEMPO"</b>
-                                                <br>
-                                                Si desea que el programa realice la coordinación a partir del tiempo de
-                                                operación (Calcula el valor del TMS). Asigné el valor del tiempo
+
+                                                <b>1. Variable "Tiempo de operación"</b>: (Calcula el valor del TMS).
+                                                Asigné el valor del tiempo
                                                 <b></b>en cada uno</b> de los relés.
                                                 <br><br>
-                                                <b>2. Variable "TMS"</b> <br>
-                                                En cambio si desea que el programa realice la coordinación a partir del
-                                                DIAL (Calcula el tiempo de operación). Asigne el valor del DIAL para el
-                                                relé C y si lo desea también para
+                                                <b>2. Variable "TMS"</b>: (Calcula el tiempo de operación). Asigne el
+                                                valor del DIAL para el relé C y si lo necesita también para
                                                 el relé B y relé A.
-
-                                                <br></br>
-                                                <b>Observación</b>: Si asigna valores en ambos campos, el programa
-                                                tomará
-                                                como prioridad el valor del DIAL.
-
 
                                             </div>
 
-                                            <div class="Paso2" id="Paso2"></div>
+                                            <div class="VariableSeleccionada" id="VariableSeleccionada">
+
+                                                <table class="table ">
+                                                    <tr>
+                                                        <td><b>Variable seleccionada</b>:</td>
+                                                        <td id="celdaVariableSeleccionada"></td>
+                                                        <td>
+                                                            <div class="buttonCambiarVariable"
+                                                                onclick="cambiarVariableSeleccionada()">Cambiar</div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                            </div>
+
+                                            <div class="ConsideracionesCoordinacion" id="ConsideracionesCoordinacion">
+                                            </div>
 
                                             <div class="ReleC_Coordinacion" id="ReleC_Coordinacion">
 
@@ -347,14 +337,15 @@
 
                                                 <table class="table align-middle   bordeadoTablaUmbral">
                                                     <tr>
-                                                        <th class="etiquetaUmbrales">Valor del umbral del tiempo de
+                                                        <th class="etiquetaUmbrales">Umbral de error<br> del tiempo de
                                                             operación local :</th>
                                                         <td>±</td>
                                                         <td colspan="2" id="valor_umbral_tiempo_C">10</td>
                                                         <td>%</td>
                                                         <td onclick="valorUmbral('C_local')"> <img
                                                                 src="assets/images/Anillo/editar.png"
-                                                                class="seleccionReleAnillo" width="20" height="20"></td>
+                                                                class="seleccionReleAnillo botonEditar" width="20"
+                                                                height="20"></td>
                                                     </tr>
                                                 </table>
 
@@ -369,12 +360,13 @@
                                                                 <th>Tiempo de operación <br> suministrado [seg]</th>
                                                                 <th>Tiempo de operación <br> calculado [seg]</th>
 
-                                                                <th>Umbral tiempo <br> [%]</th>
+                                                                <th>Error tiempo <br> [%]</th>
 
                                                             </thead>
                                                             <tbody class="tabla-rele-bus">
                                                                 <tr>
-                                                                    <td id="TMS_calculado_C"></td>
+                                                                    <td id="TMS_calculado_C">
+                                                                    </td>
                                                                     <td id="tiempoOperacionSuministrado_C"></td>
                                                                     <td id="tiempoOperacionCalculado_C"></td>
 
@@ -408,9 +400,7 @@
 
                                                     </div>
 
-
                                                 </div>
-
 
                                                 <br>
 
@@ -428,24 +418,27 @@
 
                                                 <table class="table align-middle   bordeadoTablaUmbral">
                                                     <tr>
-                                                        <th class="etiquetaUmbrales">Valor del umbral del tiempo de
+                                                        <th class="etiquetaUmbrales">Umbral de error<br> del tiempo de
                                                             operación local:</th>
                                                         <td>±</td>
                                                         <td colspan="2" id="valor_umbral_tiempo_B">10</td>
                                                         <td>%</td>
                                                         <td onclick="valorUmbral('B_local')"> <img
                                                                 src="assets/images/Anillo/editar.png"
-                                                                class="seleccionReleAnillo" width="20" height="20"></td>
+                                                                class="seleccionReleAnillo botonEditar" width="20"
+                                                                height="20"></td>
                                                     </tr>
                                                     <tr>
-                                                        <th class="etiquetaUmbrales">Valor del umbral del tiempo remoto
+                                                        <th class="etiquetaUmbrales">Umbral de error<br>del tiempo
+                                                            remoto
                                                             :</th>
                                                         <td>±</td>
                                                         <td colspan="2" id="valor_umbral_tiempo_B_remoto">10</td>
                                                         <td>%</td>
                                                         <td onclick="valorUmbral('B_remoto')"> <img
                                                                 src="assets/images/Anillo/editar.png"
-                                                                class="seleccionReleAnillo" width="20" height="20"></td>
+                                                                class="seleccionReleAnillo botonEditar" width="20"
+                                                                height="20"></td>
                                                     </tr>
                                                 </table>
 
@@ -456,12 +449,224 @@
                                                                 <th>TMS <br>calculado</th>
                                                                 <th>Tiempo de operación<br> suministrado [seg]</th>
                                                                 <th>Tiempo de operación<br> calculado [seg]</th>
-                                                                <th>Umbral <br> tiempo de operacion <br> [%]</th>
+                                                                <th>Error <br> tiempo de operacion <br> [%]</th>
 
                                                             </thead>
                                                             <tbody class="tabla-rele-bus">
                                                                 <tr>
-                                                                    <td id="TMS_calculado_B"></td>
+                                                                    <td>
+                                                                        <p id="TMS_calculado_B"></p>
+
+                                                                        <select
+                                                                            onchange="CalcularTiempoReleB_usandoTiempo('si') "
+                                                                            class="form-select form-select-sm"
+                                                                            aria-label=".form-select-sm example"
+                                                                            id="TMS_ingresado_B_IEC">
+                                                                            <option id="TMS_calculado_B_IEC" selected>
+                                                                                Open this select menu
+                                                                            </option>
+
+                                                                            <option value="0.01">0.01</option>
+                                                                            <option value="0.02">0.02</option>
+                                                                            <option value="0.03">0.03</option>
+                                                                            <option value="0.04">0.04</option>
+                                                                            <option value="0.05">0.05</option>
+                                                                            <option value="0.06">0.06</option>
+                                                                            <option value="0.07">0.07</option>
+                                                                            <option value="0.08">0.08</option>
+                                                                            <option value="0.09">0.09</option>
+                                                                            <option value="0.10">0.10</option>
+                                                                            <option value="0.11">0.11</option>
+                                                                            <option value="0.12">0.12</option>
+                                                                            <option value="0.13">0.13</option>
+                                                                            <option value="0.14">0.14</option>
+                                                                            <option value="0.15">0.15</option>
+                                                                            <option value="0.16">0.16</option>
+                                                                            <option value="0.17">0.17</option>
+                                                                            <option value="0.18">0.18</option>
+                                                                            <option value="0.19">0.19</option>
+                                                                            <option value="0.20">0.20</option>
+                                                                            <option value="0.21">0.21</option>
+                                                                            <option value="0.22">0.22</option>
+                                                                            <option value="0.23">0.23</option>
+                                                                            <option value="0.24">0.24</option>
+                                                                            <option value="0.25">0.25</option>
+                                                                            <option value="0.26">0.26</option>
+                                                                            <option value="0.27">0.27</option>
+                                                                            <option value="0.28">0.28</option>
+                                                                            <option value="0.29">0.29</option>
+                                                                            <option value="0.30">0.30</option>
+                                                                            <option value="0.31">0.31</option>
+                                                                            <option value="0.32">0.32</option>
+                                                                            <option value="0.33">0.33</option>
+                                                                            <option value="0.34">0.34</option>
+                                                                            <option value="0.35">0.35</option>
+                                                                            <option value="0.36">0.36</option>
+                                                                            <option value="0.37">0.37</option>
+                                                                            <option value="0.38">0.38</option>
+                                                                            <option value="0.39">0.39</option>
+                                                                            <option value="0.40">0.40</option>
+                                                                            <option value="0.41">0.41</option>
+                                                                            <option value="0.42">0.42</option>
+                                                                            <option value="0.43">0.43</option>
+                                                                            <option value="0.44">0.44</option>
+                                                                            <option value="0.45">0.45</option>
+                                                                            <option value="0.46">0.46</option>
+                                                                            <option value="0.47">0.47</option>
+                                                                            <option value="0.48">0.48</option>
+                                                                            <option value="0.49">0.49</option>
+                                                                            <option value="0.50">0.50</option>
+                                                                            <option value="0.51">0.51</option>
+                                                                            <option value="0.52">0.52</option>
+                                                                            <option value="0.53">0.53</option>
+                                                                            <option value="0.54">0.54</option>
+                                                                            <option value="0.55">0.55</option>
+                                                                            <option value="0.56">0.56</option>
+                                                                            <option value="0.57">0.57</option>
+                                                                            <option value="0.58">0.58</option>
+                                                                            <option value="0.59">0.59</option>
+                                                                            <option value="0.60">0.60</option>
+                                                                            <option value="0.61">0.61</option>
+                                                                            <option value="0.62">0.62</option>
+                                                                            <option value="0.63">0.63</option>
+                                                                            <option value="0.64">0.64</option>
+                                                                            <option value="0.65">0.65</option>
+                                                                            <option value="0.66">0.66</option>
+                                                                            <option value="0.67">0.67</option>
+                                                                            <option value="0.68">0.68</option>
+                                                                            <option value="0.69">0.69</option>
+                                                                            <option value="0.70">0.70</option>
+                                                                            <option value="0.71">0.71</option>
+                                                                            <option value="0.72">0.72</option>
+                                                                            <option value="0.73">0.73</option>
+                                                                            <option value="0.74">0.74</option>
+                                                                            <option value="0.75">0.75</option>
+                                                                            <option value="0.76">0.76</option>
+                                                                            <option value="0.77">0.77</option>
+                                                                            <option value="0.78">0.78</option>
+                                                                            <option value="0.79">0.79</option>
+                                                                            <option value="0.80">0.80</option>
+                                                                            <option value="0.81">0.81</option>
+                                                                            <option value="0.82">0.82</option>
+                                                                            <option value="0.83">0.83</option>
+                                                                            <option value="0.84">0.84</option>
+                                                                            <option value="0.85">0.85</option>
+                                                                            <option value="0.86">0.86</option>
+                                                                            <option value="0.87">0.87</option>
+                                                                            <option value="0.88">0.88</option>
+                                                                            <option value="0.89">0.89</option>
+                                                                            <option value="0.90">0.90</option>
+                                                                            <option value="0.91">0.91</option>
+                                                                            <option value="0.92">0.92</option>
+                                                                            <option value="0.93">0.93</option>
+                                                                            <option value="0.94">0.94</option>
+                                                                            <option value="0.95">0.95</option>
+                                                                            <option value="0.96">0.96</option>
+                                                                            <option value="0.99">0.99</option>
+                                                                            <option value="1">1</option>
+                                                                        </select>
+
+                                                                        <select name="" id="TMS_ingresado_B_ANSI"
+                                                                            style="display: none">
+                                                                            <option id="TMS_calculado_B_ANSI" selected>
+                                                                                Open this select menu
+                                                                            </option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="1.1">1.1</option>
+                                                                            <option value="1.2">1.2</option>
+                                                                            <option value="1.3">1.3</option>
+                                                                            <option value="1.4">1.4</option>
+                                                                            <option value="1.5">1.5</option>
+                                                                            <option value="1.6">1.6</option>
+                                                                            <option value="1.7">1.7</option>
+                                                                            <option value="1.8">1.8</option>
+                                                                            <option value="1.9">1.9</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="2.1">2.1</option>
+                                                                            <option value="2.2">2.2</option>
+                                                                            <option value="2.3">2.3</option>
+                                                                            <option value="2.4">2.4</option>
+                                                                            <option value="2.5">2.5</option>
+                                                                            <option value="2.6">2.6</option>
+                                                                            <option value="2.7">2.7</option>
+                                                                            <option value="2.8">2.8</option>
+                                                                            <option value="2.9">2.9</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="3.1">3.1</option>
+                                                                            <option value="3.2">3.2</option>
+                                                                            <option value="3.3">3.3</option>
+                                                                            <option value="3.4">3.4</option>
+                                                                            <option value="3.5">3.5</option>
+                                                                            <option value="3.6">3.6</option>
+                                                                            <option value="3.7">3.7</option>
+                                                                            <option value="3.8">3.8</option>
+                                                                            <option value="3.9">3.9</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="4.1">4.1</option>
+                                                                            <option value="4.2">4.2</option>
+                                                                            <option value="4.3">4.3</option>
+                                                                            <option value="4.4">4.4</option>
+                                                                            <option value="4.5">4.5</option>
+                                                                            <option value="4.6">4.6</option>
+                                                                            <option value="4.7">4.7</option>
+                                                                            <option value="4.8">4.8</option>
+                                                                            <option value="4.9">4.9</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="5.1">5.1</option>
+                                                                            <option value="5.2">5.2</option>
+                                                                            <option value="5.3">5.3</option>
+                                                                            <option value="5.4">5.4</option>
+                                                                            <option value="5.5">5.5</option>
+                                                                            <option value="5.6">5.6</option>
+                                                                            <option value="5.7">5.7</option>
+                                                                            <option value="5.8">5.8</option>
+                                                                            <option value="5.9">5.9</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="6.1">6.1</option>
+                                                                            <option value="6.2">6.2</option>
+                                                                            <option value="6.3">6.3</option>
+                                                                            <option value="6.4">6.4</option>
+                                                                            <option value="6.5">6.5</option>
+                                                                            <option value="6.6">6.6</option>
+                                                                            <option value="6.7">6.7</option>
+                                                                            <option value="6.8">6.8</option>
+                                                                            <option value="6.9">6.9</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="7.1">7.1</option>
+                                                                            <option value="7.2">7.2</option>
+                                                                            <option value="7.3">7.3</option>
+                                                                            <option value="7.4">7.4</option>
+                                                                            <option value="7.5">7.5</option>
+                                                                            <option value="7.6">7.6</option>
+                                                                            <option value="7.7">7.7</option>
+                                                                            <option value="7.8">7.8</option>
+                                                                            <option value="7.9">7.9</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="8.1">8.1</option>
+                                                                            <option value="8.2">8.2</option>
+                                                                            <option value="8.3">8.3</option>
+                                                                            <option value="8.4">8.4</option>
+                                                                            <option value="8.5">8.5</option>
+                                                                            <option value="8.6">8.6</option>
+                                                                            <option value="8.7">8.7</option>
+                                                                            <option value="8.8">8.8</option>
+                                                                            <option value="8.9">8.9</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="9.1">9.1</option>
+                                                                            <option value="9.2">9.2</option>
+                                                                            <option value="9.3">9.3</option>
+                                                                            <option value="9.4">9.4</option>
+                                                                            <option value="9.5">9.5</option>
+                                                                            <option value="9.6">9.6</option>
+                                                                            <option value="9.7">9.7</option>
+                                                                            <option value="9.8">9.8</option>
+                                                                            <option value="9.9">9.9</option>
+                                                                            <option value="10">10</option>
+                                                                        </select>
+
+
+                                                                    </td>
                                                                     <td id="tiempoOperacionSuministrado_B"></td>
                                                                     <td id="tiempoOperacionCalculado_B"></td>
                                                                     <td id="umbral_tiempo_B"></td>
@@ -475,7 +680,7 @@
                                                                     </th>
                                                                     <th>Tiempo remoto<br> Esperado [seg]</th>
                                                                     <th>Tiempo remoto<br> calculado [seg]</th>
-                                                                    <th>Umbral <br> tiempo remoto <br> [%]</th>
+                                                                    <th>Error <br> tiempo remoto <br> [%]</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <td id="tiempoCoordinacionSuministrado_B"></td>
@@ -501,13 +706,13 @@
                                                         ajuste local, modificando el DIAL:
                                                         <br><br>
 
-                                                        <div class="table-responsive">
+                                                        <!-- <div class="table-responsive">
                                                             <table class="table align-middle table-bordered">
                                                                 <thead class="tabla-rele-bus">
                                                                     <th> Nuevo TMS <br>calculado</th>
                                                                     <th>Nuevo Tiempo de operación<br> calculado [seg]
                                                                     </th>
-                                                                    <th>Nuevo Umbral <br> tiempo de operacion <br> [%]
+                                                                    <th>Error <br> tiempo de operacion <br> [%]
                                                                     </th>
 
 
@@ -527,7 +732,7 @@
                                                                     <tr>
                                                                         <th>Tiempo remoto<br> Esperado [seg]</th>
                                                                         <th>Tiempo remoto<br> calculado [seg]</th>
-                                                                        <th>Nuevo Umbral <br> tiempo remoto <br> [%]
+                                                                        <th>Error <br> tiempo remoto <br> [%]
                                                                         </th>
                                                                     </tr>
                                                                     <tr>
@@ -538,7 +743,7 @@
                                                                 </tbody>
 
                                                             </table>
-                                                        </div>
+                                                        </div> -->
 
                                                     </div>
                                                 </div>
@@ -550,9 +755,7 @@
                                                             <thead class="tabla-rele-bus">
                                                                 <th>TMS <br></th>
                                                                 <th>Tiempo de operación<br> calculado [seg]</th>
-                                                                <th>Umbral <br> tiempo de operacion <br> [%]</th>
-
-
+                                                                <th>Error <br> tiempo de operacion <br> [%]</th>
 
                                                             </thead>
                                                             <tbody class="tabla-rele-bus">
@@ -568,7 +771,7 @@
                                                                 <tr>
                                                                     <th>Tiempo remoto<br> Esperado [seg]</th>
                                                                     <th>Tiempo remoto<br> calculado [seg]</th>
-                                                                    <th>Umbral <br> tiempo remoto <br> [%]</th>
+                                                                    <th>Error <br> tiempo remoto <br> [%]</th>
 
                                                                 </tr>
                                                                 <tr>
@@ -600,7 +803,7 @@
                                                                     <th> Nuevo TMS <br>calculado</th>
                                                                     <th>Nuevo Tiempo de operación<br> calculado [seg]
                                                                     </th>
-                                                                    <th>Nuevo Umbral <br> tiempo de operacion <br> [%]
+                                                                    <th>Error <br> tiempo de operacion <br> [%]
                                                                     </th>
 
 
@@ -621,7 +824,7 @@
                                                                     <tr>
                                                                         <th>Tiempo remoto<br> Esperado [seg]</th>
                                                                         <th>Tiempo remoto<br> calculado [seg]</th>
-                                                                        <th>Nuevo Umbral <br> tiempo remoto <br> [%]
+                                                                        <th>Error <br> tiempo remoto <br> [%]
                                                                         </th>
                                                                     </tr>
 
@@ -638,13 +841,11 @@
                                                     </div>
                                                 </div>
 
-
                                                 <br>
 
                                                 <div class="estadoReleB" id="estadoReleB"></div>
 
                                             </div>
-
 
                                             <!-- Relé A coordinación  -->
                                             <div class="ReleA_Coordinacion" id="ReleA_Coordinacion">
@@ -654,24 +855,27 @@
 
                                                 <table class="table align-middle   bordeadoTablaUmbral">
                                                     <tr>
-                                                        <th class="etiquetaUmbrales">Valor del umbral del tiempo de
+                                                        <th class="etiquetaUmbrales">Umbral de error <br> del tiempo de
                                                             operación local:</th>
                                                         <td>±</td>
                                                         <td colspan="2" id="valor_umbral_tiempo_A">10</td>
                                                         <td>%</td>
                                                         <td onclick="valorUmbral('A_local')"> <img
                                                                 src="assets/images/Anillo/editar.png"
-                                                                class="seleccionReleAnillo" width="20" height="20"></td>
+                                                                class="seleccionReleAnillo botonEditar" width="20"
+                                                                height="20"></td>
                                                     </tr>
                                                     <tr>
-                                                        <th class="etiquetaUmbrales">Valor del umbral del tiempo remoto
+                                                        <th class="etiquetaUmbrales">Umbral de error <br> del tiempo
+                                                            remoto
                                                             :</th>
                                                         <td>±</td>
                                                         <td colspan="2" id="valor_umbral_tiempo_A_remoto">10</td>
                                                         <td>%</td>
                                                         <td onclick="valorUmbral('A_remoto')"> <img
                                                                 src="assets/images/Anillo/editar.png"
-                                                                class="seleccionReleAnillo" width="20" height="20"></td>
+                                                                class="seleccionReleAnillo botonEditar" width="20"
+                                                                height="20"></td>
                                                     </tr>
                                                 </table>
 
@@ -682,12 +886,224 @@
                                                                 <th>TMS <br>calculado</th>
                                                                 <th>Tiempo de operación<br> suministrado [seg]</th>
                                                                 <th>Tiempo de operación<br> calculado [seg]</th>
-                                                                <th>Umbral <br> tiempo de operacion <br> [%]</th>
+                                                                <th>Error <br> tiempo de operacion <br> [%]</th>
 
                                                             </thead>
                                                             <tbody class="tabla-rele-bus">
                                                                 <tr>
-                                                                    <td id="TMS_calculado_A"></td>
+                                                                    <td >
+                                                                        <p id="TMS_calculado_A"></p>
+                                                                        
+                                                                        <select
+                                                                            onchange="CalcularTiempoReleA_usandoTiempo('si') "
+                                                                            class="form-select form-select-sm"
+                                                                            aria-label=".form-select-sm example"
+                                                                            id="TMS_ingresado_A_IEC">
+                                                                            <option id="TMS_calculado_A_IEC" selected>
+                                                                                
+                                                                            </option>
+
+                                                                            <option value="0.01">0.01</option>
+                                                                            <option value="0.02">0.02</option>
+                                                                            <option value="0.03">0.03</option>
+                                                                            <option value="0.04">0.04</option>
+                                                                            <option value="0.05">0.05</option>
+                                                                            <option value="0.06">0.06</option>
+                                                                            <option value="0.07">0.07</option>
+                                                                            <option value="0.08">0.08</option>
+                                                                            <option value="0.09">0.09</option>
+                                                                            <option value="0.10">0.10</option>
+                                                                            <option value="0.11">0.11</option>
+                                                                            <option value="0.12">0.12</option>
+                                                                            <option value="0.13">0.13</option>
+                                                                            <option value="0.14">0.14</option>
+                                                                            <option value="0.15">0.15</option>
+                                                                            <option value="0.16">0.16</option>
+                                                                            <option value="0.17">0.17</option>
+                                                                            <option value="0.18">0.18</option>
+                                                                            <option value="0.19">0.19</option>
+                                                                            <option value="0.20">0.20</option>
+                                                                            <option value="0.21">0.21</option>
+                                                                            <option value="0.22">0.22</option>
+                                                                            <option value="0.23">0.23</option>
+                                                                            <option value="0.24">0.24</option>
+                                                                            <option value="0.25">0.25</option>
+                                                                            <option value="0.26">0.26</option>
+                                                                            <option value="0.27">0.27</option>
+                                                                            <option value="0.28">0.28</option>
+                                                                            <option value="0.29">0.29</option>
+                                                                            <option value="0.30">0.30</option>
+                                                                            <option value="0.31">0.31</option>
+                                                                            <option value="0.32">0.32</option>
+                                                                            <option value="0.33">0.33</option>
+                                                                            <option value="0.34">0.34</option>
+                                                                            <option value="0.35">0.35</option>
+                                                                            <option value="0.36">0.36</option>
+                                                                            <option value="0.37">0.37</option>
+                                                                            <option value="0.38">0.38</option>
+                                                                            <option value="0.39">0.39</option>
+                                                                            <option value="0.40">0.40</option>
+                                                                            <option value="0.41">0.41</option>
+                                                                            <option value="0.42">0.42</option>
+                                                                            <option value="0.43">0.43</option>
+                                                                            <option value="0.44">0.44</option>
+                                                                            <option value="0.45">0.45</option>
+                                                                            <option value="0.46">0.46</option>
+                                                                            <option value="0.47">0.47</option>
+                                                                            <option value="0.48">0.48</option>
+                                                                            <option value="0.49">0.49</option>
+                                                                            <option value="0.50">0.50</option>
+                                                                            <option value="0.51">0.51</option>
+                                                                            <option value="0.52">0.52</option>
+                                                                            <option value="0.53">0.53</option>
+                                                                            <option value="0.54">0.54</option>
+                                                                            <option value="0.55">0.55</option>
+                                                                            <option value="0.56">0.56</option>
+                                                                            <option value="0.57">0.57</option>
+                                                                            <option value="0.58">0.58</option>
+                                                                            <option value="0.59">0.59</option>
+                                                                            <option value="0.60">0.60</option>
+                                                                            <option value="0.61">0.61</option>
+                                                                            <option value="0.62">0.62</option>
+                                                                            <option value="0.63">0.63</option>
+                                                                            <option value="0.64">0.64</option>
+                                                                            <option value="0.65">0.65</option>
+                                                                            <option value="0.66">0.66</option>
+                                                                            <option value="0.67">0.67</option>
+                                                                            <option value="0.68">0.68</option>
+                                                                            <option value="0.69">0.69</option>
+                                                                            <option value="0.70">0.70</option>
+                                                                            <option value="0.71">0.71</option>
+                                                                            <option value="0.72">0.72</option>
+                                                                            <option value="0.73">0.73</option>
+                                                                            <option value="0.74">0.74</option>
+                                                                            <option value="0.75">0.75</option>
+                                                                            <option value="0.76">0.76</option>
+                                                                            <option value="0.77">0.77</option>
+                                                                            <option value="0.78">0.78</option>
+                                                                            <option value="0.79">0.79</option>
+                                                                            <option value="0.80">0.80</option>
+                                                                            <option value="0.81">0.81</option>
+                                                                            <option value="0.82">0.82</option>
+                                                                            <option value="0.83">0.83</option>
+                                                                            <option value="0.84">0.84</option>
+                                                                            <option value="0.85">0.85</option>
+                                                                            <option value="0.86">0.86</option>
+                                                                            <option value="0.87">0.87</option>
+                                                                            <option value="0.88">0.88</option>
+                                                                            <option value="0.89">0.89</option>
+                                                                            <option value="0.90">0.90</option>
+                                                                            <option value="0.91">0.91</option>
+                                                                            <option value="0.92">0.92</option>
+                                                                            <option value="0.93">0.93</option>
+                                                                            <option value="0.94">0.94</option>
+                                                                            <option value="0.95">0.95</option>
+                                                                            <option value="0.96">0.96</option>
+                                                                            <option value="0.99">0.99</option>
+                                                                            <option value="1">1</option>
+                                                                        </select>
+
+                                                                        <select name="" id="TMS_ingresado_A_ANSI"
+                                                                            style="display: none">
+                                                                            <option id="TMS_calculado_A_ANSI" selected>
+                                                                            </option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="1.1">1.1</option>
+                                                                            <option value="1.2">1.2</option>
+                                                                            <option value="1.3">1.3</option>
+                                                                            <option value="1.4">1.4</option>
+                                                                            <option value="1.5">1.5</option>
+                                                                            <option value="1.6">1.6</option>
+                                                                            <option value="1.7">1.7</option>
+                                                                            <option value="1.8">1.8</option>
+                                                                            <option value="1.9">1.9</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="2.1">2.1</option>
+                                                                            <option value="2.2">2.2</option>
+                                                                            <option value="2.3">2.3</option>
+                                                                            <option value="2.4">2.4</option>
+                                                                            <option value="2.5">2.5</option>
+                                                                            <option value="2.6">2.6</option>
+                                                                            <option value="2.7">2.7</option>
+                                                                            <option value="2.8">2.8</option>
+                                                                            <option value="2.9">2.9</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="3.1">3.1</option>
+                                                                            <option value="3.2">3.2</option>
+                                                                            <option value="3.3">3.3</option>
+                                                                            <option value="3.4">3.4</option>
+                                                                            <option value="3.5">3.5</option>
+                                                                            <option value="3.6">3.6</option>
+                                                                            <option value="3.7">3.7</option>
+                                                                            <option value="3.8">3.8</option>
+                                                                            <option value="3.9">3.9</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="4.1">4.1</option>
+                                                                            <option value="4.2">4.2</option>
+                                                                            <option value="4.3">4.3</option>
+                                                                            <option value="4.4">4.4</option>
+                                                                            <option value="4.5">4.5</option>
+                                                                            <option value="4.6">4.6</option>
+                                                                            <option value="4.7">4.7</option>
+                                                                            <option value="4.8">4.8</option>
+                                                                            <option value="4.9">4.9</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="5.1">5.1</option>
+                                                                            <option value="5.2">5.2</option>
+                                                                            <option value="5.3">5.3</option>
+                                                                            <option value="5.4">5.4</option>
+                                                                            <option value="5.5">5.5</option>
+                                                                            <option value="5.6">5.6</option>
+                                                                            <option value="5.7">5.7</option>
+                                                                            <option value="5.8">5.8</option>
+                                                                            <option value="5.9">5.9</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="6.1">6.1</option>
+                                                                            <option value="6.2">6.2</option>
+                                                                            <option value="6.3">6.3</option>
+                                                                            <option value="6.4">6.4</option>
+                                                                            <option value="6.5">6.5</option>
+                                                                            <option value="6.6">6.6</option>
+                                                                            <option value="6.7">6.7</option>
+                                                                            <option value="6.8">6.8</option>
+                                                                            <option value="6.9">6.9</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="7.1">7.1</option>
+                                                                            <option value="7.2">7.2</option>
+                                                                            <option value="7.3">7.3</option>
+                                                                            <option value="7.4">7.4</option>
+                                                                            <option value="7.5">7.5</option>
+                                                                            <option value="7.6">7.6</option>
+                                                                            <option value="7.7">7.7</option>
+                                                                            <option value="7.8">7.8</option>
+                                                                            <option value="7.9">7.9</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="8.1">8.1</option>
+                                                                            <option value="8.2">8.2</option>
+                                                                            <option value="8.3">8.3</option>
+                                                                            <option value="8.4">8.4</option>
+                                                                            <option value="8.5">8.5</option>
+                                                                            <option value="8.6">8.6</option>
+                                                                            <option value="8.7">8.7</option>
+                                                                            <option value="8.8">8.8</option>
+                                                                            <option value="8.9">8.9</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="9.1">9.1</option>
+                                                                            <option value="9.2">9.2</option>
+                                                                            <option value="9.3">9.3</option>
+                                                                            <option value="9.4">9.4</option>
+                                                                            <option value="9.5">9.5</option>
+                                                                            <option value="9.6">9.6</option>
+                                                                            <option value="9.7">9.7</option>
+                                                                            <option value="9.8">9.8</option>
+                                                                            <option value="9.9">9.9</option>
+                                                                            <option value="10">10</option>
+                                                                        </select>
+
+
+
+                                                                    </td>
                                                                     <td id="tiempoOperacionSuministrado_A"></td>
                                                                     <td id="tiempoOperacionCalculado_A"></td>
                                                                     <td id="umbral_tiempo_A"></td>
@@ -701,7 +1117,7 @@
                                                                     </th>
                                                                     <th>Tiempo remoto<br> Esperado [seg]</th>
                                                                     <th>Tiempo remoto<br> calculado [seg]</th>
-                                                                    <th>Umbral <br> tiempo remoto <br> [%]</th>
+                                                                    <th>Error <br> tiempo remoto <br> [%]</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <td id="tiempoCoordinacionSuministrado_A"></td>
@@ -727,20 +1143,227 @@
                                                         ajuste local, modificando el DIAL:
                                                         <br><br>
 
-                                                        <div class="table-responsive">
+                                                        <!-- <div class="table-responsive">
                                                             <table class="table align-middle table-bordered ">
                                                                 <thead class="tabla-rele-bus">
                                                                     <th> Nuevo TMS <br>calculado</th>
                                                                     <th>Nuevo Tiempo de operación<br> calculado [seg]
                                                                     </th>
-                                                                    <th>Nuevo Umbral <br> tiempo de operacion <br> [%]
+                                                                    <th>Error <br> tiempo de operacion <br> [%]
                                                                     </th>
 
 
                                                                 </thead>
                                                                 <tbody class="tabla-rele-bus">
                                                                     <tr>
-                                                                        <td id="nuevoTMS_calculado_A"></td>
+                                                                        <td>
+
+                                                                            <select  onchange="ajustarTiempoA_usandoTiempo('si') " class="form-select form-select-sm"
+                                                                                aria-label=".form-select-sm example" id="select_tms_A">
+                                                                                <option id="nuevoTMS_calculado_A"
+                                                                                    selected>Open this select menu
+                                                                                </option>
+
+                                                                                <option value="0.01">0.01</option>
+                                                                                <option value="0.02">0.02</option>
+                                                                                <option value="0.03">0.03</option>
+                                                                                <option value="0.04">0.04</option>
+                                                                                <option value="0.05">0.05</option>
+                                                                                <option value="0.06">0.06</option>
+                                                                                <option value="0.07">0.07</option>
+                                                                                <option value="0.08">0.08</option>
+                                                                                <option value="0.09">0.09</option>
+                                                                                <option value="0.10">0.10</option>
+                                                                                <option value="0.11">0.11</option>
+                                                                                <option value="0.12">0.12</option>
+                                                                                <option value="0.13">0.13</option>
+                                                                                <option value="0.14">0.14</option>
+                                                                                <option value="0.15">0.15</option>
+                                                                                <option value="0.16">0.16</option>
+                                                                                <option value="0.17">0.17</option>
+                                                                                <option value="0.18">0.18</option>
+                                                                                <option value="0.19">0.19</option>
+                                                                                <option value="0.20">0.20</option>
+                                                                                <option value="0.21">0.21</option>
+                                                                                <option value="0.22">0.22</option>
+                                                                                <option value="0.23">0.23</option>
+                                                                                <option value="0.24">0.24</option>
+                                                                                <option value="0.25">0.25</option>
+                                                                                <option value="0.26">0.26</option>
+                                                                                <option value="0.27">0.27</option>
+                                                                                <option value="0.28">0.28</option>
+                                                                                <option value="0.29">0.29</option>
+                                                                                <option value="0.30">0.30</option>
+                                                                                <option value="0.31">0.31</option>
+                                                                                <option value="0.32">0.32</option>
+                                                                                <option value="0.33">0.33</option>
+                                                                                <option value="0.34">0.34</option>
+                                                                                <option value="0.35">0.35</option>
+                                                                                <option value="0.36">0.36</option>
+                                                                                <option value="0.37">0.37</option>
+                                                                                <option value="0.38">0.38</option>
+                                                                                <option value="0.39">0.39</option>
+                                                                                <option value="0.40">0.40</option>
+                                                                                <option value="0.41">0.41</option>
+                                                                                <option value="0.42">0.42</option>
+                                                                                <option value="0.43">0.43</option>
+                                                                                <option value="0.44">0.44</option>
+                                                                                <option value="0.45">0.45</option>
+                                                                                <option value="0.46">0.46</option>
+                                                                                <option value="0.47">0.47</option>
+                                                                                <option value="0.48">0.48</option>
+                                                                                <option value="0.49">0.49</option>
+                                                                                <option value="0.50">0.50</option>
+                                                                                <option value="0.51">0.51</option>
+                                                                                <option value="0.52">0.52</option>
+                                                                                <option value="0.53">0.53</option>
+                                                                                <option value="0.54">0.54</option>
+                                                                                <option value="0.55">0.55</option>
+                                                                                <option value="0.56">0.56</option>
+                                                                                <option value="0.57">0.57</option>
+                                                                                <option value="0.58">0.58</option>
+                                                                                <option value="0.59">0.59</option>
+                                                                                <option value="0.60">0.60</option>
+                                                                                <option value="0.61">0.61</option>
+                                                                                <option value="0.62">0.62</option>
+                                                                                <option value="0.63">0.63</option>
+                                                                                <option value="0.64">0.64</option>
+                                                                                <option value="0.65">0.65</option>
+                                                                                <option value="0.66">0.66</option>
+                                                                                <option value="0.67">0.67</option>
+                                                                                <option value="0.68">0.68</option>
+                                                                                <option value="0.69">0.69</option>
+                                                                                <option value="0.70">0.70</option>
+                                                                                <option value="0.71">0.71</option>
+                                                                                <option value="0.72">0.72</option>
+                                                                                <option value="0.73">0.73</option>
+                                                                                <option value="0.74">0.74</option>
+                                                                                <option value="0.75">0.75</option>
+                                                                                <option value="0.76">0.76</option>
+                                                                                <option value="0.77">0.77</option>
+                                                                                <option value="0.78">0.78</option>
+                                                                                <option value="0.79">0.79</option>
+                                                                                <option value="0.80">0.80</option>
+                                                                                <option value="0.81">0.81</option>
+                                                                                <option value="0.82">0.82</option>
+                                                                                <option value="0.83">0.83</option>
+                                                                                <option value="0.84">0.84</option>
+                                                                                <option value="0.85">0.85</option>
+                                                                                <option value="0.86">0.86</option>
+                                                                                <option value="0.87">0.87</option>
+                                                                                <option value="0.88">0.88</option>
+                                                                                <option value="0.89">0.89</option>
+                                                                                <option value="0.90">0.90</option>
+                                                                                <option value="0.91">0.91</option>
+                                                                                <option value="0.92">0.92</option>
+                                                                                <option value="0.93">0.93</option>
+                                                                                <option value="0.94">0.94</option>
+                                                                                <option value="0.95">0.95</option>
+                                                                                <option value="0.96">0.96</option>
+                                                                                <option value="0.99">0.99</option>
+                                                                                <option value="1">1</option>
+
+
+                                                                            </select>
+                                                                           
+
+                                                                            <select  name="" id="" style="display: none">
+                                                                                <option value="1">1</option>
+                                                                                <option value="1.1">1.1</option>
+                                                                                <option value="1.2">1.2</option>
+                                                                                <option value="1.3">1.3</option>
+                                                                                <option value="1.4">1.4</option>
+                                                                                <option value="1.5">1.5</option>
+                                                                                <option value="1.6">1.6</option>
+                                                                                <option value="1.7">1.7</option>
+                                                                                <option value="1.8">1.8</option>
+                                                                                <option value="1.9">1.9</option>
+                                                                                <option value="2">2</option>
+                                                                                <option value="2.1">2.1</option>
+                                                                                <option value="2.2">2.2</option>
+                                                                                <option value="2.3">2.3</option>
+                                                                                <option value="2.4">2.4</option>
+                                                                                <option value="2.5">2.5</option>
+                                                                                <option value="2.6">2.6</option>
+                                                                                <option value="2.7">2.7</option>
+                                                                                <option value="2.8">2.8</option>
+                                                                                <option value="2.9">2.9</option>
+                                                                                <option value="3">3</option>
+                                                                                <option value="3.1">3.1</option>
+                                                                                <option value="3.2">3.2</option>
+                                                                                <option value="3.3">3.3</option>
+                                                                                <option value="3.4">3.4</option>
+                                                                                <option value="3.5">3.5</option>
+                                                                                <option value="3.6">3.6</option>
+                                                                                <option value="3.7">3.7</option>
+                                                                                <option value="3.8">3.8</option>
+                                                                                <option value="3.9">3.9</option>
+                                                                                <option value="4">4</option>
+                                                                                <option value="4.1">4.1</option>
+                                                                                <option value="4.2">4.2</option>
+                                                                                <option value="4.3">4.3</option>
+                                                                                <option value="4.4">4.4</option>
+                                                                                <option value="4.5">4.5</option>
+                                                                                <option value="4.6">4.6</option>
+                                                                                <option value="4.7">4.7</option>
+                                                                                <option value="4.8">4.8</option>
+                                                                                <option value="4.9">4.9</option>
+                                                                                <option value="5">5</option>
+                                                                                <option value="5.1">5.1</option>
+                                                                                <option value="5.2">5.2</option>
+                                                                                <option value="5.3">5.3</option>
+                                                                                <option value="5.4">5.4</option>
+                                                                                <option value="5.5">5.5</option>
+                                                                                <option value="5.6">5.6</option>
+                                                                                <option value="5.7">5.7</option>
+                                                                                <option value="5.8">5.8</option>
+                                                                                <option value="5.9">5.9</option>
+                                                                                <option value="6">6</option>
+                                                                                <option value="6.1">6.1</option>
+                                                                                <option value="6.2">6.2</option>
+                                                                                <option value="6.3">6.3</option>
+                                                                                <option value="6.4">6.4</option>
+                                                                                <option value="6.5">6.5</option>
+                                                                                <option value="6.6">6.6</option>
+                                                                                <option value="6.7">6.7</option>
+                                                                                <option value="6.8">6.8</option>
+                                                                                <option value="6.9">6.9</option>
+                                                                                <option value="7">7</option>
+                                                                                <option value="7.1">7.1</option>
+                                                                                <option value="7.2">7.2</option>
+                                                                                <option value="7.3">7.3</option>
+                                                                                <option value="7.4">7.4</option>
+                                                                                <option value="7.5">7.5</option>
+                                                                                <option value="7.6">7.6</option>
+                                                                                <option value="7.7">7.7</option>
+                                                                                <option value="7.8">7.8</option>
+                                                                                <option value="7.9">7.9</option>
+                                                                                <option value="8">8</option>
+                                                                                <option value="8.1">8.1</option>
+                                                                                <option value="8.2">8.2</option>
+                                                                                <option value="8.3">8.3</option>
+                                                                                <option value="8.4">8.4</option>
+                                                                                <option value="8.5">8.5</option>
+                                                                                <option value="8.6">8.6</option>
+                                                                                <option value="8.7">8.7</option>
+                                                                                <option value="8.8">8.8</option>
+                                                                                <option value="8.9">8.9</option>
+                                                                                <option value="9">9</option>
+                                                                                <option value="9">9</option>
+                                                                                <option value="9.1">9.1</option>
+                                                                                <option value="9.2">9.2</option>
+                                                                                <option value="9.3">9.3</option>
+                                                                                <option value="9.4">9.4</option>
+                                                                                <option value="9.5">9.5</option>
+                                                                                <option value="9.6">9.6</option>
+                                                                                <option value="9.7">9.7</option>
+                                                                                <option value="9.8">9.8</option>
+                                                                                <option value="9.9">9.9</option>
+                                                                                <option value="10">10</option>
+                                                                            </select>
+
+
+                                                                        </td>
                                                                         <td id="nuevotiempoOperacionCalculado_A"></td>
                                                                         <td id="nuevoumbral_tiempo_A"></td>
 
@@ -751,7 +1374,7 @@
                                                                     <tr>
                                                                         <th>Tiempo remoto<br> Esperado [seg]</th>
                                                                         <th>Tiempo remoto<br> calculado [seg]</th>
-                                                                        <th>Nuevo Umbral <br> tiempo remoto <br> [%]
+                                                                        <th>Error <br> tiempo remoto <br> [%]
                                                                         </th>
                                                                     </tr>
                                                                     <tr>
@@ -762,7 +1385,7 @@
                                                                 </tbody>
 
                                                             </table>
-                                                        </div>
+                                                        </div> -->
 
                                                     </div>
                                                 </div>
@@ -770,16 +1393,12 @@
                                                 <!-- Coordinación A por Dial -->
                                                 <div id="CoordinacionAporDial">
 
-
-
                                                     <div class="table-responsive">
                                                         <table class="table align-middle table-bordered">
                                                             <thead class="tabla-rele-bus">
                                                                 <th>TMS <br></th>
                                                                 <th>Tiempo de operación<br> calculado [seg]</th>
                                                                 <th>Umbral <br> tiempo de operacion <br> [%]</th>
-
-
 
 
                                                             </thead>
@@ -796,7 +1415,7 @@
                                                                 <tr>
                                                                     <th>Tiempo remoto<br> Esperado [seg]</th>
                                                                     <th>Tiempo remoto<br> calculado [seg]</th>
-                                                                    <th>Umbral <br> tiempo remoto <br> [%]</th>
+                                                                    <th>Error <br> tiempo remoto <br> [%]</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <td id="tiempoRemotoEsperado_A_dial"></td>
@@ -828,10 +1447,8 @@
                                                                     <th> Nuevo TMS <br>calculado</th>
                                                                     <th>Nuevo Tiempo de operación<br> calculado [seg]
                                                                     </th>
-                                                                    <th>Nuevo Umbral <br> tiempo de operacion <br> [%]
+                                                                    <th>Error<br> tiempo de operacion <br> [%]
                                                                     </th>
-
-
 
 
                                                                 </thead>
@@ -851,7 +1468,7 @@
                                                                     <tr>
                                                                         <th>Tiempo remoto<br> Esperado [seg]</th>
                                                                         <th>Tiempo remoto<br> calculado [seg]</th>
-                                                                        <th>Nuevo Umbral <br> tiempo remoto <br> [%]
+                                                                        <th>Error <br> tiempo remoto <br> [%]
                                                                         </th>
                                                                     </tr>
 
@@ -869,7 +1486,6 @@
 
                                                 </div>
 
-
                                                 <br>
 
                                                 <div class="estadoReleA" id="estadoReleA"></div>
@@ -879,14 +1495,8 @@
 
                                     </div>
 
-
-
                                     <div class="botonCalcularBus  hoverButton" id="botonCalcularBus"
                                         onclick="CoordinacionBus()">Calcular</div>
-
-
-
-
 
 
                                 </div>
@@ -902,20 +1512,9 @@
                             </div>
                         </div>
 
-
-
-
-
-
-
                     </div>
 
                 </div>
-
-
-
-
-
 
             </div>
             <div class="tab-pane fade" id="anillo-tab-pane" role="tabpanel" aria-labelledby="anillo-tab" tabindex="0">
@@ -1091,22 +1690,23 @@
                             <!-- Contenido pestaña "Metodología" -->
                             <div class="tab-pane fade show active" id="pills-metodologia-2" role="tabpanel"
                                 aria-labelledby="pills-metodologia-2-tab" tabindex="0">
-                                <div style="overflow: auto; height: 450px;">
+                                <div class="instrucciones">
                                     <h3>Pasos</h3>
-                                    <p style="text-align: justify;">1. Para comenzar asigne los valores de la potencia,
+                                    <p class="justify">1. Para comenzar asigne los valores de la potencia,
                                         voltaje y el valor Z de cada uno de los elementos del anillo, <b>dando click en
                                             la
                                             imagen del elemento a configurar</b> .</p>
-                                    <p style="text-align: justify;">2. Presione el botón "Calcular". En la pestaña
+                                    <p class="justify">2. Presione el botón "Calcular". En la pestaña
                                         "Relés" estará visualizado el valor de las corrientes en los diferentes relés.
                                     </p>
-                                    <p style="text-align: justify;">3. Seleccione los valores faltantes para al final
+                                    <p class="justify">3. Seleccione los valores faltantes para al final
                                         poder graficarlo. </p>
-                                    <p style="text-align: justify;">4. Por último, presione el botón "Graficar", si los
+                                    <p class="justify">4. Por último, presione el botón "Graficar", si los
                                         datos están completos se habilitará la pestaña "Curvas", donde se visualizará la
                                         curva de tiempo inverso según los datos suministrados. </p>
 
-                                    <p class="justify"> <b>Nota</b>: Si requiere más información general sobre el proceso para el relé de
+                                    <p class="justify"> <b>Nota</b>: Si requiere más información general sobre el
+                                        proceso para el relé de
                                         sobrecorriente de click en el siguiente icono (se encontrará también en la
                                         subpestaña "Método 1" y "Método 2" de la pestaña "Resultados" ): </p>
                                     <div class="iconoExplain" onclick="metodologiaAnillo()">
@@ -1119,157 +1719,189 @@
                             <div class="tab-pane fade" id="pills-resultadosCalculos-2" role="tabpanel"
                                 aria-labelledby="pills-resultadosCalculos-2-tab" tabindex="0">
 
-                                <table class="table align-middle tamañoLetraAspectosRele table-bordered ">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Relé</th>
-                                            <th scope="col" class="colorRele1">1 █</th>
-                                            <th scope="col" class="colorRele2">2 █</th>
-                                            <th scope="col" class="colorRele3">3 █</th>
-                                            <th scope="col" class="colorRele4">4 █</th>
-                                            <th scope="col" class="colorRele5">5 █</th>
-                                            <th scope="col" class="colorRele6">6 █</th>
-                                            <th scope="col" class="colorRele7">7 █</th>
-                                            <th scope="col" class="colorRele8">8 █</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th>Isc <br>[A]</th>
-                                            <td id="Isc_r1">-</td>
-                                            <td id="Isc_r2">-</td>
-                                            <td id="Isc_r3">-</td>
-                                            <td id="Isc_r4">-</td>
-                                            <td id="Isc_r5">-</td>
-                                            <td id="Isc_r6">-</td>
-                                            <td id="Isc_r7">-</td>
-                                            <td id="Isc_r8">-</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Ic <br>[A]</th>
-                                            <td id="Ic_r1">-</td>
-                                            <td id="Ic_r2">-</td>
-                                            <td id="Ic_r3">-</td>
-                                            <td id="Ic_r4">-</td>
-                                            <td id="Ic_r5">-</td>
-                                            <td id="Ic_r6">-</td>
-                                            <td id="Ic_r7">-</td>
-                                            <td id="Ic_r8">-</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Incremento Ic <br> [%]</th>
-                                            <td id="Incremento_Ic_r1">-</td>
-                                            <td id="Incremento_Ic_r2">-</td>
-                                            <td id="Incremento_Ic_r3">-</td>
-                                            <td id="Incremento_Ic_r4">-</td>
-                                            <td id="Incremento_Ic_r5">-</td>
-                                            <td id="Incremento_Ic_r6">-</td>
-                                            <td id="Incremento_Ic_r7">-</td>
-                                            <td id="Incremento_Ic_r8">-</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Familia de <br> curvas</th>
-                                            <td id="FamiliaC_r1">-</td>
-                                            <td id="FamiliaC_r2">-</td>
-                                            <td id="FamiliaC_r3">-</td>
-                                            <td id="FamiliaC_r4">-</td>
-                                            <td id="FamiliaC_r5">-</td>
-                                            <td id="FamiliaC_r6">-</td>
-                                            <td id="FamiliaC_r7">-</td>
-                                            <td id="FamiliaC_r8">-</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Tiempo <br> Operación <br> [ms]</th>
-                                            <td id="Tiempo_r1">-</td>
-                                            <td id="Tiempo_r2">-</td>
-                                            <td id="Tiempo_r3">-</td>
-                                            <td id="Tiempo_r4">-</td>
-                                            <td id="Tiempo_r5">-</td>
-                                            <td id="Tiempo_r6">-</td>
-                                            <td id="Tiempo_r7">-</td>
-                                            <td id="Tiempo_r8">-</td>
-                                        </tr>
-                                        <tr class="delimitadorVariblesCalculables">
-                                            <th>TMS <br>(Dial)</th>
-                                            <td id="TMS_r1">-</td>
-                                            <td id="TMS_r2">-</td>
-                                            <td id="TMS_r3">-</td>
-                                            <td id="TMS_r4">-</td>
-                                            <td id="TMS_r5">-</td>
-                                            <td id="TMS_r6">-</td>
-                                            <td id="TMS_r7">-</td>
-                                            <td id="TMS_r8">-</td>
-                                        </tr>
-                                        <th>Criterio Ajuste <br>  </th>
-                                            <td ><div id="ajuste_r1"> 1.25 </div><img onclick="criterioAjuste('r1')"
-                                                src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
-                                                width="15" height="15"></td>
-                                            <td id="ajuste_r2"> 1.5</td>
-                                            <td ><div id="ajuste_r3"> 1.25 </div><img onclick="criterioAjuste('r3')"
-                                                src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
-                                                width="20" height="20"></td>
-                                            <td ><div id="ajuste_r4"> 1.25 </div><img onclick="criterioAjuste('r4')"
-                                                src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
-                                                width="20" height="20"></td>
-                                            <td ><div id="ajuste_r5"> 1.25 </div><img onclick="criterioAjuste('r5')"
-                                                src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
-                                                width="20" height="20"></td>
-                                            <td ><div id="ajuste_r6"> 1.25 </div><img onclick="criterioAjuste('r6')"
-                                                src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
-                                                width="20" height="20"></td>
-                                            <td id="ajuste_r7">1.5</td>
-                                            <td ><div id="ajuste_r8"> 1.25 </div><img onclick="criterioAjuste('r8')"
-                                                src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
-                                                width="20" height="20"></td>
-                                        <tr>
-                                            <th>Tiempo <br> Coordinación <br>  <br>[ms]</th>
-                                            <td id="Tiempo_coordinacion_r1">-</td>
-                                            <td id="Tiempo_coordinacion_r2">-</td>
-                                            <td id="Tiempo_coordinacion_r3">-</td>
-                                            <td id="Tiempo_coordinacion_r4">-</td>
-                                            <td id="Tiempo_coordinacion_r5">-</td>
-                                            <td id="Tiempo_coordinacion_r6">-</td>
-                                            <td id="Tiempo_coordinacion_r7">-</td>
-                                            <td id="Tiempo_coordinacion_r8">-</td>
-                                        </tr>
-                                        <tr>
-                                            <th></th>
-                                            <td id="Tiempo_coordinacion_0" class="seleccionReleAnillo"
-                                                onclick="guardarValoresReles('1')"> <img
+                                <div class="tablaRelesAnillo">
+                                    <table class="table align-middle tamañoLetraAspectosRele table-bordered ">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Relé</th>
+                                                <th scope="col" class="colorRele1">1 █ <img
+                                                        onclick="guardarValoresReles('1')"
+                                                        src="assets/images/Anillo/editar.png"
+                                                        class="seleccionReleAnillo botonEditar" width="17" height="17">
+                                                </th>
+                                                <th scope="col" class="colorRele2">2 █ <img
+                                                        onclick="guardarValoresReles('2')"
+                                                        src="assets/images/Anillo/editar.png"
+                                                        class="seleccionReleAnillo botonEditar" width="17" height="17">
+                                                </th>
+                                                <th scope="col" class="colorRele3">3 █ <img
+                                                        onclick="guardarValoresReles('3')"
+                                                        src="assets/images/Anillo/editar.png"
+                                                        class="seleccionReleAnillo botonEditar" width="17" height="17">
+                                                </th>
+                                                <th scope="col" class="colorRele4">4 █ <img
+                                                        onclick="guardarValoresReles('4')"
+                                                        src="assets/images/Anillo/editar.png"
+                                                        class="seleccionReleAnillo botonEditar" width="17" height="17">
+                                                </th>
+                                                <th scope="col" class="colorRele5">5 █ <img
+                                                        onclick="guardarValoresReles('5')"
+                                                        src="assets/images/Anillo/editar.png"
+                                                        class="seleccionReleAnillo botonEditar" width="17" height="17">
+                                                </th>
+                                                <th scope="col" class="colorRele6">6 █ <img
+                                                        onclick="guardarValoresReles('6')"
+                                                        src="assets/images/Anillo/editar.png"
+                                                        class="seleccionReleAnillo botonEditar" width="17" height="17">
+                                                </th>
+                                                <th scope="col" class="colorRele7">7 █ <img
+                                                        onclick="guardarValoresReles('7')"
+                                                        src="assets/images/Anillo/editar.png"
+                                                        class="seleccionReleAnillo botonEditar" width="17" height="17">
+                                                </th>
+                                                <th scope="col" class="colorRele8">8 █ <img
+                                                        onclick="guardarValoresReles('8')"
+                                                        src="assets/images/Anillo/editar.png"
+                                                        class="seleccionReleAnillo botonEditar" width="17" height="17">
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>Isc <br>[A]</th>
+                                                <td id="Isc_r1">-</td>
+                                                <td id="Isc_r2">-</td>
+                                                <td id="Isc_r3">-</td>
+                                                <td id="Isc_r4">-</td>
+                                                <td id="Isc_r5">-</td>
+                                                <td id="Isc_r6">-</td>
+                                                <td id="Isc_r7">-</td>
+                                                <td id="Isc_r8">-</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Ic <br>[A]</th>
+                                                <td id="Ic_r1">-</td>
+                                                <td id="Ic_r2">-</td>
+                                                <td id="Ic_r3">-</td>
+                                                <td id="Ic_r4">-</td>
+                                                <td id="Ic_r5">-</td>
+                                                <td id="Ic_r6">-</td>
+                                                <td id="Ic_r7">-</td>
+                                                <td id="Ic_r8">-</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Incremento Ic <br> [%]</th>
+                                                <td id="Incremento_Ic_r1">-</td>
+                                                <td id="Incremento_Ic_r2">-</td>
+                                                <td id="Incremento_Ic_r3">-</td>
+                                                <td id="Incremento_Ic_r4">-</td>
+                                                <td id="Incremento_Ic_r5">-</td>
+                                                <td id="Incremento_Ic_r6">-</td>
+                                                <td id="Incremento_Ic_r7">-</td>
+                                                <td id="Incremento_Ic_r8">-</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Familia de <br> curvas</th>
+                                                <td id="FamiliaC_r1">-</td>
+                                                <td id="FamiliaC_r2">-</td>
+                                                <td id="FamiliaC_r3">-</td>
+                                                <td id="FamiliaC_r4">-</td>
+                                                <td id="FamiliaC_r5">-</td>
+                                                <td id="FamiliaC_r6">-</td>
+                                                <td id="FamiliaC_r7">-</td>
+                                                <td id="FamiliaC_r8">-</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tiempo <br> Operación <br> [ms]</th>
+                                                <td id="Tiempo_r1">-</td>
+                                                <td id="Tiempo_r2">-</td>
+                                                <td id="Tiempo_r3">-</td>
+                                                <td id="Tiempo_r4">-</td>
+                                                <td id="Tiempo_r5">-</td>
+                                                <td id="Tiempo_r6">-</td>
+                                                <td id="Tiempo_r7">-</td>
+                                                <td id="Tiempo_r8">-</td>
+                                            </tr>
+                                            <tr class="delimitadorVariblesCalculables">
+                                                <th>TMS <br>(Dial)</th>
+                                                <td id="TMS_r1">-</td>
+                                                <td id="TMS_r2">-</td>
+                                                <td id="TMS_r3">-</td>
+                                                <td id="TMS_r4">-</td>
+                                                <td id="TMS_r5">-</td>
+                                                <td id="TMS_r6">-</td>
+                                                <td id="TMS_r7">-</td>
+                                                <td id="TMS_r8">-</td>
+                                            </tr>
+                                            <th>Criterio Ajuste <br> corriente</th>
+                                            <td>
+                                                <div id="ajuste_r1"> 1.25 </div><img onclick="criterioAjuste('r1')"
                                                     src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
-                                                    width="20" height="20"> </td>
-                                            <td id="Tiempo_coordinacion_1" class="seleccionReleAnillo"
-                                                onclick="guardarValoresReles('2')"> <img class="seleccionReleAnillo"
-                                                    src="assets/images/Anillo/editar.png" width="20" height="20">
+                                                    width="17" height="17">
                                             </td>
-                                            <td id="Tiempo_coordinacion_2" class="seleccionReleAnillo"
-                                                onclick="guardarValoresReles('3')"> <img class="seleccionReleAnillo"
-                                                    src="assets/images/Anillo/editar.png" width="20" height="20">
+                                            <td id="ajuste_r2"> 1.5</td>
+                                            <td>
+                                                <div id="ajuste_r3"> 1.25 </div><img onclick="criterioAjuste('r3')"
+                                                    src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
+                                                    width="17" height="17">
                                             </td>
-                                            <td id="Tiempo_coordinacion_2" class="seleccionReleAnillo"
-                                                onclick="guardarValoresReles('4')"> <img class="seleccionReleAnillo"
-                                                    src="assets/images/Anillo/editar.png" width="20" height="20">
+                                            <td>
+                                                <div id="ajuste_r4"> 1.25 </div><img onclick="criterioAjuste('r4')"
+                                                    src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
+                                                    width="17" height="17">
                                             </td>
-                                            <td id="Tiempo_coordinacion_2" class="seleccionReleAnillo"
-                                                onclick="guardarValoresReles('5')"> <img class="seleccionReleAnillo"
-                                                    src="assets/images/Anillo/editar.png" width="20" height="20">
+                                            <td>
+                                                <div id="ajuste_r5"> 1.25 </div><img onclick="criterioAjuste('r5')"
+                                                    src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
+                                                    width="17" height="17">
                                             </td>
-                                            <td id="Tiempo_coordinacion_2" class="seleccionReleAnillo"
-                                                onclick="guardarValoresReles('6')"> <img class="seleccionReleAnillo"
-                                                    src="assets/images/Anillo/editar.png" width="20" height="20">
+                                            <td>
+                                                <div id="ajuste_r6"> 1.25 </div><img onclick="criterioAjuste('r6')"
+                                                    src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
+                                                    width="17" height="17">
                                             </td>
-                                            <td id="Tiempo_coordinacion_2" class="seleccionReleAnillo"
-                                                onclick="guardarValoresReles('7')"> <img class="seleccionReleAnillo"
-                                                    src="assets/images/Anillo/editar.png" width="20" height="20">
+                                            <td id="ajuste_r7">1.5</td>
+                                            <td>
+                                                <div id="ajuste_r8"> 1.25 </div><img onclick="criterioAjuste('r8')"
+                                                    src="assets/images/Anillo/editar.png" class="seleccionReleAnillo"
+                                                    width="17" height="17">
                                             </td>
-                                            <td id="Tiempo_coordinacion_2" class="seleccionReleAnillo"
-                                                onclick="guardarValoresReles('8')"> <img class="seleccionReleAnillo"
-                                                    src="assets/images/Anillo/editar.png" width="20" height="20">
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                            <tr>
+                                                <th>Tiempo <br> Coordinación <br> <br>[ms]</th>
+                                                <td id="Tiempo_coordinacion_r1">-</td>
+                                                <td id="Tiempo_coordinacion_r2">-</td>
+                                                <td id="Tiempo_coordinacion_r3">-</td>
+                                                <td id="Tiempo_coordinacion_r4">-</td>
+                                                <td id="Tiempo_coordinacion_r5">-</td>
+                                                <td id="Tiempo_coordinacion_r6">-</td>
+                                                <td id="Tiempo_coordinacion_r7">-</td>
+                                                <td id="Tiempo_coordinacion_r8">-</td>
+                                            </tr>
 
-                                </table>
+                                            <tr>
+                                                <th>Tiempo Prot.50 <br> [ms]</th>
+                                                <td id="Tiempo_prot50_1" class="seleccionReleAnillo"> </td>
+                                                <td id="Tiempo_prot50_2" class="seleccionReleAnillo">
+                                                </td>
+                                                <td id="Tiempo_prot50_3" class="seleccionReleAnillo">
+                                                </td>
+                                                <td id="Tiempo_prot50_4" class="seleccionReleAnillo">
+                                                </td>
+                                                <td id="Tiempo_prot50_5" class="seleccionReleAnillo">
+                                                </td>
+                                                <td id="Tiempo_prot50_6" class="seleccionReleAnillo">
+                                                </td>
+                                                <td id="Tiempo_prot50_7" class="seleccionReleAnillo">
+                                                </td>
+                                                <td id="Tiempo_prot50_8" class="seleccionReleAnillo">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+
+
 
                             </div>
                             <!-- Contenido pestaña "Resultados" -->
@@ -1704,7 +2336,9 @@
                                         </div>
 
                                         <br><br>
-                                        <p class="justify">  <span style="color: #5599ff;">█</span> Los relés que miran hacia el generador 2 y 7, se ajustan con la corriente de carga máxima y usando un criterio del 50% adicional (1.5) </p>
+                                        <p class="justify"> <span style="color: #5599ff;">█</span> Los relés que miran
+                                            hacia el generador (2 y 7), se ajustan con la corriente de carga máxima y
+                                            usando un criterio del 50% adicional (1.5) </p>
 
                                     </div>
                                     <!-- <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div> -->

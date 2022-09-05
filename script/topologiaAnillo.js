@@ -100,6 +100,7 @@ const modeloReleAnillo = {
         TMS: "",
         tiempo: "",
         tiempoCoordinacion: "",
+        tiempoInstantaneo: "",
     },
     1: {
         nombre: "Rele 1",
@@ -110,6 +111,7 @@ const modeloReleAnillo = {
         TMS: tabla_TMS_1,
         tiempo: tabla_Tiempo_1,
         tiempoCoordinacion: tabla_TiempoCoordinacion_1,
+        tiempoInstantaneo: "",
     },
     2: {
         nombre: "Rele 2",
@@ -120,6 +122,7 @@ const modeloReleAnillo = {
         TMS: tabla_TMS_2,
         tiempo: tabla_Tiempo_2,
         tiempoCoordinacion: tabla_TiempoCoordinacion_2,
+        tiempoInstantaneo: "",
     },
     3: {
         nombre: "Rele 3",
@@ -130,6 +133,7 @@ const modeloReleAnillo = {
         TMS: tabla_TMS_3,
         tiempo: tabla_Tiempo_3,
         tiempoCoordinacion: tabla_TiempoCoordinacion_3,
+        tiempoInstantaneo: "",
     },
     4: {
         nombre: "Rele 4",
@@ -140,6 +144,7 @@ const modeloReleAnillo = {
         TMS: tabla_TMS_4,
         tiempo: tabla_Tiempo_4,
         tiempoCoordinacion: tabla_TiempoCoordinacion_4,
+        tiempoInstantaneo: "",
     },
     5: {
         nombre: "Rele 5",
@@ -150,6 +155,7 @@ const modeloReleAnillo = {
         TMS: tabla_TMS_5,
         tiempo: tabla_Tiempo_5,
         tiempoCoordinacion: tabla_TiempoCoordinacion_5,
+        tiempoInstantaneo: "",
     },
     6: {
         nombre: "Rele 6",
@@ -160,6 +166,7 @@ const modeloReleAnillo = {
         TMS: tabla_TMS_6,
         tiempo: tabla_Tiempo_6,
         tiempoCoordinacion: tabla_TiempoCoordinacion_6,
+        tiempoInstantaneo: "",
     },
     7: {
         nombre: "Rele 7",
@@ -170,6 +177,7 @@ const modeloReleAnillo = {
         TMS: tabla_TMS_7,
         tiempo: tabla_Tiempo_7,
         tiempoCoordinacion: tabla_TiempoCoordinacion_7,
+        tiempoInstantaneo: "",
     },
     8: {
         nombre: "Rele 8",
@@ -180,6 +188,7 @@ const modeloReleAnillo = {
         TMS: tabla_TMS_8,
         tiempo: tabla_Tiempo_8,
         tiempoCoordinacion: tabla_TiempoCoordinacion_8,
+        tiempoInstantaneo: "",
     }
 }
 
@@ -408,6 +417,14 @@ var tabla_DialCalculado_5 = document.getElementById("TMS_r5");
 var tabla_DialCalculado_6 = document.getElementById("TMS_r6");
 var tabla_DialCalculado_7 = document.getElementById("TMS_r7");
 var tabla_DialCalculado_8 = document.getElementById("TMS_r8");
+var tabla_tiempoInstantaneo50_1 = document.getElementById("Tiempo_prot50_1");
+var tabla_tiempoInstantaneo50_2 = document.getElementById("Tiempo_prot50_2");
+var tabla_tiempoInstantaneo50_3 = document.getElementById("Tiempo_prot50_3");
+var tabla_tiempoInstantaneo50_4 = document.getElementById("Tiempo_prot50_4");
+var tabla_tiempoInstantaneo50_5 = document.getElementById("Tiempo_prot50_5");
+var tabla_tiempoInstantaneo50_6 = document.getElementById("Tiempo_prot50_6");
+var tabla_tiempoInstantaneo50_7 = document.getElementById("Tiempo_prot50_7");
+var tabla_tiempoInstantaneo50_8 = document.getElementById("Tiempo_prot50_8");
 
 //Defino las variables para ajustar los valores generales del anillo
 var valor_diagrama_Generador = document.getElementById("1_4");
@@ -587,7 +604,7 @@ function guardarAnilloGeneral(elemento, datos) {
     if (!isNaN(modeloAnillo[5].reactancia)) {
 
         if (modeloAnillo[5].reactancia < 1000) {
-            valor_barra_2_3.innerHTML = modeloAnillo[5].reactancia + " Ω";
+            valor_barra_2_3.innerHTML = "<br>" + modeloAnillo[5].reactancia + " Ω";
         }
 
         if (modeloAnillo[5].reactancia >= 1000 && modeloAnillo[5].reactancia <= 999999) {
@@ -602,7 +619,7 @@ function guardarAnilloGeneral(elemento, datos) {
     if (!isNaN(modeloAnillo[6].reactancia)) {
 
         if (modeloAnillo[6].reactancia < 1000) {
-            valor_barra_3_4.innerHTML = modeloAnillo[6].reactancia + " Ω";
+            valor_barra_3_4.innerHTML = "<br>"+ modeloAnillo[6].reactancia + " Ω";
         }
 
         if (modeloAnillo[6].reactancia >= 1000 && modeloAnillo[6].reactancia <= 999999) {
@@ -687,6 +704,14 @@ function ejemploAnillo() {
 
     modeloReleAnillo[1].TMS = parseFloat(0.04); modeloReleAnillo[2].TMS = parseFloat(0.01); modeloReleAnillo[3].TMS = parseFloat(0.02); modeloReleAnillo[4].TMS = parseFloat(0.01);
     modeloReleAnillo[5].TMS = parseFloat(0.01); modeloReleAnillo[6].TMS = parseFloat(0.02); modeloReleAnillo[7].TMS = parseFloat(0.01); modeloReleAnillo[8].TMS = parseFloat(0.03);
+
+    tabla_tiempoInstantaneo50_1.innerText = 50; tabla_tiempoInstantaneo50_2.innerText = 50; tabla_tiempoInstantaneo50_3.innerText = 50;
+    tabla_tiempoInstantaneo50_4.innerText = 50; tabla_tiempoInstantaneo50_5.innerText = 50; tabla_tiempoInstantaneo50_6.innerText = 50;
+    tabla_tiempoInstantaneo50_7.innerText = 50; tabla_tiempoInstantaneo50_8.innerText = 50;
+
+    modeloReleAnillo[1].tiempoInstantaneo = 50; modeloReleAnillo[2].tiempoInstantaneo = 50; modeloReleAnillo[3].tiempoInstantaneo = 50;
+    modeloReleAnillo[4].tiempoInstantaneo = 50; modeloReleAnillo[5].tiempoInstantaneo = 50; modeloReleAnillo[6].tiempoInstantaneo = 50;
+    modeloReleAnillo[7].tiempoInstantaneo = 50; modeloReleAnillo[8].tiempoInstantaneo = 50;
 
 
 
@@ -931,22 +956,6 @@ function calcularValoresRelesAnillo() {
     modeloReleAnillo[6].Isc = parseFloat((Isc_Rele6 * ajusteR6).toFixed(2));
     modeloReleAnillo[7].Isc = parseFloat((Ic_B * ajusteR7).toFixed(2));
     modeloReleAnillo[8].Isc = parseFloat((Isc_Rele8 * ajusteR8).toFixed(2));
-
-    // document.getElementById("Isc_derecha1").innerText = Isc_2D.toFixed(2);
-    // document.getElementById("Isc_derecha2").innerText = Isc_3D.toFixed(2);
-    // document.getElementById("Isc_derecha3").innerText = Isc_4D.toFixed(2);
-
-    // document.getElementById("Isc_izquierda1").innerText = Isc_2I.toFixed(2);
-    // document.getElementById("Isc_izquierda2").innerText = Isc_3I.toFixed(2);
-    // document.getElementById("Isc_izquierda3").innerText = Isc_4I.toFixed(2);
-
-    // document.getElementById("Isc_abierto_a1").innerText = Isc_2A.toFixed(2);
-    // document.getElementById("Isc_abierto_a2").innerText = Isc_3A.toFixed(2);
-    // document.getElementById("Isc_abierto_a3").innerText = Isc_4A.toFixed(2);
-
-    // document.getElementById("Isc_abierto_b1").innerText = Isc_2B.toFixed(2);
-    // document.getElementById("Isc_abierto_b2").innerText = Isc_3B.toFixed(2);
-    // document.getElementById("Isc_abierto_b3").innerText = Isc_4B.toFixed(2);
 
 
     imprimirResultados();
@@ -1311,15 +1320,25 @@ async function guardarValoresReles(valores) {
                         <option value="10">10</option>
                 </select>
 
-                <th scope="row">Tiempo <br> Coordinación <br> (Prot. 50)</th>
+                <th scope="row">Tiempo <br> Coordinación <br> </th>
                 <td>
                     <input  id="swal-Anillo-tInstantaneo" type="number" value="${modeloReleAnillo[valores].tiempoCoordinacion}" class="swal2-input" min="0">
                 </td>
                 <td>[ms]</td>
 
         </tr>
-         </table>
-         </div>
+        <tr class="table-secondary">
+            <td colspan="6"></td>
+        </tr>
+        <tr>
+            <th scope="row">Tiempo <br> Coordinación <br> </th>
+            <td>
+                <input  id="swal-Anillo-tInstantaneo50" type="number" value="${modeloReleAnillo[valores].tiempoInstantaneo}" class="swal2-input" min="0" max="50">
+            </td>
+            <td>[ms]</td>
+        </tr>
+        </table>
+        </div>
          `
         ,
         showConfirmButton: true,
@@ -1338,7 +1357,8 @@ async function guardarValoresReles(valores) {
                 document.getElementById('swal-Anillo-tiempo').value,
                 document.getElementById('swal-Anillo-curva').value,
                 document.getElementById(swal_Anillo_tms).value,
-                document.getElementById('swal-Anillo-tInstantaneo').value
+                document.getElementById('swal-Anillo-tInstantaneo').value,
+                document.getElementById('swal-Anillo-tInstantaneo50').value
 
                 //document.getElementById('swal-Anillo-reactancia').value,
 
@@ -1370,6 +1390,20 @@ async function guardarValoresReles(valores) {
         modeloReleAnillo[valores].TMS = parseFloat(datos[5]);
         modeloReleAnillo[valores].tiempoCoordinacion = parseFloat(datos[6]);
 
+        if (isNaN(datos[5])) { datos[5] = "__" }
+
+        if(parseFloat(datos[7])<=0 ) { datos[7] = "0"; }  if(parseFloat(datos[7])>=50 ) { datos[7] = "50"; } 
+        // Se ajusta el mismo valor para los 8 Relés
+        modeloReleAnillo[1].tiempoInstantaneo = parseFloat(datos[7]);
+        modeloReleAnillo[2].tiempoInstantaneo = parseFloat(datos[7]);
+        modeloReleAnillo[3].tiempoInstantaneo = parseFloat(datos[7]);
+        modeloReleAnillo[4].tiempoInstantaneo = parseFloat(datos[7]);
+        modeloReleAnillo[5].tiempoInstantaneo = parseFloat(datos[7]);
+        modeloReleAnillo[6].tiempoInstantaneo = parseFloat(datos[7]);
+        modeloReleAnillo[7].tiempoInstantaneo = parseFloat(datos[7]);
+        modeloReleAnillo[8].tiempoInstantaneo = parseFloat(datos[7]);
+
+
         document.getElementById("Isc_r" + valores).innerText = datos[0];
         document.getElementById("Ic_r" + valores).innerText = datos[1];
         document.getElementById("Incremento_Ic_r" + valores).innerText = datos[2];
@@ -1377,6 +1411,18 @@ async function guardarValoresReles(valores) {
         document.getElementById("FamiliaC_r" + valores).innerText = datos[4];
         document.getElementById("TMS_r" + valores).innerText = datos[5];
         document.getElementById("Tiempo_coordinacion_r" + valores).innerText = datos[6];
+
+        //Todos los relés van a tener el mismo tiempo de coordinación en la prot. 50
+        document.getElementById("Tiempo_prot50_1").innerText = datos[7];
+        document.getElementById("Tiempo_prot50_2").innerText = datos[7];
+        document.getElementById("Tiempo_prot50_3").innerText = datos[7];
+        document.getElementById("Tiempo_prot50_4").innerText = datos[7];
+        document.getElementById("Tiempo_prot50_5").innerText = datos[7];
+        document.getElementById("Tiempo_prot50_6").innerText = datos[7];
+        document.getElementById("Tiempo_prot50_7").innerText = datos[7];
+        document.getElementById("Tiempo_prot50_8").innerText = datos[7];
+
+
 
         Swal.fire({
             title: "Guardado configuración <p style='color: gray'> " + modeloReleAnillo[valores].nombre + "</p>",
@@ -1612,7 +1658,7 @@ function graficarCurvaLadoIzquierdo() {
         data: [
             // Graficar curva tiempo relé 2
             {
-                range: [10, 100000],
+                range: [10, Ic_Rele2*ajusteR2],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
@@ -1624,7 +1670,7 @@ function graficarCurvaLadoIzquierdo() {
             },
             // Graficar curva tiempo relé 4
             {
-                range: [10, 100000],
+                range: [10, Isc_Rele4*ajusteR4],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
@@ -1637,7 +1683,7 @@ function graficarCurvaLadoIzquierdo() {
             },
             // Graficar curva tiempo relé 6
             {
-                range: [10, 100000],
+                range: [10, Isc_Rele6*ajusteR6],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
@@ -1647,9 +1693,9 @@ function graficarCurvaLadoIzquierdo() {
                 },
                 color: 'rgba(155, 93, 229, 1)',
             },
-            // Graficar relé 8
+            // Graficar curva tiempo relé 8
             {
-                range: [10, 100000],
+                range: [10, Isc_Rele8*ajusteR8],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
@@ -1661,10 +1707,10 @@ function graficarCurvaLadoIzquierdo() {
             //Linea corte Graficar curva tiempo relé 2
             {
                 points: [
-                    [Ic_Rele2*ajusteR2, tiempoOperacionCalculado_A],
+                    [Ic_Rele2*ajusteR2, 100000],
                     //[Isc_ReleA, tiempo_local_A],
                     //Punto relé 50 instantáneo: 50ms
-                    [Isc_Rele2*ajusteR2, 0.05]
+                    [Ic_Rele2*ajusteR2, modeloReleAnillo[2].tiempoInstantaneo/1000]
 
                 ],
                 fnType: 'points',
@@ -1675,10 +1721,10 @@ function graficarCurvaLadoIzquierdo() {
              //Linea corte Graficar curva tiempo relé 4
              {
                 points: [
-                    [Isc_Rele4*ajusteR4, tiempoOperacionCalculado_A],
+                    [Isc_Rele4*ajusteR4, 100000],
                     //[Isc_ReleA, tiempo_local_A],
                     //Punto relé 50 instantáneo: 50ms
-                    [Isc_Rele4*ajusteR4, 0.05]
+                    [Isc_Rele4*ajusteR4, modeloReleAnillo[4].tiempoInstantaneo/1000]
 
                 ],
                 fnType: 'points',
@@ -1689,10 +1735,10 @@ function graficarCurvaLadoIzquierdo() {
              //Linea corte Graficar curva tiempo relé 6
              {
                 points: [
-                    [Isc_Rele6*ajusteR6, tiempoOperacionCalculado_A],
+                    [Isc_Rele6*ajusteR6, 100000],
                     //[Isc_ReleA, tiempo_local_A],
                     //Punto relé 50 instantáneo: 50ms
-                    [Isc_Rele6*ajusteR6, 0.05]
+                    [Isc_Rele6*ajusteR6, modeloReleAnillo[6].tiempoInstantaneo/1000]
 
                 ],
                 fnType: 'points',
@@ -1703,14 +1749,27 @@ function graficarCurvaLadoIzquierdo() {
              //Linea corte Graficar curva tiempo relé 8
              {
                 points: [
-                    [Isc_Rele8*ajusteR8, tiempoOperacionCalculado_A],
+                    [Isc_Rele8*ajusteR8, 100000],
                     //[Isc_ReleA, tiempo_local_A],
                     //Punto relé 50 instantáneo: 50ms
-                    [Isc_Rele8*ajusteR8, 0.05]
+                    [Isc_Rele8*ajusteR8, modeloReleAnillo[8].tiempoInstantaneo/1000]
 
                 ],
                 fnType: 'points',
                 color: 'rgba(37, 8, 228, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
+            },
+            //Linea recorte de los relés de actuación Protección 50
+            {
+                points: [
+                    [10, modeloReleAnillo[1].tiempoInstantaneo/1000],
+                    [100000, modeloReleAnillo[1].tiempoInstantaneo/1000]
+                    
+
+                ],
+                fnType: 'points',
+                color: 'rgba(0, 0, 0, 1)',
                 graphType: 'polyline',
                 updateOnMouseMove: true
             },
@@ -1723,6 +1782,31 @@ function graficarCurvaLadoIzquierdo() {
 
 function graficarCurvaLadoDerecho() {
 
+//Si el usuario no administro tiempo actuación del relé 50, detectar asignar el valor máximo, como los ocho campos tienen el mismo valor y se actualizan entre si, solo se necesita hacer la comprobación con una variable
+    if(modeloReleAnillo[0].tiempoInstantaneo == null || modeloReleAnillo[0].tiempoInstantaneo == undefined  || modeloReleAnillo[0].tiempoInstantaneo == "" || isNaN(modeloReleAnillo[0].tiempoInstantaneo)) {
+        modeloReleAnillo[1].tiempoInstantaneo = 50;
+        modeloReleAnillo[1].tiempoInstantaneo = 50;
+        modeloReleAnillo[1].tiempoInstantaneo = 50;
+        modeloReleAnillo[1].tiempoInstantaneo = 50;
+        modeloReleAnillo[1].tiempoInstantaneo = 50;
+        modeloReleAnillo[1].tiempoInstantaneo = 50;
+        modeloReleAnillo[1].tiempoInstantaneo = 50;
+        modeloReleAnillo[1].tiempoInstantaneo = 50;
+
+        tabla_tiempoInstantaneo50_1.innerText = 50;
+        tabla_tiempoInstantaneo50_2.innerText = 50;
+        tabla_tiempoInstantaneo50_3.innerText = 50;
+        tabla_tiempoInstantaneo50_4.innerText = 50;
+        tabla_tiempoInstantaneo50_5.innerText = 50;
+        tabla_tiempoInstantaneo50_6.innerText = 50;
+        tabla_tiempoInstantaneo50_7.innerText = 50;
+        tabla_tiempoInstantaneo50_8.innerText = 50;
+4 
+
+    }
+
+
+
     functionPlot({
         target: "#Grafica-Lderecho",
         width: 460,
@@ -1733,7 +1817,7 @@ function graficarCurvaLadoDerecho() {
         data: [
             //Graficar curva de tiempo relé 1 
             {
-                range: [10, 100000],
+                range: [10, Isc_Rele1*ajusteR1],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
@@ -1744,7 +1828,7 @@ function graficarCurvaLadoDerecho() {
             },
             // Graficar curva de tiempo relé 3
             {
-                range: [10, 100000],
+                range: [10, Isc_Rele3*ajusteR3],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
@@ -1755,7 +1839,7 @@ function graficarCurvaLadoDerecho() {
             },
             // Graficar curva de tiempo relé 5
             {
-                range: [10, 100000],
+                range: [10, Isc_Rele5*ajusteR5],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
@@ -1766,7 +1850,7 @@ function graficarCurvaLadoDerecho() {
             },
             // Graficar curva de tiempo relé 7
             {
-                range: [10, 100000],
+                range: [10, Ic_Rele7*ajusteR7],
                 graphType: 'polyline',
                 fn: function (scope) {
                     var x = scope.x
@@ -1778,10 +1862,10 @@ function graficarCurvaLadoDerecho() {
             //Linea corte Graficar curva tiempo relé 1
             {
                 points: [
-                    [Isc_Rele1*ajusteR1, tiempoOperacionCalculado_A],
+                    [Isc_Rele1*ajusteR1, 100000],
                     //[Isc_ReleA, tiempo_local_A],
                     //Punto relé 50 instantáneo: 50ms
-                    [Isc_Rele1*ajusteR1, 0.05]
+                    [Isc_Rele1*ajusteR1, modeloReleAnillo[1].tiempoInstantaneo/1000]
 
                 ],
                 fnType: 'points',
@@ -1792,10 +1876,10 @@ function graficarCurvaLadoDerecho() {
             //Linea corte Graficar curva tiempo relé 3
             {
                 points: [
-                    [Isc_Rele3*ajusteR3, tiempoOperacionCalculado_A],
+                    [Isc_Rele3*ajusteR3, 100000],
                     //[Isc_ReleA, tiempo_local_A],
                     //Punto relé 50 instantáneo: 50ms
-                    [Isc_Rele3*ajusteR3, 0.05]
+                    [Isc_Rele3*ajusteR3, modeloReleAnillo[3].tiempoInstantaneo/1000]
 
                 ],
                 fnType: 'points',
@@ -1806,10 +1890,10 @@ function graficarCurvaLadoDerecho() {
             //Linea corte Graficar curva tiempo relé 5
             {
                 points: [
-                    [Isc_Rele5*ajusteR5, tiempoOperacionCalculado_A],
+                    [Isc_Rele5*ajusteR5, 100000],
                     //[Isc_ReleA, tiempo_local_A],
                     //Punto relé 50 instantáneo: 50ms
-                    [Isc_Rele5*ajusteR5, 0.05]
+                    [Isc_Rele5*ajusteR5, modeloReleAnillo[5].tiempoInstantaneo/1000]
 
                 ],
                 fnType: 'points',
@@ -1820,14 +1904,27 @@ function graficarCurvaLadoDerecho() {
             //Linea corte Graficar curva tiempo relé 7
             {
                 points: [
-                    [Ic_Rele7*ajusteR7, tiempoOperacionCalculado_A],
+                    [Ic_Rele7*ajusteR7, 100000],
                     //[Isc_ReleA, tiempo_local_A],
                     //Punto relé 50 instantáneo: 50ms
-                    [Ic_Rele7*ajusteR7, 0.05]
+                    [Ic_Rele7*ajusteR7, modeloReleAnillo[7].tiempoInstantaneo/1000]
 
                 ],
                 fnType: 'points',
                 color: 'rgba(95, 168, 211, 1)',
+                graphType: 'polyline',
+                updateOnMouseMove: true
+            },
+            //Linea recorte de los relés de actuación Protección 50
+            {
+                points: [
+                    [10, modeloReleAnillo[1].tiempoInstantaneo/1000],
+                    [100000, modeloReleAnillo[1].tiempoInstantaneo/1000]
+                    
+
+                ],
+                fnType: 'points',
+                color: 'rgba(255, 213, 0, 1)',
                 graphType: 'polyline',
                 updateOnMouseMove: true
             },
@@ -2043,7 +2140,7 @@ function metodologiaAnillo() {
                     <p>2.1.1 Observando el anillo abierto, haciendo un recorrido en sentido horario y antihorario en un mismo (Nodo). <b>Se recomienda que ese nodo sea al más cercano del generador (más favorable)</b>.  Determinando una corriente de falla que vería en su debido momento el relé (dependiendo donde la ubique). Cada relé va a estar mirando a su extremo opuesto (genera una dirección).</p>
                     <p>2.1.2 Se halla la corriente de corto circuito con el anillo cerrado (sentido horario y antihorario). </p>
                     <p>Con base en esas corrientes, aplicó el criterio del ajuste del relé de sobrecorriente (para este caso sería el de lineas), <u><b>EXCEPTO</b></u> los relés que están mirando hacia la fuente (en este caso el <b>relé 2 y 7</b>) porque no me interesa que vean fallas fuera de la linea, a ellos aplicó otro criterio aparte. </p>
-                    <img src="../assets/images/Anillo/esquema_corriente.svg" style="width:100%; height: 100px">
+                    <img src="assets/images/Anillo/esquema_corriente.svg" style="width:100%; height: 100px">
                     <p>
                     <p>3. Determinar corriente de carga máxima que están observando en cada linea:</b> No me interesa la dirección, va circular por la línea.  Se toma el valor máximo que se presenta en cualquier sentido (horario o anti-horario). Con estos datos, voy a determinar las relaciones de CTs.</p>
 
@@ -2108,7 +2205,7 @@ async function criterioAjuste(rele) {
         background: '#fefefe',
         html: `
             <table class="table table-responsive "> 
-                <p>Rango 1.25 - 1.50</p>
+                <p>Rango: ( 1.25 - 1.50 )</p>
                 <tr>
                     <td>${ajusteDelRele}:</td>
                     <td><input type="number" class="swal2-input" id="swal2-InputtAjuste" value="${valorAjuste}" min="1.25" max="1.50"></td>
@@ -2124,6 +2221,7 @@ async function criterioAjuste(rele) {
         customClass: {
             confirmButton: 'botonGuardar hoverButton',
         },
+        footer: '<p style="text-align: justify; font-size:13px "> <b>Nota</b>: Si ingresa un valor menor al mínimo del rango, se tomará automaticamente el valor mínimo posible. Igualmente, si ingresa un valor mayor al máximo, se tomará el máximo valor posible. <p>',
         preConfirm: () => {
             return [
                 document.getElementById("swal2-InputtAjuste").value
@@ -2153,25 +2251,25 @@ async function criterioAjuste(rele) {
 
         if(rele == "r3") {
             ajusteR3 = parseFloat(formValues[0]);
-            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r3").innerText = parseFloat(formValues[0]);
         }
         if(rele == "r4") {
             ajusteR4 = parseFloat(formValues[0]);
-            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r4").innerText = parseFloat(formValues[0]);
         }
 
         if(rele == "r5") {
             ajusteR5 = parseFloat(formValues[0]);
-            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r5").innerText = parseFloat(formValues[0]);
         }
         if(rele == "r6") {
             ajusteR6 = parseFloat(formValues[0]);
-            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0]);
+            document.getElementById("ajuste_r6").innerText = parseFloat(formValues[0]);
         }
 
         if(rele == "r8") {
             ajusteR8 = parseFloat(formValues[0]);
-            document.getElementById("ajuste_r1").innerText = parseFloat(formValues[0])
+            document.getElementById("ajuste_r8").innerText = parseFloat(formValues[0])
         }
 
     }
